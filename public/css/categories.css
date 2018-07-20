@@ -1,0 +1,114 @@
+/* Begin sidebar area */
+
+#sidebar {
+    margin-top: 10px;
+}
+
+#sidebar .sidebar-box {
+    padding: 0px;
+}
+
+#tab-post-widget {
+    border: 1px solid #F1F4ED;
+    margin-bottom: 18px;
+    margin-top: 2px;
+}
+
+#tab-post-widget .tabs {
+    background: #e6e6e6;
+}
+
+#tab-post-widget dl.tabs dd.active {
+    border-top: 3px solid #464646;
+    margin-top: -3px;
+    background-color: #ffffff;
+}
+
+.tabs dd.active, #featured-right.tabs li.active {
+    margin-left: -1px;
+}
+
+#tab-post-widget dl.tabs dd a {
+    font-family: 'Oswald', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    letter-spacing: 0.4px;
+    padding: 0 16px;
+    border-right: 1px solid #fff;
+    text-decoration: none;
+    color: #6f6f6f;
+    font-weight: 300;
+    display: block;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+}
+
+#tab-post-widget ul.tabs-content {
+    padding: 0px 16px;
+}
+
+ul.tabs-content li {
+    display: none;
+}
+#tab-post-widget .tab-post-row {
+    margin-bottom: 15px;
+}
+
+#tab-post-widget .tab-post-widget-img {
+    float: left;
+    padding-right: 15px;
+    padding-top: 3px;
+}
+
+.tabs {
+    list-style: none;
+    border-bottom: solid 1px #e6e6e6;
+    display: block;
+    height: 40px;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.tabs dd, .tabs li {
+    display: block;
+    float: left;
+    /*padding: 8px 0px 0px 0px;*/
+    margin: 0;
+}
+
+ul.tabs-content {
+    list-style: none;
+    display: block;
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+.tab-post-widget-content.has_image {
+    padding-left: 65px;
+}
+
+.tab-post-widget-content.has_image h3{
+    font-size: 14px;
+    font-style: normal;
+    color: #222;
+    text-rendering: optimizeLegibility;
+    line-height: 1.1;
+}
+
+.tab-post-widget-content.has_image h3 a{
+    color: #222;
+    font-style: normal;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+#tab-post-widget .tab-post-widget-content span {
+    font-size: 13px;
+    color: #9b9b9b;
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+/* End sidebar area */
