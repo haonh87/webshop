@@ -15,13 +15,16 @@ class CreateCategoriesTable extends Migration
         if (!Schema::hasTable('categories')) {
             Schema::create('categories', function (Blueprint $table) {
                 $table->increments('id');
-                $table->integer('parrent_id')->default(null);
-                $table->string('name_en');
-                $table->string('name_ru');
-                $table->text('description_en')->nullable();
-                $table->text('description_ru')->nullable();
-                $table->integer('count_view')->default(0);
-                $table->integer('count_sell')->default(0);
+                $table->integer('parent_id')->default(null);
+                $table->string('name');
+                $table->text('description')->nullable();
+                $table->string('image_url', 250)->nullable();
+                $table->string('lang_code', 5);
+                $table->foreign('lang_code')->references('code')->on('languages')->onDelete('cascade');
+                $table->integer('create_user_id');
+                $table->foreign('create_user_id')->references('id')->on('users')->onDelete('cascade');
+                $table->integer('modified_user_id')->nullable()->default(null);
+                $table->foreign('modified_user_id')->references('id')->on('users')->onDelete('cascade');
                 $table->softDeletes();
                 $table->timestamps();
             });

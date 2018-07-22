@@ -14,10 +14,11 @@ class CategoriesTableSeeder extends Seeder
         Category::truncate();
          $data = [
             [
-                "name_en" => "Dresses",
-                "name_ru" => "Платья",
-                "description_en" => "This is dress!",
-                "description_ru" => "Это платье!",
+                
+                "name" => "Dresses",
+                "image_url" => null,
+                "description" => "This is dress!",
+                "lang_code" => "vi",
                 "count_view" => 10,
                 "count_sell" => 10,
                 "parrent_id"=>0,

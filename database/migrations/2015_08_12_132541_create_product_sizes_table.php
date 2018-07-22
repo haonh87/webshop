@@ -14,10 +14,11 @@ class CreateProductSizesTable extends Migration
     {
         Schema::create('product_sizes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');;
-            $table->integer('size');
-            $table->string('image')->nullable();
+            $table->string('name', 20)->unique();
+            $table->integer('create_user_id');
+            $table->foreign('create_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('modified_user_id')->nullable();
+            $table->foreign('modified_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

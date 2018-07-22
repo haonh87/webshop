@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductColorsTable extends Migration
+class CreateLanguageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +13,14 @@ class CreateProductColorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_colors', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('lang_code')->unsigned();
-            $table->foreign('lang_code')->references('code')->on('languages')->onDelete('cascade');
-            $table->string('code')->unique();
-            $table->string('name')->unique();
+            $table->string('code', 3)->unique();
+            $table->string('name', 50)->unique();
             $table->integer('create_user_id');
             $table->foreign('create_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('modified_user_id')->nullable();
             $table->foreign('modified_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ class CreateProductColorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('product_colors');
+        Schema::dropIfExists('languages');
     }
 }
