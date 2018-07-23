@@ -16,10 +16,12 @@ class ModelTableSeeder extends Seeder
         $data = [
             [
                 'name' => 'cotton',
+                'lang_code' => 'vi',
                 'create_user_id' => 1
             ],
             [
                 'name' => 'body-fit',
+                'lang_code' => 'vi',
                 'create_user_id' => 1
             ]
         ];

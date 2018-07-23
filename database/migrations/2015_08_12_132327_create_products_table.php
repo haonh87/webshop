@@ -18,9 +18,9 @@ class CreateProductsTable extends Migration
 
             $table->string('lang_code');
             $table->integer('category_id')->unsigned();
-            $table->string('model_ids')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->string('product_color_ids')->nullable();
+            $table->string('model_ids')->nullable()->default(null);
+            $table->string('product_color_ids')->nullable()->default(null);
             $table->float('price');
             $table->string('description', 350)->nullable();
             $table->text('content')->nullable();
