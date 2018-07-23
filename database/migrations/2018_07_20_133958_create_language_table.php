@@ -15,11 +15,11 @@ class CreateLanguageTable extends Migration
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code', 3)->unique();
-            $table->string('name', 50)->unique();
-            $table->integer('create_user_id');
+            $table->string('code', 5)->index();
+            $table->string('name', 50);
+            $table->integer('create_user_id')->unsigned();
             $table->foreign('create_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('modified_user_id')->nullable();
+            $table->integer('modified_user_id')->unsigned()->nullable();
             $table->foreign('modified_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

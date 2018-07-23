@@ -14,7 +14,7 @@ class CategoriesTableSeeder extends Seeder
         Category::truncate();
          $data = [
             [
-                
+
                 "name" => "Dresses",
                 "image_url" => null,
                 "description" => "This is dress!",

@@ -15,11 +15,10 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('model_id');
-            $table->foreign('model_id')->references('id')->on('models')->onDelete('cascade');
+
             $table->string('lang_code');
-            $table->foreign('lang_code')->references('code')->on('languages')->onDelete('cascade');
             $table->integer('category_id')->unsigned();
+            $table->string('model_ids')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('product_color_ids')->nullable();
             $table->float('price');
@@ -28,7 +27,11 @@ class CreateProductsTable extends Migration
             $table->integer('sell_count')->default(0);
             $table->integer('view_count')->default(0);
             $table->boolean('is_out_of_stock')->default(false);
-            $table->tinyInteger('status');
+            $table->integer('create_user_id')->unsigned();
+            $table->foreign('create_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('modified_user_id')->unsigned()->nullable();
+            $table->foreign('modified_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

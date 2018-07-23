@@ -16,9 +16,9 @@ class CreateModelTable extends Migration
         Schema::create('models', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('create_user_id');
+            $table->integer('create_user_id')->unsigned();
             $table->foreign('create_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('modified_user_id')->nullable();
+            $table->integer('modified_user_id')->unsigned()->nullable();
             $table->foreign('modified_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
