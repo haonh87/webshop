@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
                 $table->integer('parent_id')->default(0);
                 $table->string('name');
                 $table->text('description');
-                $table->string('image_url', 250);
+                $table->string('image_url', 250)->nullable()->defaut(null);
                 $table->string('lang_code');
                 $table->integer('create_user_id')->unsigned();
                 $table->foreign('create_user_id')->references('id')->on('users')->onDelete('cascade');
