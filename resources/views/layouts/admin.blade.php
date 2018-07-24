@@ -66,7 +66,7 @@
                      <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{ route('authLogout') }}"><i class="fa fa-fw fa-user"></i> Logout</a>
+                            <a href="{{ route('logout') }}"><i class="fa fa-fw fa-user"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -74,7 +74,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="{{ route('admin.products.index') }}"><i class="fa fa-fw fa-dashboard"></i>Product Management</a>
+                        <a href="{{-- {{ route('admin.products.index') }} --}}"><i class="fa fa-fw fa-dashboard"></i>Product Management</a>
                     </li>
                     <li>
                         <a href="{{ action('Admin\CategoryController@index') }}"><i class="fa fa-fw fa-dashboard"></i>Category Management</a>
