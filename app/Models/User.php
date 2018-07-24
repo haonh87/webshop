@@ -34,23 +34,27 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function wishList()
     {
-        return $this->hasMany('App\WishProduct');
+        return $this->hasMany('App\Models\WishProduct');
     }
 
     public function customer()
     {
-        return $this->belongsTo('App\Customer');
+        return $this->belongsTo('App\Models\Customer');
     }
 
     public function roles()
     {
-        return $this->belongsTo('App\Role', 'role_id', 'id');
+        return $this->belongsTo('App\Models\Role', 'role_id', 'id');
     }
 
     public function isAdmin(){
-        
         if($this->role_id != 3&& $this->role_id != 4)
             return true;
         return false;
+    }
+
+    public function hasRole()
+    {
+
     }
 }

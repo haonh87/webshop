@@ -43,10 +43,9 @@ class LoginController extends Controller
      */
     public function authenticated()
     {
-        if (auth()->user()->hasRole('admin')) {
-            return redirect()->route('admin.categories.index');
+        if (auth()->user()->isAdmin()) {
+            return redirect()->route('categories.index');
         }
-
         return redirect('index');
     }
 }
