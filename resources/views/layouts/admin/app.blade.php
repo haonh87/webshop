@@ -37,7 +37,9 @@
             <!--/.span3-->
             <div class="span9">
                 <div class="content">
-                    @yield('content')
+                    <div class="module">
+                        @yield('content')
+                    </div>
                 </div>
                 <!--/.content-->
             </div>

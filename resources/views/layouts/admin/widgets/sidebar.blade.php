@@ -6,7 +6,7 @@
         <li>
             <a class="collapsed" data-toggle="collapse" href="#productManagement"><i class="menu-icon icon-bullhorn"></i>Quản lý sản phẩm</a>
             <ul id="productManagement" class="collapse unstyled">
-                <li><a href="other-login.html"><i class="icon-inbox"></i>Quản lý danh mục</a></li>
+                <li><a href="{{ route('admin.category-management') }}"><i class="icon-inbox"></i>Danh mục sản phẩm</a></li>
                 <li><a href="other-user-profile.html"><i class="icon-inbox"></i>Danh sách sản phẩm</a></li>
                 <li><a href="other-user-listing.html"><i class="icon-inbox"></i>Thêm mới sản phẩm</a></li>
             </ul>
