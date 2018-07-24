@@ -21,7 +21,7 @@ class Product extends Model
      * */
     public function category()
     {
-    	return $this->belongsTo('App\Category');
+    	return $this->belongsTo('App\Models\Category');
     }
 
     /**
@@ -39,7 +39,7 @@ class Product extends Model
      **/
     public function productSize()
     {
-    	return $this->hasMany('App\ProductSize');
+    	return $this->hasMany('App\Models\ProductSize');
     }
 
     /**
@@ -49,7 +49,7 @@ class Product extends Model
 
     public function votes()
     {
-        return $this->hasMany('App\Vote');
+        return $this->hasMany('App\Models\Vote');
     }
 
     /**

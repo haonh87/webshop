@@ -17,7 +17,7 @@
 			}
 		?>
 	  	<div class="col-xs-6 col-md-6">
-	  	<form action="{{ route('product.search') }}" method="get" accept-charset="utf-8" class="form-inline" role="form">
+	  	<form action="{{ route('admin.product.search') }}" method="get" accept-charset="utf-8" class="form-inline" role="form">
 		  	<div class="row">
 		  		<div class="form-group">    
 		            <input type="text" name='pro_name' class="form-control" 
@@ -54,13 +54,13 @@
 	    		$img = asset('images/products/product'.$product->id.'/'.$product->getIndexImage());
 	    	?>
 	    	<tr>
-	        <td><a href="{{ route('admin.products.show',['product_id'=>$product->id]) }}">{{$product->name_ru}}</a></td>
+	        <td><a href="{{ route('products.show',['product_id'=>$product->id]) }}">{{$product->name_ru}}</a></td>
 	        <td>{{$product->price}}</td>
-	        <td><a href="{{ route('admin.categories.show',$product->category->id) }}">{{$product->category->name_ru}}</a></td>
+	        <td><a href="{{ route('categories.show',$product->category->id) }}">{{$product->category->name_ru}}</a></td>
 	        <td>{{$product->description_ru}}</td>
 	        <td>{{$product->getStar() . '/5'}}</td>
 	        <td>
-	        	<a href="{{ route('admin.products.show',['product_id'=>$product->id]) }}">
+	        	<a href="{{ route('products.show',['product_id'=>$product->id]) }}">
 	        		<img src="{{ $img }}" class="img-rounded compress" style="width:7em; height:5em;"/>
 	        	</a>
 	        </td>
@@ -73,7 +73,7 @@
 		                <a href="{{ route('products.edit',['product_id'=>$product->id]) }}" class="btn btn-warning">Edit</a>
 		            </div>
 		            <div style = "display: table-cell;  vertical-align: center;">
-		            <form action="{{ route('admin.products.destroy',['product_id'=>$product->id]) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
+		            <form action="{{ route('products.destroy',['product_id'=>$product->id]) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
 		            	<input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}">
                         	<input type="submit" class = "btn btn-danger" value="Delete" />
 			            </form>
