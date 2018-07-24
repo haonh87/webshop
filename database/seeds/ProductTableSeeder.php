@@ -121,6 +121,6 @@ class ProductTableSeeder extends Seeder
         	],
 
         ];
-        Product::insert($data);
+        //Product::insert($data);
     }
 }
