@@ -93,12 +93,12 @@
     <br/>
     <br>
     <h2>Normal Import</h2>
-        <form action="{{ route('admin.products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
+        <form action="{{ route('products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
             <div class="form-group col-sm-4 col-md-8">
                 <label for="category">Select Category:</label>
                   <select class="form-control" id="category" name="category" required>
                   <option value="">Select category</option>
-                @foreach(App\Category::all() as $category)
+                @foreach(App\Models\Category::all() as $category)
                     <option value="{{ $category->id }}">{{ $category->name_ru }}</option>
                 @endforeach
                 </select>
@@ -127,7 +127,7 @@
                 <label for="silk">Select Silk Code:</label>
                   <select class="form-control" id="silk" name="silk" required>
                   <option value="">Select silk code</option>
-                @foreach(App\Silk::all() as $silk)
+                @foreach(App\Models\Silk::all() as $silk)
                     <option value="{{ $silk->id }}">{{ $silk->code}}</option>
                 @endforeach
                 </select>
@@ -198,7 +198,7 @@
         i++;
         $.getScript("{{ asset('js1/fileinput.min.js') }}")
     });
-    ("#frmExcel").submit(function( event ) {
+    $("#frmExcel").submit(function( event ) {
       var ext = $('#myFile').val().split('.').pop().toLowerCase();
         if($.inArray(ext, ['xls','xlsx']) == -1) {
             alert('invalid extension!');
