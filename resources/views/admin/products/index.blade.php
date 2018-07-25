@@ -3,7 +3,7 @@
 @section('content')
 <div class="manage-menu">
 	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-7.5">
+		<div class="col col-xs-12 col-sm-6 col-md-3">
 			<a href="{{ route('products.create') }}" class="btn btn-info">Create New Product</a>
 		</div>
 		<?php 
@@ -16,10 +16,10 @@
 				$old_cate_id = $cate_id;
 			}
 		?>
-	  	<div class="col-xs-6 col-md-6">
+	  	<div class="col col-xs-6 col-md-9">
 	  	<form action="{{ route('admin.product.search') }}" method="get" accept-charset="utf-8" class="form-inline" role="form">
-		  	<div class="row">
-		  		<div class="form-group">    
+		  	<div class="search_form">
+		  		<div class="form-group">
 		            <input type="text" name='pro_name' class="form-control" 
 		            placeholder="Product name" value="{{ $old_product_name }}"/>
 			    </div>

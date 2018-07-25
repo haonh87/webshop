@@ -3,14 +3,25 @@
         <li class="active">
             <a href="index.html"><i class="menu-icon icon-dashboard"></i>Dashboard</a>
         </li>
+        {{--Product manager--}}
         <li>
             <a class="collapsed" data-toggle="collapse" href="#productManagement"><i class="menu-icon icon-bullhorn"></i>Quản lý sản phẩm</a>
             <ul id="productManagement" class="collapse unstyled">
+                <li><a href="{{ route('products.index') }}"><i class="icon-inbox"></i>Danh mục sản phẩm</a></li>
+                <li><a href="other-user-listing.html"><i class="icon-inbox"></i>Thêm mới sản phẩm</a></li>
+            </ul>
+        </li>
+        {{--categories manager--}}
+        <li>
+            <a class="collapsed" data-toggle="collapse" href="#categoryManagement"><i class="menu-icon icon-bullhorn"></i>Quản lý loại sản phẩm</a>
+            <ul id="categoryManagement" class="collapse unstyled">
                 <li><a href="{{ route('admin.category-management') }}"><i class="icon-inbox"></i>Danh mục sản phẩm</a></li>
                 <li><a href="other-user-profile.html"><i class="icon-inbox"></i>Danh sách sản phẩm</a></li>
                 <li><a href="other-user-listing.html"><i class="icon-inbox"></i>Thêm mới sản phẩm</a></li>
             </ul>
         </li>
+
+
         <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b
                         class="label green pull-right">
                     11</b> </a></li>

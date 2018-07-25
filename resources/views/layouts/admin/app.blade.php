@@ -10,11 +10,12 @@
     <meta name="author" content="">
     <title>GYMBEO</title>
     <link type="text/css" href="{{ asset('admins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{ asset('admins/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
+    {{--<link type="text/css" href="{{ asset('admins/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet">--}}
     <link type="text/css" href="{{ asset('admins/css/theme.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('admins/images/icons/css/font-awesome.css') }}" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
           rel='stylesheet'>
+    <link type="text/css" href="{{ asset('admins/custom.css') }}" rel="stylesheet">
 @yield('css_open')
 <!-- jQuery -->
     <script src="{{ asset('admins/scripts/jquery-1.9.1.min.js') }}" type="text/javascript"></script>
