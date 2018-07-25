@@ -29,7 +29,7 @@ class Category extends Model
      * */
     public static function getSubCategoryById($id)
     {
-        return Category::where('parrent_id',$id)->get();
+        return Category::where('parent_id',$id)->get();
     }
 
 
@@ -39,7 +39,7 @@ class Category extends Model
      **/
     public function getCategorieAndSubCategories(array &$categories)
     {
-    	$sub_cates = Category::where('parrent_id',$this->id)->get();
+    	$sub_cates = Category::where('parent_id',$this->id)->get();
         if($sub_cates->count() > 0){
             foreach ($sub_cates as $cate) {
                 $cate->getCategorieAndSubCategories($categories);

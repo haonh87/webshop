@@ -87,7 +87,7 @@ class CategoryController extends Controller {
         $category->name_ru = $request->input("name_ru");
         $category->description_en = $request->input("description_en");
         $category->description_ru = $request->input("description_ru");
-        $category->parrent_id = $request->input("parrent_id");
+        $category->parent_id = $request->input("parent_id");
 
         $category->save();
 

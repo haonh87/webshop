@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\ProductSize;
+
 class ProductSizeTableSeeder extends Seeder
 {
     /**
@@ -13,91 +14,36 @@ class ProductSizeTableSeeder extends Seeder
     {
         ProductSize::truncate();
         $data = [
-        	[
-        		"product_id" 	=> 1,
-        		"size"			=> 15,
-        	],
-        	        	[
-        		"product_id" 	=> 1,
-        		"size"			=> 25,
-        	],
-        	        	[
-        		"product_id" 	=> 1,
-        		"size"			=> 20,
-        	],
-        	[
-        		"product_id" 	=> 2,
-        		"size"			=> 15,
-        	],
-        	        	[
-        		"product_id" 	=> 2,
-        		"size"			=> 25,
-        	],
-        	        	[
-        		"product_id" 	=> 2,
-        		"size"			=> 20,
-        	],
-        	[
-        		"product_id" 	=> 3,
-        		"size"			=> 15,
-        	],
-        	        	[
-        		"product_id" 	=> 3,
-        		"size"			=> 25,
-        	],
-        	        	[
-        		"product_id" 	=> 3,
-        		"size"			=> 20,
-        	],
             [
-                "product_id"    => 4,
-                "size"          => 15,
-            ],
-                        [
-                "product_id"    => 4,
-                "size"          => 25,
-            ],
-                        [
-                "product_id"    => 4,
-                "size"          => 20,
+                "lang_code" => "vi",
+                "name" => "S",
+                "create_user_id" => 1
             ],
             [
-                "product_id"    => 5,
-                "size"          => 15,
-            ],
-                        [
-                "product_id"    => 5,
-                "size"          => 25,
-            ],
-                        [
-                "product_id"    => 5,
-                "size"          => 20,
+                "lang_code" 	=> "vi",
+                "name"			=> "M",
+                "create_user_id" => 1
             ],
             [
-                "product_id"    => 6,
-                "size"          => 15,
+                "lang_code" 	=> "vi",
+                "name"			=> "L",
+                "create_user_id" => 1
             ],
-                        [
-                "product_id"    => 6,
-                "size"          => 25,
+            [
+                "lang_code" 	=> "vi",
+                "name"			=> "XL",
+                "create_user_id" => 1
             ],
-                        [
-                "product_id"    => 6,
-                "size"          => 20,
+            [
+                "lang_code" 	=> "vi",
+                "name"			=> "XXL",
+                "create_user_id" => 1
             ],
-        	[
-        		"product_id" 	=> 7,
-        		"size"			=> 15,
-        	],
-        	        	[
-        		"product_id" 	=> 7,
-        		"size"			=> 25,
-        	],
-        	        	[
-        		"product_id" 	=> 7,
-        		"size"			=> 20,
-        	]
-
+            [
+                "lang_code" 	=> "vi",
+                "name"			=> "XXXL",
+                "create_user_id" => 1
+            ]
         ];
         ProductSize::insert($data);
     }

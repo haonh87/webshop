@@ -15,46 +15,28 @@ class UserTableSeeder extends Seeder
         $data = 
         [
         	[
-        		"name"=>"admin",
+        		"username"=>"admin",
         		"email"=>"admin@admin.com",
+                "fullname" => "Administrator",
         		"password"=>Hash::make('123456'),
-        		"gender"=>1,
-        		"role_id"=>1,
-        		"birthdate" => date('Y/m/d'),
-                "customer_id"=>null,
-
+        		"role_id"=>1
         	],
             [
-                "name"=>"staff",
+                "username"=>"staff",
                 "email"=>"staff@staff.com",
+                "fullname" => "Staff",
                 "password"=>Hash::make('123456'),
-                "gender"=>1,
-                "role_id"=>1,
-                "birthdate" => date('Y/m/d'),
-                "customer_id"=>null,
+                "role_id"=>1
 
             ],
             [
-                "name"=>"customer1",
-                "email"=>"customer1@cus.com",
+                "username"=>"user1",
+                "email"=>"user1@gmail.com",
+                "fullname" => "Customer 1",
                 "password"=>Hash::make('123456'),
-                "gender"=>1,
-                "role_id"=>3,
-                "birthdate" => date('Y/m/d'),
-                "customer_id"=>1,
+                "role_id"=>1
 
-            ],
-        	[
-        		"name"=>"customer2",
-        		"email"=>"customer2@cus.com",
-        		"password"=>Hash::make('123456'),
-        		"gender"=>1,
-        		"role_id"=>3,
-                "birthdate" => date('Y/m/d'),
-                "customer_id"=>2,
-
-        	],
-
+            ]
         ];
         User::insert($data);
     }

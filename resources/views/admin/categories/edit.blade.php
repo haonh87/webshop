@@ -23,7 +23,7 @@
                         <td>Parrent</td>
                         <td>
                             <div class="form-group">
-                              <select class="form-control" id="parrent_id" name="parrent_id">
+                              <select class="form-control" id="parent_id" name="parent_id">
                                 @foreach($allCAte as $cate)
                                     <option value="{{ $cate->id }}">
                                         {{ $cate->name_ru }}

@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductColorTableSeeder::class);
         $this->call(ProductSizeTableSeeder::class);
         $this->call(ProductTableSeeder::class);
-        $this->call(SilkTableSeeder::class);
         $this->call(RoleTableSeeder::class);
         $this->call(VoteTableSeeder::class);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

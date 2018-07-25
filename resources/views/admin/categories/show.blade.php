@@ -22,8 +22,8 @@
       <tr class="success">
         <td>{{$category->id}}</td>
         <td>
-            @if($category->parrent_id != 0)
-                {{App\Category::findOrFail($category->parrent_id)->name}}
+            @if($category->parent_id != 0)
+                {{App\Category::findOrFail($category->parent_id)->name}}
             @else
                 <span>None</span>
             @endif
