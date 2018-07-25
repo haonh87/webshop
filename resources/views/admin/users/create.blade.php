@@ -33,7 +33,31 @@
                     <div class="col col-md-6">
                         <div class="form-group">
                             <label for="Name">Gender</label>
-                            <input type="text" class="form-control" name="gender" id="gender" placeholder="Enter gender">
+                            <select class="" name="gender" id="gender">
+                                <option value="0">Nữ</option>
+                                <option value="1">Nam</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label for="email">Roles</label>
+                            <select class="" name="role_id" id="role_id">
+                                @foreach($roles as $role)
+                                    <option value ="{{ $role->id }}">
+                                        {{ $role->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="form-group">
+                            <label for="Name">Birth date</label>
+                            <input type="datetime-local" class="form-control" name="birthdate" id="birthdate" placeholder="Enter birth date">
                         </div>
                     </div>
                 </div>

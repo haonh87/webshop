@@ -156,6 +156,15 @@ h6 {
     height: 30px;
     display: inline-block;
 }
+.form-group select {
+    height: 34px;
+    width: 100%;
+    display: block;
+    padding: 4px 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 /*end global css*/
 /*css element page*/
 .remember {
