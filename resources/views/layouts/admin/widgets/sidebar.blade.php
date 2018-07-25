@@ -20,6 +20,14 @@
                 <li><a href="other-user-listing.html"><i class="icon-inbox"></i>Thêm mới sản phẩm</a></li>
             </ul>
         </li>
+        {{--user manager--}}
+        <li>
+            <a class="collapsed" data-toggle="collapse" href="#userManagement"><i class="menu-icon icon-bullhorn"></i>Quản lý người dùng</a>
+            <ul id="userManagement" class="collapse unstyled">
+                <li><a href="{{ route('admin.user.index') }}"><i class="icon-inbox"></i>Danh sách người dùng</a></li>
+                <li><a href="{{ route('admin.user.create') }}"><i class="icon-inbox"></i>Thêm mới người dùng</a></li>
+            </ul>
+        </li>
 
 
         <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b

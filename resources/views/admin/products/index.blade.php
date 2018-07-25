@@ -39,7 +39,7 @@
 			
 	  	</div>
 	</div>
-	<table class="table table-hover" style="margin-top: 10px;">
+	<table class="table table-striped table-bordered table-condensed table-hover" style="margin-top: 10px;">
 	    <tr>
 	        <th>NAME</th>
 	        <th>PRICE</th>

@@ -104,6 +104,6 @@
 .search_form .form-group {
     display: inline-block;
 }
-.manage-menu {
-    padding-top: 15px;
+.container .content .module{
+    padding: 10px 15px;
 }
