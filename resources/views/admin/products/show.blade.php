@@ -23,7 +23,7 @@
       <tr class="success">
         <td>{{$product->id}}</td>
         <td>
-            <a href="{{ route('admin.categories.show',$product->category->id) }}">{{$product->category->name_ru}}</a>
+            <a href="{{ route('admin.category-management',$product->category->id) }}">{{$product->category->name_ru}}</a>
         </td>
         <td>{{$product->name_en}}</td>
         <td>{{$product->name_ru}}</td>
