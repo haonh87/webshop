@@ -141,14 +141,17 @@ h6 {
     margin-top: 0px;
 }
 .form-group input {
-    height: 26px;
+    height: 34px;
     display: block;
     width: 100%;
+    padding: 4px 10px;
 }
 .form-group .help-block{
     color: red;
 }
 /*end global css*/
 /*css element page*/
-
+.remember {
+    display: inline-block !important;
+}
 /*end css element page*/

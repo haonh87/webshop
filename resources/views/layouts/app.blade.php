@@ -11,6 +11,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link type="text/css" href="{{ asset('admins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    {{--<link type="text/css" href="{{ asset('admins/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet">--}}
+    <link type="text/css" href="{{ asset('admins/css/theme.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('admins/images/icons/css/font-awesome.css') }}" rel="stylesheet">
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+          rel='stylesheet'>
+    <link type="text/css" href="{{ asset('admins/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
