@@ -15,7 +15,10 @@
                         </div>
                     </div>
                     <div class="col col-md-6">
-
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+                        </div>
                     </div>
                 </div>
 

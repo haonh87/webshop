@@ -140,6 +140,14 @@ h6 {
     margin-bottom: 10px;
     margin-top: 0px;
 }
+.form-group input {
+    height: 26px;
+    display: block;
+    width: 100%;
+}
+.form-group .help-block{
+    color: red;
+}
 /*end global css*/
 /*css element page*/
 

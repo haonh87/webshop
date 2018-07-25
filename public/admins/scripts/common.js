@@ -11,6 +11,16 @@
                     }
                 }
             },
+            name: {
+                validators: {
+                    stringLength: {
+                        min: 2,
+                    },
+                    notEmpty: {
+                        message: 'Please supply your first name'
+                    }
+                }
+            },
             last_name: {
                 validators: {
                     stringLength: {
