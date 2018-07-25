@@ -90,7 +90,7 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
 
     Route::get('/user', ['as' => 'admin.user.index', 'uses' => 'UserController@index']);
     Route::get('/user/{user}/edit', ['as' => 'admin.user.edit', 'uses' => 'UserController@edit']);
-    Route::post('/user', ['as' => 'admin.user.store', 'uses' => 'UserController@store']);
+    Route::post('/user/store', ['as' => 'admin.user.store', 'uses' => 'UserController@store']);
     Route::delete('/user/{user}', ['as' => 'admin.user.destroy', 'uses' => 'UserController@destroy']);
     Route::get('/user/create', ['as' => 'admin.user.create', 'uses' => 'UserController@create']);
     Route::match(['put', 'patch'], '/user/{user}', ['as' => 'admin.user.update', 'uses' => 'UserController@update']);

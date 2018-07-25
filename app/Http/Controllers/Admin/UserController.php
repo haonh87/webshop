@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -40,7 +41,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataUser = $request->except('_token');
+        try {
+            $dataUser['password'] = Hash::make($dataUser['password']);
+            User::create($dataUser);
+            return redirect()->route('admin.user.index')->with('message', 'create success!');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.user.index')->with('message', 'create fail!');
+        }
     }
 
     /**

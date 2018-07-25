@@ -6,8 +6,8 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ action('Admin\CustomerController@store') }}" class='form-validate' method="POST">
-
+            <form action="{{ route('admin.user.store') }}" class='form' method="POST">
+                {{ csrf_field() }}
                 <div class="row">
                     <div class="col col-md-6">
                         <div class="form-group">
