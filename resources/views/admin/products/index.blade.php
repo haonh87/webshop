@@ -56,7 +56,7 @@
 	    	<tr>
 	        <td><a href="{{ route('products.show',['product_id'=>$product->id]) }}">{{$product->name_ru}}</a></td>
 	        <td>{{$product->price}}</td>
-	        <td><a href="{{ route('categories.show',$product->category->id) }}">{{$product->category->name_ru}}</a></td>
+	        <td><a href="{{ route('admin.category-management',$product->category->id) }}">{{$product->category->name_ru}}</a></td>
 	        <td>{{$product->description_ru}}</td>
 	        <td>{{$product->getStar() . '/5'}}</td>
 	        <td>

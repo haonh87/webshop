@@ -54,10 +54,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth"], function () {
 
     Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductController@index']);
-    Route::get('/category', [
-        'as' => 'admin.category-management',
-        'uses' => 'CategoryController@index'
-    ]);
     Route::get('/category/{id?}', [
         'as' => 'admin.category-management',
         'uses' => 'CategoryController@index'
