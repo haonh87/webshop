@@ -14,7 +14,7 @@
         </div>
     @endif
         <div class="col-md-12">
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered table-condensed margin-bottom-10">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -47,7 +47,7 @@
                 </tbody>
             </table>
 
-            <a class="btn btn-success" href="{{ action('Admin\UserController@create') }}">Create</a>
+            <a class="btn btn-primary" href="{{ route('admin.user.create') }}">Create</a>
         </div>
         {!! '<center>'.$users->appends(Request::except('page'))->render().'</center>' !!}
     </div>

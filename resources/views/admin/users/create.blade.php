@@ -69,7 +69,7 @@
                   </table>
 
             <a class="btn btn-default" href="{{ action('Admin\CustomerController@index') }}">Back</a>
-            <button class="btn btn-primary" type="submit" >Create</a>
+                <button class="btn btn-primary" type="submit" >Create</a></button>
             </form>
         </div>
     </div>
