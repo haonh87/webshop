@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Customer / Create </h1>
+        <h1>User / Create </h1>
     </div>
     <div class="row">
         <div class="col-md-12">
