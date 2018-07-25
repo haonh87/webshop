@@ -9,13 +9,13 @@
             <form action="{{ action('Admin\CustomerController@store') }}" class='form-validate' method="POST">
                 <div class="row">
                     <div class="col col-md-6">
-                        <div class="form-group">
+                        <div class="form-group-custom">
                             <label for="email">Email address</label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
                         </div>
                     </div>
                     <div class="col col-md-6">
-                        <div class="form-group">
+                        <div class="form-group-custom">
                             <label for="Name">Name</label>
                             <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
                         </div>

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="module module-login span4 offset4">
 
-                    <form class="form-validate" method="POST" action="{{ route('login') }}">
+                    <form class="form-validate login-admin" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <div class="module-head">
                             <h3>Sign In</h3>
