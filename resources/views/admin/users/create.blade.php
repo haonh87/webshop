@@ -68,7 +68,7 @@
                     </tbody>
                   </table>
 
-                <a class="btn btn-default" href="{{ route('admin.users.index') }}">Back</a>
+                <a class="btn btn-default" href="{{ route('admin.user.index') }}">Back</a>
                 <button class="btn btn-primary" type="submit" >Create</button>
             </form>
         </div>
