@@ -14,13 +14,13 @@ class CreateProductColorsTable extends Migration
     {
         Schema::create('product_colors', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->string('color_id');
-            $table->string('color_en');
-            $table->string('color_ru');
-            $table->boolean('show_index')->default(false);
-            $table->string('picture');
+            $table->string('lang_code');
+            $table->string('code')->unique();
+            $table->string('name')->unique();
+            $table->integer('create_user_id')->unsigned();
+            $table->foreign('create_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('modified_user_id')->unsigned()->nullable();
+            $table->foreign('modified_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

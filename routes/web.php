@@ -54,7 +54,23 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth"], function () {
 
     Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductController@index']);
-    Route::resource("categories", "CategoryController");
+    Route::get('/category', [
+        'as' => 'admin.category-management',
+        'uses' => 'CategoryController@index'
+    ]);
+    Route::get('/category/{id?}', [
+        'as' => 'admin.category-management',
+        'uses' => 'CategoryController@index'
+    ]);
+    Route::post('/category/add', [
+        'as' => 'admin.category-management.add',
+        'uses' => 'CategoryController@store'
+    ]);
+    Route::post('/category/delete/{id}', [
+        'as' => 'admin.category-management.delete',
+        'uses' => 'CategoryController@destroy'
+    ]);
+    //Route::resource("categories", "CategoryController");
     Route::resource("products", "ProductController");
     Route::post('/product/excel', ['as' => 'product.import.excel', 'uses' => 'ProductController@importProductFromExcelFile']);
 
