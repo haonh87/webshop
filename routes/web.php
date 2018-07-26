@@ -58,6 +58,12 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
         'as' => 'admin.category-management',
         'uses' => 'CategoryController@index'
     ]);
+
+    Route::post('/category/update/{id}', [
+        'as' => 'admin.category-management.update',
+        'uses' => 'CategoryController@update'
+    ]);
+
     Route::post('/category/add', [
         'as' => 'admin.category-management.add',
         'uses' => 'CategoryController@store'

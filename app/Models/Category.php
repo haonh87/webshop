@@ -3,18 +3,33 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
-use App\Product;
 use Illuminate\Support\Collection;
 use LaravelLocalization;
 
 class Category extends Model
 {
-    protected $fillable = array('name');
     protected $table = 'categories';
     /**
+     * @var array
+     */
+    protected $fillable = [
+        'parent_id',
+        'name',
+        'description',
+        'image_url',
+        'lang_code',
+        'create_user_id',
+        'modified_user_id'
+    ];
+
+    /**
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    /**
      * Relationship product
-     * Return all product of category 
+     * Return all product of category
      **/
     public function product()
     {
@@ -22,101 +37,105 @@ class Category extends Model
     }
 
     /**
-     * get sub category of this
-     * @return all category is children.
-     * @parram int category id
-     *  
-     * */
+     * Get sub category of this
+     *
+     * @param $id
+     * @return mixed
+     */
     public static function getSubCategoryById($id)
     {
-        return Category::where('parent_id',$id)->get();
+        return Category::where('parent_id', $id)->get();
     }
 
 
     /**
      * Return all categories include children and grandchildren ...., which has not sub categorie(s)
-     * @param , return category array.
-     **/
+     *
+     * @param array $categories
+     * @return array
+     */
     public function getCategorieAndSubCategories(array &$categories)
     {
-    	$sub_cates = Category::where('parent_id',$this->id)->get();
-        if($sub_cates->count() > 0){
+        $sub_cates = Category::where('parent_id', $this->id)->get();
+        if ($sub_cates->count() > 0) {
             foreach ($sub_cates as $cate) {
                 $cate->getCategorieAndSubCategories($categories);
             }
-        }
-        else{
+        } else {
             $categories[] = $this;
         }
         return $categories;
     }
+
     /**
      * get posts of current category and posts of sub category
      * sub category which belongsto current category. Then sorted by view_count  for product reicepted.
-     * 
-     * @return all posts of categories as collection type
-     * @parram a reference category array
-     * 
-     * */
-    public static function getPostsFromCategories(array $categories,array $arrayParram)
+     *
+     * @param array $categories
+     * @param array $arrayParram
+     * @return Collection
+     */
+    public static function getPostsFromCategories(array $categories, array $arrayParram)
     {
         $products = new Collection;
-        foreach ($categories as $key =>$category) {
+        foreach ($categories as $key => $category) {
             $productInCategory = $category->product()->orderBy($arrayParram['field'], $arrayParram['option'])->take($arrayParram['take'])->get();
-            foreach($productInCategory as $product) {
+            foreach ($productInCategory as $product) {
                 $products->push($product);
             }
         }
         //dump($products);
-        if($arrayParram['option']=='DESC'){
+        if ($arrayParram['option'] == 'DESC') {
             return $products->sortByDesc($arrayParram['field']);
-        }
-        else{
+        } else {
             return $products->sortBy($arrayParram['field']);
         }
     }
+
     /**
      * Function print menu for view
      * @parram array object
      * @parram string reference
      * @return  String unorder list for menu
      * */
-    public static function getMenu($categories, &$menu){
-        foreach($categories as $category){
+    public static function getMenu($categories, &$menu)
+    {
+        foreach ($categories as $category) {
             //$menu .= '<li><a href=' . '{{route("category",' . '["id"=>' . $category->id . '])' . '}}>' .$category->localeName().'</a>';
-            $menu .= '<li><a href="#">'.$category->localeName().'</a>';
+            $menu .= '<li><a href="#">' . $category->localeName() . '</a>';
             $sub_cates = Category::getSubCategoryById($category->id);
-            if(!$sub_cates->isEmpty()){
-                $menu.="<ul>";
+            if (!$sub_cates->isEmpty()) {
+                $menu .= "<ul>";
                 Category::getMenu($sub_cates, $menu);
-                $menu.="</ul>";
+                $menu .= "</ul>";
             }
-            $menu.= "</li>";
+            $menu .= "</li>";
         }
         return $menu;
     }
 
-    public function localeName(){
-        if(LaravelLocalization::getCurrentLocale() =='ru')
+    public function localeName()
+    {
+        if (LaravelLocalization::getCurrentLocale() == 'ru')
             return $this->name_ru;
-        else{
-            if(!empty($this->name_en)){
+        else {
+            if (!empty($this->name_en)) {
                 return $this->name_en;
-            }
-            else{
+            } else {
                 return $this->name_ru;
             }
         }
     }
-    public function localeDescription(){
-        if(LaravelLocalization::getCurrentLocale() =='ru')
-            return $this->description_ru;
-        else{
 
-            if(!empty($this->description_en)){
+    public function localeDescription()
+    {
+        if (LaravelLocalization::getCurrentLocale() == 'ru')
+            return $this->description_ru;
+        else {
+
+            if (!empty($this->description_en)) {
                 return $this->description_en;
-            }
-            else{
+            } else {
 
                 return $this->description_ru;
             }
