@@ -10,7 +10,6 @@
     <meta name="author" content="">
     <title>GYMBEO</title>
     <link type="text/css" href="{{ asset('admins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    {{--<link type="text/css" href="{{ asset('admins/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet">--}}
     <link type="text/css" href="{{ asset('admins/css/theme.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('admins/images/icons/css/font-awesome.css') }}" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
@@ -30,13 +29,13 @@
 <div class="wrapper">
     <div class="container">
         <div class="row">
-            <div class="span3">
+            <div class="col-md-3">
                 <!-- menu left -->
             @include('layouts.admin.widgets.sidebar')
             <!-- menu left -->
             </div>
             <!--/.span3-->
-            <div class="span9">
+            <div class="col-md-9">
                 <div class="content">
                     <div class="module">
                         @yield('content')

@@ -6,9 +6,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('login/{social}/callback', 'Auth\AuthController@handleProviderCallback');
     Route::get('/', ["as" => "index", "uses" => "Frontend\IndexController@index"]);
     Route::get('/category/{id}', ['as' => "category", 'uses' => 'Frontend\IndexController@showProductByCategory']);
-    Route::post('/auth/login', ['as' => 'authLogin', 'uses' => 'Auth\AuthController@postLogin']);
-    Route::get('/auth/logout', ['as' => 'authLogout', 'uses' => 'Auth\AuthController@getLogout']);
-    Route::get('/auth/login', ['as' => 'authLogin', 'uses' => 'Auth\AuthController@getLogin']);
+//    Route::post('/auth/login', ['as' => 'authLogin', 'uses' => 'Auth\AuthController@postLogin']);
+//    Route::get('/auth/logout', ['as' => 'authLogout', 'uses' => 'Auth\AuthController@getLogout']);
+//    Route::get('/auth/login', ['as' => 'authLogin', 'uses' => 'Auth\AuthController@getLogin']);
     Route::post('/product/vote', ['as' => 'product.vote', 'uses' => 'Frontend\IndexController@postVote']);
     Route::get('/search', ['as' => 'search.product', 'uses' => 'Frontend\IndexController@search']);
 
