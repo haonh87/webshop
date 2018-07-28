@@ -28,6 +28,11 @@ class Category extends Model
     protected $primaryKey = 'id';
 
     /**
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+    /**
      * Relationship product
      * Return all product of category
      **/

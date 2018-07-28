@@ -16,6 +16,8 @@ use App\Models\Category;
  */
 class CategoryService
 {
+    public $languageDefault = 'vi';
+    public $parentIdDefault = 0;
 
     /**
      * CategoryService constructor.
@@ -45,8 +47,8 @@ class CategoryService
         if (count($categories) > 0) {
             foreach ($categories as $cateKey => $catevalue) {
                 $parentCateName = $catevalue->name;
-                if ($catevalue->parent_id) {
-                    $parentCate = Category::where('id', '=', $catevalue->parent_id)->first()->toArray();
+                if ($catevalue->parent_id && $catevalue->parent_id != 0) {
+                    $parentCate = Category::where('id', '=', $catevalue->parent_id)->first();
                     $parentCateName = $parentCate['name'];
                 }
                 $categories[$cateKey]['parent_name'] = $parentCateName;
@@ -66,6 +68,13 @@ class CategoryService
     {
         if ($input) {
             $category = new Category();
+            if(!$input['lang_code']) {
+                $input['lang_code'] = $this->languageDefault;
+            }
+
+            if(!$input['parent_id']){
+                $input['parent_id'] = $this->parentIdDefault;
+            }
             $category->fill($input);
             if ($category->save()) {
                 return true;
@@ -88,6 +97,14 @@ class CategoryService
     {
         if ($input) {
             $category = Category::findOrFail($id);
+
+            if(!$input['lang_code']) {
+                $input['lang_code'] = $this->languageDefault;
+            }
+
+            if(!$input['parent_id']){
+                $input['parent_id'] = $this->parentIdDefault;
+            }
 
             $category->fill($input);
 

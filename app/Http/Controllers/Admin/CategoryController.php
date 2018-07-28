@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
+use App\Models\Language;
 use App\Services\CategoryService;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -32,16 +33,19 @@ class CategoryController extends Controller
     {
         $categories = $this->categoryService->getCategoryList(PAGINATE);
         $categoriesAll = $this->categoryService->getCategoryList();
-        return view('admin.categories.index', compact('categories'))->with('cateAll', $categoriesAll);
+        $lang = Language::get();
+        return view('admin.categories.index', compact('categories'))
+            ->with('cateAll', $categoriesAll)
+            ->with('lang', $lang);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param CategoryRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $data = $request->all();
         if ($request->hasFile('image')) {
@@ -54,22 +58,24 @@ class CategoryController extends Controller
         }
 
         $data['create_user_id'] = \Auth::user()->id;
-        $data['modified_user_id'] = \Auth::user()->id;
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
         $createNewCategory = $this->categoryService->createNewCategory($data);
-        ($createNewCategory) ? $message = 'Item created successfully.' : $message = 'Item created fail.';
-        return redirect()->action('Admin\CategoryController@index')->with('message', $message);
+        if ($createNewCategory) {
+            $message = 'Item created successfully.';
+            return redirect()->action('Admin\CategoryController@index')->with('message', $message);
+        }
+        return redirect()->action('Admin\CategoryController@index')->withInput();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param CategoryRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $data = $request->all();
         if ($request->hasFile('image')) {
@@ -80,13 +86,14 @@ class CategoryController extends Controller
 
             $data['image_url'] = $this->image_url . '/' . $filename;
         }
-        $data['create_user_id'] = \Auth::user()->id;
         $data['modified_user_id'] = \Auth::user()->id;
-        $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
         $updateCategory = $this->categoryService->updateCategory($id, $data);
-        ($updateCategory) ? $message = 'Item updated successfully.' : $message = 'Item updated fail.';
-        return redirect()->action('Admin\CategoryController@index')->with('message', $message);
+        if ($updateCategory) {
+            $message = 'Item created successfully.';
+            return redirect()->action('Admin\CategoryController@index')->with('message', $message);
+        }
+        return redirect()->action('Admin\CategoryController@index')->withInput();
     }
 
     /**
@@ -97,7 +104,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-         $deleteItem = $this->categoryService->deleteCategory($id);
+        $deleteItem = $this->categoryService->deleteCategory($id);
         ($deleteItem) ? $message = 'Item deleted successfully.' : $message = 'Item deleted fail.';
         return redirect()->action('Admin\CategoryController@index')->with('message', $message);
     }
