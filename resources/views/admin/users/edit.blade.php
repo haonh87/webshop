@@ -1,7 +1,6 @@
 @extends('layouts.admin.app')
 
 @section('content')
-
     <div class="module-head">
         <h1>
             <span>Sửa thông tin người dùng</span>
