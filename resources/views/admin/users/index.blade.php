@@ -1,26 +1,25 @@
 @extends('layouts.admin.app')
 
 @section('content')
-    <div class="page-header">
-        <h1>Users</h1>
+    <div class="module-head">
+        <h1>Quản lý người dùng
+            <a class="btn btn-primary btn-large pull-right" href="{{ route('admin.user.create') }}">Tạo mới</a>
+        </h1>
     </div>
-
-
-    <div class="row">
+    <div class="module-body">
      @if(Session::has('message'))
         <div class="alert alert-success">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>{{ Session::get('message') }}</strong>
         </div>
     @endif
-        <div class="col-md-12">
-            <table class="table table-striped table-bordered table-condensed margin-bottom-10">
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>ADDRESS</th>
-                        <th>EMAIL</th>
+                        <th>Id</th>
+                        <th>Tài khoản</th>
+                        <th>Tên hiển thị</th>
+                        <th>Email</th>
                         <th>ROLE</th>
                         <th class="text-right">OPTIONS</th>
                     </tr>
@@ -31,8 +30,8 @@
                 @foreach($users as $user)
                 <tr>
                     <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->address}}</td>
+                    <td>{{$user->username}}</td>
+                    <td>{{$user->fullname}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->roles->name}}</td>
 
@@ -46,9 +45,6 @@
 
                 </tbody>
             </table>
-
-            <a class="btn btn-primary" href="{{ route('admin.user.create') }}">Create</a>
-        </div>
         {!! '<center>'.$users->appends(Request::except('page'))->render().'</center>' !!}
     </div>
 @endsection

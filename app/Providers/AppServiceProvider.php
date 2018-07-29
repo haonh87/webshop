@@ -18,18 +18,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        $count_wishlist = 0;
-//        $menu = '<ul class = "menu sf-menu">';
-//        $categories = Category::where('parent_id', 0)->get();
-//        $menu = Category::getMenu($categories, $menu);
-//        $menu.='</ul>';
-//        if(Auth::check())
-//        {
-//            $count_wishlist = Auth::user()->wishList()->count();
-//        }
-//
-//        \View::share('menu', $menu);
-//        \View::share('count_wishlist', $count_wishlist);
+        $count_wishlist = 0;
+        $menu = '<ul class = "menu sf-menu">';
+        $categories = Category::where('parent_id', 0)->get();
+        $menu = Category::getMenu($categories, $menu);
+        $menu.='</ul>';
+        if(Auth::check())
+        {
+            $count_wishlist = Auth::user()->wishList()->count();
+        }
+
+        \View::share('menu', $menu);
+        \View::share('count_wishlist', $count_wishlist);
     }
 
     /**
