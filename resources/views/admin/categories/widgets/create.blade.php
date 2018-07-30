@@ -1,5 +1,6 @@
 <!-- Modal -->
-<div class="modal fade" id="createPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style='display:none'>
+<div class="modal fade" id="createPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     style='display:none'>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -23,19 +24,6 @@
                         @endif
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="lang_code">Ngôn ngữ</label>
-                        <div class="controls">
-                            <select class="form-control" id="lang_code" name="lang_code">
-                                <option value="">-- Chọn ngôn ngữ --</option>
-                                @foreach($lang as $item)
-                                    <option value="{{ $item->code }}">
-                                        {{ $item->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="control-group">
                         <label class="control-label" for="description">Miêu tả</label>
                         <div class="controls">
                             <textarea name="description" class="form-control" required>{{old('description')}}</textarea>
@@ -55,11 +43,7 @@
                         <div class="controls">
                             <select class="form-control" id="parent_id" name="parent_id">
                                 <option value="">-- Chọn danh mục gốc --</option>
-                                @foreach($cateAll as $cate)
-                                    <option value="{{ $cate->id }}">
-                                        {{ $cate->name }}
-                                    </option>
-                                @endforeach
+                                {{\App\Helpers\MenuHelper::showCategories($cateAll)}}
                             </select>
                         </div>
                     </div>
