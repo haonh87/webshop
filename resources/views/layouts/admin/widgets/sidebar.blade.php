@@ -8,6 +8,8 @@
             <a class="collapsed" data-toggle="collapse" href="#productManagement"><i class="menu-icon icon-bullhorn"></i>Quản lý sản phẩm</a>
             <ul id="productManagement" class="collapse unstyled">
                 <li><a href="{{ route('products.index') }}"><i class="icon-inbox"></i>Danh mục sản phẩm</a></li>
+                <li><a href="{{ route('admin.product.color-management') }}"><i class="icon-inbox"></i>Màu sắc sản phẩm</a></li>
+                <li><a href="{{ route('admin.product.size-management') }}"><i class="icon-inbox"></i>Kích cỡ sản phẩm</a></li>
                 <li><a href="other-user-listing.html"><i class="icon-inbox"></i>Thêm mới sản phẩm</a></li>
             </ul>
         </li>

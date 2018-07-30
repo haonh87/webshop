@@ -33,10 +33,8 @@ class CategoryController extends Controller
     {
         $categories = $this->categoryService->getCategoryList(PAGINATE);
         $categoriesAll = $this->categoryService->getCategoryList();
-        $lang = Language::get();
         return view('admin.categories.index', compact('categories'))
-            ->with('cateAll', $categoriesAll)
-            ->with('lang', $lang);
+            ->with('cateAll', $categoriesAll);
     }
 
     /**

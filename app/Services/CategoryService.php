@@ -68,9 +68,7 @@ class CategoryService
     {
         if ($input) {
             $category = new Category();
-            if(!$input['lang_code']) {
-                $input['lang_code'] = $this->languageDefault;
-            }
+            $input['lang_code'] = $this->languageDefault;
 
             if(!$input['parent_id']){
                 $input['parent_id'] = $this->parentIdDefault;
@@ -98,9 +96,7 @@ class CategoryService
         if ($input) {
             $category = Category::findOrFail($id);
 
-            if(!$input['lang_code']) {
-                $input['lang_code'] = $this->languageDefault;
-            }
+            $input['lang_code'] = $this->languageDefault;
 
             if(!$input['parent_id']){
                 $input['parent_id'] = $this->parentIdDefault;
