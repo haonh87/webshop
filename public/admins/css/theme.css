@@ -1694,3 +1694,28 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', end
 	border-radius: 0 0 3px 0
 }
 @media(max-width:767px){body{padding:0!important}.wrapper{padding:20px 15px}}
+
+.nav-header {
+    position: relative;
+    display: flex;
+}
+
+.nav-header .nav-icons {
+    width: 25%;
+}
+
+.nav-header form.navbar-search {
+    width: 35%;
+}
+
+.nav-header .nav-auth {
+    width: 40%;
+}
+
+.nav-header .nav-auth .nav-user {
+    float: right;
+}
+
+.nav-header form.navbar-search .btn {
+    padding: 6px 10px;
+}
