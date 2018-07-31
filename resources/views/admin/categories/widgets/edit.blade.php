@@ -1,5 +1,6 @@
 <!-- Modal -->
-<div class="modal fade" id="editPopup_{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style='display:none'>
+<div class="modal fade" id="editPopup_{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     style='display:none'>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -14,7 +15,8 @@
                     <div class="control-group">
                         <label class="control-label" for="name">Tên danh mục</label>
                         <div class="controls">
-                            <input type="text" class="form-control" name="name" value="{{ (old('name')) ? : @$category->name }}" required>
+                            <input type="text" class="form-control" name="name"
+                                   value="{{ (old('name')) ? : @$category->name }}" required>
                         </div>
                         @if(isset($errors) && $errors->has('name'))
                             <div class="invalid-feedback" style="font-size: 12px; color: red">
@@ -23,22 +25,10 @@
                         @endif
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="lang_code">Ngôn ngữ</label>
-                        <div class="controls">
-                            <select class="form-control" id="lang_code" name="lang_code">
-                                <option value="">-- Chọn ngôn ngữ --</option>
-                                @foreach($lang as $item)
-                                    <option value="{{ $item->code }}" {{((old('lang_code') === $item->code) ? 'selected' : ($item->code === $category->lang_code) ? 'selected': '')}}>
-                                        {{ $item->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="control-group">
                         <label class="control-label" for="description">Miêu tả</label>
                         <div class="controls">
-                            <textarea name="description" class="form-control" required>{{ (old('description')) ? : @$category->description }}</textarea>
+                            <textarea name="description" class="form-control"
+                                      required>{{ (old('description')) ? : @$category->description }}</textarea>
                         </div>
                         @if(isset($errors) && $errors->has('description'))
                             <div class="invalid-feedback" style="font-size: 12px; color: red">
@@ -56,11 +46,7 @@
                         <div class="controls">
                             <select class="form-control" id="edit_parent_id" name="parent_id">
                                 <option value="">-- Chọn danh mục gốc --</option>
-                                @foreach($cateAll as $cate)
-                                    <option value="{{ $cate->id }}" {{((old('parent_id') === $cate->id) ? 'selected' : ($cate->id === $category->parent_id) ? 'selected': '')}}>
-                                        {{ $cate->name }}
-                                    </option>
-                                @endforeach
+                                {{\App\Helpers\MenuHelper::showCategories($cateAll, 0, '', $category)}}
                             </select>
                         </div>
                     </div>

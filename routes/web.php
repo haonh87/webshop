@@ -72,6 +72,48 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
         'as' => 'admin.category-management.delete',
         'uses' => 'CategoryController@destroy'
     ]);
+
+
+
+    Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductColorController@index']);
+    Route::get('/product/color/{id?}', [
+        'as' => 'admin.product.color-management',
+        'uses' => 'ProductColorController@index'
+    ]);
+
+    Route::post('/product/color/update/{id}', [
+        'as' => 'admin.product.color.update',
+        'uses' => 'ProductColorController@update'
+    ]);
+
+    Route::post('/product/color/add', [
+        'as' => 'admin.product.color.add',
+        'uses' => 'ProductColorController@store'
+    ]);
+    Route::post('/product/color/delete/{id}', [
+        'as' => 'admin.product.color.delete',
+        'uses' => 'ProductColorController@destroy'
+    ]);
+
+    Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductSizeController@index']);
+    Route::get('/product/size/{id?}', [
+        'as' => 'admin.product.size-management',
+        'uses' => 'ProductSizeController@index'
+    ]);
+
+    Route::post('/product/size/update/{id}', [
+        'as' => 'admin.product.size.update',
+        'uses' => 'ProductSizeController@update'
+    ]);
+
+    Route::post('/product/size/add', [
+        'as' => 'admin.product.size.add',
+        'uses' => 'ProductSizeController@store'
+    ]);
+    Route::post('/product/size/delete/{id}', [
+        'as' => 'admin.product.size.delete',
+        'uses' => 'ProductSizeController@destroy'
+    ]);
     //Route::resource("categories", "CategoryController");
     Route::resource("products", "ProductController");
     Route::post('/product/excel', ['as' => 'product.import.excel', 'uses' => 'ProductController@importProductFromExcelFile']);

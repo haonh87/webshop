@@ -1,19 +1,30 @@
 <!-- Modal -->
-<div class="modal fade" id="createPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     style='display:none'>
+<div class="modal fade" id="createPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style='display:none'>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Tạo mới danh mục</h4>
+                <h4 class="modal-title" id="myModalLabel">Tạo mới màu sắc</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('admin.category-management.add') }}" method="POST" enctype="multipart/form-data"
+                <form action="{{ route('admin.product.color.add') }}" method="POST" enctype="multipart/form-data"
                       class="createCategoryForm">
                     {{ csrf_field() }}
                     <div class="control-group">
-                        <label class="control-label" for="name">Tên danh mục</label>
+                        <label class="control-label" for="code">Mã màu</label>
+                        <div class="controls">
+                            <input type="text" name="code" class="form-control" value="{{old('code')}}" required/>
+                        </div>
+                        @if(isset($errors) && $errors->has('code'))
+                            <div class="invalid-feedback" style="font-size: 12px; color: red">
+                                {{ $errors->first('code') }}
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="name">Màu sắc</label>
                         <div class="controls">
                             <input type="text" name="name" class="form-control" value="{{old('name')}}" required/>
                         </div>
@@ -22,30 +33,6 @@
                                 {{ $errors->first('name') }}
                             </div>
                         @endif
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="description">Miêu tả</label>
-                        <div class="controls">
-                            <textarea name="description" class="form-control" required>{{old('description')}}</textarea>
-                        </div>
-                        @if(isset($errors) && $errors->has('description'))
-                            <div class="invalid-feedback" style="font-size: 12px; color: red">
-                                {{ $errors->first('description') }}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="image">Hình ảnh</label>
-                        <input type="file" class="form-control-file" id="image" name="image">
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="parent_id">Danh muc gốc</label>
-                        <div class="controls">
-                            <select class="form-control" id="parent_id" name="parent_id">
-                                <option value="">-- Chọn danh mục gốc --</option>
-                                {{\App\Helpers\MenuHelper::showCategories($cateAll)}}
-                            </select>
-                        </div>
                     </div>
                     <div class="control-group">
                         <div class="controls text-right">
