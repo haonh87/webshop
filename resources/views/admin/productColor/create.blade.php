@@ -34,7 +34,7 @@
                             </div>
                         @endif
                     </div>
-                    <div class="control-group">
+                    <div class="control-group pad-top-15">
                         <div class="controls text-right">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
                             <button class="btn btn-success" type="submit">Hoàn tất</button>

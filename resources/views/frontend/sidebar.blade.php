@@ -32,7 +32,7 @@
 					<a href="{{route('myaccount.edit.password',['myaccount' => Auth::user()->id])}}">Password</a>
 				</li>
 				<li>
-					<a href="{{ route('authLogout') }}">{{ trans('lang.logout') }}</a>
+					<a href="{{ route('logout') }}">{{ trans('lang.logout') }}</a>
 				</li>
 					@else
 					<li>

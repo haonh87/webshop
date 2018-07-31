@@ -49,7 +49,7 @@
 $(document).ready(function(){
   $('#btnLogin').click(function(){
     $.ajax({
-      url: "{{ route('authLogin') }}",
+      url: "{{ route('login') }}",
       type: "POST",
       data: {'email':$('input[name=email]').val(), 'password':$('input[name=password]').val()},
       success: function(data){
