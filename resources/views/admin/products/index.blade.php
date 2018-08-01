@@ -31,13 +31,9 @@
                         <div class="col-md-4">
                             <select name="cate_id" class="form-control">
                                 <option value="">--Danh mục--</option>
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}" <?php if ($category->id == $old_cate_id) {
-                                        echo "selected";
-                                    } ?>>
-                                        {{$category->name}}
-                                    </option>
-                                @endforeach
+                                @php
+                                    App\Helpers\MenuHelper::showCategories($categories->toArray())
+                                @endphp
                             </select>
                         </div>
                         <div class="col-md-2">
