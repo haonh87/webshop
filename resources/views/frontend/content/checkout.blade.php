@@ -170,7 +170,7 @@
 <script type="text/javascript">
 $(document).delegate('#button-login', 'click', function() {
     $.ajax({
-        url: "{{ route('authLogin') }}",
+        url: "{{ route('login') }}",
         type: 'post',
         data: $('#collapse-checkout-option :input'),
         dataType: 'json',
