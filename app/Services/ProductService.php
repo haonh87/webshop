@@ -16,4 +16,9 @@ class ProductService
     {
         $this->productModel = $productModel;
     }
+
+    public function getAllProduct()
+    {
+        return $this->productModel->where('id', '!=', '')->with('category');
+    }
 }

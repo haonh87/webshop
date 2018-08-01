@@ -49,7 +49,7 @@ class ProductTableSeeder extends Seeder
         	],
         	[
                 "name"      => "Супер top2",
-                "category_id"=> 5,
+                "category_id"=> 1,
                 "price"     => 123,
                 "model_ids"     =>"ПЛ-155",
                 "description"=>"this is production for test category top 2",
@@ -60,7 +60,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
                 "name"      => "Супер слаще",
-                "category_id"=> 7,
+                "category_id"=> 2,
                 "price"     => 8888.00,
                 "model_ids"     =>"ПЛ-155",
                 "description"=>"Image test for sweeter category!",
@@ -71,7 +71,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
                 "name"      => "Супер Джинс",
-                "category_id"=> 6,
+                "category_id"=> 3,
                 "price"     => 66666.00,
                 "model_ids"     =>"ПЛ-155",
                 "description"=>"Image test for Jeans category!",
@@ -82,7 +82,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
         		"name"		=> "Супер пальто куртки &",
-        		"category_id"=> 7,
+        		"category_id"=> 4,
         		"price"		=> 66666.00,
                 "model_ids"     =>"ПЛ-155",
                 "description"=>"Image test for Super coat&jacket category!",

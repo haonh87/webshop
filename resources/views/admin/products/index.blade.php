@@ -58,19 +58,16 @@
                 <th>ACTION</th>
             </tr>
             @foreach($products as $product)
-                <?php
-                $img = asset('images/products/product' . $product->id . '/' . $product->getIndexImage());
-                ?>
                 <tr>
-                    <td><a href="{{ route('products.show',['product_id'=>$product->id]) }}">{{$product->name_ru}}</a>
+                    <td><a href="{{ route('products.show',['product_id'=>$product->id]) }}">{{$product->name}}</a>
                     </td>
                     <td>{{$product->price}}</td>
                     <td>
-                        <a href="{{ route('admin.category-management',$product->category->id) }}">{{$product->category->name_ru}}</a>
+                        <a href="{{ route('admin.category-management',$product->category->id) }}">{{$product->category->name}}</a>
                     </td>
                     <td>
                         <a href="{{ route('products.show',['product_id'=>$product->id]) }}">
-                            <img src="{{ $img }}" class="img-rounded compress" style="width:7em; height:5em;"/>
+                            <img src="{{ '' }}" class="img-rounded compress" style="width:7em; height:5em;"/>
                         </a>
                     </td>
                     <td>

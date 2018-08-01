@@ -10,8 +10,20 @@ use App\Models\Product;
 use App\Models\ProductSize;
 use App\Models\ProductColor;
 use App\Models\Category;
+use App\Services\CategoryService;
+use App\Services\ProductService;
+
 class ProductController extends Controller
 {
+
+    protected $categoryService;
+    protected $productService;
+
+    public function __construct(CategoryService $categoryService, ProductService $productService)
+    {
+        $this->categoryService = $categoryService;
+        $this->productService = $productService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +31,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(PAGINATE);
-        $categories = Category::all();
+        $products = $this->productService->getAllProduct()->paginate(PAGINATE);
+        $categories = $this->categoryService->getAllCategories();
         $name ='';
         return view("admin.products.index")->with(compact('products','categories','name'));
     }
