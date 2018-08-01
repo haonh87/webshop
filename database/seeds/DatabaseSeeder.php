@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleTableSeeder::class);
         $this->call(VoteTableSeeder::class);
         $this->call(LanguageTableSeeder::class);
+        $this->call(ProductImageSeeder::class);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         Model::reguard();
     }
