@@ -21,4 +21,9 @@ class ProductService
     {
         return $this->productModel->where('id', '!=', '')->with('category')->with('productImages');
     }
+
+    public function findProductById($id = null)
+    {
+        return $this->productModel->where('id', $id)->with('category')->with('productImages')->first();
+    }
 }

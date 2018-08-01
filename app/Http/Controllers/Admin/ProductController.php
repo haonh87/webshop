@@ -110,7 +110,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $product = $this->productService->findProductById($id);
         return view('admin.products.show')->with('product', $product);
     }
 

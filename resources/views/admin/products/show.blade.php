@@ -11,10 +11,8 @@
       <tr>
         <th>ID</th>
         <th>Category</th>
-        <th>Name-EN</th>
-        <th>Name-RU</th>
-        <th>Description-EN</th>
-        <th>Description-RU</th>
+        <th>Name</th>
+        <th>Description</th>
         <th>View_Count</th>
         <th>Sell_Count</th>
       </tr>
@@ -23,12 +21,10 @@
       <tr class="success">
         <td>{{$product->id}}</td>
         <td>
-            <a href="{{ route('admin.category-management',$product->category->id) }}">{{$product->category->name_ru}}</a>
+            <a href="{{ route('admin.category-management',$product->category->id) }}">{{$product->category->name}}</a>
         </td>
-        <td>{{$product->name_en}}</td>
-        <td>{{$product->name_ru}}</td>
-        <td>{{$product->description_en}}</td>
-        <td>{{$product->description_ru}}</td>
+        <td>{{$product->name}}</td>
+        <td>{{$product->description}}</td>
         <td>
         @if(!empty($product->count_view))
             <span>{{$product->count_view}}</span>
@@ -47,9 +43,6 @@
     </tbody>
   </table>
   <center><h3>Product image</h3></center><br/>
-      <?php 
-        $img_src = asset('/images/products/product'.$product->id).'/';
-      ?>
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
@@ -61,7 +54,7 @@
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
-        @foreach($product->productColor as $key => $product_color)
+        @foreach($product->productImages as $key => $productImage)
             <div <?php
                 if($key == 0){
                     echo 'class="item active"';
