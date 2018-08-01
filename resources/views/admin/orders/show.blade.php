@@ -34,7 +34,7 @@
                         @foreach($orderItem as $item)
                           <tr>
                             <td>
-                                <a href = "{{ route('products.show', ['p_id'=>$item->product->id]) }}">
+                                <a href = "{{ route('products.show', ['p_id'=> $item->product->id ]) }}">
                                 {{ $item->product->name }}
                                 </a>
                             </td>

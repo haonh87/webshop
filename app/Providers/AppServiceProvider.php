@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //Schema::defaultStringLength(191);
+        Schema::defaultStringLength(191);
 //        $count_wishlist = 0;
 //        $menu = '<ul class = "menu sf-menu">';
 //        $categories = Category::where('parent_id', 0)->get();
