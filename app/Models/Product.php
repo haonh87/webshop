@@ -24,6 +24,11 @@ class Product extends Model
     	return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
 
+    public function productImages()
+    {
+        return $this->hasMany('App\Models\ProductImage', 'product_id', 'id');
+    }
+
     /**
      * Relation ship with ProductColor table 
      * get all color for this product

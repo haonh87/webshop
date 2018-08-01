@@ -19,6 +19,6 @@ class ProductService
 
     public function getAllProduct()
     {
-        return $this->productModel->where('id', '!=', '')->with('category');
+        return $this->productModel->where('id', '!=', '')->with('category')->with('productImages');
     }
 }

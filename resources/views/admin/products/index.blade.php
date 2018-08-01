@@ -63,7 +63,7 @@
                     </td>
                     <td>
                         <a href="{{ route('products.show',['product_id'=>$product->id]) }}">
-                            <img src="{{ '' }}" class="img-rounded compress" style="width:7em; height:5em;"/>
+                            <img src="{{ $product->productImages[0]->img_path }}" class="img-rounded compress" style="width:7em; height:5em;"/>
                         </a>
                     </td>
                     <td>
