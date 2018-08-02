@@ -12,17 +12,25 @@ use App\Models\ProductColor;
 use App\Models\Category;
 use App\Services\CategoryService;
 use App\Services\ProductService;
+use App\Services\ProductColorService;
+use App\Services\ProductSizeService;
 
 class ProductController extends Controller
 {
 
     protected $categoryService;
     protected $productService;
+    protected $productColorService;
+    protected $productSizeService;
 
-    public function __construct(CategoryService $categoryService, ProductService $productService)
+    public function __construct(CategoryService $categoryService, ProductService $productService,
+        ProductColorService $productColorService, ProductSizeService $productSizeService
+    )
     {
         $this->categoryService = $categoryService;
         $this->productService = $productService;
+        $this->productSizeService = $productSizeService;
+        $this->productColorService = $productColorService;
     }
     /**
      * Display a listing of the resource.
@@ -45,7 +53,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = $this->categoryService->getAllCategories();
-        return view('admin.products.create')->with(compact('categories'));
+        $productColors = $this->productColorService->getAllColor();
+        $productSizes = $this->productSizeService->getAllProductSize();
+        return view('admin.products.create')->with(compact('categories', 'productColors', 'productSizes'));
     }
 
     /**

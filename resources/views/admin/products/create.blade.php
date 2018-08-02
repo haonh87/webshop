@@ -23,21 +23,16 @@
     <div class="page-header">
         <h1>Product / Create </h1>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-7.5">
-        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#frmImportExcel" style="padding: 6px 12px; !important;">
-            Import Excel
-        </button>
-    </div>
-    
+
     <!-- Modal -->
-    <div class="modal fade" id="frmImportExcel" tabindex="-1" role="dialog" 
+    <div class="modal fade" id="frmImportExcel" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <form id="frmExcel" class="form-horizontal" role="form" action="{{ route('product.import.excel') }}" method="POST" enctype="multipart/form-data">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <button type="button" class="close" 
+                    <button type="button" class="close"
                        data-dismiss="modal">
                            <span aria-hidden="true">&times;</span>
                            <span class="sr-only">Close</span>
@@ -59,7 +54,7 @@
                     <label  class="col-sm-4 control-label"
                               for="from_line">From Row:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" 
+                        <input type="text" class="form-control"
                         id="from_line" placeholder="example 13, 14 ...." name="start_row"/>
                     </div>
                   </div>
@@ -116,7 +111,7 @@
 
             <div class="form-group col-sm-4 col-md-8">
               <label for="price">Price:</label>
-              <input type="text" class="form-control" id="price" name="price" placeholder="product price" required>
+              <input type="number" class="form-control" id="price" name="price" placeholder="product price" required>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
@@ -131,12 +126,12 @@
 
             <div class="form-group col-sm-4 col-md-8">
                 <label for="color_name_en">Color:</label>
-                <input type="text" class="form-control" id="product_color_ids" name="product_color_ids" placeholder="color name" required>
+                {{ Form::select('product_color_ids[]', $productColors, null, ['class' => 'form-control', 'id' => 'product_color_ids', 'multiple']) }}
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
                 <label for="color_name_en">Size:</label>
-                <input type="text" class="form-control" id="product_size_ids" name="product_size_ids" placeholder="size name" required>
+                {{ Form::select('product_color_ids[]', $productColors, null, ['class' => 'form-control', 'id' => 'product_color_ids', 'multiple']) }}
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
