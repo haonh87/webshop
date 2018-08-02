@@ -16,4 +16,9 @@ class OrderItemService
     {
         $this->orderItemModel = $orderItemModel;
     }
+
+    public function findOrderItemById($id)
+    {
+    	$this->orderItemModel->with('product')->with('color')->with('size')->find($id);
+    }
 }

@@ -30,6 +30,13 @@
                 <li><a href="{{ route('admin.user.create') }}"><i class="icon-inbox"></i>Thêm mới người dùng</a></li>
             </ul>
         </li>
+        {{--order manager--}}
+        <li>
+            <a class="collapsed" data-toggle="collapse" href="#orderManagement"><i class="menu-icon icon-bullhorn"></i>Quản lý đơn hàng</a>
+            <ul id="orderManagement" class="collapse list-unstyled">
+                <li><a href="{{ route('admin.order.index') }}"><i class="icon-inbox"></i>Danh sách đơn hàng</a></li>
+            </ul>
+        </li>
 
 
         <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b

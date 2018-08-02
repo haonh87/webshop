@@ -1,58 +1,49 @@
 @extends('layouts.admin.app')
 
 @section('content')
-    <div class="page-header">
-        <h1>UserEdit </h1>
+    <div class="module-head">
+        <h1>
+            <span>Sửa thông tin người dùng</span>
+        </h1>
     </div>
-    <div class="row">
-    @if(Session::has('message'))
-        <div class="alert alert-success">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>{{ Session::get('message') }}</strong>
-        </div>
-    @endif
-        <div class="col-md-12">
-            <form action="{{ action('Admin\UserController@update', $user->id) }}" method="POST">
-                <input type="hidden" name="_method" value="PUT">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                
-                <table class="table">
-                    <tbody>
-                      <tr class="success">
-                        <td>ID</td>
-                        <td>{{$user->id}}</td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>
-                            <input type="text" name = "name" value="{{ $user->name }}" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>
-                            <input type="email" name = "email" value="{{ $user->email }}" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Role</td>
-                        <td>
-                            <select class="form-control" name="role" style="width: 24% !important">
-                                @foreach($roles as $role)
-                                    <option value ="{{ $role->id }}" <?php if($role->id == $user->role_id) {echo "selected";} ?>>
-                                        {{ $role->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </td>
-                    </tr>
-                    </tbody>
-                  </table>
-            <a class="btn btn-default" href="{{ action('Admin\UserController@index') }}">Back</a>
-            <button class="btn btn-primary" type="submit" >Save</a>
-            </form>
+    <div class="module-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{ action('Admin\UserController@update', $user->id) }}" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" value="{{ $user->email }}" class="form-control" name="email" id="email" placeholder="Enter email" require>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label for="username">Tên</label>
+                                <input type="text" value="{{ $user->username }}" class="form-control" name="username" id="username" placeholder="Enter username" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label for="fullname">Tên đầy đủ</label>
+                                <input type="text" value="{{ $user->fullname }}" class="form-control" name="fullname" id="fullname" placeholder="Enter fullname" required>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label for="role_id">Roles</label>
+                                {{ Form::select('role_id', $roles, $user->roles->id, ['id' => 'role_id']) }}
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-default" href="{{ route('admin.user.index') }}">Back</a>
+                    <button class="btn btn-primary" type="submit" >Cập nhật</button>
+                </form>
+            </div>
         </div>
     </div>
-
-
 @endsection

@@ -16,4 +16,9 @@ class RoleService
     {
         $this->roleModel = $roleModel;
     }
+
+    public function getAllRoles()
+    {
+    	return $this->roleModel->pluck('name', 'id');
+    }
 }

@@ -23,21 +23,16 @@
     <div class="page-header">
         <h1>Product / Create </h1>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-7.5">
-        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#frmImportExcel" style="padding: 6px 12px; !important;">
-            Import Excel
-        </button>
-    </div>
-    
+
     <!-- Modal -->
-    <div class="modal fade" id="frmImportExcel" tabindex="-1" role="dialog" 
+    <div class="modal fade" id="frmImportExcel" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <form id="frmExcel" class="form-horizontal" role="form" action="{{ route('product.import.excel') }}" method="POST" enctype="multipart/form-data">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <button type="button" class="close" 
+                    <button type="button" class="close"
                        data-dismiss="modal">
                            <span aria-hidden="true">&times;</span>
                            <span class="sr-only">Close</span>
@@ -59,7 +54,7 @@
                     <label  class="col-sm-4 control-label"
                               for="from_line">From Row:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" 
+                        <input type="text" class="form-control"
                         id="from_line" placeholder="example 13, 14 ...." name="start_row"/>
                     </div>
                   </div>
@@ -96,80 +91,57 @@
         <form action="{{ route('products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
             <div class="form-group col-sm-4 col-md-8">
                 <label for="category">Select Category:</label>
-                  <select class="form-control" id="category" name="category" required>
+                  <select class="form-control" id="category" name="category_id" required>
                   <option value="">Select category</option>
-                @foreach(App\Models\Category::all() as $category)
-                    <option value="{{ $category->id }}">{{ $category->name_ru }}</option>
-                @endforeach
-                </select>
+                      @php
+                          App\Helpers\MenuHelper::showCategories($categories->toArray())
+                      @endphp
+                  </select>
             </div>
+
             <div class="form-group col-sm-4 col-md-8">
-              <label for="name_en">Name-EN:</label>
-              <input type="text" class="form-control" id="name_en" name="name_en" placeholder="product name" required>
+              <label for="name_en">Name:</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="product name" required>
             </div>
-            <div class="form-group col-sm-4 col-md-8">
-              <label for="name_ru">Name-RU:</label>
-              <input type="text" class="form-control" id="name_ru" name="name_ru" placeholder="product name" required>
-            </div>
+
             <div class="form-group col-sm-4 col-md-8">
               <label for="model">Model:</label>
-              <input type="text" class="form-control" id="model" name="model" placeholder="product model" required>
+              <input type="text" class="form-control" id="model" name="model_ids" placeholder="product model" required>
             </div>
-            <div class="form-group col-sm-4 col-md-8">
-              <label for="code">Code:</label>
-              <input type="text" class="form-control" id="code" name="code" placeholder="product code" required>
-            </div>
-            <div class="form-group col-sm-4 col-md-8">
-              <label for="size">Size: Each size is separated by comma.</label>
-              <input type="text" class="form-control" id="size" name="size" placeholder="product size" required>
-            </div>
-            <div class="form-group col-sm-4 col-md-8">
-                <label for="silk">Select Silk Code:</label>
-                  <select class="form-control" id="silk" name="silk" required>
-                  <option value="">Select silk code</option>
-                @foreach(App\Models\Silk::all() as $silk)
-                    <option value="{{ $silk->id }}">{{ $silk->code}}</option>
-                @endforeach
-                </select>
-            </div>
+
             <div class="form-group col-sm-4 col-md-8">
               <label for="price">Price:</label>
-              <input type="text" class="form-control" id="price" name="price" placeholder="product price" required>
+              <input type="number" class="form-control" id="price" name="price" placeholder="product price" required>
             </div>
+
             <div class="form-group col-sm-4 col-md-8">
-              <label for="country_en">Country-EN:</label>
-              <input type="text" class="form-control" id="country_en" name="country_en" placeholder="product country">
+              <label for="description">Description:</label>
+              <textarea class="form-control" rows="5" id="description" name="description"></textarea>
             </div>
+
             <div class="form-group col-sm-4 col-md-8">
-                <label for="country_ru">Country-RU:</label>
-                <input type="text" class="form-control" id="country_ru" name="country_ru" placeholder="product country">
+                <label for="content">Content:</label>
+                <textarea class="form-control" rows="5" id="content_product" name="content"></textarea>
             </div>
+
             <div class="form-group col-sm-4 col-md-8">
-              <label for="description_en">Description-EN:</label>
-              <textarea class="form-control" rows="5" id="description_en" name = "description_en"></textarea>
+                <label for="product_color_ids">Color:</label>
+                {{ Form::select('product_color_ids[]', $productColors, null, ['class' => 'form-control', 'id' => 'product_color_ids', 'multiple']) }}
             </div>
+
             <div class="form-group col-sm-4 col-md-8">
-              <label for="description_ru">Description-RU:</label>
-              <textarea class="form-control" rows="5" id="description_ru" name = "description_ru"></textarea>
+                <label for="product_size_ids">Size:</label>
+                {{ Form::select('product_size_ids[]', $productColors, null, ['class' => 'form-control', 'id' => 'product_size_ids', 'multiple']) }}
             </div>
-            {{--<div class="form-group col-sm-4 col-md-8">
-                <label for="color">Color Id:</label>
-                <input type="text" class="form-control" id="color" name="color" placeholder"product color" required>
-            </div>--}}
+
             <div class="form-group col-sm-4 col-md-8">
-                <label for="color_name_en">Color Name-EN:</label>
-                <input type="text" class="form-control" id="color_name_en" name="color[0][color_name_en]" placeholder="color name" required>
+                <input id="input-file" class="file" type="file" multiple data-min-file-count="1" name="image[]">
             </div>
-            <div class="form-group col-sm-4 col-md-8">
-                <label for="color_name_ru">Color Name-RU:</label>
-                <input type="text" class="form-control" id="color_name_ru" name="color[0][color_name_ru]" placeholder="color name" required>
-            </div>
-            <div class="form-group col-sm-4 col-md-8">
-                <input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]">
-            </div>
+
             <div class="form-group col-sm-4 col-md-8">
                 <button id="add_image" type="button" class="btn btn-primary">Add Picture</button>
             </div>
+
             <div class ="form-group col-sm-4 col-md-8">
                 <br>
                 <a class="btn btn-success" href="{{ action('Admin\ProductController@index') }}">Back</a>
@@ -180,18 +152,14 @@
         </form>
     </div>
 </div>
-
+<script src="//cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
 <script type="text/javascript">
     var i=1;
     $("#add_image").click(function() {
         $(this).parent().before('<div class="form-group col-sm-4 col-md-8">' +
-        '<label for="color_name_en">Color Name-EN:</label>' +
-        '<input type="text" class="form-control" id="color_name_en" name="color['+i+'][color_name_en]" placeholder="color name" required>' +
-        '</div>' +
-        '<div class="form-group col-sm-4 col-md-8">' +
-        '<label for="color_name_ru">Color Name-RU:</label>' +
-        '<input type="text" class="form-control" id="color_name_ru" name="color['+i+'][color_name_ru]" placeholder="color name" required>' +
-        '</div>' +
+        '<label for="color_name_en">Color:</label>' +
+        '<select type="text" class="form-control" name="color['+i+']" placeholder="color name" required>' +
+        +''+$('#product_color_ids').html() +''+'</select></div>' +
         '<div class="form-group col-sm-4 col-md-8">' +
         '<input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]">' +
         '</div>');
@@ -215,6 +183,6 @@
             $(this).prop("checked", false);
         }
     });
-
+    CKEDITOR.replace( 'content_product' );
 </script>
 @endsection

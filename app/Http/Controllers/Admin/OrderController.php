@@ -6,9 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Services\OrderService;
+use App\Services\OrderItemService;
 
 class OrderController extends Controller
 {
+
+    public $orderService;
+    public $orderItemService;
+
+    public function __construct(OrderService $orderService, OrderItemService $orderItemService)
+    {
+        $this->orderService = $orderService;
+        $this->orderItemService = $orderItemService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +27,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::paginate(PAGINATE);
+        $orders = $this->orderService->getAllOrders();
         return view('admin.orders.index')->with(compact('orders'));
     }
 
@@ -49,9 +60,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::findOrFail($id);
+        $order = $this->orderService->findShowOrderById($id);
         $orderItem = $order->orderItem;
-        
         return view('admin.orders.show')->with(compact('order', 'orderItem'));
     }
 
@@ -63,7 +73,7 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $order = Order::findOrFail($id);
+        $order = $this->orderService->findOrderById($id);
         return view('admin.orders.edit')->with(compact('order'));
     }
 
@@ -76,16 +86,12 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $order = Order::findOrFail($id);
         $data = $request->except('_token', '_method');
-        $order->status = $data['status'];
-        $order->payment_type = $data['payment'];
-        $order->note = $data['note'];
-        $order->deliver_date = $data['deliver_date'];
-        $order->total = $data['total'];
-        $order->save();
-
-        return redirect()->route('admin.order.show',$order->id)->with('message','Update success!');
+        $result = $this->orderService->updateOrder($data, $id);
+        if ($result) {
+            return redirect()->route('admin.order.show',$id)->with('message','Cập nhật thành công');
+        }
+        return redirect()->route('admin.order.edit',$id)->with('message','Cập nhật thất bại');
     }
 
     /**
@@ -96,8 +102,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $order = Order::findOrFail($id);
-        $order->delete();
-        return redirect()->route('admin.order.index')->with('message','Update success!');
+        $this->orderService->deleteOrderById($id);
+        return redirect()->route('admin.order.index')->with('message','Xóa đơn hàng thành công');
     }
 }

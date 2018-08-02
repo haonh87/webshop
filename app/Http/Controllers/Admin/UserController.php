@@ -8,9 +8,20 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use App\Services\UserService;
+use App\Services\RoleService;
 
 class UserController extends Controller
 {
+
+    public $userService;
+    public $roleService;
+
+    public function __construct(UserService $userService, RoleService $roleService)
+    {
+        $this->userService = $userService;
+        $this->roleService = $roleService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +29,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(PAGINATE);
+        $users = $this->userService->getAllUserPaginator();
         return view('admin.users.index')->with(compact('users'));
     }
 
@@ -29,7 +40,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::all(['id', 'name']);
+        $roles = $this->roleService->getAllRoles();
         return view('admin.users.create')->with(compact('roles'));
     }
 
@@ -42,12 +53,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $dataUser = $request->except('_token');
-        try {
-            $dataUser['password'] = Hash::make($dataUser['password']);
-            User::create($dataUser);
-            return redirect()->route('admin.user.index')->with('message', 'create success!');
-        } catch (\Exception $e) {
-            return redirect()->route('admin.user.index')->with('message', 'create fail!');
+        $result = $this->userService->createUser($dataUser);
+        if ($result) {
+            return redirect()->route('admin.user.index')->with('message', 'Tạo người dùng thành công');
+        } else {
+            return redirect()->route('admin.user.index')->with('message', 'Tạo người dùng thất bại');
         }
     }
 
@@ -70,8 +80,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        $roles = Role::all(['id', 'name']);
+        $user = $this->userService->getUserById($id);
+        $roles = $this->roleService->getAllRoles();
         return view('admin.users.edit')->with(compact('user', 'roles'));   
     }
 
@@ -85,17 +95,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $data = ($request->except('_token', '_method'));
-        if(!empty($data)){
-            $user = User::findOrFail($id);
-            $user->name = $data['name'];
-            $user->email = $data['email'];
-            $user->role_id = $data['role'];
-            $user->save();
-
-            return redirect()->back()->with('message', 'update success!');
+        $result = $this->userService->udpateUser($data, $id);
+        if ($result) {
+            return redirect()->route('admin.user.index')->with('message', 'Sửa người dùng thành công');
+        } else {
+            return redirect()->route('admin.user.index')->with('message', 'Sửa người dùng thất bại');
         }
-        
-        return redirect()->back()->with('message', 'update Fail!');
     }
 
     /**
@@ -106,8 +111,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-       $user = User::findOrFail($id);
-       $user->delete();
-       return redirect()->back()->with('message', 'Deleted success!');
+       $this->userService->deleteUserById($id);
+       return redirect()->back()->with('message', 'Xóa người dùng thành công');
     }
 }
