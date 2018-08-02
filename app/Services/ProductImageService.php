@@ -23,7 +23,10 @@ class ProductImageService
             $data = [];
             foreach($dataImage as $key => $image)
             {
-                $name = $image->getClientOriginalName();
+                $name = $nameProduct.'.'.$image->getClientOriginalExtension();
+                if ($key > 0) {
+                    $name = $nameProduct.'_'.$dataColor.'.'.$image->getClientOriginalExtension();
+                }
                 $image->move(public_path().'/images/', $name);
                 $data[] = [
                     'product_id' => $productId,

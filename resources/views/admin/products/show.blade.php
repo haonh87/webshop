@@ -62,7 +62,7 @@
                     echo 'class="item"';
                 }
              ?>>
-              <img src="{{ $productImage->img_path }}" alt="Chania">
+              <img src="{{ asset('images/' . $productImage->img_path) }}" alt="Chania">
             </div>
         @endforeach
           </div>
