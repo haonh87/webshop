@@ -13,8 +13,8 @@
         <th>Category</th>
         <th>Name</th>
         <th>Description</th>
-        <th>View_Count</th>
-        <th>Sell_Count</th>
+        <th>View Count</th>
+        <th>Sell Count</th>
       </tr>
     </thead>
     <tbody>
