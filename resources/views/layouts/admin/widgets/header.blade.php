@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="brand" href="{{route('adminIndex')}}">Gymbeo </a>
+                <a class="brand logo" href="{{route('adminIndex')}}">Gymbeo </a>
             </div>
             <div class="collapse navbar-collapse navbar-inverse-collapse">
                 <div class="nav-header">
