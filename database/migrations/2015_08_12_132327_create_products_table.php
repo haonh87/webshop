@@ -16,11 +16,12 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
 
-            $table->string('lang_code');
+            $table->string('lang_code')->default('vi');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('model_ids')->nullable()->default(null);
             $table->string('product_color_ids')->nullable()->default(null);
+            $table->string('product_size_ids')->nullable()->default(null);
             $table->float('price');
             $table->string('description', 350)->nullable();
             $table->text('content')->nullable();

@@ -10,8 +10,32 @@ use App\Models\Product;
 use App\Models\ProductSize;
 use App\Models\ProductColor;
 use App\Models\Category;
+use App\Services\CategoryService;
+use App\Services\ProductService;
+use App\Services\ProductColorService;
+use App\Services\ProductSizeService;
+use App\Services\ProductImageService;
+
 class ProductController extends Controller
 {
+
+    protected $categoryService;
+    protected $productService;
+    protected $productColorService;
+    protected $productSizeService;
+    protected $productImageService;
+
+    public function __construct(CategoryService $categoryService, ProductService $productService,
+        ProductColorService $productColorService, ProductSizeService $productSizeService,
+        ProductImageService $productImageService
+    )
+    {
+        $this->categoryService = $categoryService;
+        $this->productService = $productService;
+        $this->productSizeService = $productSizeService;
+        $this->productColorService = $productColorService;
+        $this->productImageService = $productImageService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +43,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(PAGINATE);
-        $categories = Category::all();
+        $products = $this->productService->getAllProduct()->paginate(PAGINATE);
+        $categories = $this->categoryService->getAllCategories();
         $name ='';
         return view("admin.products.index")->with(compact('products','categories','name'));
     }
@@ -32,7 +56,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $categories = $this->categoryService->getAllCategories();
+        $productColors = $this->productColorService->getAllColor();
+        $productSizes = $this->productSizeService->getAllProductSize();
+        return view('admin.products.create')->with(compact('categories', 'productColors', 'productSizes'));
     }
 
     /**
@@ -43,51 +70,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
-        $product = new Product;
-//        dd($request);
-//        dd($data);
-        $product->artice_id = $data['code'];
-        $product->name_en = $data['name_en'];
-        $product->name_ru = $data['name_ru'];
-        $product->model = $data['model'];
-        $product->category_id = $data['category'];
-        $product->silk_id = $data['silk'];
-        $product->price = $data['price'];
-        $product->country_en = $data['country_en'];
-        $product->country_ru = $data['country_ru'];
-        $product->description_en = $data['description_en'];
-        $product->description_ru = $data['description_ru'];
-        $product->save();
-        $sizes= explode(",",$data['size']);
-//        dd($sizes);
-        if(!empty($data['size'])){
-            foreach ($sizes as $size) {
-            $product_size = new ProductSize;
-            $product_size->size = $size;
-            $product_size->product_id = $product->id;
-            $product_size->save();
-            }
+        $dataColor = $request->input('color');
+        $dataImage = $request->file('image');
+        $dataProduct = $request->except('_token', 'color', 'image');
+        $productId = $this->productService->saveProduct($dataProduct);
+        if (!empty($dataImage)) {
+            $this->productImageService->upLoadImage($dataImage, $productId, $dataColor, $dataProduct['name']);
         }
-
-        $destinationPath = public_path().'/images/products/product'.$product->id;
-//        dd($data['image']);
-        if(!empty($data['image'])){
-            foreach ($data['image'] as $key => $img) {
-//                dump($img);
-                $product_color = new ProductColor;
-                $product_color->product_id = $product->id;
-//                $product_color->color_id = $data['color'];
-                $product_color->color_en = $data['color'][$key]['color_name_en'];
-                $product_color->color_ru = $data['color'][$key]['color_name_ru'];
-                $product_color_img = $img->getClientOriginalName();
-                $complete =  $img->move($destinationPath, $product_color_img);
-                $product_color->picture =  $product_color_img;
-
-                $product_color->save();
-            }
-        }
-        return redirect()->route('admin.products.show', ['poduct_id'=>$product->id])->withMassage('update success!');
+        return redirect()->route('products.show', ['poduct_id'=>$productId])->withMassage('update success!');
     }
 
     /**
@@ -98,7 +88,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $product = $this->productService->findProductById($id);
         return view('admin.products.show')->with('product', $product);
     }
 

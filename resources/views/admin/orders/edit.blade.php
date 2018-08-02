@@ -64,9 +64,10 @@
                     </div>
 
                     <a class="btn btn-default" href="{{ action('Admin\OrderController@index') }}">Back</a>
-                    <button class="btn btn-primary" type="submit" >Cập nhật</a>
+                    <button class="btn btn-primary" type="submit" >Cập nhật</button>
                 </form>
             </div>
         </div>
+    </div>
     </div>
 @endsection

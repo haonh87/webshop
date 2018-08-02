@@ -13,7 +13,9 @@ use LaravelLocalization;
 class Product extends Model
 {
 
-     protected $fillable = array('name', 'artice_id', 'category_id', 'silk_id', 'price');
+     protected $fillable = array('name', 'create_user_id', 'category_id', 'product_color_ids', 'price',
+            'model_ids', 'description', 'content', 'modified_user_id'
+         );
 
     /**
      * Relation ship with categories table
@@ -22,6 +24,11 @@ class Product extends Model
     public function category()
     {
     	return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+    }
+
+    public function productImages()
+    {
+        return $this->hasMany('App\Models\ProductImage', 'product_id', 'id');
     }
 
     /**
