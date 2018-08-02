@@ -91,7 +91,7 @@
         <form action="{{ route('products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
             <div class="form-group col-sm-4 col-md-8">
                 <label for="category">Select Category:</label>
-                  <select class="form-control" id="category" name="category" required>
+                  <select class="form-control" id="category" name="category_id" required>
                   <option value="">Select category</option>
                       @php
                           App\Helpers\MenuHelper::showCategories($categories->toArray())
@@ -158,8 +158,8 @@
     $("#add_image").click(function() {
         $(this).parent().before('<div class="form-group col-sm-4 col-md-8">' +
         '<label for="color_name_en">Color:</label>' +
-        '<select type="text" class="form-control" name="color['+i+'][color_name_en]" placeholder="color name" required>' +
-        +'"'+$('#product_color_ids').html() +'"'+'</select></div>' +
+        '<select type="text" class="form-control" name="color['+i+']" placeholder="color name" required>' +
+        +''+$('#product_color_ids').html() +''+'</select></div>' +
         '<div class="form-group col-sm-4 col-md-8">' +
         '<input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]">' +
         '</div>');
