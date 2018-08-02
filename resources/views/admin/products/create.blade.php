@@ -115,13 +115,13 @@
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-              <label for="description_en">Description:</label>
-              <textarea class="form-control" rows="5" id="description" name = "description"></textarea>
+              <label for="description">Description:</label>
+              <textarea class="form-control" rows="5" id="description" name="description"></textarea>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-                <label for="description_en">Content:</label>
-                <textarea class="form-control" rows="5" id="content" name = "content"></textarea>
+                <label for="content">Content:</label>
+                <textarea class="form-control" rows="5" id="content_product" name="content"></textarea>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
@@ -135,7 +135,7 @@
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-                <input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]">
+                <input id="input-file" class="file" type="file" multiple data-min-file-count="1" name="image[]">
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
@@ -152,7 +152,7 @@
         </form>
     </div>
 </div>
-
+<script src="//cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
 <script type="text/javascript">
     var i=1;
     $("#add_image").click(function() {
@@ -187,6 +187,6 @@
             $(this).prop("checked", false);
         }
     });
-
+    CKEDITOR.replace( 'content_product' );
 </script>
 @endsection
