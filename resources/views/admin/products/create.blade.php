@@ -125,13 +125,13 @@
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-                <label for="color_name_en">Color:</label>
+                <label for="product_color_ids">Color:</label>
                 {{ Form::select('product_color_ids[]', $productColors, null, ['class' => 'form-control', 'id' => 'product_color_ids', 'multiple']) }}
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-                <label for="color_name_en">Size:</label>
-                {{ Form::select('product_color_ids[]', $productColors, null, ['class' => 'form-control', 'id' => 'product_color_ids', 'multiple']) }}
+                <label for="product_size_ids">Size:</label>
+                {{ Form::select('product_size_ids[]', $productColors, null, ['class' => 'form-control', 'id' => 'product_size_ids', 'multiple']) }}
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
@@ -157,13 +157,9 @@
     var i=1;
     $("#add_image").click(function() {
         $(this).parent().before('<div class="form-group col-sm-4 col-md-8">' +
-        '<label for="color_name_en">Color Name-EN:</label>' +
-        '<input type="text" class="form-control" id="color_name_en" name="color['+i+'][color_name_en]" placeholder="color name" required>' +
-        '</div>' +
-        '<div class="form-group col-sm-4 col-md-8">' +
-        '<label for="color_name_ru">Color Name-RU:</label>' +
-        '<input type="text" class="form-control" id="color_name_ru" name="color['+i+'][color_name_ru]" placeholder="color name" required>' +
-        '</div>' +
+        '<label for="color_name_en">Color:</label>' +
+        '<select type="text" class="form-control" name="color['+i+'][color_name_en]" placeholder="color name" required>' +
+        +'"'+$('#product_color_ids').html() +'"'+'</select></div>' +
         '<div class="form-group col-sm-4 col-md-8">' +
         '<input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]">' +
         '</div>');
