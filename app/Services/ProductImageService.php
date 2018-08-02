@@ -25,7 +25,7 @@ class ProductImageService
             {
                 $name = $nameProduct.'.'.$image->getClientOriginalExtension();
                 if ($key > 0) {
-                    $name = $nameProduct.'_'.$dataColor.'.'.$image->getClientOriginalExtension();
+                    $name = $nameProduct.'_'.$dataColor[$key].'.'.$image->getClientOriginalExtension();
                 }
                 $image->move(public_path().'/images/', $name);
                 $data[] = [
