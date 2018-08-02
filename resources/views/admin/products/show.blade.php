@@ -26,15 +26,15 @@
         <td>{{$product->name}}</td>
         <td>{{$product->description}}</td>
         <td>
-        @if(!empty($product->count_view))
-            <span>{{$product->count_view}}</span>
+        @if(!empty($product->view_count))
+            <span>{{$product->view_count}}</span>
         @else
             <span>0</span>
         @endif
         </td>
         <td>
-        @if(!empty($product->count_sell))
-            <span>{{$product->count_sell}}</span>
+        @if(!empty($product->sell_count))
+            <span>{{$product->sell_count}}</span>
         @else
             <span>0</span>
         @endif
@@ -62,7 +62,7 @@
                     echo 'class="item"';
                 }
              ?>>
-              <img src="{{ $img_src.$product_color->picture }}" alt="Chania">
+              <img src="{{ $productImage->img_path }}" alt="Chania">
             </div>
         @endforeach
           </div>
