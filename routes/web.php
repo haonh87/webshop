@@ -6,9 +6,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('login/{social}/callback', 'Auth\AuthController@handleProviderCallback');
     Route::get('/', ["as" => "index", "uses" => "Frontend\IndexController@index"]);
     Route::get('/category/{id}', ['as' => "category", 'uses' => 'Frontend\IndexController@showProductByCategory']);
-//    Route::post('/auth/login', ['as' => 'authLogin', 'uses' => 'Auth\AuthController@postLogin']);
-//    Route::get('/auth/logout', ['as' => 'authLogout', 'uses' => 'Auth\AuthController@getLogout']);
-//    Route::get('/auth/login', ['as' => 'authLogin', 'uses' => 'Auth\AuthController@getLogin']);
     Route::post('/product/vote', ['as' => 'product.vote', 'uses' => 'Frontend\IndexController@postVote']);
     Route::get('/search', ['as' => 'search.product', 'uses' => 'Frontend\IndexController@search']);
 
@@ -58,6 +55,12 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
         'as' => 'admin.category-management',
         'uses' => 'CategoryController@index'
     ]);
+
+    Route::post('/category/update/{id}', [
+        'as' => 'admin.category-management.update',
+        'uses' => 'CategoryController@update'
+    ]);
+
     Route::post('/category/add', [
         'as' => 'admin.category-management.add',
         'uses' => 'CategoryController@store'
@@ -65,6 +68,48 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
     Route::post('/category/delete/{id}', [
         'as' => 'admin.category-management.delete',
         'uses' => 'CategoryController@destroy'
+    ]);
+
+
+
+    Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductColorController@index']);
+    Route::get('/product/color/{id?}', [
+        'as' => 'admin.product.color-management',
+        'uses' => 'ProductColorController@index'
+    ]);
+
+    Route::post('/product/color/update/{id}', [
+        'as' => 'admin.product.color.update',
+        'uses' => 'ProductColorController@update'
+    ]);
+
+    Route::post('/product/color/add', [
+        'as' => 'admin.product.color.add',
+        'uses' => 'ProductColorController@store'
+    ]);
+    Route::post('/product/color/delete/{id}', [
+        'as' => 'admin.product.color.delete',
+        'uses' => 'ProductColorController@destroy'
+    ]);
+
+    Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductSizeController@index']);
+    Route::get('/product/size/{id?}', [
+        'as' => 'admin.product.size-management',
+        'uses' => 'ProductSizeController@index'
+    ]);
+
+    Route::post('/product/size/update/{id}', [
+        'as' => 'admin.product.size.update',
+        'uses' => 'ProductSizeController@update'
+    ]);
+
+    Route::post('/product/size/add', [
+        'as' => 'admin.product.size.add',
+        'uses' => 'ProductSizeController@store'
+    ]);
+    Route::post('/product/size/delete/{id}', [
+        'as' => 'admin.product.size.delete',
+        'uses' => 'ProductSizeController@destroy'
     ]);
     //Route::resource("categories", "CategoryController");
     Route::resource("products", "ProductController");

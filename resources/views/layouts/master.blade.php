@@ -85,7 +85,7 @@
 				@else
 					<li><a href="@if(Auth::check()){{route('myaccount.index')}} @endif">{{ trans('lang.my_account') }}</a></li>
 					<li><a href="{{route('myaccount.old.orders')}}">{{ trans('lang.order_history') }}</a></li>
-					<li><a href="{{ route('authLogout') }}">{{ trans('lang.logout') }}</a></li>
+					<li><a href="{{ route('logout') }}">{{ trans('lang.logout') }}</a></li>
 				@endif
 				<li><a href="{{ route('wishlist.index') }}" id="wishlist-total2" title="Wish List ({{ $count_wishlist }})">
 				<i class="fa fa-heart"></i> <span>{{ trans('lang.wish_list()') }} ({{ $count_wishlist }})</span> </a></li>
@@ -172,7 +172,7 @@
 
 									<li><a href="@if(Auth::check()){{route('myaccount.index')}} @endif">{{ trans('lang.my_account') }}</a></li>
 									<li><a href="{{route('myaccount.old.orders')}}">{{ trans('lang.order_history') }}</a></li>
-									<li><a href="{{ route('authLogout') }}">{{ trans('lang.logout') }}</a></li>
+									<li><a href="{{ route('logout') }}">{{ trans('lang.logout') }}</a></li>
 								@endif
 								</ul>
 							</li>
