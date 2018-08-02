@@ -44,7 +44,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $categories = $this->categoryService->getAllCategories();
+        return view('admin.products.create')->with(compact('categories'));
     }
 
     /**

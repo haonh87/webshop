@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('model_ids')->nullable()->default(null);
             $table->string('product_color_ids')->nullable()->default(null);
+            $table->string('product_size_ids')->nullable()->default(null);
             $table->float('price');
             $table->string('description', 350)->nullable();
             $table->text('content')->nullable();
