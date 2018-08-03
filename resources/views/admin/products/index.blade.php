@@ -45,7 +45,7 @@
                 </form>
             </div>
         </div>
-        <table class="table table-striped table-condensed table-hover" style="margin-top: 10px;">
+        <table class="table table-striped" style="margin-top: 10px;">
             <tr>
                 <th>NAME</th>
                 <th>PRICE</th>
