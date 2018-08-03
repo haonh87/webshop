@@ -7,7 +7,7 @@
             <button class="btn btn-primary btn-large pull-right" data-toggle="modal" data-target="#createPopup">
                 Tạo mới
             </button>
-            @include('admin.productSize.create')
+            @include('admin.productSize.widgets.create')
         </h1>
         <p>{{@$message}}</p>
     </div>
@@ -24,7 +24,7 @@
 
             <tbody>
             @foreach($productSizes as $productSize)
-                @include('admin.productSize.edit')
+                @include('admin.productSize.widgets.edit')
                 <tr>
                     <td>{{$productSize->id}}</td>
                     <td>{{$productSize->name}}</td>

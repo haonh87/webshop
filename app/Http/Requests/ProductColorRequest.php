@@ -26,9 +26,19 @@ class ProductColorRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|min:1|max:255',
-        ];
+        $id = $this->route('id');
+        if ($id != null)  {
+            return [
+                'code' => 'required|min:1|max:255|unique:product_colors,id,'.$id,
+                'name' => 'required|min:1|max:255|unique:product_colors,id,'.$id
+            ];
+        } else  {
+            return [
+                'code' => 'required|min:1|max:255|unique:product_colors',
+                'name' => 'required|min:1|max:255|unique:product_colors'
+            ];
+        }
+
     }
 
     /**
@@ -41,6 +51,11 @@ class ProductColorRequest extends FormRequest
             'name.required' => __('validation.required', ['attribute' => 'name']),
             'name.min' => __('validation.min.numeric', ['attribute' => 'name', 'min' => '1']),
             'name.max' => __('validation.max.numeric', ['attribute' => 'name', 'max' => '255']),
+            'name.unique' =>  __('validation.unique', ['attribute' => 'name']),
+            'code.required' => __('validation.required', ['attribute' => 'code']),
+            'code.min' => __('validation.min.numeric', ['attribute' => 'code', 'min' => '1']),
+            'code.max' => __('validation.max.numeric', ['attribute' => 'code', 'max' => '255']),
+            'code.unique' => __('validation.unique', ['attribute' => 'code']),
         ];
     }
 }

@@ -1,14 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: BOSS
+ * Date: 7/25/2018
+ * Time: 2:36 AM
+ */
 
 namespace App\Services;
 
-use App\Models\Category;
+use App\Models\PostCategory;
 
 /**
- * Class CategoryService
+ * Class PostCategoryService
  * @package App\Services
  */
-class CategoryService
+class PostCategoryService
 {
     public $parentIdDefault = 0;
 
@@ -32,16 +38,16 @@ class CategoryService
     public function getCategoryList($pagination = 0, $field = '', $value = '', $operation = '')
     {
         if ($field && $value && $operation) {
-            $categories = Category::where($field, $operation, $value)->get();
+            $categories = PostCategory::where($field, $operation, $value)->get();
         } else {
-            $categories = Category::paginate($pagination);
+            $categories = PostCategory::paginate($pagination);
         }
 
         if (count($categories) > 0) {
             foreach ($categories as $cateKey => $catevalue) {
                 $parentCateName = $catevalue->name;
                 if ($catevalue->parent_id && $catevalue->parent_id != 0) {
-                    $parentCate = Category::where('id', '=', $catevalue->parent_id)->first();
+                    $parentCate = PostCategory::where('id', '=', $catevalue->parent_id)->first();
                     $parentCateName = $parentCate['name'];
                 }
                 $categories[$cateKey]['parent_name'] = $parentCateName;
@@ -62,7 +68,7 @@ class CategoryService
         if (!empty($input)) {
             \DB::beginTransaction();
             try {
-                $category = new Category();
+                $category = new PostCategory();
                 $input['lang_code'] = DEFAULT_LANGUAGE;
 
                 if (!$input['parent_id']) {
@@ -97,7 +103,8 @@ class CategoryService
         if (!empty($input)) {
             \DB::beginTransaction();
             try {
-                $category = Category::findOrFail($id);
+                $category = PostCategory::findOrFail($id);
+
                 $input['lang_code'] = DEFAULT_LANGUAGE;
 
                 if (!$input['parent_id']) {
@@ -130,7 +137,7 @@ class CategoryService
      */
     public function deleteCategory($id)
     {
-        $category = Category::findOrFail($id);
+        $category = PostCategory::findOrFail($id);
         if ($category->delete()) {
             return true;
         } else {

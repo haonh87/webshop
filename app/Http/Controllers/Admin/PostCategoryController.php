@@ -1,26 +1,28 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
+
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
-use App\Services\CategoryService;
+use App\Http\Requests\PostCategoryRequest;
+use App\Services\PostCategoryService;
 
-class CategoryController extends Controller
+class PostCategoryController extends Controller
 {
 
 
     /**
-     * @var CategoryService
+     * @var PostCategoryService
      */
-    protected $categoryService;
-    protected $image_url = '/images/categories';
+    protected $postCategoryService;
+    protected $image_url = '/images/post-categories';
 
     /**
      * CategoryController constructor.
-     * @param CategoryService $categoryService
+     * @param PostCategoryService $postCategoryService
      */
-    public function __construct(CategoryService $categoryService)
+    public function __construct(PostCategoryService $postCategoryService)
     {
-        $this->categoryService = $categoryService;
+        $this->postCategoryService = $postCategoryService;
     }
 
     /**
@@ -30,19 +32,19 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->categoryService->getCategoryList(PAGINATE);
-        $categoriesAll = $this->categoryService->getCategoryList();
-        return view('admin.categories.index', compact('categories'))
+        $categories = $this->postCategoryService->getCategoryList(PAGINATE);
+        $categoriesAll = $this->postCategoryService->getCategoryList();
+        return view('admin.postCategories.index', compact('categories'))
             ->with('cateAll', $categoriesAll);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param CategoryRequest $request
+     * @param PostCategoryRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(CategoryRequest $request)
+    public function store(PostCategoryRequest $request)
     {
         $data = $request->all();
         if ($request->hasFile('image')) {
@@ -57,22 +59,22 @@ class CategoryController extends Controller
         $data['create_user_id'] = \Auth::user()->id;
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
-        $createNewCategory = $this->categoryService->createNewCategory($data);
+        $createNewCategory = $this->postCategoryService->createNewCategory($data);
         if ($createNewCategory) {
             $message = 'Item created successfully.';
-            return redirect()->action('Admin\CategoryController@index')->with('message', $message);
+            return redirect()->action('Admin\PostCategoryController@index')->with('message', $message);
         }
-        return redirect()->action('Admin\CategoryController@index')->withInput();
+        return redirect()->action('Admin\PostCategoryController@index')->withInput();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param CategoryRequest $request
+     * @param PostCategoryRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(PostCategoryRequest $request, $id)
     {
         $data = $request->all();
         if ($request->hasFile('image')) {
@@ -85,12 +87,12 @@ class CategoryController extends Controller
         }
         $data['modified_user_id'] = \Auth::user()->id;
         $data['updated_at'] = date('Y-m-d H:i:s');
-        $updateCategory = $this->categoryService->updateCategory($id, $data);
+        $updateCategory = $this->postCategoryService->updateCategory($id, $data);
         if ($updateCategory) {
             $message = 'Item created successfully.';
-            return redirect()->action('Admin\CategoryController@index')->with('message', $message);
+            return redirect()->action('Admin\PostCategoryController@index')->with('message', $message);
         }
-        return redirect()->action('Admin\CategoryController@index')->withInput();
+        return redirect()->action('Admin\PostCategoryController@index')->withInput();
     }
 
     /**
@@ -101,9 +103,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $deleteItem = $this->categoryService->deleteCategory($id);
+        $deleteItem = $this->postCategoryService->deleteCategory($id);
         ($deleteItem) ? $message = 'Item deleted successfully.' : $message = 'Item deleted fail.';
-        return redirect()->action('Admin\CategoryController@index')->with('message', $message);
+        return redirect()->action('Admin\PostCategoryController@index')->with('message', $message);
     }
 
 }

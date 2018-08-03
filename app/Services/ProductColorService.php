@@ -11,13 +11,12 @@ use App\Models\ProductColor;
 class ProductColorService
 {
     public $parentIdDefault = 0;
-    protected $productColorModel;
+
     /**
      * ProductColorService constructor.
      */
-    public function __construct(ProductColor $productColorModel)
+    public function __construct()
     {
-        $this->productColorModel = $productColorModel;
     }
 
     /**
@@ -49,14 +48,22 @@ class ProductColorService
      */
     public function createNewProductColor($input)
     {
-        if ($input) {
-            $productColor = new ProductColor();
-            $input['lang_code'] = DEFAULT_LANGUAGE;
+        if (!empty($input)) {
+            \DB::beginTransaction();
+            try {
+                $productColor = new ProductColor();
+                $input['lang_code'] = DEFAULT_LANGUAGE;
 
-            $productColor->fill($input);
-            if ($productColor->save()) {
-                return true;
-            } else {
+                $productColor->fill($input);
+                if ($productColor->save()) {
+                    \DB::commit();
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (\Exception $exception) {
+                \DB::rollback();
+                \Log::error('DB Error', [$exception->getMessage()]);
                 return false;
             }
         }
@@ -73,14 +80,22 @@ class ProductColorService
      */
     public function updateProductColor($id, $input)
     {
-        if ($input) {
-            $productColor = productColor::findOrFail($id);
-            $input['lang_code'] = DEFAULT_LANGUAGE;
-            $productColor->fill($input);
+        if (!empty($input)) {
+            \DB::beginTransaction();
+            try {
+                $productColor = ProductColor::findOrFail($id);
+                $input['lang_code'] = DEFAULT_LANGUAGE;
+                $productColor->fill($input);
 
-            if ($productColor->save()) {
-                return true;
-            } else {
+                if ($productColor->save()) {
+                    \DB::commit();
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (\Exception $exception) {
+                \DB::rollback();
+                \Log::error('DB Error', [$exception->getMessage()]);
                 return false;
             }
         }
@@ -96,16 +111,11 @@ class ProductColorService
      */
     public function deleteProductColor($id)
     {
-        $productColor = productColor::findOrFail($id);
+        $productColor = ProductColor::findOrFail($id);
         if ($productColor->delete()) {
             return true;
         } else {
             return false;
         }
-    }
-
-    public function getAllColor()
-    {
-        return $this->productColorModel->groupBy('name')->pluck('name', 'id')->toArray();
     }
 }

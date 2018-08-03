@@ -2,18 +2,16 @@
 
 namespace App\Services;
 
-use App\Models\Category;
+use App\Models\Post;
 
 /**
- * Class CategoryService
+ * Class PostService
  * @package App\Services
  */
-class CategoryService
+class PostService
 {
-    public $parentIdDefault = 0;
-
     /**
-     * CategoryService constructor.
+     * PostService constructor.
      */
     public function __construct()
     {
@@ -21,7 +19,7 @@ class CategoryService
 
     /**
      *
-     * Get category list
+     * Get post list
      *
      * @param string $field
      * @param string $value
@@ -29,52 +27,52 @@ class CategoryService
      * @param int $pagination
      * @return mixed
      */
-    public function getCategoryList($pagination = 0, $field = '', $value = '', $operation = '')
+    public function getPostList($pagination = 0, $field = '', $value = '', $operation = '')
     {
         if ($field && $value && $operation) {
-            $categories = Category::where($field, $operation, $value)->get();
+            $post = Post::where($field, $operation, $value)->get();
         } else {
-            $categories = Category::paginate($pagination);
+            $post = Post::paginate($pagination);
         }
 
-        if (count($categories) > 0) {
-            foreach ($categories as $cateKey => $catevalue) {
+        if (count($post) > 0) {
+            foreach ($post as $cateKey => $catevalue) {
                 $parentCateName = $catevalue->name;
                 if ($catevalue->parent_id && $catevalue->parent_id != 0) {
-                    $parentCate = Category::where('id', '=', $catevalue->parent_id)->first();
+                    $parentCate = Post::where('id', '=', $catevalue->parent_id)->first();
                     $parentCateName = $parentCate['name'];
                 }
-                $categories[$cateKey]['parent_name'] = $parentCateName;
+                $post[$cateKey]['parent_name'] = $parentCateName;
             }
         }
 
-        return $categories;
+        return $post;
     }
 
     /**
-     * Create new category
+     * Create new post
      *
      * @param $input
      * @return bool
      */
-    public function createNewCategory($input)
+    public function createNewPost($input)
     {
         if (!empty($input)) {
             \DB::beginTransaction();
             try {
-                $category = new Category();
+                $Post = new Post();
                 $input['lang_code'] = DEFAULT_LANGUAGE;
 
                 if (!$input['parent_id']) {
                     $input['parent_id'] = $this->parentIdDefault;
                 }
-                $category->fill($input);
-                if ($category->save()) {
-                    \DB::commit();
+                $Post->fill($input);
+                if ($Post->save()) {
                     return true;
                 } else {
                     return false;
                 }
+                \DB::commit();
             } catch (\Exception $exception) {
                 \DB::rollback();
                 \Log::error('DB Error', [$exception->getMessage()]);
@@ -86,32 +84,32 @@ class CategoryService
 
 
     /**
-     * Update old category
+     * Update old post
      *
      * @param $id
      * @param $input
      * @return bool
      */
-    public function updateCategory($id, $input)
+    public function updatePost($id, $input)
     {
         if (!empty($input)) {
             \DB::beginTransaction();
             try {
-                $category = Category::findOrFail($id);
+                $Post = Post::findOrFail($id);
                 $input['lang_code'] = DEFAULT_LANGUAGE;
 
                 if (!$input['parent_id']) {
                     $input['parent_id'] = $this->parentIdDefault;
                 }
 
-                $category->fill($input);
+                $Post->fill($input);
 
-                if ($category->save()) {
-                    \DB::commit();
+                if ($Post->save()) {
                     return true;
                 } else {
                     return false;
                 }
+                \DB::commit();
             } catch (\Exception $exception) {
                 \DB::rollback();
                 \Log::error('DB Error', [$exception->getMessage()]);
@@ -123,15 +121,15 @@ class CategoryService
 
 
     /**
-     * Delete category
+     * Delete post
      *
      * @param $id
      * @return bool
      */
-    public function deleteCategory($id)
+    public function deletePost($id)
     {
-        $category = Category::findOrFail($id);
-        if ($category->delete()) {
+        $Post = Post::findOrFail($id);
+        if ($Post->delete()) {
             return true;
         } else {
             return false;

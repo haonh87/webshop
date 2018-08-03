@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+
 use App\Models\ProductSize;
 
 /**
@@ -10,13 +11,12 @@ use App\Models\ProductSize;
 class ProductSizeService
 {
     public $parentIdDefault = 0;
-    protected $productSizeModel;
+
     /**
      * ProductSizeService constructor.
      */
-    public function __construct(ProductSize $productSizeModel)
+    public function __construct()
     {
-        $this->productSizeModel = $productSizeModel;
     }
 
     /**
@@ -48,14 +48,22 @@ class ProductSizeService
      */
     public function createNewProductSize($input)
     {
-        if ($input) {
-            $productSize = new ProductSize();
-            $input['lang_code'] = DEFAULT_LANGUAGE;
+        if (!empty($input)) {
+            \DB::beginTransaction();
+            try {
+                $productSize = new ProductSize();
+                $input['lang_code'] = DEFAULT_LANGUAGE;
 
-            $productSize->fill($input);
-            if ($productSize->save()) {
-                return true;
-            } else {
+                $productSize->fill($input);
+                if ($productSize->save()) {
+                    \DB::commit();
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (\Exception $exception) {
+                \DB::rollback();
+                \Log::error('DB Error', [$exception->getMessage()]);
                 return false;
             }
         }
@@ -72,14 +80,22 @@ class ProductSizeService
      */
     public function updateProductSize($id, $input)
     {
-        if ($input) {
-            $productSize = productSize::findOrFail($id);
-            $input['lang_code'] = DEFAULT_LANGUAGE;
-            $productSize->fill($input);
+        if (!empty($input)) {
+            \DB::beginTransaction();
+            try {
+                $productSize = productSize::findOrFail($id);
+                $input['lang_code'] = DEFAULT_LANGUAGE;
+                $productSize->fill($input);
 
-            if ($productSize->save()) {
-                return true;
-            } else {
+                if ($productSize->save()) {
+                    \DB::commit();
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (\Exception $exception) {
+                \DB::rollback();
+                \Log::error('DB Error', [$exception->getMessage()]);
                 return false;
             }
         }
@@ -101,10 +117,5 @@ class ProductSizeService
         } else {
             return false;
         }
-    }
-
-    public function getAllProductSize()
-    {
-        return $this->productSizeModel->groupBy('name')->pluck('name', 'id')->toArray();
     }
 }

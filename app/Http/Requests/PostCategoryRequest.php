@@ -10,7 +10,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductSizeRequest extends FormRequest
+class PostCategoryRequest extends FormRequest
 {
     /**
      * @return bool
@@ -26,16 +26,10 @@ class ProductSizeRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('id');
-        if ($id != null) {
-            return [
-                'name' => 'required|min:1|max:255|unique:product_sizes,id,' . $id,
-            ];
-        } else {
-            return [
-                'name' => 'required|min:1|max:255|unique:product_sizes',
-            ];
-        }
+        return [
+            'name' => 'required|min:1|max:255',
+            'description' => 'required',
+        ];
     }
 
     /**
@@ -48,6 +42,7 @@ class ProductSizeRequest extends FormRequest
             'name.required' => __('validation.required', ['attribute' => 'name']),
             'name.min' => __('validation.min.numeric', ['attribute' => 'name', 'min' => '1']),
             'name.max' => __('validation.max.numeric', ['attribute' => 'name', 'max' => '255']),
+            'description.required' => __('validation.required', ['attribute' => 'description']),
         ];
     }
 }

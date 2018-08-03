@@ -28,10 +28,8 @@ class ProductColorController extends Controller
     {
         $productColor = $this->productColorService->getProductColorList(PAGINATE);
         $productColorAll = $this->productColorService->getProductColorList();
-        $lang = Language::get();
         return view('admin.productColor.index', compact('productColor'))
-            ->with('productColors', $productColorAll)
-            ->with('lang', $lang);
+            ->with('productColors', $productColorAll);
     }
 
     /**
