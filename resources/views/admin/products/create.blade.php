@@ -54,23 +54,23 @@
 
             <div class="form-group col-sm-4 col-md-8">
               <label for="description">Mô tả</label>
-              <textarea class="form-control" rows="5" id="description" name="description"></textarea>
+              <textarea class="form-control" rows="5" id="description" name="description" required></textarea>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
                 <label for="content">Nội dung</label>
-                <textarea class="form-control" rows="5" id="content_product" name="Nội dung sản phẩm"></textarea>
+                <textarea class="form-control" rows="5" id="content_product" name="Nội dung sản phẩm" required></textarea>
             </div>
 
             {{ Form::select('product_color_ids[]', $productColors, null, ['class' => 'form-control hidden', 'id' => 'product_color_ids', 'multiple']) }}
 
             <div class="form-group col-sm-4 col-md-8">
                 <label for="product_size_ids">Kích cỡ</label>
-                {{ Form::select('product_size_ids[]', $productColors, null, ['class' => 'form-control selectpicker', 'id' => 'product_size_ids', 'multiple', 'title' => 'Chọn kích cỡ']) }}
+                {{ Form::select('product_size_ids[]', $productColors, null, ['class' => 'form-control selectpicker', 'required', 'id' => 'product_size_ids', 'multiple', 'title' => 'Chọn kích cỡ']) }}
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-                <input id="input-file" class="file" type="file" multiple data-min-file-count="1" name="image[]">
+                <input id="input-file" class="file" type="file" multiple data-min-file-count="1" name="image[]" required>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
@@ -96,7 +96,7 @@
         '<select type="text" class="form-control" name="color['+i+']" placeholder="Màu sắc" required>' +
         +''+$('#product_color_ids').html() +''+'</select></div>' +
         '<div class="form-group col-sm-4 col-md-8">' +
-        '<input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]">' +
+        '<input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]" required>' +
         '</div>');
         i++;
         $.getScript("{{ asset('js1/fileinput.min.js') }}")
