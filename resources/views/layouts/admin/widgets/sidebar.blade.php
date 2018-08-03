@@ -11,7 +11,6 @@
                 <li><a href="{{ route('products.index') }}"><i class="icon-inbox"></i>Danh sách sản phẩm</a></li>
                 <li><a href="{{ route('admin.product.color-management') }}"><i class="icon-inbox"></i>Màu sắc sản phẩm</a></li>
                 <li><a href="{{ route('admin.product.size-management') }}"><i class="icon-inbox"></i>Kích cỡ sản phẩm</a></li>
-                <li><a href="other-user-listing.html"><i class="icon-inbox"></i>Thêm mới sản phẩm</a></li>
             </ul>
         </li>
         {{--user manager--}}

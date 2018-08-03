@@ -47,11 +47,11 @@
         </div>
         <table class="table table-striped" style="margin-top: 10px;">
             <tr>
-                <th>NAME</th>
-                <th>PRICE</th>
-                <th>CATEGORY</th>
-                <th>IMAGE</th>
-                <th>ACTION</th>
+                <th>Tên</th>
+                <th>Giá</th>
+                <th>Danh mục</th>
+                <th>Hình ảnh</th>
+                <th>Hành động</th>
             </tr>
             @foreach($products as $product)
                 <tr>
