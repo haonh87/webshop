@@ -30,8 +30,7 @@
         <form action="{{ route('products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
             <div class="form-group col-sm-4 col-md-8">
                 <label for="category">Danh Mục</label>
-                  <select class="form-control" id="category" name="category_id" required>
-                  <option value="">Chọn danh mục</option>
+                  <select class="form-control selectpicker" title="Chọn danh mục" id="category" name="category_id" required>
                       @php
                           App\Helpers\MenuHelper::showCategories($categories->toArray())
                       @endphp
@@ -67,7 +66,7 @@
 
             <div class="form-group col-sm-4 col-md-8">
                 <label for="product_size_ids">Kích cỡ</label>
-                {{ Form::select('product_size_ids[]', $productColors, null, ['class' => 'form-control', 'id' => 'product_size_ids', 'multiple']) }}
+                {{ Form::select('product_size_ids[]', $productColors, null, ['class' => 'form-control selectpicker', 'id' => 'product_size_ids', 'multiple', 'title' => 'Chọn kích cỡ']) }}
             </div>
 
             <div class="form-group col-sm-4 col-md-8">

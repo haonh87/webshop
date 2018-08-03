@@ -14,6 +14,7 @@
     <link type="text/css" href="{{ asset('admins/images/icons/css/font-awesome.css') }}" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
           rel='stylesheet'>
+    <link type="text/css" href="{{ asset('admins/css/bootstrap-select.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('admins/css/theme.css') }}" rel="stylesheet">
 @yield('css_open')
 <!-- jQuery -->
@@ -58,6 +59,7 @@
 <script src="{{ asset('admins/scripts/flot/jquery.flot.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admins/scripts/flot/jquery.flot.resize.js') }}" type="text/javascript"></script>
 <script src="{{ asset('admins/scripts/datatables/jquery.dataTables.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admins/scripts/bootstrap-select.js') }}" type="text/javascript"></script>
 {{--to file not load--}}
 <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 {{--to file not load--}}
