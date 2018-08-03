@@ -54,7 +54,7 @@
 
             <div class="form-group col-sm-4 col-md-8">
               <label for="description">Mô tả</label>
-              <textarea class="form-control" rows="5" id="description" name="Mô tả sản phẩm"></textarea>
+              <textarea class="form-control" rows="5" id="description" name="description"></textarea>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">

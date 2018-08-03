@@ -28,10 +28,10 @@ class ProductService
         return $this->productModel->where('id', $id)->with('category')->with('productImages')->first();
     }
 
-    public function saveProduct($dataProduct)
+    public function saveProduct($dataProduct, $dataColor)
     {
-        $dataProduct['product_color_ids'] = implode(',', $dataProduct['product_color_ids']);
-        $dataProduct['product_size_ids'] = implode(',', $dataProduct['product_size_ids']);
+        $dataProduct['product_color_ids'] = isset($dataColor) ? implode(',', $dataColor) : '';
+        $dataProduct['product_size_ids'] = isset($dataProduct['product_size_ids']) ? implode(',', $dataProduct['product_size_ids']) : '';
         $dataProduct['create_user_id'] = Auth::user()->id;
         $this->productModel->fill($dataProduct)->save();
         return $this->productModel->id;

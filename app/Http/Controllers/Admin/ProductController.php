@@ -15,6 +15,7 @@ use App\Services\ProductService;
 use App\Services\ProductColorService;
 use App\Services\ProductSizeService;
 use App\Services\ProductImageService;
+use DB;
 
 class ProductController extends Controller
 {
@@ -70,14 +71,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $dataColor = $request->input('color');
-        $dataImage = $request->file('image');
-        $dataProduct = $request->except('_token', 'color', 'image');
-        $productId = $this->productService->saveProduct($dataProduct);
-        if (!empty($dataImage)) {
-            $this->productImageService->upLoadImage($dataImage, $productId, $dataColor, $dataProduct['name']);
+        try {
+            DB::beginTransaction();
+            $dataColor = $request->input('color');
+            $dataImage = $request->file('image');
+            $dataProduct = $request->except('_token', 'color', 'image');
+            $productId = $this->productService->saveProduct($dataProduct, $dataColor);
+            if (!empty($dataImage)) {
+                $this->productImageService->upLoadImage($dataImage, $productId, $dataColor, $dataProduct['name']);
+            }
+            DB::commit();
+            return redirect()->route('products.show', ['poduct_id'=>$productId])->withMassage('update success!');
+        } catch (\Exception $e) {
+            DB::rollback();
+            abort('404');
         }
-        return redirect()->route('products.show', ['poduct_id'=>$productId])->withMassage('update success!');
+
     }
 
     /**
