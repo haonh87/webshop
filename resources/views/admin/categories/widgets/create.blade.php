@@ -47,7 +47,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="control-group">
+                    <div class="form-group pad-top-15">
                         <div class="controls text-right">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
                             <button class="btn btn-success" type="submit">Hoàn tất</button>

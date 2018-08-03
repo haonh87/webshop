@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductSizeRequest;
-use App\Models\Language;
 use App\Services\ProductSizeService;
 
 class ProductSizeController extends Controller
@@ -31,10 +30,8 @@ class ProductSizeController extends Controller
     {
         $productSize = $this->productSizeService->getProductSizeList(PAGINATE);
         $productSizeAll = $this->productSizeService->getProductSizeList();
-        $lang = Language::get();
         return view('admin.productSize.index', compact('productSize'))
-            ->with('productSizes', $productSizeAll)
-            ->with('lang', $lang);
+            ->with('productSizes', $productSizeAll);
     }
 
     /**

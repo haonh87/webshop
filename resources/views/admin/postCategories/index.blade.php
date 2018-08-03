@@ -3,11 +3,11 @@
 @section('content')
     <div class="module-head">
         <h1>
-            <span>Màu sắc sản phẩm</span>
+            <span>Danh mục sản phẩm</span>
             <button class="btn btn-primary btn-large pull-right" data-toggle="modal" data-target="#createPopup">
                 Tạo mới
             </button>
-            @include('admin.productColor.widgets.create')
+            @include('admin.postCategories.widgets.create')
         </h1>
         <p>{{@$message}}</p>
     </div>
@@ -16,26 +16,28 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Mã màu</th>
-                <th>Màu sắc</th>
+                <th>Hình ảnh</th>
+                <th>Danh mục gốc</th>
+                <th>Tên danh mục</th>
                 <th>Ngày tạo</th>
                 <th class="text-right"> Chỉnh sửa&nbsp;</th>
             </tr>
             </thead>
 
             <tbody>
-            @foreach($productColors as $productColor)
-                @include('admin.productColor.widgets.edit')
+            @foreach($categories as $category)
+                @include('admin.postCategories.widgets.edit')
                 <tr>
-                    <td>{{$productColor->id}}</td>
-                    <td>{{$productColor->code}}</td>
-                    <td>{{$productColor->name}}</td>
-                    <td>{{$productColor->created_at}}</td>
+                    <td>{{$category->id}}</td>
+                    <td><img width="50" height="50" src="{{asset($category->image_url)}}"></td>
+                    <td>{{$category->parent_name}}</td>
+                    <td>{{$category->name}}</td>
+                    <td>{{$category->created_at}}</td>
                     <td class="text-right">
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#editPopup_{{$productColor->id}}">
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#editPopup_{{$category->id}}">
                             Sửa
                         </button>
-                        <form action="{{ route('admin.product.color.delete', ['id' => $productColor->id ]) }}"
+                        <form action="{{ route('admin.post-category-management.delete', ['id' => $category->id ]) }}"
                               method="POST" style="display: inline;"
                               onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
                             {{ csrf_field() }}
@@ -47,6 +49,6 @@
             </tbody>
         </table>
 
-        {!! '<center>'.$productColors->appends(Request::except('page'))->render().'</center>' !!}
+        {!! '<center>'.$categories->appends(Request::except('page'))->render().'</center>' !!}
     </div>
 @endsection

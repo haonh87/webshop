@@ -70,7 +70,10 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
         'uses' => 'CategoryController@destroy'
     ]);
 
-
+    Route::get('/posts/{id?}', [
+        'as' => 'admin.post-management',
+        'uses' => 'PostController@index'
+    ]);
 
     Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductColorController@index']);
     Route::get('/product/color/{id?}', [

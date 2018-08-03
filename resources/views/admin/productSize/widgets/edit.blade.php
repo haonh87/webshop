@@ -50,15 +50,15 @@
                 },
                 fields: {
                     name: {
-                        message: 'The username is not valid',
+                        message: 'The name is not valid',
                         validators: {
                             notEmpty: {
-                                message: 'Nhập tên danh mục'
+                                message: 'The name is required and cannot be empty'
                             },
                             stringLength: {
                                 min: 1,
                                 max: 255,
-                                message: 'The username must be more than 6 and less than 30 characters long'
+                                message: 'The username must be more than 1 and less than 255 characters long'
                             }
                         }
                     }
