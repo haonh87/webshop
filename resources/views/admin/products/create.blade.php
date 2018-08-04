@@ -25,8 +25,6 @@
     </div>
     
     <div class="container">
-    <br/>
-    <br>
         <form action="{{ route('products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
             <div class="form-group col-sm-4 col-md-8">
                 <label for="category">Danh Mục</label>
@@ -59,7 +57,7 @@
 
             <div class="form-group col-sm-4 col-md-8">
                 <label for="content">Nội dung</label>
-                <textarea class="form-control" rows="5" id="content_product" name="Nội dung sản phẩm" required></textarea>
+                <textarea class="form-control" rows="5" id="content_product" name="content" required></textarea>
             </div>
 
             {{ Form::select('product_color_ids[]', $productColors, null, ['class' => 'form-control hidden', 'id' => 'product_color_ids', 'multiple']) }}

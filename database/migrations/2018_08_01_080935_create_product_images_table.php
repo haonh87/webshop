@@ -18,6 +18,7 @@ class CreateProductImagesTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('img_path')->default('https://www.gstatic.com/webp/gallery3/1.png');
+            $table->integer('color_id')->default(0);
             $table->timestamps();
         });
     }

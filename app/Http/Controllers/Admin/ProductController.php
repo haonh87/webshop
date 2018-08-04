@@ -85,6 +85,7 @@ class ProductController extends Controller
             return redirect()->route('products.show', ['poduct_id'=>$productId])->withMassage('update success!');
         } catch (\Exception $e) {
             DB::rollback();
+            dd($e);
             abort('404');
         }
 
@@ -110,8 +111,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
-        return view('admin.products.edit')->with('product', $product);
+        $categories = $this->categoryService->getAllCategories();
+        $productColors = $this->productColorService->getAllColor();
+        $productSizes = $this->productSizeService->getAllProductSize();
+        $productData = $this->productService->findProductById($id);
+        return view('admin.products.edit')->with(compact('productData','categories', 'productColors', 'productSizes'));
     }
 
     /**

@@ -31,6 +31,7 @@ class ProductImageService
                 $data[] = [
                     'product_id' => $productId,
                     'img_path' => $name,
+                    'color_id' => isset($dataColor[$key]) ? $dataColor[$key] : 0,
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ];

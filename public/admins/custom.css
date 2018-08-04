@@ -99,3 +99,6 @@ h6 {
     width: 13px;
     cursor: pointer;
 }
+.image_database img{
+    width: 100%;
+}
