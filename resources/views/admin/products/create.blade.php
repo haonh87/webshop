@@ -70,7 +70,14 @@
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-                <input id="input-file" class="file" type="file" multiple data-min-file-count="1" name="image[]" required>
+                <label for="product_size_ids">Hình ảnh</label>
+                <div class="file-upload">
+                    <div class="file-select">
+                        <div class="file-select-button" id="fileName">Choose File</div>
+                        <div class="file-select-name" id="noFile">No file chosen...</div>
+                        <input type="file" name="image[]" class="file" id="input-file" required>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
@@ -91,19 +98,36 @@
 <script type="text/javascript">
     var i=1;
     $("#add_image").click(function() {
-        var html = '<div class="form-group col-sm-4 col-md-8">' +
+        var html = '<div class="form-group col-sm-4 col-md-8 image_new"><span class="remove_image">x</span>' +
             '<label for="color">Color:</label>' +
             '<select type="text" class="form-control select2_addNew" name="color['+i+']" placeholder="Màu sắc" required>' +
-            +''+$('#product_color_ids').html() +''+'</select></div>' +
-            '<div class="form-group col-sm-4 col-md-8">' +
-            '<input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]" required>' +
+            +''+$('#product_color_ids').html() +''+'</select>' +
+            '<div class="file-upload">' +
+            '<div class="file-select">\n' +
+            '<div class="file-select-button" id="fileName">Choose File</div>' +
+            '<div class="file-select-name" id="noFile">No file chosen...</div>' +
+            '<input type="file" name="image[]" class="file" id="input-file" required>' +
+            '</div>' +
+            '</div>'+
             '</div>';
         $(this).parent().before(html).promise().done(function( arg1 ) {
             $('.select2_addNew').select2();
+            $('.file').bind('change', function () {
+                var filename = $(this).val();
+                if (/^\s*$/.test(filename)) {
+                    $(this).closest(".file-upload").removeClass('active');
+                    $(this).closest(".file-upload").find("#noFile").text("No file chosen...");
+                }
+                else {
+                    $(this).closest(".file-upload").addClass('active');
+                    $(this).closest(".file-upload").find("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+                }
+            });
         });
         i++;
         $.getScript("{{ asset('js1/fileinput.min.js') }}")
     });
+
     $("#frmExcel").submit(function( event ) {
       var ext = $('#myFile').val().split('.').pop().toLowerCase();
         if($.inArray(ext, ['xls','xlsx']) == -1) {
@@ -112,6 +136,7 @@
         }
       return true;
     });
+
     $("input:checkbox").click(function() {
         if ($(this).is(":checked")) {
             var group = "input:checkbox[name='" + $(this).attr("name") + "']";
@@ -121,9 +146,25 @@
             $(this).prop("checked", false);
         }
     });
+
     CKEDITOR.replace( 'content_product' );
+
     $( document ).ready(function() {
         $('.selectpicker').select2();
+        $('.file').bind('change', function () {
+            var filename = $(this).val();
+            if (/^\s*$/.test(filename)) {
+                $(this).closest(".file-upload").removeClass('active');
+                $(this).closest(".file-upload").find("#noFile").text("No file chosen...");
+            }
+            else {
+                $(this).closest(".file-upload").addClass('active');
+                $(this).closest(".file-upload").find("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+            }
+        });
+        $(document).on('click', '.remove_image', function () {
+            $(this).closest('.image_new').remove();
+        })
     });
 </script>
 @endsection
