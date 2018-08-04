@@ -94,7 +94,7 @@
                   <select class="form-control" id="category" name="category_id" required>
                   <option value="">Select category</option>
                       @php
-                          App\Helpers\MenuHelper::showCategories($categories->toArray())
+                          App\Helpers\ListItemHelper::showCategories($categories->toArray())
                       @endphp
                   </select>
             </div>

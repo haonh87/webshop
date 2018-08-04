@@ -32,7 +32,7 @@
                             <select name="cate_id" class="form-control">
                                 <option value="">--Danh mục--</option>
                                 @php
-                                    App\Helpers\MenuHelper::showCategories($categories->toArray())
+                                    App\Helpers\ListItemHelper::showCategories($categories->toArray())
                                 @endphp
                             </select>
                         </div>

@@ -67,7 +67,7 @@ class ProductColorController extends Controller
         $data['updated_at'] = date('Y-m-d H:i:s');
         $updateProductColor = $this->productColorService->updateProductColor($id, $data);
         if ($updateProductColor) {
-            $message = 'Item created successfully.';
+            $message = 'Item updated successfully.';
             return redirect()->action('Admin\ProductColorController@index')->with('message', $message);
         }
         return redirect()->action('Admin\ProductColorController@index')->withInput();

@@ -30,15 +30,15 @@
                 <tr>
                     <td>{{$post->id}}</td>
                     <td><img width="50" height="50" src="{{asset($post->image_url)}}"></td>
-                    <td>{{$post->post_categories_id}}</td>
-                    <td>{{$category->title}}</td>
-                    <td>{{$category->description}}</td>
-                    <td>{{$category->created_at}}</td>
+                    <td>{{App\Models\PostCategory::find($post->post_categories_id)->first()->name}}</td>
+                    <td>{{$post->title}}</td>
+                    <td>{{str_limit($post->description,20)}}</td>
+                    <td>{{$post->created_at}}</td>
                     <td class="text-right">
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#editPopup_{{$category->id}}">
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#editPopup_{{$post->id}}">
                             Sửa
                         </button>
-                        <form action="{{ route('admin.category-management.delete', ['id' => $category->id ]) }}"
+                        <form action="{{ route('admin.posts-management.delete', ['id' => $post->id ]) }}"
                               method="POST" style="display: inline;"
                               onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
                             {{ csrf_field() }}

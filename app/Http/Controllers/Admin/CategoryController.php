@@ -87,7 +87,7 @@ class CategoryController extends Controller
         $data['updated_at'] = date('Y-m-d H:i:s');
         $updateCategory = $this->categoryService->updateCategory($id, $data);
         if ($updateCategory) {
-            $message = 'Item created successfully.';
+            $message = 'Item updated successfully.';
             return redirect()->action('Admin\CategoryController@index')->with('message', $message);
         }
         return redirect()->action('Admin\CategoryController@index')->withInput();

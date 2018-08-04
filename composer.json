@@ -31,7 +31,7 @@
         },
         "files": [
             "app/Helpers/constants.php",
-            "app/Helpers/menu.php"
+            "app/Helpers/listItem.php"
         ]
     },
     "autoload-dev": {

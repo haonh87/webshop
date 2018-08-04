@@ -10,6 +10,7 @@ use App\Models\Post;
  */
 class PostService
 {
+
     /**
      * PostService constructor.
      */
@@ -62,17 +63,13 @@ class PostService
             try {
                 $Post = new Post();
                 $input['lang_code'] = DEFAULT_LANGUAGE;
-
-                if (!$input['parent_id']) {
-                    $input['parent_id'] = $this->parentIdDefault;
-                }
                 $Post->fill($input);
                 if ($Post->save()) {
+                    \DB::commit();
                     return true;
                 } else {
                     return false;
                 }
-                \DB::commit();
             } catch (\Exception $exception) {
                 \DB::rollback();
                 \Log::error('DB Error', [$exception->getMessage()]);
@@ -97,19 +94,14 @@ class PostService
             try {
                 $Post = Post::findOrFail($id);
                 $input['lang_code'] = DEFAULT_LANGUAGE;
-
-                if (!$input['parent_id']) {
-                    $input['parent_id'] = $this->parentIdDefault;
-                }
-
                 $Post->fill($input);
 
                 if ($Post->save()) {
+                    \DB::commit();
                     return true;
                 } else {
                     return false;
                 }
-                \DB::commit();
             } catch (\Exception $exception) {
                 \DB::rollback();
                 \Log::error('DB Error', [$exception->getMessage()]);
@@ -135,4 +127,5 @@ class PostService
             return false;
         }
     }
+
 }
