@@ -91,13 +91,16 @@
 <script type="text/javascript">
     var i=1;
     $("#add_image").click(function() {
-        $(this).parent().before('<div class="form-group col-sm-4 col-md-8">' +
-        '<label for="color">Color:</label>' +
-        '<select type="text" class="form-control" name="color['+i+']" placeholder="Màu sắc" required>' +
-        +''+$('#product_color_ids').html() +''+'</select></div>' +
-        '<div class="form-group col-sm-4 col-md-8">' +
-        '<input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]" required>' +
-        '</div>');
+        var html = '<div class="form-group col-sm-4 col-md-8">' +
+            '<label for="color">Color:</label>' +
+            '<select type="text" class="form-control select2_addNew" name="color['+i+']" placeholder="Màu sắc" required>' +
+            +''+$('#product_color_ids').html() +''+'</select></div>' +
+            '<div class="form-group col-sm-4 col-md-8">' +
+            '<input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]" required>' +
+            '</div>';
+        $(this).parent().before(html).promise().done(function( arg1 ) {
+            $('.select2_addNew').select2();
+        });
         i++;
         $.getScript("{{ asset('js1/fileinput.min.js') }}")
     });
@@ -119,5 +122,8 @@
         }
     });
     CKEDITOR.replace( 'content_product' );
+    $( document ).ready(function() {
+        $('.selectpicker').select2();
+    });
 </script>
 @endsection
