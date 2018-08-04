@@ -41,4 +41,16 @@ class ProductImageService
         }
         return $this->productImageModel->insert($data);
     }
+
+    public function removeImage($dataImageRemove, $productId)
+    {
+        foreach ($dataImageRemove as $image){
+            $urlPath = public_path('images/' . $image);
+            if(file_exists($urlPath) && !empty($image)) {
+                unlink($urlPath);
+            }
+        }
+        return $this->productImageModel->where('product_id', $productId)
+            ->whereIn('img_path', $dataImageRemove)->delete();
+    }
 }

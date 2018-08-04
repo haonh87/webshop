@@ -102,3 +102,25 @@ h6 {
 .image_database img{
     width: 100%;
 }
+.image_database {
+    position: relative;
+}
+.image_database .remove_image_database {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    background: black;
+    color: #ffffff;
+    border-radius: 100%;
+    top: 0px;
+    right: 15px;
+    text-align: center;
+    line-height: 12px;
+    cursor: pointer;
+}
+.wrap_image_remove {
+    height: 0px !important;
+    width: 0px !important;
+    overflow: hidden;
+    padding: 0px !important;
+}

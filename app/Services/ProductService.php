@@ -36,4 +36,18 @@ class ProductService
         $this->productModel->fill($dataProduct)->save();
         return $this->productModel->id;
     }
+
+    public function updateProduct($dataProduct, $dataColor, $id)
+    {
+        $dataProduct['product_color_ids'] = isset($dataColor) ? implode(',', $dataColor) : '';
+        $dataProduct['product_size_ids'] = isset($dataProduct['product_size_ids']) ? implode(',', $dataProduct['product_size_ids']) : '';
+        $dataProduct['modified_user_id'] = Auth::user()->id;
+        $product = $this->productModel->find($id);
+        $product->update($dataProduct);
+    }
+
+    public function deleteProduct($productId)
+    {
+        $this->productModel->find($productId)->delete();
+    }
 }

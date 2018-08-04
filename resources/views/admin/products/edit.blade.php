@@ -24,7 +24,9 @@
             <h1>Tạo mới sản phẩm</h1>
         </div>
         <div class="container">
-            <form action="{{ route('products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
+            <form action="{{ route('products.update', $productData->id) }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
+                <input name="_method" type="hidden" value="PATCH">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group col-sm-4 col-md-8">
                     <label for="category">Danh Mục</label>
                     <select class="form-control selectpicker" title="Chọn danh mục" id="category" name="category_id" required>
@@ -72,17 +74,18 @@
                         <div class="file-select">
                             <div class="file-select-button" id="fileName">Choose File</div>
                             <div class="file-select-name" id="noFile">No file chosen...</div>
-                            <input type="file" name="image[]" class="file" id="input-file" required>
+                            <input type="file" name="image[]" class="file" id="input-file">
                             {{--<img src="{{ asset('images/' . $productData->productImages[0]->img_path) }}" alt="" class="image_current">--}}
                         </div>
                     </div>
                 </div>
-                <div class="form-group col-sm-4 col-md-8 image_database">
+                <div class="form-group col-sm-4 col-md-8">
                     <div class="row">
                         @foreach($productData->productImages as $image)
-                            <div class="col-md-4">
-                                <input type="hidden" name="remove_image[]" class="remove_image">
-                                <img src="{{ asset('images/' . $image->img_path) }}" alt="" class="image_current">
+                            <div class="col-md-4 image_database">
+                                <span class="remove_image_database">x</span>
+                                <img src="{{ asset('images/' . $image->img_path) }}" alt="" data-url="{{ $image->img_path }}" class="image_current">
+                                <input type="hidden" name="remove_image[]" value="" class="remove_image">
                             </div>
                         @endforeach
                     </div>
@@ -172,7 +175,12 @@
             });
             $(document).on('click', '.remove_image', function () {
                 $(this).closest('.image_new').remove();
-            })
+            });
+            $(document).on('click', '.remove_image_database', function () {
+                $(this).closest('.image_database').addClass('wrap_image_remove');
+                var value = $(this).closest('.image_database').find('.image_current').attr('data-url');
+                $(this).closest('.image_database').find('.remove_image').val(value);
+            });
         });
     </script>
 @endsection
