@@ -17,7 +17,7 @@ class ProductImageService
         $this->productImageModel = $productImageModel;
     }
 
-    public function upLoadImage($dataImage, $productId, $dataColor, $nameProduct)
+    public function upLoadImage($dataImage, $productId, $dataColor, $nameProduct, $allColor)
     {
         try {
             $data = [];
@@ -25,7 +25,7 @@ class ProductImageService
             {
                 $name = $nameProduct.'.'.$image->getClientOriginalExtension();
                 if ($key > 0) {
-                    $name = $nameProduct.'_'.$dataColor[$key].'.'.$image->getClientOriginalExtension();
+                    $name = $nameProduct.'_'.$allColor[$dataColor[$key]].'.'.$image->getClientOriginalExtension();
                 }
                 $image->move(public_path().'/images/', $name);
                 $data[] = [

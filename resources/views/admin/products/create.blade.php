@@ -66,7 +66,7 @@
 
             <div class="form-group col-sm-4 col-md-8">
                 <label for="product_size_ids">Kích cỡ</label>
-                {{ Form::select('product_size_ids[]', $productColors, null, ['class' => 'form-control selectpicker', 'required', 'id' => 'product_size_ids', 'multiple', 'title' => 'Chọn kích cỡ']) }}
+                {{ Form::select('product_size_ids[]', $productSizes, null, ['class' => 'form-control selectpicker', 'required', 'id' => 'product_size_ids', 'multiple', 'title' => 'Chọn kích cỡ']) }}
             </div>
 
             <div class="form-group col-sm-4 col-md-8">

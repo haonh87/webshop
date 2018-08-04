@@ -75,10 +75,11 @@ class ProductController extends Controller
             DB::beginTransaction();
             $dataColor = $request->input('color');
             $dataImage = $request->file('image');
+            $allColor = $this->productColorService->getAllColor();
             $dataProduct = $request->except('_token', 'color', 'image');
             $productId = $this->productService->saveProduct($dataProduct, $dataColor);
             if (!empty($dataImage)) {
-                $this->productImageService->upLoadImage($dataImage, $productId, $dataColor, $dataProduct['name']);
+                $this->productImageService->upLoadImage($dataImage, $productId, $dataColor, $dataProduct['name'], $allColor);
             }
             DB::commit();
             return redirect()->route('products.show', ['poduct_id'=>$productId])->withMassage('update success!');
