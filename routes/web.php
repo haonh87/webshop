@@ -70,9 +70,42 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
         'uses' => 'CategoryController@destroy'
     ]);
 
+    Route::get('/post-category/{id?}', [
+        'as' => 'admin.post-category-management',
+        'uses' => 'PostCategoryController@index'
+    ]);
+
+    Route::post('//post-category/update/{id}', [
+        'as' => 'admin.post-category-management.update',
+        'uses' => 'PostCategoryController@update'
+    ]);
+
+    Route::post('//post-category/add', [
+        'as' => 'admin.post-category-management.add',
+        'uses' => 'PostCategoryController@store'
+    ]);
+    Route::post('//post-category/delete/{id}', [
+        'as' => 'admin.post-category-management.delete',
+        'uses' => 'PostCategoryController@destroy'
+    ]);
+
     Route::get('/posts/{id?}', [
         'as' => 'admin.post-management',
         'uses' => 'PostController@index'
+    ]);
+
+    Route::post('/posts/update/{id}', [
+        'as' => 'admin.posts-management.update',
+        'uses' => 'PostController@update'
+    ]);
+
+    Route::post('/posts/add', [
+        'as' => 'admin.posts-management.add',
+        'uses' => 'PostController@store'
+    ]);
+    Route::post('/posts/delete/{id}', [
+        'as' => 'admin.posts-management.delete',
+        'uses' => 'PostController@destroy'
     ]);
 
     Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductColorController@index']);

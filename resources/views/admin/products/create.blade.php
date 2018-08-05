@@ -30,7 +30,7 @@
                 <label for="category">Danh Mục</label>
                   <select class="form-control selectpicker" title="Chọn danh mục" id="category" name="category_id" required>
                       @php
-                          App\Helpers\MenuHelper::showCategories($categories->toArray())
+                          App\Helpers\ListItemHelper::showCategories($categories->toArray())
                       @endphp
                   </select>
             </div>

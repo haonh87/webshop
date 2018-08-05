@@ -43,7 +43,7 @@
                         <div class="controls">
                             <select class="form-control" id="parent_id" name="parent_id">
                                 <option value="">-- Chọn danh mục gốc --</option>
-                                {{\App\Helpers\MenuHelper::showCategories($cateAll)}}
+                                {{\App\Helpers\ListItemHelper::showCategories($cateAll)}}
                             </select>
                         </div>
                     </div>

@@ -78,7 +78,7 @@ class ProductSizeController extends Controller
         $data['updated_at'] = date('Y-m-d H:i:s');
         $updateProductSize= $this->productSizeService->updateProductSize($id, $data);
         if ($updateProductSize) {
-            $message = 'Item created successfully.';
+            $message = 'Item updated successfully.';
             return redirect()->action('Admin\ProductSizeController@index')->with('message', $message);
         }
         return redirect()->action('Admin\ProductSizeController@index')->withInput();
