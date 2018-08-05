@@ -17,7 +17,7 @@ class ProductImageService
         $this->productImageModel = $productImageModel;
     }
 
-    public function upLoadImage($dataImage, $productId, $dataColor, $nameProduct)
+    public function upLoadImage($dataImage, $productId, $dataColor, $nameProduct, $allColor)
     {
         try {
             $data = [];
@@ -25,12 +25,13 @@ class ProductImageService
             {
                 $name = $nameProduct.'.'.$image->getClientOriginalExtension();
                 if ($key > 0) {
-                    $name = $nameProduct.'_'.$dataColor[$key].'.'.$image->getClientOriginalExtension();
+                    $name = $nameProduct.'_'.$allColor[$dataColor[$key]].'.'.$image->getClientOriginalExtension();
                 }
                 $image->move(public_path().'/images/', $name);
                 $data[] = [
                     'product_id' => $productId,
                     'img_path' => $name,
+                    'color_id' => isset($dataColor[$key]) ? $dataColor[$key] : 0,
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ];
@@ -39,5 +40,17 @@ class ProductImageService
             abort('404');
         }
         return $this->productImageModel->insert($data);
+    }
+
+    public function removeImage($dataImageRemove, $productId)
+    {
+        foreach ($dataImageRemove as $image){
+            $urlPath = public_path('images/' . $image);
+            if(file_exists($urlPath) && !empty($image)) {
+                unlink($urlPath);
+            }
+        }
+        return $this->productImageModel->where('product_id', $productId)
+            ->whereIn('img_path', $dataImageRemove)->delete();
     }
 }

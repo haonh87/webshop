@@ -3,18 +3,18 @@
 @section('content')
 <div id="content">
     <div class="page-header">
-        <h1>Product / Show </h1>
+        <h1>Chi tiết sản phẩm</h1>
     </div>
 
 <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Category</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>View Count</th>
-        <th>Sell Count</th>
+        <th>Mã</th>
+        <th>Loại</th>
+        <th>Tên</th>
+        <th>Mô tả</th>
+        <th>Lượt xem</th>
+        <th>Lượng bán</th>
       </tr>
     </thead>
     <tbody>
@@ -42,7 +42,8 @@
       </tr>
     </tbody>
   </table>
-  <center><h3>Product image</h3></center><br/>
+  <br>
+  <center><h3>Ảnh sản phẩm</h3></center><br/>
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">

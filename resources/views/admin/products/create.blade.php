@@ -21,78 +21,14 @@
   </div>
 @endif
     <div class="page-header">
-        <h1>Product / Create </h1>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="frmImportExcel" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <form id="frmExcel" class="form-horizontal" role="form" action="{{ route('product.import.excel') }}" method="POST" enctype="multipart/form-data">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <button type="button" class="close"
-                       data-dismiss="modal">
-                           <span aria-hidden="true">&times;</span>
-                           <span class="sr-only">Close</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        Import product From Excel
-                    </h4>
-                </div>
-                <!-- Modal Body -->
-                <div class="modal-body">
-                        <div style="position:relative;">
-            <a class='btn btn-primary' href='javascript:;'>
-                Choose File...
-                <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="excel" size="40"  onchange='$("#upload-file-info").html($(this).val());' required accept=".xls,.xlsx" id="myFile">
-            </a>
-            &nbsp;
-            <span class='label label-info' id="upload-file-info"></span>
-            <div class="form-group">
-                    <label  class="col-sm-4 control-label"
-                              for="from_line">From Row:</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control"
-                        id="from_line" placeholder="example 13, 14 ...." name="start_row"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label"
-                          for="to-line" >To Row:</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control"
-                            id="to-line" placeholder="example 50, 55 ...." name="end_row"/>
-                    </div>
-                  </div>
-        </div>
-                </div>
-                <!-- Modal Footer -->
-                <div class="modal-footer">
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Close
-                    </button>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="submit" class="btn btn-info">Import</button>
-                        </div>
-                      </div>
-                </div>
-            </div>
-            </form>
-        </div>
+        <h1>Tạo mới sản phẩm</h1>
     </div>
     
     <div class="container">
-    <br/>
-    <br>
-    <h2>Normal Import</h2>
         <form action="{{ route('products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
             <div class="form-group col-sm-4 col-md-8">
-                <label for="category">Select Category:</label>
-                  <select class="form-control" id="category" name="category_id" required>
-                  <option value="">Select category</option>
+                <label for="category">Danh Mục</label>
+                  <select class="form-control selectpicker" title="Chọn danh mục" id="category" name="category_id" required>
                       @php
                           App\Helpers\MenuHelper::showCategories($categories->toArray())
                       @endphp
@@ -100,42 +36,46 @@
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-              <label for="name_en">Name:</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="product name" required>
+              <label for="name">Tên sản phẩm</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Tên sản phẩm" required>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-              <label for="model">Model:</label>
-              <input type="text" class="form-control" id="model" name="model_ids" placeholder="product model" required>
+              <label for="model">Mô hình</label>
+              <input type="text" class="form-control" id="model" name="model_ids" placeholder="Mô hình sản phẩm" required>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-              <label for="price">Price:</label>
-              <input type="number" class="form-control" id="price" name="price" placeholder="product price" required>
+              <label for="price">Giá</label>
+              <input type="number" class="form-control" id="price" name="price" placeholder="Giá sản phẩm" required>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-              <label for="description">Description:</label>
-              <textarea class="form-control" rows="5" id="description" name="description"></textarea>
+              <label for="description">Mô tả</label>
+              <textarea class="form-control" rows="5" id="description" name="description" required></textarea>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-                <label for="content">Content:</label>
-                <textarea class="form-control" rows="5" id="content_product" name="content"></textarea>
+                <label for="content">Nội dung</label>
+                <textarea class="form-control" rows="5" id="content_product" name="content" required></textarea>
+            </div>
+
+            {{ Form::select('product_color_ids[]', $productColors, null, ['class' => 'form-control hidden', 'id' => 'product_color_ids', 'multiple']) }}
+
+            <div class="form-group col-sm-4 col-md-8">
+                <label for="product_size_ids">Kích cỡ</label>
+                {{ Form::select('product_size_ids[]', $productSizes, null, ['class' => 'form-control selectpicker', 'required', 'id' => 'product_size_ids', 'multiple', 'title' => 'Chọn kích cỡ']) }}
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-                <label for="product_color_ids">Color:</label>
-                {{ Form::select('product_color_ids[]', $productColors, null, ['class' => 'form-control', 'id' => 'product_color_ids', 'multiple']) }}
-            </div>
-
-            <div class="form-group col-sm-4 col-md-8">
-                <label for="product_size_ids">Size:</label>
-                {{ Form::select('product_size_ids[]', $productColors, null, ['class' => 'form-control', 'id' => 'product_size_ids', 'multiple']) }}
-            </div>
-
-            <div class="form-group col-sm-4 col-md-8">
-                <input id="input-file" class="file" type="file" multiple data-min-file-count="1" name="image[]">
+                <label for="product_size_ids">Hình ảnh</label>
+                <div class="file-upload">
+                    <div class="file-select">
+                        <div class="file-select-button" id="fileName">Choose File</div>
+                        <div class="file-select-name" id="noFile">No file chosen...</div>
+                        <input type="file" name="image[]" class="file" id="input-file" required>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
@@ -156,16 +96,36 @@
 <script type="text/javascript">
     var i=1;
     $("#add_image").click(function() {
-        $(this).parent().before('<div class="form-group col-sm-4 col-md-8">' +
-        '<label for="color_name_en">Color:</label>' +
-        '<select type="text" class="form-control" name="color['+i+']" placeholder="color name" required>' +
-        +''+$('#product_color_ids').html() +''+'</select></div>' +
-        '<div class="form-group col-sm-4 col-md-8">' +
-        '<input id="input-file" class="file" type="file" multiple data-min-file-count="1" name = "image[]">' +
-        '</div>');
+        var html = '<div class="form-group col-sm-4 col-md-8 image_new"><span class="remove_image">x</span>' +
+            '<label for="color">Color:</label>' +
+            '<select type="text" class="form-control select2_addNew" name="color['+i+']" placeholder="Màu sắc" required>' +
+            +''+$('#product_color_ids').html() +''+'</select>' +
+            '<div class="file-upload">' +
+            '<div class="file-select">\n' +
+            '<div class="file-select-button" id="fileName">Choose File</div>' +
+            '<div class="file-select-name" id="noFile">No file chosen...</div>' +
+            '<input type="file" name="image[]" class="file" id="input-file" required>' +
+            '</div>' +
+            '</div>'+
+            '</div>';
+        $(this).parent().before(html).promise().done(function( arg1 ) {
+            $('.select2_addNew').select2();
+            $('.file').bind('change', function () {
+                var filename = $(this).val();
+                if (/^\s*$/.test(filename)) {
+                    $(this).closest(".file-upload").removeClass('active');
+                    $(this).closest(".file-upload").find("#noFile").text("No file chosen...");
+                }
+                else {
+                    $(this).closest(".file-upload").addClass('active');
+                    $(this).closest(".file-upload").find("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+                }
+            });
+        });
         i++;
         $.getScript("{{ asset('js1/fileinput.min.js') }}")
     });
+
     $("#frmExcel").submit(function( event ) {
       var ext = $('#myFile').val().split('.').pop().toLowerCase();
         if($.inArray(ext, ['xls','xlsx']) == -1) {
@@ -174,6 +134,7 @@
         }
       return true;
     });
+
     $("input:checkbox").click(function() {
         if ($(this).is(":checked")) {
             var group = "input:checkbox[name='" + $(this).attr("name") + "']";
@@ -183,6 +144,25 @@
             $(this).prop("checked", false);
         }
     });
+
     CKEDITOR.replace( 'content_product' );
+
+    $( document ).ready(function() {
+        $('.selectpicker').select2();
+        $('.file').bind('change', function () {
+            var filename = $(this).val();
+            if (/^\s*$/.test(filename)) {
+                $(this).closest(".file-upload").removeClass('active');
+                $(this).closest(".file-upload").find("#noFile").text("No file chosen...");
+            }
+            else {
+                $(this).closest(".file-upload").addClass('active');
+                $(this).closest(".file-upload").find("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+            }
+        });
+        $(document).on('click', '.remove_image', function () {
+            $(this).closest('.image_new').remove();
+        })
+    });
 </script>
 @endsection

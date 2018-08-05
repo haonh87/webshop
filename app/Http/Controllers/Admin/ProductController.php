@@ -15,6 +15,7 @@ use App\Services\ProductService;
 use App\Services\ProductColorService;
 use App\Services\ProductSizeService;
 use App\Services\ProductImageService;
+use DB;
 
 class ProductController extends Controller
 {
@@ -70,14 +71,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $dataColor = $request->input('color');
-        $dataImage = $request->file('image');
-        $dataProduct = $request->except('_token', 'color', 'image');
-        $productId = $this->productService->saveProduct($dataProduct);
-        if (!empty($dataImage)) {
-            $this->productImageService->upLoadImage($dataImage, $productId, $dataColor, $dataProduct['name']);
+        try {
+            DB::beginTransaction();
+            $dataColor = $request->input('color');
+            $dataImage = $request->file('image');
+            $allColor = $this->productColorService->getAllColor();
+            $dataProduct = $request->except('_token', 'color', 'image');
+            $productId = $this->productService->saveProduct($dataProduct, $dataColor);
+            if (!empty($dataImage)) {
+                $this->productImageService->upLoadImage($dataImage, $productId, $dataColor, $dataProduct['name'], $allColor);
+            }
+            DB::commit();
+            return redirect()->route('products.show', ['poduct_id'=>$productId])->withMassage('update success!');
+        } catch (\Exception $e) {
+            DB::rollback();
+            abort('404');
         }
-        return redirect()->route('products.show', ['poduct_id'=>$productId])->withMassage('update success!');
     }
 
     /**
@@ -100,8 +109,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
-        return view('admin.products.edit')->with('product', $product);
+        $categories = $this->categoryService->getAllCategories();
+        $productColors = $this->productColorService->getAllColor();
+        $productSizes = $this->productSizeService->getAllProductSize();
+        $productData = $this->productService->findProductById($id);
+        return view('admin.products.edit')->with(compact('productData','categories', 'productColors', 'productSizes'));
     }
 
     /**
@@ -113,39 +125,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-
-        $product = Product::findOrFail($id);
-        $product->category_id   = $data['category'];
-        $product->name_en          = $data['name_en'];
-        $product->name_ru          = $data['name_ru'];
-        $product->description_en   = $data['description_en'];
-        $product->description_ru   = $data['description_ru'];
-        $product->save();
-
-        $old_index_image = $product->productColor()->where('show_index', 1)->first();
-        if(isset($old_index_image)){
-            $old_index_image->show_index = false;
-            $old_index_image->save();
-        }
-
-        $new_index_image = $product->productColor()->findOrFail($data['index_show']);
-        $new_index_image->show_index = true;
-        $new_index_image->save();
-        $imgData = array_filter($data['image']);
-
-        if(!empty($imgData)){
-            $destinationPath = public_path().'/images/products/product'.$product->id;
-            foreach($imgData as $color_key=>$img){
-                $product_color_img = $img->getClientOriginalName();
-                $complete =  $img->move($destinationPath, $product_color_img);
-                $old_product_image = $product->productColor()->findOrFail($color_key);
-                $old_product_image->picture =  $product_color_img;
-                $old_product_image->save();
+        try {
+            DB::beginTransaction();
+            $dataColor = $request->input('color');
+            $dataImage = $request->file('image');
+            $dataImageRemove = $request->input('remove_image');
+            $allColor = $this->productColorService->getAllColor();
+            $dataProduct = $request->except('_token', 'color', 'image', 'remove_image', '_method');
+            $this->productService->updateProduct($dataProduct, $dataColor, $id);
+            if (!empty($dataImageRemove)) {
+                $this->productImageService->removeImage($dataImageRemove, $id);
             }
+            if (!empty($dataImage)) {
+                $this->productImageService->upLoadImage($dataImage, $id, $dataColor, $dataProduct['name'], $allColor);
+            }
+            DB::commit();
+            return redirect()->route('products.show', ['poduct_id'=>$id])->withMassage('update success!');
+        } catch (\Exception $e) {
+            DB::rollback();
+            abort('404');
         }
-
-        return redirect()->route('admin.products.show', ['poduct_id'=>$id])->withMassage('update success!');
     }
 
     /**
@@ -156,9 +155,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
-        return redirect()->route('admin.products.index');
+        $this->productService->deleteProduct($id);
+        return redirect()->route('products.index');
     }
 
     public function importProductFromExcelFile(Request $request){
