@@ -11,12 +11,13 @@ use App\Models\Category;
 class CategoryService
 {
     public $parentIdDefault = 0;
-
+    private $categoryModel;
     /**
      * CategoryService constructor.
      */
-    public function __construct()
+    public function __construct(Category $categoryModel)
     {
+        $this->categoryModel = $categoryModel;
     }
 
     /**
@@ -136,5 +137,10 @@ class CategoryService
         } else {
             return false;
         }
+    }
+
+    public function getAllCategories()
+    {
+        return $this->categoryModel->where('id', '!=', '')->get();
     }
 }
