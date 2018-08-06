@@ -10,8 +10,11 @@ class listItemHelper
             foreach ($categories as $key => $item) {
                 if ($item['parent_id'] == $parent_id) {
                     $selected = '';
-                    if ($cate != null) {
-                        $selected = ($item['id'] === $cate[$field]) ? 'selected' : '';
+                    if ($cate != null && is_array($cate)) {
+                        $selected = ($item['id'] == $cate[$field]) ? 'selected' : '';
+                    }
+                    if ($cate != null && !is_array($cate)) {
+                        $selected = ($item['id'] == $cate) ? 'selected' : '';
                     }
                     echo "<option " . $selected . " value=" . $item['id'] . ">" . $char . $item['name'] . " </option>";
                     self::showCategories($categories, $item['id'], $char . '-- ', $cate);

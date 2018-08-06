@@ -50,4 +50,12 @@ class ProductService
     {
         $this->productModel->find($productId)->delete();
     }
+
+    public function searchProduct($proName, $cateId)
+    {
+        return $this->productModel->where('id', '!=', '')
+            ->where('category_id', $cateId)
+            ->where('name', 'like', '%'.$proName.'%')
+            ->with('category')->with('productImages');
+    }
 }

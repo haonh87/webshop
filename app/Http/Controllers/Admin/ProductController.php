@@ -202,16 +202,14 @@ class ProductController extends Controller
     }
 
     public function searchProduct(Request $request){
-        $pro_name = $request->input('pro_name');
-        $pro_name =  preg_replace('/([^\pL\.\ ]+)/u', '', ($pro_name));
-        $cate_id = $request->input('cate_id');
-//        dd($cate_id);
-        if($cate_id==""){
-            $cate_id= null;
+        $proName = $request->input('pro_name');
+        $cateId = $request->input('cate_id');
+        if($cateId==""){
+            $cateId= null;
         }
-        $products = Product::search($pro_name, $cate_id);
-        $categories = Category::all();
+        $products = $this->productService->searchProduct($proName, $cateId)->paginate(PAGINATE);
+        $categories = $this->categoryService->getAllCategories();
         $name ='';
-        return view("admin.products.index")->with(compact('products','categories','name','pro_name', 'cate_id'));
+        return view("admin.products.index")->with(compact('products','categories','name','proName', 'cateId'));
     }
 }
