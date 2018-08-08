@@ -1,0 +1,252 @@
+/**
+ * @package 	WordPress
+ * @subpackage 	Sports Store
+ * @version 	1.0.0
+ * 
+ * Yith WooCommerce Ajax Product Filter CSS Rules
+ * Created by CMSMasters
+ * 
+ */
+/*-------------------------------------------------------------------------
+
+	1. 	Widgets
+	2.	CSS3 Animations
+
+-------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------*/
+/*	1. Widgets */
+/*-------------------------------------------------------------------------*/
+.yith-woocommerce-ajax-product-filter ul {
+  margin: 0;
+}
+.yith-woocommerce-ajax-product-filter ul li {
+  margin: 0;
+}
+.yith-woocommerce-ajax-product-filter ul li:before {
+  content: none;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav li {
+  padding: 0;
+  text-transform: none;
+  border-width: 0;
+  border-style: solid;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav li a {
+  text-transform: none;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-color li {
+  margin: 0 10px 0 0;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-color li.chosen a,
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-color li:hover a {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-color li a {
+  margin: 00;
+  width: 14px;
+  height: 14px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  border: none !important;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-color li a span.multicolor.color-1 {
+  border-width: 14px 14px 0 0;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-color li a span.multicolor.color-2 {
+  border-width: 0 0 14px 14px;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-list li {
+  padding-top: 5px;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-list li:first-child {
+  padding-top: 0;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-label li {
+  line-height: 20px;
+  background: none;
+  border-width: 0;
+  border-style: solid;
+  margin: 0;
+  display: inline-block;
+  float: none;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-label li:before {
+  content: '/';
+  line-height: 20px;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  top: auto;
+  left: auto;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-label li:first-child:before {
+  content: none;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-label li a {
+  display: inline-block;
+  background: none;
+  border-width: 0;
+  border-style: solid;
+  margin: 0;
+  padding: 0;
+  line-height: 20px;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-label li a:hover {
+  background: none;
+  border-width: 0;
+  border-style: solid;
+}
+.yith-woocommerce-ajax-product-filter.widget_layered_nav ul.yith-wcan-label li.chosen a {
+  background: none;
+  border-width: 0;
+  border-style: solid;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-sort-by li {
+  margin: 0 !important;
+  padding-top: 5px;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-sort-by li:first-child {
+  padding-top: 0;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-sort-by li a {
+  padding-left: 27px;
+  position: relative;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-sort-by li a.orderby-item.active:after,
+.yith-woocommerce-ajax-product-filter.yith-wcan-sort-by li a.yith-wcan-onsale-button.active:after,
+.yith-woocommerce-ajax-product-filter.yith-wcan-sort-by li a.yith-wcan-instock-button.active:after,
+.yith-woocommerce-ajax-product-filter.yith-wcan-sort-by li a.yith-wcan-price-link.active:after {
+  opacity: 1;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-sort-by li a:before {
+  content: '' !important;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: auto !important;
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 0;
+  bottom: 0;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-sort-by li a:after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  margin: auto !important;
+  position: absolute;
+  left: 5px;
+  right: auto;
+  top: 0;
+  bottom: 0;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  opacity: 0;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-list-price-filter .yith-wcan-list-price-filter {
+  padding: 0;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-list-price-filter .yith-wcan-list-price-filter li {
+  padding-top: 5px;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-list-price-filter .yith-wcan-list-price-filter li:first-child {
+  padding-top: 0;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-list-price-filter .yith-wcan-list-price-filter .yith-wcan-price-link {
+  padding-left: 27px;
+  position: relative;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-list-price-filter .yith-wcan-list-price-filter .yith-wcan-price-link:before {
+  content: '' !important;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: auto !important;
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 0;
+  bottom: 0;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-list-price-filter .yith-wcan-list-price-filter .yith-wcan-price-link:after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  margin: auto !important;
+  position: absolute;
+  left: 5px;
+  right: auto;
+  top: 0;
+  bottom: 0;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  opacity: 0;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-list-price-filter .yith-wcan-list-price-filter .yith-wcan-price-link.active:after {
+  opacity: 1;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-stock-on-sale .yith-wcan-stock-on-sale {
+  padding-left: 0;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-stock-on-sale .yith-wcan-stock-on-sale li {
+  padding-top: 5px;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-stock-on-sale .yith-wcan-stock-on-sale li:first-child {
+  padding-top: 0;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-stock-on-sale .yith-wcan-stock-on-sale li a {
+  padding-left: 27px;
+  position: relative;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-stock-on-sale .yith-wcan-stock-on-sale li a:before {
+  content: '' !important;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: auto !important;
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 0;
+  bottom: 0;
+  border-width: 1px;
+  border-style: solid;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-stock-on-sale .yith-wcan-stock-on-sale li a:after {
+  content: '\eabb';
+  font-family: 'fontello';
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: auto !important;
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 0;
+  bottom: 0;
+  line-height: 16px;
+  font-size: 11px;
+  text-align: center;
+  opacity: 0;
+}
+.yith-woocommerce-ajax-product-filter.yith-wcan-stock-on-sale .yith-wcan-stock-on-sale li a.active:after {
+  opacity: 1;
+}
+/*-------------------------------------------------------------------------*/
+/*	2.	CSS3 Animations	*/
+/*-------------------------------------------------------------------------*/
