@@ -31,7 +31,7 @@
                     <label for="category">Danh Mục</label>
                     <select class="form-control selectpicker" title="Chọn danh mục" id="category" name="category_id" required>
                         @php
-                            App\Helpers\MenuHelper::showCategories($categories->toArray(), $parent_id = 0, $char = '', $productData->category_id);
+                            App\Helpers\listItemHelper::showCategories($categories->toArray(), $parent_id = 0, $char = '', $productData->category_id);
                         @endphp
                     </select>
                 </div>
