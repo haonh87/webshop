@@ -21,6 +21,7 @@ class IndexController extends BaseController
     protected $categoryService;
     protected $productService;
     protected $numberFeature = 12;
+    protected $numberNew = 8;
      /**
      * Constructor function.
      * Set global fro category all page
@@ -42,10 +43,12 @@ class IndexController extends BaseController
         $wmCategory = $this->categoryService->getWMCategory();
         $products = Product::paginate(PAGINATE);
         $featureProducts = $this->productService->getFeatureProducts($this->numberFeature);
+        $newProducts = $this->productService->getNewProduct($this->numberNew);
         return view('frontend.top',[
             'wmCategory' => $wmCategory,
             'products' => $products,
-            'featureProducts' => $featureProducts
+            'featureProducts' => $featureProducts,
+            'newProducts' => $newProducts
         ]);
     }
 
