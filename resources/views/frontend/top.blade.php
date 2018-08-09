@@ -181,9 +181,9 @@
                                                             </div>
                                                             <div class="cmsmasters_product_info">
 
-                                                                <span class="price"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>89.00</span></span>
+                                                                <span class="price"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($featureProduct->price, 2)  }}</span></span>
 
-                                                                <div class="cmsmasters_star_rating" itemscope="" itemtype="http://schema.org/AggregateRating" title="Rated 5.00 out of 5">
+                                                                <div class="cmsmasters_star_rating" itemscope="" itemtype="http://schema.org/AggregateRating" title="Rated {{ \App\Helpers\listItemHelper::convertNumber($featureProduct->total_star, 2) }} out of 5">
                                                                     <div class="cmsmasters_star_trans_wrap">
                                                                         <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
                                                                         <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
@@ -193,14 +193,12 @@
                                                                     </div>
                                                                     <div class="cmsmasters_star_color_wrap" style="width:100%">
                                                                         <div class="cmsmasters_star_color_inner">
+                                                                            @for($i = 0; $i< (int)$featureProduct->total_star; $i++)
                                                                             <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                                            @endfor
                                                                         </div>
                                                                     </div>
-                                                                    <span class="rating dn"><strong itemprop="ratingValue">5.00</strong> out of 5</span>
+                                                                    <span class="rating dn"><strong itemprop="ratingValue">{{ $featureProduct->total_star }}</strong> out of 5</span>
                                                                 </div>
                                                             </div>
                                                         </div>

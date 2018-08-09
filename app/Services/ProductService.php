@@ -63,7 +63,7 @@ class ProductService
     public function getFeatureProducts($numberProducts)
     {
         return $this->productModel->with('category')->with('productImages')
-            ->select('*', 'votes.product_id', DB::raw('count(votes.star) as total_star'))
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
             ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
             ->groupBy('votes.product_id')->orderBy('total_star', 'desc')
             ->limit($numberProducts)->get();

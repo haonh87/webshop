@@ -22,4 +22,8 @@ class listItemHelper
             }
         }
     }
+    static function convertNumber($number, $decimals)
+    {
+        return number_format((float)$number, $decimals, '.', '');
+    }
 }
