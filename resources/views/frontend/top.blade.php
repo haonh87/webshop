@@ -164,7 +164,7 @@
                                                         <figure class="cmsmasters_product_img">
                                                             <a href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/">
                                                                 @foreach($featureProduct->productImages as $key => $productImage)
-                                                                    <img width="540" height="540" src="{{ asset($productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
+                                                                    <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
                                                                 @endforeach
                                                             </a>
                                                             <div class="button_to_cart_wrap"><a rel="nofollow" href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/" data-quantity="1" data-product_id="13743" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
