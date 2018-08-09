@@ -106,6 +106,8 @@
     <script type="text/javascript" src="{{ asset('frontend/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/js/owlcarousel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/js/jquery.script.js') }}"></script>
 
     <!-- LayerSlider updates and docs at: https://layerslider.kreaturamedia.com -->
     <link rel='https://api.w.org/' href='http://sports-store.cmsmasters.net/wp-json/'/>

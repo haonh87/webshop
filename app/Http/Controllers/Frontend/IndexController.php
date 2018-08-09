@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Services\CategoryService;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -18,14 +19,17 @@ class IndexController extends BaseController
 {
 
     protected $categoryService;
+    protected $productService;
+    protected $numberFeature = 12;
      /**
      * Constructor function.
      * Set global fro category all page
      **/
-    public function __construct(CategoryService $categoryService)
+    public function __construct(CategoryService $categoryService, ProductService $productService)
     {
          parent::__construct();
          $this->categoryService = $categoryService;
+         $this->productService = $productService;
     }
 
     /**
@@ -37,9 +41,11 @@ class IndexController extends BaseController
     {
         $wmCategory = $this->categoryService->getWMCategory();
         $products = Product::paginate(PAGINATE);
+        $featureProducts = $this->productService->getFeatureProducts($this->numberFeature);
         return view('frontend.top',[
             'wmCategory' => $wmCategory,
-            'products', $products
+            'products' => $products,
+            'featureProducts' => $featureProducts
         ]);
     }
 

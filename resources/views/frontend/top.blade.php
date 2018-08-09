@@ -4,6 +4,7 @@
 @section('content')
     <div id="content">
         @include('frontend.slider')
+
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
@@ -40,6 +41,7 @@
                 </div>
             </div>
         </div>
+
         <div class="widget widget-style-2">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
@@ -131,6 +133,7 @@
                 </div>
             </div>
         </div>
+
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
@@ -149,67 +152,36 @@
                             </div>
                         </div>
                         <div class="cmsmasters_row_margin">
-                            <div id="cmsmasters_column_d5e166fd8a" class="cmsmasters_column one_first">
+                            <div class="cmsmasters_column one_first">
                                 <div class="cmsmasters_column_inner">
                                     <div class="cmsmasters_posts_slider cmsmasters_posts_slider_product">
-                                        <div id="cmsmasters_slider_3f171e76ab"
-                                             class="cmsmasters_owl_slider owl-carousel" data-items="4"
-                                             data-pagination="true" data-navigation="false" data-single-item="false"
-                                             data-auto-play="10000">
+                                        <div id="cmsmasters_slider_3f171e76ab" class="cmsmasters_owl_slider owl-carousel" data-items="4" data-pagination="true" data-navigation="false" data-single-item="false" data-auto-play="10000">
+                                            @foreach($featureProducts as $featureProduct)
                                             <div class="cmsmasters_owl_slider_item">
                                                 <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13743 product type-product status-publish has-post-thumbnail product_cat-shoes product_cat-sneakers product_cat-unisex product_tag-shoes product_tag-sneakers product_tag-unisex first instock shipping-taxable purchasable product-type-variable">
+                                                <article class="post-13743 product type-product status-publish has-post-thumbnail product_cat-shoes product_cat-sneakers product_cat-unisex product_tag-shoes product_tag-sneakers product_tag-unisex first instock shipping-taxable purchasable product-type-variable">
                                                     <div class="cmsmasters_product">
                                                         <figure class="cmsmasters_product_img">
                                                             <a href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/">
-                                                                <img width="540" height="540"
-                                                                     src="images/products/05/5-9.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="images/products/5-9.jpg 600w, images/products/5-9-150x150.jpg 150w, images/products/5-9-300x300.jpg 300w, images/products/5-9-70x70.jpg 70w, images/products/5-9-360x360.jpg 360w, images/products/5-9-580x580.jpg 580w, images/products/5-9-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="images/products/3-22-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="images/products/3-22-580x580.jpg 580w, images/products/3-22-150x150.jpg 150w, images/products/3-22-300x300.jpg 300w, images/products/3-22.jpg 600w, images/products/3-22-70x70.jpg 70w, images/products/3-22-360x360.jpg 360w, images/products/3-22-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
+                                                                @foreach($featureProduct->productImages as $key => $productImage)
+                                                                    <img width="540" height="540" src="{{ asset($productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
+                                                                @endforeach
                                                             </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13743"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
+                                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/" data-quantity="1" data-product_id="13743" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
                                                                     options</a></div>
                                                         </figure>
                                                         <div class="cmsmasters_product_inner">
                                                             <header class="cmsmasters_product_header entry-header">
                                                                 <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/">Unisex
-                                                                        High-Top Sneaker</a>
+                                                                    <a href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/">{{ $featureProduct->name }}</a>
                                                                 </h5>
                                                             </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/shoes/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_73"
-                                                                        rel="category tag">Shoes</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/shoes/sneakers/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_74"
-                                                                        rel="category tag">Sneakers</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/unisex/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_75"
-                                                                        rel="category tag">Unisex</a></div>
+                                                            <div class="cmsmasters_product_cat entry-meta"><a href="http://sports-store.cmsmasters.net/product-category/shoes/" class="cmsmasters_cat_color cmsmasters_cat_73" rel="category tag">Shoes</a>, <a href="http://sports-store.cmsmasters.net/product-category/shoes/sneakers/" class="cmsmasters_cat_color cmsmasters_cat_74" rel="category tag">Sneakers</a>, <a href="http://sports-store.cmsmasters.net/product-category/unisex/" class="cmsmasters_cat_color cmsmasters_cat_75" rel="category tag">Unisex</a></div>
                                                             <div class="cmsmasters_product_info">
 
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>89.00</span></span>
+                                                                <span class="price"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>89.00</span></span>
 
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 5.00 out of 5">
+                                                                <div class="cmsmasters_star_rating" itemscope="" itemtype="http://schema.org/AggregateRating" title="Rated 5.00 out of 5">
                                                                     <div class="cmsmasters_star_trans_wrap">
                                                                         <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
                                                                         <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
@@ -217,8 +189,7 @@
                                                                         <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
                                                                         <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
                                                                     </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:100%">
+                                                                    <div class="cmsmasters_star_color_wrap" style="width:100%">
                                                                         <div class="cmsmasters_star_color_inner">
                                                                             <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
                                                                             <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
@@ -227,8 +198,7 @@
                                                                             <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
                                                                         </div>
                                                                     </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">5.00</strong> out of 5</span>
+                                                                    <span class="rating dn"><strong itemprop="ratingValue">5.00</strong> out of 5</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -237,892 +207,7 @@
                                                 <!--  Finish Posts Slider Product Article  -->
 
                                             </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13731 product type-product status-publish has-post-thumbnail product_cat-boot product_cat-shoes product_cat-unisex product_tag-shoes product_tag-sneakers product_tag-unisex  instock shipping-taxable purchasable product-type-variable">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/waterproof-hiking-boot/">
-                                                                <img width="540" height="540"
-                                                                     src="images/products/3-21.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="images/products/3-21.jpg 600w, images/products/3-21-150x150.jpg 150w, images/products/3-21-300x300.jpg 300w, images/products/3-21-70x70.jpg 70w, images/products/3-21-360x360.jpg 360w, images/products/3-21-580x580.jpg 580w, images/products/3-21-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="images/products/1-23-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="images/products/1-23-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-23-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-23-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-23.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-23-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-23-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-23-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="http://sports-store.cmsmasters.net/product/waterproof-hiking-boot/"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13731"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
-                                                                    options</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/waterproof-hiking-boot/">Waterproof
-                                                                        Hiking Boot</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/shoes/boot/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_106"
-                                                                        rel="category tag">Boot</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/shoes/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_73"
-                                                                        rel="category tag">Shoes</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/unisex/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_75"
-                                                                        rel="category tag">Unisex</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>99.00</span></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 4.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:80%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">4.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13655 product type-product status-publish has-post-thumbnail product_cat-shoes product_cat-sneakers product_cat-unisex product_tag-shoes product_tag-slip-on product_tag-unisex  instock shipping-taxable purchasable product-type-variable">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/womens-casual-sneaker/">
-                                                                <img width="540" height="540"
-                                                                     src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-18.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-18.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-18-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-18-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-18-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-18-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-18-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-18-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-20-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-20-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-20-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-20-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-20.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-20-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-20-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-20-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="http://sports-store.cmsmasters.net/product/womens-casual-sneaker/"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13655"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
-                                                                    options</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/womens-casual-sneaker/">Women’s
-                                                                        Casual Sneaker</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/shoes/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_73"
-                                                                        rel="category tag">Shoes</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/shoes/sneakers/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_74"
-                                                                        rel="category tag">Sneakers</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/unisex/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_75"
-                                                                        rel="category tag">Unisex</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>75.00</span></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 5.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:100%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">5.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13600 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-for-women product_cat-unisex product_tag-bag product_tag-fitness product_tag-sports product_tag-unisex last instock shipping-taxable purchasable product-type-simple">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/team-issue-duffel-bag/">
-                                                                <img width="540" height="540"
-                                                                     src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="/?add-to-cart=13600"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13600"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_simple add_to_cart_button cmsmasters_add_to_cart_button ajax_add_to_cart">Add
-                                                                    to cart</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/team-issue-duffel-bag/">Team
-                                                                        Issue Duffel Bag</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/for-men/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_81"
-                                                                        rel="category tag">For Men</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/for-women/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_82"
-                                                                        rel="category tag">For Women</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/unisex/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_75"
-                                                                        rel="category tag">Unisex</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>36.00</span></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 5.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:100%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">5.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13687 product type-product status-publish has-post-thumbnail product_cat-shoes product_cat-sneakers product_cat-unisex product_tag-shoes product_tag-slip-on product_tag-unisex first instock shipping-taxable purchasable product-type-variable">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/unisex-anvil-sneaker/">
-                                                                <img width="540" height="540"
-                                                                     src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-19.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-19.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-19-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-19-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-19-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-19-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-19-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-19-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-21-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-21-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-21-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-21-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-21.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-21-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-21-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-21-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="http://sports-store.cmsmasters.net/product/unisex-anvil-sneaker/"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13687"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
-                                                                    options</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/unisex-anvil-sneaker/">Unisex
-                                                                        Anvil Sneaker</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/shoes/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_73"
-                                                                        rel="category tag">Shoes</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/shoes/sneakers/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_74"
-                                                                        rel="category tag">Sneakers</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/unisex/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_75"
-                                                                        rel="category tag">Unisex</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>110.00</span></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 5.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:100%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">5.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13718 product type-product status-publish has-post-thumbnail product_cat-shoes product_cat-sneakers product_cat-unisex product_tag-shoes product_tag-sneakers product_tag-unisex  instock shipping-taxable purchasable product-type-variable">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/modern-sporty-fashion-sneaker/">
-                                                                <img width="540" height="540"
-                                                                     src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-20.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-20.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-20-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-20-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-20-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-20-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-20-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-20-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-22-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-22-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-22-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-22-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-22.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-22-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-22-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-22-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="http://sports-store.cmsmasters.net/product/modern-sporty-fashion-sneaker/"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13718"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
-                                                                    options</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/modern-sporty-fashion-sneaker/">Modern
-                                                                        Sporty Fashion Sneaker</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/shoes/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_73"
-                                                                        rel="category tag">Shoes</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/shoes/sneakers/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_74"
-                                                                        rel="category tag">Sneakers</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/unisex/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_75"
-                                                                        rel="category tag">Unisex</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>125.00</span></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 5.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:100%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">5.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13641 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts  instock shipping-taxable purchasable product-type-variable">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/mens-long-sleeve-t-shirt/">
-                                                                <img width="540" height="540"
-                                                                     src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="http://sports-store.cmsmasters.net/product/mens-long-sleeve-t-shirt/"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13641"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
-                                                                    options</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/mens-long-sleeve-t-shirt/">Men’s
-                                                                        Long Sleeve T-Shirt</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/for-men/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_81"
-                                                                        rel="category tag">For Men</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/t-shirts/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_91"
-                                                                        rel="category tag">T-shirts</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>25.00</span></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 5.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:100%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">5.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13618 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-men product_tag-sports product_tag-t-shirts last instock shipping-taxable purchasable product-type-variable">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/mens-short-sleeve-beefy-t-shirt/">
-                                                                <img width="540" height="540"
-                                                                     src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-17.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-17.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-17-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-17-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-17-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-17-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-17-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-17-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-17-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-17-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-17-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-17-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-17.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-17-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-17-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-17-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="http://sports-store.cmsmasters.net/product/mens-short-sleeve-beefy-t-shirt/"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13618"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
-                                                                    options</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/mens-short-sleeve-beefy-t-shirt/">Men’s
-                                                                        Short-Sleeve Beefy T-Shirt</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/for-men/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_81"
-                                                                        rel="category tag">For Men</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/t-shirts/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_91"
-                                                                        rel="category tag">T-shirts</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>55.00</span></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 5.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:100%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">5.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13592 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-for-women product_cat-unisex product_tag-bag product_tag-fitness product_tag-sports product_tag-unisex first instock sale shipping-taxable purchasable product-type-simple">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/everest-gym-bag-with-wet/">
-                                                                <img width="540" height="540"
-                                                                     src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-11.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-11.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-11-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-11-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-11-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-11-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-11-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-11-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-12-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-12-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-12-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-12-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-12.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-12-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-12-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-12-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-
-                                                            <span class="onsale"><span>Sale!</span></span>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="/?add-to-cart=13592"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13592"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_simple add_to_cart_button cmsmasters_add_to_cart_button ajax_add_to_cart">Add
-                                                                    to cart</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/everest-gym-bag-with-wet/">Everest
-                                                                        Gym Bag with Wet</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/for-men/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_81"
-                                                                        rel="category tag">For Men</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/for-women/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_82"
-                                                                        rel="category tag">For Women</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/unisex/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_75"
-                                                                        rel="category tag">Unisex</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><del><span
-                                                                                class="woocommerce-Price-amount amount"><span><span
-                                                                                        class="woocommerce-Price-currencySymbol">£</span></span>52.00</span></del> <ins><span
-                                                                                class="woocommerce-Price-amount amount"><span><span
-                                                                                        class="woocommerce-Price-currencySymbol">£</span></span>48.00</span></ins></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 5.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:100%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">5.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13583 product type-product status-publish has-post-thumbnail product_cat-accessories-2 product_cat-for-men product_cat-for-women product_cat-unisex product_tag-bag product_tag-fitness product_tag-sports product_tag-unisex  instock shipping-taxable purchasable product-type-simple">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/buckle-travel-sport-waist/">
-                                                                <img width="540" height="540"
-                                                                     src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-11.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-11.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-11-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-11-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-11-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-11-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-11-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-11-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-11-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-11-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-11-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-11-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-11.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-11-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-11-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-11-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="/?add-to-cart=13583"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13583"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_simple add_to_cart_button cmsmasters_add_to_cart_button ajax_add_to_cart">Add
-                                                                    to cart</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/buckle-travel-sport-waist/">Buckle
-                                                                        Travel Sport Waist</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/accessories-2/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_105"
-                                                                        rel="category tag">Accessories</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/for-men/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_81"
-                                                                        rel="category tag">For Men</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/for-women/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_82"
-                                                                        rel="category tag">For Women</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/unisex/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_75"
-                                                                        rel="category tag">Unisex</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>25.00</span></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 4.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:80%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">4.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13523 product type-product status-publish has-post-thumbnail product_cat-for-women product_cat-t-shirts product_tag-for-women product_tag-sports product_tag-t-shirts  instock shipping-taxable purchasable product-type-variable">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/womens-long-sleeve-shirt/">
-                                                                <img width="540" height="540"
-                                                                     src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-9.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-9.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-9-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-9-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-9-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-9-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-9-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-9-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-9-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-9-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-9-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-9-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-9.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-9-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-9-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-9-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="http://sports-store.cmsmasters.net/product/womens-long-sleeve-shirt/"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13523"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
-                                                                    options</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/womens-long-sleeve-shirt/">Women’s
-                                                                        Long Sleeve Shirt</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/for-women/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_82"
-                                                                        rel="category tag">For Women</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/t-shirts/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_91"
-                                                                        rel="category tag">T-shirts</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>63.00</span></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 5.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:100%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">5.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Product Article  -->
-                                                <article
-                                                        class="post-13499 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts last instock shipping-taxable purchasable product-type-variable">
-                                                    <div class="cmsmasters_product">
-                                                        <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/mens-quick-dry-t-shirt-orange/">
-                                                                <img width="540" height="540"
-                                                                     src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-7.jpg"
-                                                                     class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                                                     alt=""
-                                                                     srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-7.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-7-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-7-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-7-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-7-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-7-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-7-180x180.jpg 180w"
-                                                                     sizes="(max-width: 540px) 100vw, 540px"><img
-                                                                        width="540" height="540"
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-7-580x580.jpg"
-                                                                        class="attachment-shop_catalog size-shop_catalog"
-                                                                        alt=""
-                                                                        srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-7-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-7-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-7-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-7.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-7-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-7-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-7-180x180.jpg 180w"
-                                                                        sizes="(max-width: 540px) 100vw, 540px">
-                                                            </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow"
-                                                                                                href="http://sports-store.cmsmasters.net/product/mens-quick-dry-t-shirt-orange/"
-                                                                                                data-quantity="1"
-                                                                                                data-product_id="13499"
-                                                                                                data-product_sku=""
-                                                                                                class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
-                                                                    options</a></div>
-                                                        </figure>
-                                                        <div class="cmsmasters_product_inner">
-                                                            <header class="cmsmasters_product_header entry-header">
-                                                                <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/mens-quick-dry-t-shirt-orange/">Men’s
-                                                                        Quick Dry T-Shirt Orange</a>
-                                                                </h5>
-                                                            </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/for-men/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_81"
-                                                                        rel="category tag">For Men</a>, <a
-                                                                        href="http://sports-store.cmsmasters.net/product-category/t-shirts/"
-                                                                        class="cmsmasters_cat_color cmsmasters_cat_91"
-                                                                        rel="category tag">T-shirts</a></div>
-                                                            <div class="cmsmasters_product_info">
-
-                                                                <span class="price"><span
-                                                                            class="woocommerce-Price-amount amount"><span><span
-                                                                                    class="woocommerce-Price-currencySymbol">£</span></span>65.00</span></span>
-
-                                                                <div class="cmsmasters_star_rating" itemscope=""
-                                                                     itemtype="http://schema.org/AggregateRating"
-                                                                     title="Rated 5.00 out of 5">
-                                                                    <div class="cmsmasters_star_trans_wrap">
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                                                    </div>
-                                                                    <div class="cmsmasters_star_color_wrap"
-                                                                         style="width:100%">
-                                                                        <div class="cmsmasters_star_color_inner">
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="rating dn"><strong
-                                                                                itemprop="ratingValue">5.00</strong> out of 5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Product Article  -->
-
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -1132,6 +217,7 @@
                 </div>
             </div>
         </div>
+
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
@@ -2393,6 +1479,7 @@
                 </div>
             </div>
         </div>
+
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
@@ -2474,6 +1561,7 @@
                 </div>
             </div>
         </div>
+
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
@@ -2675,6 +1763,7 @@
                 </div>
             </div>
         </div>
+
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
@@ -2737,5 +1826,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 @stop

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Product;
 use Auth;
+use DB;
 
 class ProductService
 {
@@ -57,5 +58,14 @@ class ProductService
             ->where('category_id', $cateId)
             ->where('name', 'like', '%'.$proName.'%')
             ->with('category')->with('productImages');
+    }
+
+    public function getFeatureProducts($numberProducts)
+    {
+        return $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('count(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->orderBy('total_star', 'desc')
+            ->limit($numberProducts)->get();
     }
 }
