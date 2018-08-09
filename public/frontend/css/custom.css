@@ -41,4 +41,12 @@
 }
 .widget-style-1 {
     padding-top: 60px;
+    padding-bottom: 0px;
+}
+.widget-style-2 {
+    padding-bottom: 0px;
+    padding-top: 30px;
+}
+.widget .cmsmasters_heading_align_center{
+    text-align: center;
 }

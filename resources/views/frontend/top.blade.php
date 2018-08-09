@@ -145,7 +145,7 @@
                                         <h3 class="cmsmasters_heading">Featured Products</h3>
                                     </div>
                                     <div class="aligncenter">
-                                        <div class="cmsmasters_img  cmsmasters_image_c"><img src="images/line.jpg"
+                                        <div class="cmsmasters_img  cmsmasters_image_c"><img src="{{ asset('images/line.jpg') }}"
                                                                                              alt="line"></div>
                                     </div>
                                 </div>
@@ -230,7 +230,7 @@
                                     </div>
                                     <div class="aligncenter">
                                         <div class="cmsmasters_img  cmsmasters_image_c"><img
-                                                    src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/line.jpg"
+                                                    src="{{ asset('images/line.jpg') }}"
                                                     alt="line"></div>
                                     </div>
                                     <div class="cl"></div>
@@ -1523,7 +1523,7 @@
                                                 <div style="text-align: center;">
                                                     <div class="aligncenter">
                                                         <div class="cmsmasters_img  cmsmasters_image_c"><a href="#"><img
-                                                                        src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/app-store.png"
+                                                                        src="{{ asset('images/line.jpg') }}"
                                                                         alt="app-store"></a></div>
                                                     </div>
                                                 </div>
@@ -1574,7 +1574,7 @@
                                     </div>
                                     <div class="aligncenter">
                                         <div class="cmsmasters_img  cmsmasters_image_c"><img
-                                                    src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/line.jpg"
+                                                    src="{{ asset('images/line.jpg') }}"
                                                     alt="line"></div>
                                     </div>
                                     <div class="cmsmasters_posts_slider cmsmasters_posts_slider_post">
