@@ -63,3 +63,17 @@
 .colorFFF {
     color: #FFFFFF;
 }
+.custom_widget_bgcolor {
+    background-color: #101010;
+    margin-top: 60px;
+}
+.wysija-submit.wysija-submit-field {
+    background-color: rgb(58, 58, 58);
+}
+.widget-style-3 .cmsmasters_clients_item {
+    line-height: 20px;
+    height: auto;
+}
+.widget-style-3 {
+    padding-top: 50px;
+}
