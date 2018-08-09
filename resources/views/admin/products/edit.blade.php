@@ -85,7 +85,7 @@
                             <div class="col-md-4 image_database">
                                 <span class="remove_image_database">x</span>
                                 <img src="{{ asset('images/' . $image->img_path) }}" alt="" data-url="{{ $image->img_path }}" class="image_current">
-                                <input type="hidden" name="remove_image[]" value="" class="remove_image">
+                                {{--<input type="hidden" name="remove_image[]" value="" class="remove_image">--}}
                             </div>
                         @endforeach
                     </div>
@@ -179,7 +179,7 @@
             $(document).on('click', '.remove_image_database', function () {
                 $(this).closest('.image_database').addClass('wrap_image_remove');
                 var value = $(this).closest('.image_database').find('.image_current').attr('data-url');
-                $(this).closest('.image_database').find('.remove_image').val(value);
+                $(this).closest('.image_database').append('<input type="hidden" name="remove_image[]" value="'+value+'" class="remove_image">');
             });
         });
     </script>
