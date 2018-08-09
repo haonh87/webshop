@@ -1,0 +1,173 @@
+/**
+ * @package 	WordPress
+ * @subpackage 	Sports Store
+ * @version 	1.0.0
+ * 
+ * Yith WooCommerce Color and Label Variations CSS Rules
+ * Created by CMSMasters
+ * 
+ */
+/*-------------------------------------------------------------------------
+
+	1. 	General
+	2.	Single Product
+	3.	Shop Page
+	4.	CSS3 Animations
+
+-------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------*/
+/*	1. General */
+/*-------------------------------------------------------------------------*/
+.select_option {
+  padding: 2px;
+  border-color: transparent;
+  cursor: pointer;
+}
+.select_option.select_option_colorpicker {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.select_option.select_option_colorpicker .yith_wccl_value {
+  min-width: 12px;
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+  border-style: solid;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.select_option.select_option_label {
+  border-width: 0;
+  border-style: solid;
+  padding: 0;
+  margin-right: 0;
+}
+.select_option.select_option_label:first-child:before {
+  content: none;
+}
+.select_option.select_option_label:before {
+  content: '/';
+  line-height: 20px;
+  display: block;
+  float: left;
+}
+.select_option.select_option_label .yith_wccl_value {
+  line-height: 20px;
+  height: 20px;
+  margin: 0 3px;
+  float: left;
+  min-width: auto;
+  width: auto;
+  border-width: 0;
+  border-style: solid;
+}
+.select_box:after {
+  content: '.';
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  margin: 0;
+}
+/*-------------------------------------------------------------------------*/
+/*	2.	Single Product	*/
+/*-------------------------------------------------------------------------*/
+.cmsmasters_single_product .select_option.select_option_colorpicker .yith_wccl_value {
+  min-width: 12px;
+  width: 12px;
+  height: 12px;
+}
+.cmsmasters_single_product .select_option .yith-wccl-bicolor {
+  border-left-width: 12px;
+  border-left-style: solid;
+  border-bottom-width: 12px;
+  border-bottom-style: solid;
+}
+.cmsmasters_single_product .select_option .yith_wccl_value,
+.cmsmasters_single_product .select_option.select_option_label {
+  border-width: 0;
+  border-style: solid;
+  padding: 0;
+}
+.cmsmasters_single_product .variations_form select {
+  height: 34px;
+  padding: 5px 40px 5px 10px;
+  margin-right: 5px;
+}
+.cmsmasters_single_product .variations_form .select_box {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+/*-------------------------------------------------------------------------*/
+/*	3.	Shop Page	*/
+/*-------------------------------------------------------------------------*/
+.cmsmasters_product .cmsmasters_product_features .variations_form {
+  float: left;
+  margin-right: 10px;
+}
+.cmsmasters_product .cmsmasters_product_info .variations_form {
+  clear: both;
+}
+.cmsmasters_product select {
+  display: none;
+}
+li.product .variations_form.cart {
+  margin: 0;
+  height: 20px;
+  max-width: 50%;
+  overflow: hidden;
+}
+li.product .variations_form.cart div.variations {
+  margin: 2px 0;
+}
+li.product .variations_form.cart div.variations + .variations {
+  margin-top: 4px;
+}
+li.product .select_option .yith-wccl-bicolor {
+  border-left-width: 9px;
+  border-left-style: solid;
+  border-bottom-width: 9px;
+  border-bottom-style: solid;
+}
+li.product .select_option.select_option_colorpicker .yith_wccl_value {
+  width: 9px;
+  height: 9px;
+  min-width: 9px;
+}
+li.product .select_option.select_option_image {
+  padding: 0;
+}
+li.product .select_option.select_option_image .yith_wccl_value {
+  min-width: 16px;
+  height: 16px;
+  border-width: 0;
+  border-style: solid;
+}
+li.product .select_option.select_option_label:before {
+  line-height: 16px;
+}
+li.product .select_option.select_option_label .yith_wccl_value {
+  min-width: auto;
+  height: 16px;
+  line-height: 16px;
+}
+/*-------------------------------------------------------------------------*/
+/*	4.	CSS3 Animations	*/
+/*-------------------------------------------------------------------------*/
+html.csstransitions .select_option.select_option_label .yith_wccl_value {
+  -webkit-transition: color .3s ease-in-out;
+  -moz-transition: color .3s ease-in-out;
+  -ms-transition: color .3s ease-in-out;
+  -o-transition: color .3s ease-in-out;
+  transition: color .3s ease-in-out;
+}
+html.csstransitions .select_option {
+  -webkit-transition: border-color .3s ease-in-out;
+  -moz-transition: border-color .3s ease-in-out;
+  -ms-transition: border-color .3s ease-in-out;
+  -o-transition: border-color .3s ease-in-out;
+  transition: border-color .3s ease-in-out;
+}

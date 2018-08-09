@@ -20,8 +20,6 @@ class CreateOrderItemsTable extends Migration
             $table->integer('product_color_id')->unsigned();
             $table->integer('product_size_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('product_color_id')->references('id')->on('product_colors')->onDelete('cascade');
-            $table->foreign('product_size_id')->references('id')->on('product_sizes')->onDelete('cascade');
             $table->integer('quantity');
             $table->softDeletes();
             $table->timestamps();

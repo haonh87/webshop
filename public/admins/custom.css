@@ -1,0 +1,126 @@
+/*global css*/
+h1 {
+    font-size: 28px;
+    line-height: 30px;
+}
+h2 {
+    font-size: 24px;
+    line-height: 26px;
+}
+h3 {
+    font-size: 20px;
+    line-height: 22px;
+}
+h4 {
+    font-size: 18px;
+    line-height: 20px;
+}
+h5 {
+    font-size: 16px;
+    line-height: 18px;
+}
+h6 {
+    font-size: 14px;
+    line-height: 16px;
+}
+.search_form {
+    text-align: right;
+}
+.search_form .form-group {
+    display: inline-block;
+}
+.container .content .module{
+    padding: 10px 15px;
+}
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+.page-header {
+    padding: 0px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+.form-group input {
+    height: 34px;
+    display: block;
+    width: 100%;
+    padding: 4px 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-group .help-block{
+    color: red;
+}
+.search_form .form-group input{
+    height: 30px;
+    display: inline-block;
+}
+.form-group select {
+    height: 34px;
+    width: 100%;
+    display: block;
+    padding: 4px 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*end global css*/
+/*css element page*/
+.remember {
+    display: inline-block !important;
+}
+/*end css element page*/
+.file-upload{display:block;text-align:center;font-family: Helvetica, Arial, sans-serif;font-size: 12px;}
+.file-upload .file-select{display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
+.file-upload .file-select .file-select-button{background:#dce4ec;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
+.file-upload .file-select .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
+.file-upload .file-select:hover{border-color:#34495e;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload .file-select:hover .file-select-button{background:#34495e;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload.active .file-select{border-color:#3fa46a;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload.active .file-select .file-select-button{background:#3fa46a;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload .file-select input[type=file]{z-index:100;cursor:pointer;position:absolute;height:100%;width:100%;top:0;left:0;opacity:0;filter:alpha(opacity=0);}
+.file-upload .file-select.file-select-disabled{opacity:0.65;}
+.file-upload .file-select.file-select-disabled:hover{cursor:default;display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;margin-top:5px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
+.file-upload .file-select.file-select-disabled:hover .file-select-button{background:#dce4ec;color:#666666;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
+.file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
+.image_new {
+    position: relative;
+}
+.image_new .file-upload {
+    margin-top: 15px;
+}
+.image_new .remove_image {
+    position: absolute;
+    color: red;
+    top: 0px;
+    right: 15px;
+    height: 13px;
+    width: 13px;
+    cursor: pointer;
+}
+.image_database img{
+    width: 100%;
+}
+.image_database {
+    position: relative;
+}
+.image_database .remove_image_database {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    background: black;
+    color: #ffffff;
+    border-radius: 100%;
+    top: 0px;
+    right: 15px;
+    text-align: center;
+    line-height: 12px;
+    cursor: pointer;
+}
+.wrap_image_remove {
+    height: 0px !important;
+    width: 0px !important;
+    overflow: hidden;
+    padding: 0px !important;
+}

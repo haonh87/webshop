@@ -1,44 +1,40 @@
-@extends('layouts.admin')
+@extends('layouts.admin.app')
 
 @section('content')
 <div id="content">
     <div class="page-header">
-        <h1>Product / Show </h1>
+        <h1>Chi tiết sản phẩm</h1>
     </div>
 
 <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Category</th>
-        <th>Name-EN</th>
-        <th>Name-RU</th>
-        <th>Description-EN</th>
-        <th>Description-RU</th>
-        <th>View_Count</th>
-        <th>Sell_Count</th>
+        <th>Mã</th>
+        <th>Loại</th>
+        <th>Tên</th>
+        <th>Mô tả</th>
+        <th>Lượt xem</th>
+        <th>Lượng bán</th>
       </tr>
     </thead>
     <tbody>
       <tr class="success">
         <td>{{$product->id}}</td>
         <td>
-            <a href="{{ route('admin.categories.show',$product->category->id) }}">{{$product->category->name_ru}}</a>
+            <a href="{{ route('admin.category-management',$product->category->id) }}">{{$product->category->name}}</a>
         </td>
-        <td>{{$product->name_en}}</td>
-        <td>{{$product->name_ru}}</td>
-        <td>{{$product->description_en}}</td>
-        <td>{{$product->description_ru}}</td>
+        <td>{{$product->name}}</td>
+        <td>{{$product->description}}</td>
         <td>
-        @if(!empty($product->count_view))
-            <span>{{$product->count_view}}</span>
+        @if(!empty($product->view_count))
+            <span>{{$product->view_count}}</span>
         @else
             <span>0</span>
         @endif
         </td>
         <td>
-        @if(!empty($product->count_sell))
-            <span>{{$product->count_sell}}</span>
+        @if(!empty($product->sell_count))
+            <span>{{$product->sell_count}}</span>
         @else
             <span>0</span>
         @endif
@@ -46,10 +42,8 @@
       </tr>
     </tbody>
   </table>
-  <center><h3>Product image</h3></center><br/>
-      <?php 
-        $img_src = asset('/images/products/product'.$product->id).'/';
-      ?>
+  <br>
+  <center><h3>Ảnh sản phẩm</h3></center><br/>
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
@@ -61,7 +55,7 @@
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
-        @foreach($product->productColor as $key => $product_color)
+        @foreach($product->productImages as $key => $productImage)
             <div <?php
                 if($key == 0){
                     echo 'class="item active"';
@@ -69,7 +63,7 @@
                     echo 'class="item"';
                 }
              ?>>
-              <img src="{{ $img_src.$product_color->picture }}" alt="Chania">
+              <img src="{{ asset('images/' . $productImage->img_path) }}" alt="Chania">
             </div>
         @endforeach
           </div>

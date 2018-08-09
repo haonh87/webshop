@@ -6,9 +6,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('login/{social}/callback', 'Auth\AuthController@handleProviderCallback');
     Route::get('/', ["as" => "index", "uses" => "Frontend\IndexController@index"]);
     Route::get('/category/{id}', ['as' => "category", 'uses' => 'Frontend\IndexController@showProductByCategory']);
-    Route::post('/auth/login', ['as' => 'authLogin', 'uses' => 'Auth\AuthController@postLogin']);
-    Route::get('/auth/logout', ['as' => 'authLogout', 'uses' => 'Auth\AuthController@getLogout']);
-    Route::get('/auth/login', ['as' => 'authLogin', 'uses' => 'Auth\AuthController@getLogin']);
     Route::post('/product/vote', ['as' => 'product.vote', 'uses' => 'Frontend\IndexController@postVote']);
     Route::get('/search', ['as' => 'search.product', 'uses' => 'Frontend\IndexController@search']);
 
@@ -54,7 +51,103 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth"], function () {
 
     Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductController@index']);
-    Route::resource("categories", "CategoryController");
+    Route::get('/category/{id?}', [
+        'as' => 'admin.category-management',
+        'uses' => 'CategoryController@index'
+    ]);
+
+    Route::post('/category/update/{id}', [
+        'as' => 'admin.category-management.update',
+        'uses' => 'CategoryController@update'
+    ]);
+
+    Route::post('/category/add', [
+        'as' => 'admin.category-management.add',
+        'uses' => 'CategoryController@store'
+    ]);
+    Route::post('/category/delete/{id}', [
+        'as' => 'admin.category-management.delete',
+        'uses' => 'CategoryController@destroy'
+    ]);
+
+    Route::get('/post-category/{id?}', [
+        'as' => 'admin.post-category-management',
+        'uses' => 'PostCategoryController@index'
+    ]);
+
+    Route::post('//post-category/update/{id}', [
+        'as' => 'admin.post-category-management.update',
+        'uses' => 'PostCategoryController@update'
+    ]);
+
+    Route::post('//post-category/add', [
+        'as' => 'admin.post-category-management.add',
+        'uses' => 'PostCategoryController@store'
+    ]);
+    Route::post('//post-category/delete/{id}', [
+        'as' => 'admin.post-category-management.delete',
+        'uses' => 'PostCategoryController@destroy'
+    ]);
+
+    Route::get('/posts/{id?}', [
+        'as' => 'admin.post-management',
+        'uses' => 'PostController@index'
+    ]);
+
+    Route::post('/posts/update/{id}', [
+        'as' => 'admin.posts-management.update',
+        'uses' => 'PostController@update'
+    ]);
+
+    Route::post('/posts/add', [
+        'as' => 'admin.posts-management.add',
+        'uses' => 'PostController@store'
+    ]);
+    Route::post('/posts/delete/{id}', [
+        'as' => 'admin.posts-management.delete',
+        'uses' => 'PostController@destroy'
+    ]);
+
+    Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductColorController@index']);
+    Route::get('/product/color/{id?}', [
+        'as' => 'admin.product.color-management',
+        'uses' => 'ProductColorController@index'
+    ]);
+
+    Route::post('/product/color/update/{id}', [
+        'as' => 'admin.product.color.update',
+        'uses' => 'ProductColorController@update'
+    ]);
+
+    Route::post('/product/color/add', [
+        'as' => 'admin.product.color.add',
+        'uses' => 'ProductColorController@store'
+    ]);
+    Route::post('/product/color/delete/{id}', [
+        'as' => 'admin.product.color.delete',
+        'uses' => 'ProductColorController@destroy'
+    ]);
+
+    Route::get('/', ['as' => 'adminIndex', 'uses' => 'ProductSizeController@index']);
+    Route::get('/product/size/{id?}', [
+        'as' => 'admin.product.size-management',
+        'uses' => 'ProductSizeController@index'
+    ]);
+
+    Route::post('/product/size/update/{id}', [
+        'as' => 'admin.product.size.update',
+        'uses' => 'ProductSizeController@update'
+    ]);
+
+    Route::post('/product/size/add', [
+        'as' => 'admin.product.size.add',
+        'uses' => 'ProductSizeController@store'
+    ]);
+    Route::post('/product/size/delete/{id}', [
+        'as' => 'admin.product.size.delete',
+        'uses' => 'ProductSizeController@destroy'
+    ]);
+    //Route::resource("categories", "CategoryController");
     Route::resource("products", "ProductController");
     Route::post('/product/excel', ['as' => 'product.import.excel', 'uses' => 'ProductController@importProductFromExcelFile']);
 
@@ -78,9 +171,37 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
 
     Route::get('/user', ['as' => 'admin.user.index', 'uses' => 'UserController@index']);
     Route::get('/user/{user}/edit', ['as' => 'admin.user.edit', 'uses' => 'UserController@edit']);
-    Route::post('/user', ['as' => 'admin.user.store', 'uses' => 'UserController@store']);
+    Route::post('/user/store', ['as' => 'admin.user.store', 'uses' => 'UserController@store']);
     Route::delete('/user/{user}', ['as' => 'admin.user.destroy', 'uses' => 'UserController@destroy']);
     Route::get('/user/create', ['as' => 'admin.user.create', 'uses' => 'UserController@create']);
     Route::match(['put', 'patch'], '/user/{user}', ['as' => 'admin.user.update', 'uses' => 'UserController@update']);
     Route::get('product/search', ['as' => 'admin.product.search', 'uses' => 'ProductController@searchProduct']);
+});
+/*
+|--------------------------------------------------------------------------
+| Login/ Logout/ Password
+|--------------------------------------------------------------------------
+*/
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+/*
+|--------------------------------------------------------------------------
+| Registration & Activation
+|--------------------------------------------------------------------------
+*/
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+Route::get('activate/token/{token}', 'Auth\ActivateController@activate');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('activate', 'Auth\ActivateController@showActivate');
+    Route::get('activate/send-token', 'Auth\ActivateController@sendToken');
 });
