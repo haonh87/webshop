@@ -176,7 +176,9 @@
                                                                     <a href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/">{{ $featureProduct->name }}</a>
                                                                 </h5>
                                                             </header>
-                                                            <div class="cmsmasters_product_cat entry-meta"><a href="http://sports-store.cmsmasters.net/product-category/shoes/" class="cmsmasters_cat_color cmsmasters_cat_73" rel="category tag">Shoes</a>, <a href="http://sports-store.cmsmasters.net/product-category/shoes/sneakers/" class="cmsmasters_cat_color cmsmasters_cat_74" rel="category tag">Sneakers</a>, <a href="http://sports-store.cmsmasters.net/product-category/unisex/" class="cmsmasters_cat_color cmsmasters_cat_75" rel="category tag">Unisex</a></div>
+                                                            <div class="cmsmasters_product_cat entry-meta">
+                                                                <a href="http://sports-store.cmsmasters.net/product-category/shoes/" class="cmsmasters_cat_color cmsmasters_cat_73" rel="category tag">{{ $featureProduct->category->name }}</a>
+                                                            </div>
                                                             <div class="cmsmasters_product_info">
 
                                                                 <span class="price"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>89.00</span></span>
