@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,13 +16,16 @@ use LaravelLocalization;
 
 class IndexController extends BaseController
 {
+
+    protected $categoryService;
      /**
      * Constructor function.
      * Set global fro category all page
      **/
-    public function __construct()
+    public function __construct(CategoryService $categoryService)
     {
          parent::__construct();
+         $this->categoryService = $categoryService;
     }
 
     /**
@@ -31,9 +35,12 @@ class IndexController extends BaseController
      */
     public function index(Request $request)
     {
-//        dump(session('message'));
+        $wmCategory = $this->categoryService->getWMCategory();
         $products = Product::paginate(PAGINATE);
-        return view('frontend.top')->with('products', $products);
+        return view('frontend.top',[
+            'wmCategory' => $wmCategory,
+            'products', $products
+        ]);
     }
 
 

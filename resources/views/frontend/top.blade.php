@@ -9,52 +9,31 @@
                 <div class="cmsmasters_row_outer">
                     <div class="cmsmasters_row_inner">
                         <div class="cmsmasters_row_margin cmsmasters_row_columns_behavior">
-                            <div class="cmsmasters_column one_half">
-                                <div class="cmsmasters_column_inner">
-                                    <div id="cmsmasters_fb_1c7766695c"
-                                         class="cmsmasters_featured_block cmsmasters_featured_block_hover">
-                                        <a class="cmsmasters_featured_block_link"
-                                           href="http://sports-store.cmsmasters.net/men/"></a>
-                                        <div class="featured_block_inner">
-                                            <div class="featured_block_text">
-                                                <div id="cmsmasters_heading_eebc4bcac2"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h2 class="cmsmasters_heading"><a
-                                                                href="http://sports-store.cmsmasters.net/men/">FOR
-                                                            MEN</a></h2>
-                                                </div>
-                                                <div id="cmsmasters_heading_0a103986dc"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h3 class="cmsmasters_heading">New COLLECTION</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cmsmasters_column one_half">
-                                <div class="cmsmasters_column_inner">
-                                    <div id="cmsmasters_fb_adda1b76cc"
-                                         class="cmsmasters_featured_block cmsmasters_featured_block_hover">
-                                        <a class="cmsmasters_featured_block_link"
-                                           href="http://sports-store.cmsmasters.net/women/"></a>
-                                        <div class="featured_block_inner">
-                                            <div class="featured_block_text">
-                                                <div id="cmsmasters_heading_dbb2cb33a7"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h2 class="cmsmasters_heading"><a
-                                                                href="http://sports-store.cmsmasters.net/women/">FOR
-                                                            WOMEN</a></h2>
-                                                </div>
-                                                <div id="cmsmasters_heading_0964cb657e"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h3 class="cmsmasters_heading">BEST TRENDS</h3>
+                            @foreach($wmCategory as $category)
+                                <div class="cmsmasters_column one_half">
+                                    <div class="cmsmasters_column_inner">
+                                        <div class="cmsmasters_featured_block cmsmasters_featured_block_hover">
+                                            <a class="cmsmasters_featured_block_link"
+                                               href="http://sports-store.cmsmasters.net/men/">
+                                                <img src="{{ asset($category->image_url) }}" alt="">
+                                            </a>
+                                            <div class="featured_block_inner">
+                                                <div class="featured_block_text">
+                                                    <div id="cmsmasters_heading_eebc4bcac2"
+                                                         class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
+                                                        <h2 class="cmsmasters_heading"><a
+                                                                    href="http://sports-store.cmsmasters.net/men/">FOR
+                                                                MEN</a></h2>
+                                                    </div>
+                                                    <div class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
+                                                        <h3 class="cmsmasters_heading">New COLLECTION</h3>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

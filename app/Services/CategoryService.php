@@ -12,6 +12,7 @@ class CategoryService
 {
     public $parentIdDefault = 0;
     private $categoryModel;
+    private $MWcategory = ['Women', 'Men'];
     /**
      * CategoryService constructor.
      */
@@ -144,5 +145,8 @@ class CategoryService
         return $this->categoryModel->where('id', '!=', '')->get();
     }
 
-    //public function getWM
+    public function getWMCategory()
+    {
+        return $this->categoryModel->whereIn('name', $this->MWcategory)->get();
+    }
 }
