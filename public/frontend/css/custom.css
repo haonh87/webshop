@@ -4,3 +4,12 @@
 .header_mid {
     height: 90px;
 }
+#content {
+    padding-top: 90px;
+}
+#slider-top .cmsmasters_column{
+    margin: 0px;
+}
+#slider-top .cmsmasters_row_fullwidth{
+    padding: 0px !important;
+}
