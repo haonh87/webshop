@@ -12,24 +12,25 @@
                             @foreach($wmCategory as $category)
                                 <div class="cmsmasters_column one_half">
                                     <div class="cmsmasters_column_inner">
-                                        <div class="cmsmasters_featured_block cmsmasters_featured_block_hover">
+                                        <div class="cmsmasters_featured_block cmsmasters_featured_block_hover article-style-1">
                                             <a class="cmsmasters_featured_block_link"
                                                href="http://sports-store.cmsmasters.net/men/">
                                                 <img src="{{ asset($category->image_url) }}" alt="">
-                                            </a>
+                                            @php
+                                                $categoryDescription = explode('-', $category->description);
+                                            @endphp
                                             <div class="featured_block_inner">
                                                 <div class="featured_block_text">
                                                     <div id="cmsmasters_heading_eebc4bcac2"
                                                          class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                        <h2 class="cmsmasters_heading"><a
-                                                                    href="http://sports-store.cmsmasters.net/men/">FOR
-                                                                MEN</a></h2>
+                                                        <h2 class="cmsmasters_heading">{{ $categoryDescription[0] }}</h2>
                                                     </div>
                                                     <div class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                        <h3 class="cmsmasters_heading">New COLLECTION</h3>
+                                                        <h3 class="cmsmasters_heading">{{ $categoryDescription[1] }}</h3>
                                                     </div>
                                                 </div>
                                             </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

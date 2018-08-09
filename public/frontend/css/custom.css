@@ -13,3 +13,32 @@
 #slider-top .cmsmasters_row_fullwidth{
     padding: 0px !important;
 }
+.article-style-1 .cmsmasters_featured_block_link{
+    position: relative;
+    display: block;
+}
+.article-style-1 .featured_block_inner {
+    position: absolute;
+    left: 0px;
+    top: 30%;
+    z-index: 999;
+    text-align: center;
+    color: #FFFFFF;
+}
+.article-style-1 .featured_block_inner h2{
+    text-align: center;
+    display: block;
+    color: #FFFFFF;
+}
+.article-style-1 .featured_block_inner h3{
+    text-align: center;
+    display: block;
+    color: #FFFFFF;
+}
+.cmsmasters_featured_block.cmsmasters_featured_block_hover:hover a{
+    opacity: 0.9;
+    cursor: pointer;
+}
+.widget-style-1 {
+    padding-top: 60px;
+}
