@@ -50,3 +50,16 @@
 .widget .cmsmasters_heading_align_center{
     text-align: center;
 }
+.custom_widget_hasbg {
+    background-image: url(../../images/8.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    padding-top: 115px;
+    padding-bottom: 115px;
+    margin-top: 60px;
+}
+.colorFFF {
+    color: #FFFFFF;
+}

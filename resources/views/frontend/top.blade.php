@@ -218,6 +218,31 @@
             </div>
         </div>
 
+        <div class="widget widget-style-1 custom_widget_hasbg">
+            <div class="cmsmasters_row_outer_parent">
+                <div class="cmsmasters_row_outer">
+                    <div class="cmsmasters_row_inner">
+                        <div class="cmsmasters_row_margin cmsmasters_11">
+                            <div id="cmsmasters_column_e33c9de989" class="cmsmasters_column one_first">
+                                <div class="cmsmasters_column_inner">
+                                    <div id="cmsmasters_heading_64e7aa0d48" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
+                                        <h2 class="cmsmasters_heading colorFFF">Crossfit trending wear 2017</h2>
+                                    </div>
+                                    <div id="cmsmasters_heading_yfuldl1f1s" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
+                                        <h6 class="cmsmasters_heading colorFFF"> Most viewed video</h6>
+                                    </div>
+                                    <div id="cmsmasters_divider_c6e561e1fd" class="cl"></div>
+                                    <div class="aligncenter">
+                                        <div class="cmsmasters_img  cmsmasters_image_c"><a href="https://vimeo.com/95380310" rel="ilightbox[img_5b613257e8f53]"><img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/play.png" alt="play"></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
