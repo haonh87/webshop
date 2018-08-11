@@ -74,18 +74,7 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="cmsmasters_wrap_pagination">
-                        <ul class="page-numbers">
-                            <li><span aria-current="page" class="page-numbers current">1</span></li>
-                            <li><a class="page-numbers" href="http://sports-store.cmsmasters.net/shop/page/2/">2</a>
-                            </li>
-                            <li><a class="page-numbers" href="http://sports-store.cmsmasters.net/shop/page/3/">3</a>
-                            </li>
-                            <li><a class="next page-numbers"
-                                   href="http://sports-store.cmsmasters.net/shop/page/2/"><span
-                                            class="cmsmasters_theme_icon_slide_next"></span></a></li>
-                        </ul>
-                    </div>
+                    @include('frontend.elements.paginator', ['paginator' => $products])
                 </div>
                 <!--  Finish Content  -->
 
