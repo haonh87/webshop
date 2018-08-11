@@ -1,16 +1,6 @@
 @extends('layouts.admin.app')
 
 @section('content')
-    @php
-        $old_product_name="";
-        $old_cate_id = "";
-        if(isset($pro_name)){
-            $old_product_name = $pro_name;
-        }
-        if(isset($cate_id)){
-            $old_cate_id = $cate_id;
-        }
-    @endphp
     <div class="module-head">
         <h1>
             <span>Danh sách sản phẩm</span>
@@ -25,14 +15,14 @@
                         <div class="col-md-4 col-md-offset-2">
                             <div class="controls-group text-right">
                                 <input type="text" name='pro_name' class="form-control"
-                                       placeholder="Product name" value="{{ $old_product_name }}"/>
+                                       placeholder="Product name" value="{{ isset($proName) ? $proName : '' }}"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <select name="cate_id" class="form-control">
                                 <option value="">--Danh mục--</option>
                                 @php
-                                    App\Helpers\ListItemHelper::showCategories($categories->toArray())
+                                    App\Helpers\ListItemHelper::showCategories($categories->toArray(), 0, '', isset($cateId) ? $cateId : null, '')
                                 @endphp
                             </select>
                         </div>

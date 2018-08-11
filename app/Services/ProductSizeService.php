@@ -11,12 +11,13 @@ use App\Models\ProductSize;
 class ProductSizeService
 {
     public $parentIdDefault = 0;
-
+    protected $productSizeModel;
     /**
      * ProductSizeService constructor.
      */
-    public function __construct()
+    public function __construct(ProductSize $productSizeModel)
     {
+        $this->productSizeModel = $productSizeModel;
     }
 
     /**
@@ -117,5 +118,10 @@ class ProductSizeService
         } else {
             return false;
         }
+    }
+
+    public function getAllProductSize()
+    {
+        return $this->productSizeModel->where('id', '!=', '')->pluck('name', 'id');
     }
 }

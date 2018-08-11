@@ -15,6 +15,7 @@
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
           rel='stylesheet'>
     <link type="text/css" href="{{ asset('js/select2/select2.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('js/select2/select2-bootstrap.min.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('admins/css/theme.css') }}" rel="stylesheet">
 @yield('css_open')
 <!-- jQuery -->

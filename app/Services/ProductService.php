@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Product;
 use Auth;
+use DB;
 
 class ProductService
 {
@@ -49,5 +50,44 @@ class ProductService
     public function deleteProduct($productId)
     {
         $this->productModel->find($productId)->delete();
+    }
+
+    public function searchProduct($proName, $cateId)
+    {
+        return $this->productModel->where('id', '!=', '')
+            ->where('category_id', $cateId)
+            ->where('name', 'like', '%'.$proName.'%')
+            ->with('category')->with('productImages');
+    }
+
+    public function getFeatureProducts($numberProducts)
+    {
+        return $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->orderBy('total_star', 'desc')
+            ->limit($numberProducts)->get();
+    }
+
+    public function getNewProduct($numberProducts)
+    {
+        return $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc')
+            ->limit($numberProducts)->get();
+    }
+
+    public function getAllProductForView()
+    {
+        return $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc');
+    }
+
+    public function getMaxMinPrice()
+    {
+        return $this->productModel->select(DB::raw("MAX(price) AS max_price"), DB::raw("MIN(price) AS min_price"))->first();
     }
 }

@@ -11,12 +11,13 @@ use App\Models\ProductColor;
 class ProductColorService
 {
     public $parentIdDefault = 0;
-
+    protected $productColorModel;
     /**
      * ProductColorService constructor.
      */
-    public function __construct()
+    public function __construct(ProductColor $productColorModel)
     {
+        $this->productColorModel = $productColorModel;
     }
 
     /**
@@ -117,5 +118,10 @@ class ProductColorService
         } else {
             return false;
         }
+    }
+
+    public function getAllColor()
+    {
+        return $this->productColorModel->where('id', '!=', '')->pluck('name', 'id');
     }
 }
