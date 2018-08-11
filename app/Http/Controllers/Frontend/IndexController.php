@@ -53,6 +53,11 @@ class IndexController extends BaseController
     }
 
 
+    public function getProductList()
+    {
+        return view('frontend.product_list');
+    }
+
     /**
      * Display the specified resource.
      *

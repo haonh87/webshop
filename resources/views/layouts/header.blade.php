@@ -41,7 +41,7 @@
                                                             class="nav_title">Home</span></span></a></li>
                                         <li id="menu-item-14085"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14085 menu-item-depth-1">
-                                            <a href="http://sports-store.cmsmasters.net/shop/"><span
+                                            <a href="{{ route('product.list') }}"><span
                                                         class="nav_item_wrap"><span
                                                             class="nav_title">Home Shop</span></span></a></li>
                                     </ul>

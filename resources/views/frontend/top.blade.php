@@ -609,56 +609,56 @@
 
         <div class="widget widget-style-1 widget_has_bg">
             <div class="cmsmasters_row_outer_parent first">
-<div class="cmsmasters_row_outer">
-<div class="cmsmasters_row_inner">
-<div class="cmsmasters_row_margin cmsmasters_11">
-<div id="cmsmasters_column_05f09afbff" class="cmsmasters_column one_first">
-<div class="cmsmasters_column_inner"><div id="cmsmasters_heading_62feb823c3" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-    <h3 class="cmsmasters_heading">sign up for news &amp; get 15% off</h3>
-</div><div class="cmsmasters_text">
-<div style="text-align: center;"><span style="color: #606060;">Make sure you don’t miss interesting happenings by joining our newsletter program</span></div>
-</div>
-<div id="cmsmasters_divider_554599f41f" class="cl"></div>
-</div></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cmsmasters_row_outer_parent">
-<div class="cmsmasters_row_outer">
-<div class="cmsmasters_row_inner cmsmasters_row_fullwidth">
-<div class="cmsmasters_row_margin cmsmasters_131313">
-<div id="cmsmasters_column_05fe8184b7" class="cmsmasters_column one_third">
-<div class="cmsmasters_column_inner"><div class="cmsmasters_mailpoet"><div class="cmsmasters_mailpoet_form"><div class="widget_wysija_cont shortcode_wysija"><div id="msg-form-wysija-shortcode5b6e498d1e34e-1" class="wysija-msg ajax"></div><form id="form-wysija-shortcode5b6e498d1e34e-1" method="post" action="#wysija" class="widget_wysija shortcode_wysija">
-<p class="wysija-paragraph">
-    
-    
-        <input type="text" name="wysija[user][email]" class="wysija-input validate[required,custom[email]]" title="Your Email" placeholder="Your Email" value="">
-    
-    
-    
-    <span class="abs-req">
-        <input type="text" name="wysija[user][abs][email]" class="wysija-input validated[abs][email]" value="">
-    </span>
-    
-</p>
+            <div class="cmsmasters_row_outer">
+            <div class="cmsmasters_row_inner">
+            <div class="cmsmasters_row_margin cmsmasters_11">
+            <div id="cmsmasters_column_05f09afbff" class="cmsmasters_column one_first">
+            <div class="cmsmasters_column_inner"><div id="cmsmasters_heading_62feb823c3" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
+                <h3 class="cmsmasters_heading">sign up for news &amp; get 15% off</h3>
+            </div><div class="cmsmasters_text">
+            <div style="text-align: center;"><span style="color: #606060;">Make sure you don’t miss interesting happenings by joining our newsletter program</span></div>
+            </div>
+            <div id="cmsmasters_divider_554599f41f" class="cl"></div>
+            </div></div>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="cmsmasters_row_outer_parent">
+            <div class="cmsmasters_row_outer">
+            <div class="cmsmasters_row_inner cmsmasters_row_fullwidth">
+            <div class="cmsmasters_row_margin cmsmasters_131313">
+            <div id="cmsmasters_column_05fe8184b7" class="cmsmasters_column one_third">
+            <div class="cmsmasters_column_inner"><div class="cmsmasters_mailpoet"><div class="cmsmasters_mailpoet_form"><div class="widget_wysija_cont shortcode_wysija"><div id="msg-form-wysija-shortcode5b6e498d1e34e-1" class="wysija-msg ajax"></div><form id="form-wysija-shortcode5b6e498d1e34e-1" method="post" action="#wysija" class="widget_wysija shortcode_wysija">
+            <p class="wysija-paragraph">
+                
+                
+                    <input type="text" name="wysija[user][email]" class="wysija-input validate[required,custom[email]]" title="Your Email" placeholder="Your Email" value="">
+                
+                
+                
+                <span class="abs-req">
+                    <input type="text" name="wysija[user][abs][email]" class="wysija-input validated[abs][email]" value="">
+                </span>
+                
+            </p>
 
-<input class="wysija-submit wysija-submit-field" type="submit" value="Subscribe!">
+            <input class="wysija-submit wysija-submit-field" type="submit" value="Subscribe!">
 
-    <input type="hidden" name="form_id" value="1">
-    <input type="hidden" name="action" value="save">
-    <input type="hidden" name="controller" value="subscribers">
-    <input type="hidden" value="1" name="wysija-page">
+                <input type="hidden" name="form_id" value="1">
+                <input type="hidden" name="action" value="save">
+                <input type="hidden" name="controller" value="subscribers">
+                <input type="hidden" value="1" name="wysija-page">
 
-    
-        <input type="hidden" name="wysija[user_list][list_ids]" value="1">
-    
- </form></div></div></div>
-</div></div>
-</div>
-</div>
-</div>
-</div>
+                
+                    <input type="hidden" name="wysija[user_list][list_ids]" value="1">
+                
+             </form></div></div></div>
+            </div></div>
+            </div>
+            </div>
+            </div>
+            </div>
         </div>
 
         <div class="widget widget-style-3">
