@@ -421,7 +421,7 @@
                                                     alt="line"></div>
                                     </div>
                                     <div class="cmsmasters_posts_slider cmsmasters_posts_slider_post">
-                                        <div class="cmsmasters_owl_slider" data-items="3" data-pagination="true"
+                                        <div id="cmsmasters_owl_slider_4" class="cmsmasters_owl_slider" data-items="3" data-pagination="true"
                                              data-navigation="false" data-single-item="false" data-auto-play="5000">
                                             <div class="cmsmasters_owl_slider_item">
                                                 <!--  Start Posts Slider Post Article  -->
@@ -678,17 +678,32 @@
                             <div id="cmsmasters_column_f81fe74d87" class="cmsmasters_column one_first">
                                 <div class="cmsmasters_column_inner">
                                     <div class="cmsmasters_clients_slider_wrap">
-                                        <div id="cmsmasters_clients_28872e2dd6" class="cmsmasters_owl_slider owl-carousel cmsmasters_clients_slider owl-theme" data-items="3" data-single-item="false" data-auto-play="5000" data-slide-speed="1000" data-pagination-speed="1000" data-pagination="false" data-navigation="false" style="opacity: 1; display: block;">
-                                            <div class="owl-wrapper-outer autoHeight" style="height: 80px;"><div class="owl-wrapper" style="width: 2200px; left: 0px; display: block; transition: all 1000ms ease; transform: translate3d(0px, 0px, 0px);"><div class="owl-item active" style="width: 220px;"><div class="cmsmasters_clients_item item cmsmasters_owl_slider_item">
-                                                            <img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/44.png" alt="kontakt" title="kontakt"></div></div><div class="owl-item active" style="width: 220px;"><div class="cmsmasters_clients_item item cmsmasters_owl_slider_item">
-                                                            <img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/5-1.png" alt="viking" title="viking"></div></div><div class="owl-item active" style="width: 220px;"><div class="cmsmasters_clients_item item cmsmasters_owl_slider_item">
-                                                            <img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/2.png" alt="Iron Heart" title="Iron Heart"></div></div><div class="owl-item active" style="width: 220px;"><div class="cmsmasters_clients_item item cmsmasters_owl_slider_item">
-                                                            <img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/3-1.png" alt="Sportmaster" title="Sportmaster"></div></div><div class="owl-item" style="width: 220px;"><div class="cmsmasters_clients_item item cmsmasters_owl_slider_item">
-                                                            <img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/1.png" alt="brown" title="brown"></div></div></div></div>
-
-
-
-
+                                        <div id="cmsmasters_clients_28872e2dd6" class="cmsmasters_owl_slider owl-carousel cmsmasters_clients_slider owl-theme" data-items="4" data-single-item="false" data-auto-play="5000" data-slide-speed="1000" data-pagination-speed="1000" data-pagination="false" data-navigation="false" style="opacity: 1; display: block;">
+                                            <div class="owl-item active" style="width: 220px;">
+                                                <div class="cmsmasters_clients_item item cmsmasters_owl_slider_item">
+                                                    <img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/44.png" alt="kontakt" title="kontakt">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item active" style="width: 220px;">
+                                                <div class="cmsmasters_clients_item item cmsmasters_owl_slider_item">
+                                                    <img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/5-1.png" alt="viking" title="viking">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item active" style="width: 220px;">
+                                                <div class="cmsmasters_clients_item item cmsmasters_owl_slider_item">
+                                                    <img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/2.png" alt="Iron Heart" title="Iron Heart">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item active" style="width: 220px;">
+                                                <div class="cmsmasters_clients_item item cmsmasters_owl_slider_item">
+                                                    <img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/3-1.png" alt="Sportmaster" title="Sportmaster">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item" style="width: 220px;">
+                                                <div class="cmsmasters_clients_item item cmsmasters_owl_slider_item">
+                                                    <img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/1.png" alt="brown" title="brown">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
