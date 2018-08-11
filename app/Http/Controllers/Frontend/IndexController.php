@@ -56,8 +56,12 @@ class IndexController extends BaseController
     public function getProductList()
     {
         $products = $this->productService->getAllProductForView()->paginate(2);
+        $maxMinPrice = $this->productService->getMaxMinPrice();
+        $categories = $this->categoryService->getAllCategories();
         return view('frontend.product_list', [
             'products' => $products,
+            'maxMinPrice' => $maxMinPrice,
+            'categories' => $categories,
         ]);
     }
 

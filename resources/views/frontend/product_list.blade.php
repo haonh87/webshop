@@ -122,14 +122,14 @@
                                             class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"
                                             style="left: 100%;"></span></div>
                                 <div class="price_slider_amount">
-                                    <input type="text" id="min_price" name="min_price" value="12" data-min="12"
+                                    <input type="text" id="min_price" name="min_price" value="{{ $maxMinPrice->min_price }}" data-min="{{ $maxMinPrice->min_price }}"
                                            placeholder="Min price" style="display: none;">
-                                    <input type="text" id="max_price" name="max_price" value="125" data-max="125"
+                                    <input type="text" id="max_price" name="max_price" value="{{ $maxMinPrice->max_price }}" data-max="{{ $maxMinPrice->max_price }}"
                                            placeholder="Max price" style="display: none;">
                                     <button type="submit" class="button">Filter</button>
                                     <div class="price_label" style="">
-                                        Price: <span class="from"><span>£</span>12</span> — <span
-                                                class="to"><span>£</span>125</span>
+                                        Price: <span class="from"><span>D</span>{{ $maxMinPrice->min_price }}</span> — <span
+                                                class="to"><span>D</span>{{ $maxMinPrice->max_price }}</span>
                                     </div>
 
                                     <div class="clear"></div>
@@ -140,46 +140,11 @@
                     <aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
                         <h3 class="widgettitle">Product categories</h3>
                         <ul class="product-categories">
-                            <li class="cat-item cat-item-105"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/accessories-2/">Accessories</a>
+                            @foreach( $categories as $category )
+                            <li class="cat-item cat-item-{{ $category->id }}">
+                                <a href="">{{ $category->name }}</a>
                             </li>
-                            <li class="cat-item cat-item-106"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/shoes/boot/">Boot</a>
-                            </li>
-                            <li class="cat-item cat-item-84"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/bra/">Bra</a></li>
-                            <li class="cat-item cat-item-81"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/for-men/">For Men</a>
-                            </li>
-                            <li class="cat-item cat-item-82"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/for-women/">For
-                                    Women</a></li>
-                            <li class="cat-item cat-item-73"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/shoes/">Shoes</a></li>
-                            <li class="cat-item cat-item-79"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/shoes/slip-on/">Slip-On</a>
-                            </li>
-                            <li class="cat-item cat-item-74"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/shoes/sneakers/">Sneakers</a>
-                            </li>
-                            <li class="cat-item cat-item-83"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/for-women/sports-bra/">Sports
-                                    Bra</a></li>
-                            <li class="cat-item cat-item-91"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/t-shirts/">T-shirts</a>
-                            </li>
-                            <li class="cat-item cat-item-88"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/tools-for-fitness/">Tools
-                                    for Fitness</a></li>
-                            <li class="cat-item cat-item-103"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/for-men/training-shorts/">Training
-                                    Shorts</a></li>
-                            <li class="cat-item cat-item-108"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/uncategorized/">Uncategorized</a>
-                            </li>
-                            <li class="cat-item cat-item-75"><a
-                                        href="http://sports-store.cmsmasters.net/product-category/unisex/">Unisex</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </aside>
                     <aside id="woocommerce_layered_nav-2"

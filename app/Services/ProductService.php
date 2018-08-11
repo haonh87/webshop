@@ -85,4 +85,9 @@ class ProductService
             ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
             ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc');
     }
+
+    public function getMaxMinPrice()
+    {
+        return $this->productModel->select(DB::raw("MAX(price) AS max_price"), DB::raw("MIN(price) AS min_price"))->first();
+    }
 }
