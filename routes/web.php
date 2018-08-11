@@ -4,6 +4,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 
     Route::get('login/{social}', ["as" => "social.login", "uses" => 'Auth\AuthController@redirectToProvider']);
     Route::get('login/{social}/callback', 'Auth\AuthController@handleProviderCallback');
+    Route::get('/aboutUs', ['as' => 'aboutUs', 'uses' => 'Frontend\AboutUsController@index']);
+    Route::get('/instructions', ['as' => 'instructions', 'uses' => 'Frontend\InstructionsController@index']);
+
+    Route::post('customer/login', 'Auth\CustomerLoginController@login');
+    Route::get('customer/logout', 'Auth\CustomerLoginController@logout')->name('customer.logout');
+
     Route::get('/', ["as" => "index", "uses" => "Frontend\IndexController@index"]);
     Route::get('/category/{id}', ['as' => "category", 'uses' => 'Frontend\IndexController@showProductByCategory']);
     Route::post('/product/vote', ['as' => 'product.vote', 'uses' => 'Frontend\IndexController@postVote']);
@@ -206,9 +212,6 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('login', 'Auth\CustomerLoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

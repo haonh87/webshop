@@ -36,4 +36,8 @@ class Post extends Model
     public function postCategories() {
         return $this->belongsTo(PostCategory::class, 'post_categories_id');
     }
+
+    public function getInfo($post_categories_id){
+        return Post::where('post_categories_id', $post_categories_id)->get();
+    }
 }

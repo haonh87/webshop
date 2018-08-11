@@ -11,11 +11,18 @@ class CustomerLoginController extends Controller
     {
     }
 
-    public function validator(array $data){
-        return $this->validator::make($data,[
+    public function postCustomerLogin(Request $request)
+    {
+        $this->validate($request, [
             'email' => 'required|email|max:255|unique:users',
-            'password'
-        ])
-
+            'password' => 'required|confirmed|min"6'
+        ]);
+        $credentials = $request->only('email', 'password');
+        if (!\Auth::attempt($credentials)) {
+            $errorMsg['password'] = '';
+        } else {
+            return redirect()->route('dashboard');
+        }
     }
+
 }

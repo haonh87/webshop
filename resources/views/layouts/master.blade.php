@@ -92,6 +92,7 @@
           media='all'/>
     <link rel='stylesheet' id='yith-quick-view-css' href='{{ asset('frontend/css/custom.css') }}' type='text/css'
           media='all'/>
+
     <script type='text/javascript' src='{{ asset('frontend/js/layerslider/greensock.js') }}'></script>
     <script type='text/javascript' src='{{ asset('frontend/js/jquery.js') }}'></script>
     <script type='text/javascript' src='{{ asset('frontend/js/jquery-migrate.min.js') }}'></script>
@@ -179,5 +180,6 @@
     @include('layouts.header')
     @yield('content')
 </div>
+@include('login')
 @include('layouts.footer')
 </body>
