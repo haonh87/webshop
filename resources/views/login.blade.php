@@ -9,6 +9,13 @@
       			<div class="clearfix"></div>
 				<p><center style="color:red" id="error-login"></center></p>
       			<div id='social-icons-conatainer'>
+					<form id="customerLogin" action="customerLogin" method="post" role="form">
+						{{ csrf_field() }}
+						@if($errors->has('login_error'))
+							<span style="color:red; font-size:bold;">
+                        {{ $errors->first('login_error') }}
+                    </span>
+						@endif
 	        		<div class='modal-body-left'>
 	        			<div class="form-group">
 		              		<input type="text" id="login-email" placeholder="Enter your email" value="" class="form-control login-field" name="email">
@@ -16,21 +23,21 @@
 		            	</div>
 		
 		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" value="" class="form-control login-field" name="password">
+		            	  	<input type="password" id="login-pass" placeholder="Enter your password" value="" class="form-control login-field" name="password">
 		              		<i class="fa fa-lock login-field-icon"></i>
 		            	</div>
 		            	<button class="btn1 btn-success modal-login-btn" style="background-color: #5cb85c; color:#fff" id="btnLogin">{{ trans('lang.login') }}</button>
 		            	<a href="{{route('myaccount.password.email')}}" class="login-link text-center">{{ trans('lang.lost_your_password') }}?</a>
 	        		</div>
-	        	
+					</form>
 	        		<div class='modal-body-right'>
 	        			<div class="modal-social-icons">
 	        				<a href='{{route('social.login',['facebook'])}}' class="btn1 facebook"> <i class="fa fa-facebook modal-icons"></i> {{ trans('lang.sign_in_with_facebook') }} </a>
 	        				<a href='#' class="btn1 twitter"> <i class="fa fa-twitter modal-icons"></i> {{ trans('lang.sign_in_with_twitter') }} </a>
 	        				<a href='{{route('social.login',['google'])}}' class="btn1 google"> <i class="fa fa-google-plus modal-icons"></i> {{ trans('lang.sign_in_with_google') }} </a>
 	        				<a href='#' class="btn1 linkedin"> <i class="fa fa-linkedin modal-icons"></i> {{ trans('lang.sign_in_with_linkedin') }} </a>
-	        			</div> 
-	        		</div>	
+	        			</div>
+	        		</div>
 	        		<div id='center-line'> {{ trans('lang.or') }} </div>
 	        	</div>																												
         		<div class="clearfix"></div>
