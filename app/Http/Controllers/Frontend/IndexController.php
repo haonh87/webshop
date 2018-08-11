@@ -55,7 +55,10 @@ class IndexController extends BaseController
 
     public function getProductList()
     {
-        return view('frontend.product_list');
+        $products = $this->productService->getAllProductForView()->paginate(PAGINATE);
+        return view('frontend.product_list', [
+            'products' => $products,
+        ]);
     }
 
     /**

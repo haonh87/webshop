@@ -77,4 +77,12 @@ class ProductService
             ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc')
             ->limit($numberProducts)->get();
     }
+
+    public function getAllProductForView()
+    {
+        return $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc');
+    }
 }
