@@ -90,6 +90,14 @@ class ProductService
         return $result;
     }
 
+    public function findProductByIdView($id)
+    {
+        return $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->where('products.id', $id)->first();
+    }
+
     public function getMaxMinPrice()
     {
         return $this->productModel->select(DB::raw("MAX(price) AS max_price"), DB::raw("MIN(price) AS min_price"))->first();

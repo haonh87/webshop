@@ -88,7 +88,14 @@ class IndexController extends BaseController
      */
     public function show($id)
     {
-        return view('frontend.product_detail');
+        $product = $this->productService->findProductById($id);
+        $sizes = $this->productSizeService->getAllProductSize();
+        $colors = $this->productColorService->getAllColor();
+        return view('frontend.product_detail', [
+            'product' => $product,
+            'sizes' => $sizes,
+            'colors' => $colors
+        ]);
     }
 
     public function postVote(Request $request)
