@@ -91,12 +91,12 @@
                                 </li>
                                 <li id="menu-item-13036"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13036 menu-item-depth-0">
-                                    <a href="http://sports-store.cmsmasters.net/women/"><span
+                                    <a href="{{ route('product.list', ['category' => 'Women']) }}"><span
                                                 class="nav_item_wrap"><span
                                                     class="nav_title">Women</span></span></a></li>
                                 <li id="menu-item-13028"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13028 menu-item-depth-0">
-                                    <a href="http://sports-store.cmsmasters.net/men/"><span
+                                    <a href="{{ route('product.list', ['category' => 'Men']) }}"><span
                                                 class="nav_item_wrap"><span class="nav_title">Men</span></span></a>
                                 </li>
                                 <li id="menu-item-12975"
