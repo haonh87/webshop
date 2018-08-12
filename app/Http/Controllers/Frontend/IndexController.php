@@ -26,6 +26,7 @@ class IndexController extends BaseController
     protected $productColorService;
     protected $numberFeature = 12;
     protected $numberNew = 8;
+    protected $numberProductList = 20;
      /**
      * Constructor function.
      * Set global fro category all page
@@ -63,7 +64,7 @@ class IndexController extends BaseController
 
     public function getProductList()
     {
-        $products = $this->productService->getAllProductForView()->paginate(2);
+        $products = $this->productService->getAllProductForView()->paginate($this->numberProductList);
         $maxMinPrice = $this->productService->getMaxMinPrice();
         $categories = $this->categoryService->getAllCategories();
         $sizes = $this->productSizeService->getAllProductSize();
