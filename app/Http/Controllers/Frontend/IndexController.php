@@ -88,20 +88,7 @@ class IndexController extends BaseController
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id);
-        $view_count = $product->view_count;
-        $view_count=$view_count+1;
-//        dump($view_count);
-        $product->view_count=$view_count;
-        $product->save();
-        $product_colors = $product->productColor;
-        $product_sizes = $product->productSize;
-        $product_relates = $product->category->product()->where('products.id','!=',$id)->get();
-        return view('frontend.product_detail')
-                ->with('product',$product)
-                ->with('product_relates', $product_relates)
-                ->with('product_colors', $product_colors)
-                ->with('product_sizes', $product_sizes);
+        return view('frontend.product_detail');
     }
 
     public function postVote(Request $request)

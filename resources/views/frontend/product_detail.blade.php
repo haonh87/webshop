@@ -1,424 +1,524 @@
 @extends('layouts.master')
 @section('script')
-<script type="text/javascript">
-	$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-    }
-});
-</script>
-
 @stop
 @section('content')
-<div class="container">
-	<ul class="breadcrumb">
-		<li><a href="{{ route('index') }}"><i
-				class="fa fa-home"></i></a></li>
-		<li>
-			<a href="{{ route('product.show', ['product_id'=>$product->id]) }}">
-				{{ $product->LocaleName() }}
-			</a>
-		</li>
-	</ul>
-	<div class="row">
-	<?php 
-		$img_src = "images/products/product".$product->id."/";
-		$img_magnificent = "images/products/product".$product->id."/".$product->getIndexImage();
-	?>
-		<div id="content" class="col-sm-12 product_page">
-			<div class="row product-content-columns">
-				<!-- Content left -->
-				<div class="col-sm-5 col-lg-7 product_page-left">
-					<!-- product image -->
-					<div id="default_gallery" class="product-gallery">
-						<div class="image-thumb">
-							<ul id="image-additional" class="image-additional">
+    <div id="content">
+        @include('frontend.slider')
+        <div class="content_wrap fullwidth">
+            <div class="middle_content entry">
+            <div id="product-13483" class="post-13483 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts first instock shipping-taxable purchasable product-type-variable">
+                <div class="cmsmasters_single_product">
+                    <div class="cmsmasters_product_left_column">
+                        <div class="images">
 
-							@foreach($product_colors as $product_color)
-								
-								<li>
-									<a href="#" data-image="{{ asset($img_src.$product_color->picture) }}">
-										<img src="{{ asset($img_src.$product_color->picture) }}"
-										alt="" />
-									</a>
-								</li>
-							@endforeach
-							</ul>
-						</div>
-						<div id="product-image" class="product-image">
-							<div class="magnificent-wrap">
-								<div class="magnificent" data-magnificent="product-image">
-									<div class="polaroid">
-										<div class="inner">
-											<img
-												src="{{ asset($img_magnificent) }}" />
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="magnificent-viewport-wrap">
-								<div data-magnificent-viewport="product-image">
-									<div class="inner">
-										<img
-											src="{{ asset($img_magnificent) }}" />
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<script class="source">
-							$(function () {
-								$('#product-image [data-magnificent]').magnificent();
-							});
-						</script>
-					<div id="full_gallery">
-						<ul id="gallery">
-						@foreach($product_colors as $product_color)
-							<li>
-								<a href="{{ asset($img_src.$product_color->picture) }}" data-something="something" data-another-thing="anotherthing">
-									<img src="{{ asset($img_src.$product_color->picture) }}" title="{{ $product->LocaleName() }}" alt="{{ $product->LocaleName() }}" />
-								</a>
-							</li>
-						@endforeach
-						</ul>
-					</div>
+                            <div class="yith_magnifier_zoom_wrap"><div class="yith_magnifier_zoom_wrap"><div class="yith_magnifier_zoom_wrap"><div class="yith_magnifier_zoom_wrap"><a href="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6.jpg" itemprop="image" class="yith_magnifier_zoom woocommerce-main-image" title="Men’s Sport Quick Dry T-Shirt Grey-1"><img width="600" height="600" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6.jpg" class="attachment-shop_single size-shop_single wp-post-image" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6.jpg" sizes="(max-width: 600px) 100vw, 600px" src-orig="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6.jpg"></a><div class="yith_magnifier_mousetrap" style="width: 100%; height: 100%; top: 0px; left: 0px; cursor: pointer;"></div></div></div></div></div>
+                            <div class="thumbnails slider">
+                                <div class="caroufredsel_wrapper" style="display: block; text-align: left; float: none; position: relative; top: 0px; right: 0px; bottom: 0px; left: 0px; z-index: auto; width: 495px; height: 110px; margin: 0px; overflow: hidden;"><ul class="yith_magnifier_gallery" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 1485px; height: 110px;">
+                                        <li class="yith_magnifier_thumbnail first" style="width: 155px;"><a href="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6.jpg" class="yith_magnifier_thumbnail first" title="Men’s Sport Quick Dry T-Shirt Grey-1" data-small="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6.jpg"><img width="100" height="100" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6-150x150.jpg" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-6-180x180.jpg 180w" sizes="(max-width: 100px) 100vw, 100px"></a></li><li class="yith_magnifier_thumbnail" style="width: 155px;"><a href="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-6.jpg" class="yith_magnifier_thumbnail" title="Men’s Sport Quick Dry T-Shirt Grey-3" data-small="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-6.jpg"><img width="100" height="100" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-6-150x150.jpg" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-6-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-6-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-6.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-6-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-6-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-6-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-6-180x180.jpg 180w" sizes="(max-width: 100px) 100vw, 100px"></a></li><li class="yith_magnifier_thumbnail last" style="width: 155px;"><a href="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-6.jpg" class="yith_magnifier_thumbnail last" title="Men’s Sport Quick Dry T-Shirt Grey-2" data-small="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-6.jpg"><img width="100" height="100" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-6-150x150.jpg" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-6-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-6-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-6.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-6-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-6-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-6-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-6-180x180.jpg 180w" sizes="(max-width: 100px) 100vw, 100px"></a></li>        </ul></div>
 
-				</div>
+                                <div id="slider-prev" class="hidden" style="display: none;"></div>
+                                <div id="slider-next" class="hidden" style="display: none;"></div>
+                            </div>
 
-				<!-- Content right -->
-				<div class="col-sm-7 col-lg-5 product_page-right">
-					<div class="general_info product-info">
-
-						<h1 class="product-title">{{ $product->LocaleName() }}</h1>
-
-						<!-- Prodyuct rating status -->
-						<div  id="rating" class="rating-section product-rating-status">
-							<div class="rating">
-								@for( $i =1; $i<= 5; $i++ )
-									<span class="fa fa-stack">
-									@if($i<= $product->getStar())
-										<i class="fa fa-star fa-stack-2x"></i>
-									@endif
-										<i class="fa fa-star-o fa-stack-2x"></i>
-									</span>
-								@endfor
-								 &nbsp; &nbsp; 
-								<a onclick="document.getElementById('tab-review').scrollIntoView();">
-									{{ $product->votes->count() }} {{ trans('lang.reviews') }}
-								</a> / 
-								<a onclick="document.getElementById('tab-review').scrollIntoView();">
-									{{ trans('lang.write_a_review') }}
-								</a>
-							</div>
-						</div>
-
-						<div class="price-section">
-							<span class="price-new">{{ '$'.$product->price }}</span>
-							<div class="reward-block"></div>
-						</div>
-
-						<ul class="list-unstyled product-section">
-							<li>{{ trans('lang.category') }}: <a
-								href="{{route('category',$product->category->id)}}">{{ $product->category->localeName() }}</a></li>
-							<li>{{ trans('lang.product_code') }}: <span>{{ $product->artice_id }}</span></li>
-							<li>{{ trans('lang.availability') }}: <span>{{ $product->localeStatus() }}</span></li>
-						</ul>
-					</div>
-
-					<div id="product">
-
-						<!-- Product options -->
-						<div class="product-options form-horizontal">
-							<h3>{{ trans('lang.available_options') }}</h3>
-							<div class="form-group required">
-								<label class="control-label col-sm-4">{{ trans('lang.color') }}</label>
-								<div class="col-sm-8">
-									<div id="color_option">
-									@foreach($product_colors as $product_color)
-										<div class="radio">
-											<label> <input type="radio" name="color"
-												value="{{ $product_color->id }}" />
-												{{ $product_color->localeColor() }}
-											</label>
-										</div>
-									@endforeach
-									</div>
-								</div>
-							</div>
-							<div class="form-group required">
-								<label class="control-label col-sm-4">{{ trans('lang.size') }}</label>
-								<div class="col-sm-8">
-									<select name="size_option" id="size_option"
-										class="form-control">
-										<option value="">--- {{ trans('lang.please_select') }} ---</option>
-									@foreach($product_sizes as $product_size)
-										<option value="{{ $product_size->id }}">{{ $product_size->size }}</option>
-									@endforeach
-									</select>
-								</div>
-							</div>
-						</div>
-
-						<!-- product reccurings -->
-						<div class="product-reccurings"></div>
-
-						<!-- Add to cart form -->
-						<div class="form-group form-horizontal">
-							<div class="form-group">
-								<label class="control-label col-sm-4" for="input-quantity">{{ trans('lang.qty') }}</label>
-								<div class="col-sm-2">
-									<input type="text" name="quantity" value="1" size="2"
-										id="input-quantity" class="form-control" />
-								</div>
-							</div>
-
-							<input type="hidden" name="product_id" value="{{ $product->id }}" />
-							<button type="button" id="button-cart"
-								data-loading-text="Loading..."
-								class="product-btn-add cart-icon">{{ trans('lang.add_to_cart') }}</button>
-						</div>
-
-						<ul class="product-buttons">
-							<li><button class="product-btn" onclick="wishlist.add('{{ route('wishlist.store',$product->id) }}','{{ $product->id }}');">
-									<i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm">{{ trans('lang.add_to_wish_list') }}</span>
-								</button></li>
-							<li><button type="button" class="product-btn"
-									onclick="compare.add('{{ route('productCompare.update', $product->id) }}','{{ $product->id }}');">
-									<i class="fa fa-exchange"></i> <span
-										class="hidden-xs hidden-sm">{{ trans('lang.compare_this_product') }}</span>
-								</button></li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-
-			<!-- Product specifications -->
+                        </div>
 
 
-			<!-- Product reviews -->
+                        <script type="text/javascript" charset="utf-8">
+                            var yith_magnifier_options = {
 
-			<div id="tab-review" class="product-reviews product-section">
-				<h3 class="product-section_title">{{ trans('lang.reviews') }} ( {{ $product->votes->count() }} )</h3>
-				<form class="form-horizontal">
+                                enableSlider: true,
 
-					<!-- Reviews list -->
-					<div id="review">
-					@foreach($product->votes as $vote)
-						<div class="review-item">
-							<div class="row">
-								<div class="col-sm-3">
-									<div class="review-score">
-									@for( $i =1; $i<= 5; $i++ )
-										<span class="fa fa-stack">
-										@if($i<= $vote->star)
-											<i class="fa fa-star fa-stack-2x"></i>
-										@endif
-											<i class="fa fa-star-o fa-stack-2x"></i>
-										</span>
-									@endfor
-									</div>
-									<div class="review-author"><strong>{{ $vote->user->name }}</strong></div>
-									<div class="review-date">
-									{{ date('Y-m-d',strtotime($vote->created_at)) }}</div>
-								</div>
-								<div class="col-sm-9">
-									{{ $vote->comment }}
-								</div>
-							</div>
-						</div>
-					@endforeach
-					</div>
+                                sliderOptions: {
+                                    responsive: true,
+                                    circular: true,
+                                    infinite: true,
+                                    direction: 'left',
+                                    debug: false,
+                                    auto: false,
+                                    align: 'left',
+                                    prev: {
+                                        button: "#slider-prev",
+                                        key: "left"
+                                    },
+                                    next: {
+                                        button: "#slider-next",
+                                        key: "right"
+                                    },
+                                    //width   : 618,
+                                    scroll: {
+                                        items: 1,
+                                        pauseOnHover: true
+                                    },
+                                    items: {
+                                        //width: 104,
+                                        visible: 3			}
+                                },
 
-					<!-- Review form -->
-					@if(!Auth::check())
-						<div class="review-form-title">
-							<h3 class="product-section_title" id="reviews_form_title" data-toggle="modal" data-target="#login-modal">{{ trans('lang.log_in_to_write_a_review') }}</h3>
-						</div>
-					@else
-					<div class="review-form-title">
-						<h3 class="product-section_title" id="reviews_form_title">{{ trans('lang.write_a_review') }}</h3>
-					</div>
-					<div class="product-review-form" id="reviews_form">
-						<div class="form-group required">
-							<label class="control-label col-sm-3" for="input-review">{{ trans('lang.your_review') }}</label>
-							<div class="col-sm-9">
-								<textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-								<div class="help-block">
-									<span class="text-danger">{{ trans('lang.note') }}:</span> HTML is not translated!
-								</div>
-							</div>
-						</div>
-						<div class="form-group required">
-							<label class="control-label col-sm-3">{{ trans('lang.rating') }}</label>
-							<div class="col-sm-9">
-								&nbsp;&nbsp;&nbsp; Bad&nbsp; <input type="radio" name="rating"
-									value="1" /> &nbsp; <input type="radio" name="rating"
-									value="2" /> &nbsp; <input type="radio" name="rating"
-									value="3" /> &nbsp; <input type="radio" name="rating"
-									value="4" /> &nbsp; <input type="radio" name="rating"
-									value="5" /> &nbsp;Good
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-9 col-sm-offset-3">
-								<div class="pull-right">
-									<button type="button" id="button-review"
-										data-loading-text="Loading..." class="btn btn-primary" onclick="postReview('{{ route('product.vote') }}','{{ $product->id }}');">{{ trans('lang.continue') }}</button>
-								</div>
-							</div>
 
-						</div>
+                                showTitle: false,
+                                zoomWidth: 'auto',
+                                zoomHeight: 'auto',
+                                position: 'right',
+                                //tint: ,
+                                //tintOpacity: ,
+                                lensOpacity: 0.5,
+                                softFocus: false,
+                                //smoothMove: ,
+                                adjustY: 0,
+                                disableRightClick: false,
+                                phoneBehavior: 'inside',
+                                loadingLabel: 'Loading...',
+                                zoom_wrap_additional_css: ''
+                            };
+                        </script>		</div>
+                    <div class="summary entry-summary cmsmasters_product_right_column">
+                        <div class="cmsmasters_product_title_info_wrap">
+                            <h1 class="product_title entry-title">Men’s Sport Quick Dry T-Shirt Grey</h1>
+                            <div class="cmsmasters_star_rating" itemscope="" itemtype="http://schema.org/AggregateRating" title="Rated 5.00 out of 5">
+                                <div class="cmsmasters_star_trans_wrap">
+                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                </div>
+                                <div class="cmsmasters_star_color_wrap" style="width:100%">
+                                    <div class="cmsmasters_star_color_inner">
+                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                    </div>
+                                </div>
+                                <span class="rating dn"><strong itemprop="ratingValue">5.00</strong> out of 5</span>
+                            </div>
+                            <p class="price"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>65.00</span></p>
+                        </div>
+                        <div class="cmsmasters_product_content">
+                            <div class="woocommerce-product-details__short-description">
+                                <p>Aenean semper varius pellentesque. Quisque ornare ipsum vitae purus semper, ut fermentum sem tempus. Aenean et nibh dui. Vivamus vel dolor sit amet nunc tincidunt congue sit amet nec enim. Phasellus finibus libero eu urna convallis, at fermentum ex mattis. Sed maximus ligula dignissim pretium euismod. Donec semper est eget magna mollis bibendum. Maecenas elit enim, venenatis nec nisl sit amet, scelerisque mattis est. Vivamus luctus volutpat tortor, ac venenatis metus laoreet id. Nam sollicitudin turpis at vestibulum porta. Nulla maximus augue eu felis molestie luctus. Mauris quis mauris a elit mattis congue. Nam at laoreet libero, non aliquet sapien. Nulla at nunc ante.</p>
+                            </div>
+                        </div>
 
-					</div>
-					@endif
-				</form>
-			</div>
-			<!-- Related products -->
-			@if(!$product_relates->isEmpty())
-			<div class="related-products product-section">
-				<h3 class="product-section_title">{{ trans('lang.related_products') }}</h3>
-				<div class="related-slider">
+                        <form class="variations_form cart initialized" action="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/" method="post" enctype="multipart/form-data" data-product_id="13483" data-product_variations="[{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;orange&quot;,&quot;attribute_pa_size&quot;:&quot;xxl&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:65,&quot;display_regular_price&quot;:65,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Sport Quick Dry T-Shirt Orange-1&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13498&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;120&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13490,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;grey&quot;,&quot;attribute_pa_size&quot;:&quot;xxl&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:65,&quot;display_regular_price&quot;:65,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Sport Quick Dry T-Shirt Grey-1&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13487&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;121&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13491,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;orange&quot;,&quot;attribute_pa_size&quot;:&quot;xl&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:65,&quot;display_regular_price&quot;:65,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Sport Quick Dry T-Shirt Orange-1&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13498&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;122&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13492,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;grey&quot;,&quot;attribute_pa_size&quot;:&quot;xl&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:65,&quot;display_regular_price&quot;:65,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Sport Quick Dry T-Shirt Grey-1&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13487&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;123&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13493,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;orange&quot;,&quot;attribute_pa_size&quot;:&quot;m&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:65,&quot;display_regular_price&quot;:65,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Sport Quick Dry T-Shirt Orange-1&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13498&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;124&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13494,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;grey&quot;,&quot;attribute_pa_size&quot;:&quot;m&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:65,&quot;display_regular_price&quot;:65,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Sport Quick Dry T-Shirt Grey-1&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13487&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;125&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13495,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;orange&quot;,&quot;attribute_pa_size&quot;:&quot;l&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:65,&quot;display_regular_price&quot;:65,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Sport Quick Dry T-Shirt Orange-1&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13498&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;126&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13496,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-7.jpg&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;grey&quot;,&quot;attribute_pa_size&quot;:&quot;l&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:65,&quot;display_regular_price&quot;:65,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Sport Quick Dry T-Shirt Grey-1&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/1-6.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13487&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;127&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13497,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;}]" style="display: block;" current-image="13487">
 
-					<div>
-						@foreach($product_relates as $product_relate)
-							<?php 
-								$img_src = "images/products/product".$product_relate->id."/";
-							?>
-							<div class="product-thumb transition">
-								<div class="image">
-									<a class="lazy" style="padding-bottom: 100%"
-										href="{{ route('product.show', $product_relate->id) }}">
-										<img alt="Aliquam eget" title="Aliquam eget"
-										class="img-responsive"
-										data-src="{{ asset($img_src.$product_relate->getIndexImage()) }}"
-										src="#" />
-									</a>
-								</div>
-								<div class="caption">
-									<div class="name">
-										<a
-											href="{{ route('product.show', $product_relate->id) }}">
-											{{ $product_relate->localeName() }}
-											</a>
-									</div>
-									<p>{{ $product_relate->localeDescription() }}</p>
+                            <table class="variations" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td class="label"><label for="pa_colors">Colors</label></td>
+                                    <td class="value">
+                                        <select id="pa_colors" class="yith_wccl_custom" name="attribute_pa_colors" data-attribute_name="attribute_pa_colors" data-show_option_none="yes" data-default_value="grey" style="display: none;"><option value="">Choose an option</option><option value="grey" class="attached enabled">Grey</option><option value="orange" class="attached enabled">Orange</option></select><div class="select_box_colorpicker select_box attribute_pa_colors"><div class="select_option_colorpicker select_option selected" data-value="grey"><span class="yith_wccl_value" style="background: rgb(120, 110, 110);"></span></div><div class="select_option_colorpicker select_option" data-value="orange"><span class="yith_wccl_value" style="background: rgb(221, 153, 51);"></span></div></div>						</td>
+                                </tr>
+                                <tr>
+                                    <td class="label"><label for="pa_size">Size</label></td>
+                                    <td class="value">
+                                        <select id="pa_size" class="" name="attribute_pa_size" data-attribute_name="attribute_pa_size" data-show_option_none="yes" data-default_value="m"><option value="">Choose an option</option><option value="m" class="attached enabled">M</option><option value="l" class="attached enabled">L</option><option value="xl" class="attached enabled">XL</option><option value="xxl" class="attached enabled">XXL</option></select><a class="reset_variations" href="#" style="visibility: visible; display: inline-block;">Clear</a>						</td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-									<!-- Rating -->
-									<div class="rating">
-										@for( $i =1; $i<= 5; $i++ )
-											<span class="fa fa-stack">
-											@if($i<= $product_relate->getStar())
-												<i class="fa fa-star fa-stack-2x"></i>
-											@endif
-												<i class="fa fa-star-o fa-stack-2x"></i>
-											</span>
-										@endfor
-									</div>
+                            <div class="single_variation_wrap">
+                                <div class="woocommerce-variation single_variation" style="display: none;">
+                                    <div class="woocommerce-variation-description"></div>
+                                    <div class="woocommerce-variation-price"></div>
+                                    <div class="woocommerce-variation-availability"></div>
+                                </div><div class="woocommerce-variation-add-to-cart variations_button woocommerce-variation-add-to-cart-enabled">
 
-									<!-- price -->
-									<p class="price">
-										<span class="price-new">{{ '$'.$product_relate->price }}</span>
-									</p>
-								</div>
-								<div class="cart-button">
-									<button class="product-btn-add cart-icon"
-										data-toggle="tooltip" title="{{ trans('lang.add_to_cart') }}" type="button"
-										onclick="cart.add(''{{ route('product.show', $product->id) }}','{{ $product_relate->id }}');"></button>
-									<div class="secondary-btns">
-										<button class="product-btn" type="button"
-											data-toggle="tooltip" title="{{ trans('lang.add_to_wish_list') }}"
-											onclick="wishlist.add('{{ route('wishlist.store',$product->id) }}','{{ $product_relate->id }}');">
-											<i class="fa fa-heart"></i>
-										</button>
-										<button class="product-btn" type="button"
-											data-toggle="tooltip" title="{{ trans('lang.compare_this_product') }}"
-											onclick="compare.add('{{ route('productCompare.update', $product->id) }}','{{ $product_relate->id }}');">
-											<i class="fa fa-exchange"></i>
-										</button>
-									</div>
-								</div>
-								<div class="clear"></div>
-							</div>
-						@endforeach
-					</div>
+                                    <div class="quantity">
+                                        <label class="screen-reader-text" for="quantity_5b6f9b0e5a68e">Quantity</label>
+                                        <input type="number" id="quantity_5b6f9b0e5a68e" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" aria-labelledby="">
+                                    </div>
 
-				</div>
-			</div>
-		@endif
-		</div>
-	</div>
-</div>
-<script>
-	jQuery('#reviews_form_title').addClass('close-tab');
-	jQuery('#reviews_form_title').on("click", function(){
-	if (jQuery(this).hasClass('close-tab')) { jQuery(this).removeClass('close').parents('#tab-review').find('#reviews_form').slideToggle(); }
-		else {
-		jQuery(this).addClass('close-tab').parents('#tab-review').find('#reviews_form').slideToggle();
-	}
-	})
-</script>
-<script type="text/javascript">
-	jQuery(document).ready(function(){
-	var myPhotoSwipe = $("#gallery a").photoSwipe({ enableMouseWheel: false , enableKeyboard: false, captionAndToolbarAutoHideDelay:0 });
-	});
-</script>
-<script type="text/javascript"><!--
-	$('#button-cart').on('click', function() {
-		var url = $(location).attr('href').split("/");
-		$.ajax({
-			url: '{{ route("cart.store") }}',
-			type: 'post',
-			data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-			dataType:'json',
-			beforeSend: function() {
-				$('#button-cart').button('loading');
-			},
-			complete: function() {
-				$('#button-cart').button('reset');
-			},
-			success: function(json) {
-				$('.alert, .text-danger').remove();
-				$('.form-group').removeClass('has-error');
+                                    <button type="submit" class="single_add_to_cart_button button alt">Add to cart</button>
 
-				if (json['error']) {
-					if (json['error']['size']) {
-						$('#size_option').parent().after('<div class="text-danger">' + json['error']['size'] + '</div>');
-					}
-					if(json['error']['color']){
-						$('#color_option').parent().after('<div class="text-danger">' + json['error']['color'] + '</div>');
-					}
-					// Highlight any found errors
-					$('.text-danger').parent().addClass('has-error');
-				}
-				
-				if (json['success']) {
-					$('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-					
-					var url      = window.location.href;
-					$('#cart').load(url+' #cart');
-					<!--$('html, body').animate({ scrollTop: 0 }, 'slow');-->
-					setTimeout(function() {$('.alert').fadeOut(1000)},3000)
-				}
-			}
-		});
-	});
-	//-->
-</script>
-<script type="text/javascript"><!--
-	$('#review').delegate('.pagination a', 'click', function(e) {
-		e.preventDefault();
 
-		$('#review').fadeOut('slow');
+                                    <input type="hidden" name="add-to-cart" value="13483">
+                                    <input type="hidden" name="product_id" value="13483">
+                                    <input type="hidden" name="variation_id" class="variation_id" value="13495">
+                                </div>
+                            </div>
 
-		$('#review').load(this.href);
+                        </form>
 
-		$('#review').fadeIn('slow');
-	});
+                        <div class="product_meta">
 
-	// $('#review').load('index.php?route=product/product/review&product_id=33');
 
-	
-	//-->
-</script>
+
+                            <span class="sku_wrapper"><span class="product_meta_title">SKU: </span><span class="sku" data-o_content="N/A">125</span></span>
+
+
+                            <span class="posted_in"><span class="product_meta_title">Categories:</span><span class="product_meta_info"><a href="http://sports-store.cmsmasters.net/product-category/for-men/" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">For Men</a>, <a href="http://sports-store.cmsmasters.net/product-category/t-shirts/" class="cmsmasters_cat_color cmsmasters_cat_91" rel="category tag">T-shirts</a></span></span>
+                            <span class="tagged_as"><span class="product_meta_title">Tags:</span><span class="product_meta_info"><a href="http://sports-store.cmsmasters.net/product-tag/clothing/" rel="tag">clothing</a>, <a href="http://sports-store.cmsmasters.net/product-tag/men/" rel="tag">men</a>, <a href="http://sports-store.cmsmasters.net/product-tag/sports/" rel="tag">sports</a>, <a href="http://sports-store.cmsmasters.net/product-tag/t-shirts/" rel="tag">T-shirts</a></span></span>
+
+                        </div>
+
+                        <a href="/product/mens-sport-quick-dry-t-shirt-grey/?action=asd&amp;id=13483" class="compare button cmsmasters_compare_btn" data-product_id="13483" rel="nofollow" title="Compare">Compare</a>
+                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-13483">
+                            <div class="yith-wcwl-add-button show" style="display:block">
+
+
+                                <a href="/product/mens-sport-quick-dry-t-shirt-grey/?add_to_wishlist=13483" rel="nofollow" data-product-id="13483" data-product-type="variable" class="add_to_wishlist">
+                                    Add to Wishlist</a>
+                                <img src="http://sports-store.cmsmasters.net/wp-content/plugins/yith-woocommerce-wishlist-premium/assets/images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden">
+                            </div>
+
+                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
+                                <span class="feedback">Product added!</span>
+                                <a href="http://sports-store.cmsmasters.net/wishlist/" rel="nofollow">
+                                    Browse Wishlist	        </a>
+                            </div>
+
+                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
+                                <span class="feedback">The product is already in the wishlist!</span>
+                                <a href="http://sports-store.cmsmasters.net/wishlist/" rel="nofollow">
+                                    Browse Wishlist	        </a>
+                            </div>
+
+                            <div style="clear:both"></div>
+                            <div class="yith-wcwl-wishlistaddresponse"></div>
+
+                        </div>
+
+                        <div class="clear"></div><aside class="share_posts">
+
+                            <div class="share_posts_inner">
+                                <a href="https://www.facebook.com/sharer/sharer.php?display=popup&amp;u=http%3A%2F%2Fsports-store.cmsmasters.net%2Fproduct%2Fmens-sport-quick-dry-t-shirt-grey%2F">Facebook</a>
+                                <a href="https://plus.google.com/share?url=http%3A%2F%2Fsports-store.cmsmasters.net%2Fproduct%2Fmens-sport-quick-dry-t-shirt-grey%2F">Google+</a>
+                                <a href="https://twitter.com/intent/tweet?text=Check+out+%27Men%E2%80%99s+Sport+Quick+Dry+T-Shirt+Grey%27+on+Sports+Store+website&amp;url=http%3A%2F%2Fsports-store.cmsmasters.net%2Fproduct%2Fmens-sport-quick-dry-t-shirt-grey%2F">Twitter</a>
+                                <a href="https://pinterest.com/pin/create/button/?url=http%3A%2F%2Fsports-store.cmsmasters.net%2Fproduct%2Fmens-sport-quick-dry-t-shirt-grey%2F&amp;media=http%3A%2F%2Fsports-store.cmsmasters.net%2Fwp-content%2Fuploads%2F2017%2F05%2F1-6.jpg&amp;description=Men’s Sport Quick Dry T-Shirt Grey">Pinterest</a>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+
+                <div class="cmsmasters_tabs tabs_mode_tab cmsmasters_woo_tabs">
+                    <ul class="cmsmasters_tabs_list">
+                        <li class="description_tab cmsmasters_tabs_list_item current_tab">
+                            <a href="#tab-description">
+                                <span>Description</span>
+                            </a>
+                        </li>
+                        <li class="additional_information_tab cmsmasters_tabs_list_item">
+                            <a href="#tab-additional_information">
+                                <span>Additional information</span>
+                            </a>
+                        </li>
+                        <li class="reviews_tab cmsmasters_tabs_list_item">
+                            <a href="#tab-reviews">
+                                <span>Reviews (1)</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="cmsmasters_tabs_wrap">
+                        <div class="entry-content cmsmasters_tab active_tab" id="tab-description">
+                            <div class="cmsmasters_tab_inner">
+
+                                <h2>Description</h2>
+
+                                <p>US S(165-170cm 60kg-65kg) (5’5″–5’7″ 133–144lbs)<br>
+                                    US M(170-175cm 65kg-70kg) (5’7″-5’9″ 144-155lbs)<br>
+                                    US L(175-180cm70kg-75kg) (5’9″-5’11″155-166lbs)<br>
+                                    US XL(180-185cm 75kg-80kg) (5’11”-6’1″ 166-177lbs)</p>
+                            </div>
+                        </div>
+                        <div class="entry-content cmsmasters_tab" id="tab-additional_information">
+                            <div class="cmsmasters_tab_inner">
+
+                                <h2>Additional information</h2>
+
+                                <table class="shop_attributes">
+
+
+                                    <tbody><tr>
+                                        <th>Colors</th>
+                                        <td><p>Grey, Orange</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Size</th>
+                                        <td><p>M, L, XL, XXL</p>
+                                        </td>
+                                    </tr>
+                                    </tbody></table>
+                            </div>
+                        </div>
+                        <div class="entry-content cmsmasters_tab" id="tab-reviews">
+                            <div class="cmsmasters_tab_inner">
+                                <div id="reviews">
+                                    <div id="comments" class="post_comments cmsmasters_woo_comments">
+                                        <h2 class="post_comments_title">1 review for <span>Men’s Sport Quick Dry T-Shirt Grey</span></h2>
+
+
+                                        <ol class="commentlist">
+                                            <li itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment byuser comment-author-cmsmasters bypostauthor even thread-even depth-1" id="li-comment-25">
+                                                <div id="comment-25" class="comment_container cmsmasters_comment_item">
+                                                    <figure class="cmsmasters_comment_item_avatar">
+                                                        <img alt="" src="http://0.gravatar.com/avatar/cec22fb290043e2c1b9972d9bc2f0cfb?s=70&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/cec22fb290043e2c1b9972d9bc2f0cfb?s=140&amp;d=mm&amp;r=g 2x" class="avatar avatar-70 photo" height="70" width="70">		</figure>
+                                                    <div class="comment-text cmsmasters_comment_item_cont">
+                                                        <div class="cmsmasters_comment_item_cont_info">
+                                                            <h5 class="cmsmasters_comment_item_title" itemprop="author">cmsmasters</h5>
+
+                                                            <div class="cmsmasters_star_rating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 5 out of 5">
+                                                                <div class="cmsmasters_star_trans_wrap">
+                                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                                </div>
+                                                                <div class="cmsmasters_star_color_wrap" style="width:100%">
+                                                                    <div class="cmsmasters_star_color_inner">
+                                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <span class="rating dn"><strong itemprop="ratingValue">5</strong> out of 5</span>
+                                                            </div>
+                                                            <time class="cmsmasters_comment_item_date" itemprop="datePublished" datetime="May 27, 2017">May 27, 2017</time>
+                                                        </div>
+                                                        <div itemprop="description" class="description cmsmasters_comment_item_content">
+                                                            <p>Excellent Quality for a Good price.</p>
+                                                            <div class="star-rating"><span style="width:100%">Rated <strong class="rating">5</strong> out of 5</span></div>			</div>
+                                                    </div>
+                                                </div>
+                                            </li><!-- #comment-## -->
+                                        </ol>
+
+
+                                    </div>
+
+
+                                    <div id="review_form_wrapper">
+                                        <div id="review_form">
+                                            <div id="respond" class="comment-respond">
+                                                <h3 id="reply-title" class="comment-reply-title">Add a review <small><a rel="nofollow" id="cancel-comment-reply-link" href="/product/mens-sport-quick-dry-t-shirt-grey/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="http://sports-store.cmsmasters.net/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+                                                    <p class="comment-form-rating"><label for="rating">Your Rating</label><p class="stars"><span><a class="star-1" href="#">1</a><a class="star-2" href="#">2</a><a class="star-3" href="#">3</a><a class="star-4" href="#">4</a><a class="star-5" href="#">5</a></span></p><select name="rating" id="rating" style="display: none;">
+                                                        <option value="">Rate…</option>
+                                                        <option value="5">Perfect</option>
+                                                        <option value="4">Good</option>
+                                                        <option value="3">Average</option>
+                                                        <option value="2">Not that bad</option>
+                                                        <option value="1">Very Poor</option>
+                                                    </select></p><p class="comment-form-comment"><textarea name="comment" id="comment" cols="67" rows="2" placeholder="Your Review"></textarea></p><p class="comment-form-author">
+                                                        <input type="text" id="author" name="author" value="" size="35" aria-required="true" placeholder="Name *">
+                                                    </p>
+
+                                                    <p class="comment-form-email">
+                                                        <input type="text" id="email" name="email" value="" size="35" aria-required="true" placeholder="Email *">
+                                                    </p>
+
+                                                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit"> <input type="hidden" name="comment_post_ID" value="13483" id="comment_post_ID">
+                                                        <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+                                                    </p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="1a8fbcb0c6"></p><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1534040845788"></form>
+                                            </div><!-- #respond -->
+                                        </div>
+                                    </div>
+
+
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <section class="related products">
+
+                    <h2>Related products</h2>
+
+                    <div class="cmsmasters_products_wrap">
+                        <ul class="products columns-4 cmsmasters_products">
+
+                            <li class="post-13604 product type-product status-publish has-post-thumbnail product_cat-tools-for-fitness product_tag-fitness product_tag-sports product_tag-tools first instock shipping-taxable purchasable product-type-simple">
+                                <article class="cmsmasters_product">
+                                    <figure class="cmsmasters_product_img">
+                                        <a href="http://sports-store.cmsmasters.net/product/ankle-wrist-weight-set/">
+                                            <img width="540" height="540" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-14.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-14.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-14-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-14-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-14-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-14-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-14-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-14-180x180.jpg 180w" sizes="(max-width: 540px) 100vw, 540px"><img width="540" height="540" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-14-580x580.jpg" class="attachment-shop_catalog size-shop_catalog" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-14-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-14-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-14-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-14.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-14-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-14-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-14-180x180.jpg 180w" sizes="(max-width: 540px) 100vw, 540px">			</a>
+                                        <div class="button_to_cart_wrap"><a rel="nofollow" href="/product/mens-sport-quick-dry-t-shirt-grey/?add-to-cart=13604" data-quantity="1" data-product_id="13604" data-product_sku="" class="button product_type_simple add_to_cart_button cmsmasters_add_to_cart_button ajax_add_to_cart">Add to cart</a></div>		</figure>
+                                    <div class="cmsmasters_product_inner">
+                                        <div class="cmsmasters_product_features"><a href="#" class="cmsmasters_quick_view_button yith-wcqv-button empty cmsmasters_theme_icon_quick_view button" data-product_id="13604" title="Quick View"></a><a href="/product/mens-sport-quick-dry-t-shirt-grey/?action=asd&amp;id=13604" class="compare button cmsmasters_compare_btn" data-product_id="13604" rel="nofollow" title="Compare">Compare</a><div class="cmsmasters_add_wishlist_button add-to-wishlist-13604"><div class="yith-wcwl-add-button show" style="display:block"><a href="/product/mens-sport-quick-dry-t-shirt-grey/?add_to_wishlist=13604" rel="nofollow" data-product-id="13604" data-product-type="simple" class="button cmsmasters_theme_icon_wishlist add_to_wishlist" title="Wishlist"></a><img src="http://sports-store.cmsmasters.net/wp-content/themes/sports-store/woocommerce/cmsmasters-framework/theme-style/yith-woocommerce-wishlist/img/loader.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden"></div><div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;"><a href="http://sports-store.cmsmasters.net/wishlist/" class="button browse_wishlist cmsmasters_theme_icon_wishlist" rel="nofollow" title="Wishlist"></a></div><div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none"><a href="http://sports-store.cmsmasters.net/wishlist/" class="button browse_wishlist cmsmasters_theme_icon_wishlist" rel="nofollow" title="Wishlist"></a></div></div></div>			<header class="cmsmasters_product_header entry-header">
+                                            <h5 class="cmsmasters_product_title entry-title">
+                                                <a href="http://sports-store.cmsmasters.net/product/ankle-wrist-weight-set/">Ankle / Wrist Weight Set</a>
+                                            </h5>
+                                        </header>
+                                        <div class="cmsmasters_product_cat entry-meta"><a href="http://sports-store.cmsmasters.net/product-category/tools-for-fitness/" class="cmsmasters_cat_color cmsmasters_cat_88" rel="category tag">Tools for Fitness</a></div>			<div class="cmsmasters_product_info">
+
+                                            <span class="price"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>15.00</span></span>
+
+                                            <div class="cmsmasters_star_rating" itemscope="" itemtype="http://schema.org/AggregateRating" title="Rated 5.00 out of 5">
+                                                <div class="cmsmasters_star_trans_wrap">
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                </div>
+                                                <div class="cmsmasters_star_color_wrap" style="width:100%">
+                                                    <div class="cmsmasters_star_color_inner">
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="rating dn"><strong itemprop="ratingValue">5.00</strong> out of 5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+
+                            <li class="post-13600 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-for-women product_cat-unisex product_tag-bag product_tag-fitness product_tag-sports product_tag-unisex instock shipping-taxable purchasable product-type-simple">
+                                <article class="cmsmasters_product">
+                                    <figure class="cmsmasters_product_img">
+                                        <a href="http://sports-store.cmsmasters.net/product/team-issue-duffel-bag/">
+                                            <img width="540" height="540" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-13-180x180.jpg 180w" sizes="(max-width: 540px) 100vw, 540px"><img width="540" height="540" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-580x580.jpg" class="attachment-shop_catalog size-shop_catalog" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-12-180x180.jpg 180w" sizes="(max-width: 540px) 100vw, 540px">			</a>
+                                        <div class="button_to_cart_wrap"><a rel="nofollow" href="/product/mens-sport-quick-dry-t-shirt-grey/?add-to-cart=13600" data-quantity="1" data-product_id="13600" data-product_sku="" class="button product_type_simple add_to_cart_button cmsmasters_add_to_cart_button ajax_add_to_cart">Add to cart</a></div>		</figure>
+                                    <div class="cmsmasters_product_inner">
+                                        <div class="cmsmasters_product_features"><a href="#" class="cmsmasters_quick_view_button yith-wcqv-button empty cmsmasters_theme_icon_quick_view button" data-product_id="13600" title="Quick View"></a><a href="/product/mens-sport-quick-dry-t-shirt-grey/?action=asd&amp;id=13600" class="compare button cmsmasters_compare_btn" data-product_id="13600" rel="nofollow" title="Compare">Compare</a><div class="cmsmasters_add_wishlist_button add-to-wishlist-13600"><div class="yith-wcwl-add-button show" style="display:block"><a href="/product/mens-sport-quick-dry-t-shirt-grey/?add_to_wishlist=13600" rel="nofollow" data-product-id="13600" data-product-type="simple" class="button cmsmasters_theme_icon_wishlist add_to_wishlist" title="Wishlist"></a><img src="http://sports-store.cmsmasters.net/wp-content/themes/sports-store/woocommerce/cmsmasters-framework/theme-style/yith-woocommerce-wishlist/img/loader.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden"></div><div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;"><a href="http://sports-store.cmsmasters.net/wishlist/" class="button browse_wishlist cmsmasters_theme_icon_wishlist" rel="nofollow" title="Wishlist"></a></div><div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none"><a href="http://sports-store.cmsmasters.net/wishlist/" class="button browse_wishlist cmsmasters_theme_icon_wishlist" rel="nofollow" title="Wishlist"></a></div></div></div>			<header class="cmsmasters_product_header entry-header">
+                                            <h5 class="cmsmasters_product_title entry-title">
+                                                <a href="http://sports-store.cmsmasters.net/product/team-issue-duffel-bag/">Team Issue Duffel Bag</a>
+                                            </h5>
+                                        </header>
+                                        <div class="cmsmasters_product_cat entry-meta"><a href="http://sports-store.cmsmasters.net/product-category/for-men/" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">For Men</a>, <a href="http://sports-store.cmsmasters.net/product-category/for-women/" class="cmsmasters_cat_color cmsmasters_cat_82" rel="category tag">For Women</a>, <a href="http://sports-store.cmsmasters.net/product-category/unisex/" class="cmsmasters_cat_color cmsmasters_cat_75" rel="category tag">Unisex</a></div>			<div class="cmsmasters_product_info">
+
+                                            <span class="price"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>36.00</span></span>
+
+                                            <div class="cmsmasters_star_rating" itemscope="" itemtype="http://schema.org/AggregateRating" title="Rated 5.00 out of 5">
+                                                <div class="cmsmasters_star_trans_wrap">
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                </div>
+                                                <div class="cmsmasters_star_color_wrap" style="width:100%">
+                                                    <div class="cmsmasters_star_color_inner">
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="rating dn"><strong itemprop="ratingValue">5.00</strong> out of 5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+
+                            <li class="post-13410 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts instock shipping-taxable purchasable product-type-variable">
+                                <article class="cmsmasters_product">
+                                    <figure class="cmsmasters_product_img">
+                                        <a href="http://sports-store.cmsmasters.net/product/cotton-short-sleeve-t-shirt/">
+                                            <img width="540" height="540" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-180x180.jpg 180w" sizes="(max-width: 540px) 100vw, 540px" data-lazy-src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1.jpg" data-lazy-srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/2-1-180x180.jpg 180w"><img width="540" height="540" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-1-580x580.jpg" class="attachment-shop_catalog size-shop_catalog" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-1-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-1-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-1-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-1.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-1-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-1-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-1-180x180.jpg 180w" sizes="(max-width: 540px) 100vw, 540px">			</a>
+                                        <div class="button_to_cart_wrap"><a rel="nofollow" href="http://sports-store.cmsmasters.net/product/cotton-short-sleeve-t-shirt/" data-quantity="1" data-product_id="13410" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Add to cart</a></div>		</figure>
+                                    <div class="cmsmasters_product_inner">
+                                        <div class="cmsmasters_product_features">
+                                            <div class="variations_form cart in_loop initialized" data-product_id="13410" data-product_variations="[{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;turquoise&quot;,&quot;attribute_pa_size&quot;:&quot;xl&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:35,&quot;display_regular_price&quot;:35,&quot;image&quot;:{&quot;title&quot;:&quot;Cotton Short-Sleeve T-Shirt-2&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13418&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;100&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13420,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;turquoise&quot;,&quot;attribute_pa_size&quot;:&quot;m&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:35,&quot;display_regular_price&quot;:35,&quot;image&quot;:{&quot;title&quot;:&quot;Cotton Short-Sleeve T-Shirt-2&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13418&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;101&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13421,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;turquoise&quot;,&quot;attribute_pa_size&quot;:&quot;l&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:35,&quot;display_regular_price&quot;:35,&quot;image&quot;:{&quot;title&quot;:&quot;Cotton Short-Sleeve T-Shirt-2&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/2-1.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13418&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;102&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13422,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;}]" style="display: block;" current-image="13418">
+                                                <div class="variations pa_colors">
+                                                    <select id="pa_colors" name="attribute_pa_colors" data-attribute_name="attribute_pa_colors" data-type="colorpicker" data-default_value="turquoise" class="yith_wccl_custom" style="display: none;">
+                                                        <option value="">Choose an option…</option>
+                                                        <option value="turquoise" data-value="#98e7fa" data-tooltip="" class="attached enabled">Turquoise</option>						</select><div class="select_box_colorpicker select_box attribute_pa_colors"><div class="select_option_colorpicker select_option selected" data-value="turquoise"><span class="yith_wccl_value" style="background: rgb(152, 231, 250);"></span></div></div>
+                                                </div>
+                                            </div>
+
+                                            <a href="#" class="cmsmasters_quick_view_button yith-wcqv-button empty cmsmasters_theme_icon_quick_view button" data-product_id="13410" title="Quick View"></a><a href="/product/mens-sport-quick-dry-t-shirt-grey/?action=asd&amp;id=13410" class="compare button cmsmasters_compare_btn" data-product_id="13410" rel="nofollow" title="Compare">Compare</a><div class="cmsmasters_add_wishlist_button add-to-wishlist-13410"><div class="yith-wcwl-add-button show" style="display:block"><a href="/product/mens-sport-quick-dry-t-shirt-grey/?add_to_wishlist=13410" rel="nofollow" data-product-id="13410" data-product-type="variable" class="button cmsmasters_theme_icon_wishlist add_to_wishlist" title="Wishlist"></a><img src="http://sports-store.cmsmasters.net/wp-content/themes/sports-store/woocommerce/cmsmasters-framework/theme-style/yith-woocommerce-wishlist/img/loader.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden"></div><div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;"><a href="http://sports-store.cmsmasters.net/wishlist/" class="button browse_wishlist cmsmasters_theme_icon_wishlist" rel="nofollow" title="Wishlist"></a></div><div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none"><a href="http://sports-store.cmsmasters.net/wishlist/" class="button browse_wishlist cmsmasters_theme_icon_wishlist" rel="nofollow" title="Wishlist"></a></div></div></div>			<header class="cmsmasters_product_header entry-header">
+                                            <h5 class="cmsmasters_product_title entry-title">
+                                                <a href="http://sports-store.cmsmasters.net/product/cotton-short-sleeve-t-shirt/">Cotton Short-Sleeve T-Shirt</a>
+                                            </h5>
+                                        </header>
+                                        <div class="cmsmasters_product_cat entry-meta"><a href="http://sports-store.cmsmasters.net/product-category/for-men/" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">For Men</a>, <a href="http://sports-store.cmsmasters.net/product-category/t-shirts/" class="cmsmasters_cat_color cmsmasters_cat_91" rel="category tag">T-shirts</a></div>			<div class="cmsmasters_product_info">
+
+                                            <span class="price"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>35.00</span></span>
+
+                                            <div class="cmsmasters_star_rating" itemscope="" itemtype="http://schema.org/AggregateRating" title="Rated 5.00 out of 5">
+                                                <div class="cmsmasters_star_trans_wrap">
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                </div>
+                                                <div class="cmsmasters_star_color_wrap" style="width:100%">
+                                                    <div class="cmsmasters_star_color_inner">
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="rating dn"><strong itemprop="ratingValue">5.00</strong> out of 5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+
+                            <li class="post-13641 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts last instock shipping-taxable purchasable product-type-variable">
+                                <article class="cmsmasters_product">
+                                    <figure class="cmsmasters_product_img">
+                                        <a href="http://sports-store.cmsmasters.net/product/mens-long-sleeve-t-shirt/">
+                                            <img width="540" height="540" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-180x180.jpg 180w" sizes="(max-width: 540px) 100vw, 540px" data-lazy-src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17.jpg" data-lazy-srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/3-17-180x180.jpg 180w"><img width="540" height="540" src="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-580x580.jpg" class="attachment-shop_catalog size-shop_catalog" alt="" srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2017/05/1-18-180x180.jpg 180w" sizes="(max-width: 540px) 100vw, 540px">			</a>
+                                        <div class="button_to_cart_wrap"><a rel="nofollow" href="http://sports-store.cmsmasters.net/product/mens-long-sleeve-t-shirt/" data-quantity="1" data-product_id="13641" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Add to cart</a></div>		</figure>
+                                    <div class="cmsmasters_product_inner">
+                                        <div class="cmsmasters_product_features">
+                                            <div class="variations_form cart in_loop initialized" data-product_id="13641" data-product_variations="[{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;grey&quot;,&quot;attribute_pa_size&quot;:&quot;xxl&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:25,&quot;display_regular_price&quot;:25,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Long Sleeve T-Shirt-3&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13647&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;180&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13649,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;grey&quot;,&quot;attribute_pa_size&quot;:&quot;xl&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:25,&quot;display_regular_price&quot;:25,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Long Sleeve T-Shirt-3&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13647&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;181&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13650,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;grey&quot;,&quot;attribute_pa_size&quot;:&quot;m&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:25,&quot;display_regular_price&quot;:25,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Long Sleeve T-Shirt-3&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13647&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;182&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13651,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;},{&quot;attributes&quot;:{&quot;attribute_pa_colors&quot;:&quot;grey&quot;,&quot;attribute_pa_size&quot;:&quot;l&quot;},&quot;availability_html&quot;:&quot;&quot;,&quot;backorders_allowed&quot;:false,&quot;dimensions&quot;:{&quot;length&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;,&quot;height&quot;:&quot;&quot;},&quot;dimensions_html&quot;:&quot;N\/A&quot;,&quot;display_price&quot;:25,&quot;display_regular_price&quot;:25,&quot;image&quot;:{&quot;title&quot;:&quot;Men\u2019s Long Sleeve T-Shirt-3&quot;,&quot;caption&quot;:&quot;&quot;,&quot;url&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;alt&quot;:&quot;&quot;,&quot;src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;srcset&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg 600w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-150x150.jpg 150w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-300x300.jpg 300w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-70x70.jpg 70w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-360x360.jpg 360w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-580x580.jpg 580w, http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-180x180.jpg 180w&quot;,&quot;sizes&quot;:&quot;(max-width: 600px) 100vw, 600px&quot;,&quot;full_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;full_src_w&quot;:600,&quot;full_src_h&quot;:600,&quot;gallery_thumbnail_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17-150x150.jpg&quot;,&quot;gallery_thumbnail_src_w&quot;:100,&quot;gallery_thumbnail_src_h&quot;:100,&quot;thumb_src&quot;:&quot;http:\/\/sports-store.cmsmasters.net\/wp-content\/uploads\/2017\/05\/3-17.jpg&quot;,&quot;thumb_src_w&quot;:540,&quot;thumb_src_h&quot;:540,&quot;src_w&quot;:600,&quot;src_h&quot;:600},&quot;image_id&quot;:&quot;13647&quot;,&quot;is_downloadable&quot;:false,&quot;is_in_stock&quot;:true,&quot;is_purchasable&quot;:true,&quot;is_sold_individually&quot;:&quot;no&quot;,&quot;is_virtual&quot;:false,&quot;max_qty&quot;:&quot;&quot;,&quot;min_qty&quot;:1,&quot;price_html&quot;:&quot;&quot;,&quot;sku&quot;:&quot;183&quot;,&quot;variation_description&quot;:&quot;&quot;,&quot;variation_id&quot;:13652,&quot;variation_is_active&quot;:true,&quot;variation_is_visible&quot;:true,&quot;weight&quot;:&quot;&quot;,&quot;weight_html&quot;:&quot;N\/A&quot;,&quot;image_magnifier&quot;:&quot;&quot;}]" current-image="13647" style="display: block;">
+                                                <div class="variations pa_colors">
+                                                    <select id="pa_colors" name="attribute_pa_colors" data-attribute_name="attribute_pa_colors" data-type="colorpicker" data-default_value="grey" class="yith_wccl_custom" style="display: none;">
+                                                        <option value="">Choose an option…</option>
+                                                        <option value="grey" data-value="#786e6e" data-tooltip="" class="attached enabled">Grey</option>						</select><div class="select_box_colorpicker select_box attribute_pa_colors"><div class="select_option_colorpicker select_option selected" data-value="grey"><span class="yith_wccl_value" style="background: rgb(120, 110, 110);"></span></div></div>
+                                                </div>
+                                            </div>
+
+                                            <a href="#" class="cmsmasters_quick_view_button yith-wcqv-button empty cmsmasters_theme_icon_quick_view button" data-product_id="13641" title="Quick View"></a><a href="/product/mens-sport-quick-dry-t-shirt-grey/?action=asd&amp;id=13641" class="compare button cmsmasters_compare_btn" data-product_id="13641" rel="nofollow" title="Compare">Compare</a><div class="cmsmasters_add_wishlist_button add-to-wishlist-13641"><div class="yith-wcwl-add-button show" style="display:block"><a href="/product/mens-sport-quick-dry-t-shirt-grey/?add_to_wishlist=13641" rel="nofollow" data-product-id="13641" data-product-type="variable" class="button cmsmasters_theme_icon_wishlist add_to_wishlist" title="Wishlist"></a><img src="http://sports-store.cmsmasters.net/wp-content/themes/sports-store/woocommerce/cmsmasters-framework/theme-style/yith-woocommerce-wishlist/img/loader.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden"></div><div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;"><a href="http://sports-store.cmsmasters.net/wishlist/" class="button browse_wishlist cmsmasters_theme_icon_wishlist" rel="nofollow" title="Wishlist"></a></div><div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none"><a href="http://sports-store.cmsmasters.net/wishlist/" class="button browse_wishlist cmsmasters_theme_icon_wishlist" rel="nofollow" title="Wishlist"></a></div></div></div>			<header class="cmsmasters_product_header entry-header">
+                                            <h5 class="cmsmasters_product_title entry-title">
+                                                <a href="http://sports-store.cmsmasters.net/product/mens-long-sleeve-t-shirt/">Men’s Long Sleeve T-Shirt</a>
+                                            </h5>
+                                        </header>
+                                        <div class="cmsmasters_product_cat entry-meta"><a href="http://sports-store.cmsmasters.net/product-category/for-men/" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">For Men</a>, <a href="http://sports-store.cmsmasters.net/product-category/t-shirts/" class="cmsmasters_cat_color cmsmasters_cat_91" rel="category tag">T-shirts</a></div>			<div class="cmsmasters_product_info">
+
+                                            <span class="price"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>25.00</span></span>
+
+                                            <div class="cmsmasters_star_rating" itemscope="" itemtype="http://schema.org/AggregateRating" title="Rated 5.00 out of 5">
+                                                <div class="cmsmasters_star_trans_wrap">
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                    <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                                </div>
+                                                <div class="cmsmasters_star_color_wrap" style="width:100%">
+                                                    <div class="cmsmasters_star_color_inner">
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="rating dn"><strong itemprop="ratingValue">5.00</strong> out of 5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+        </div>
+    </div>
 @stop
