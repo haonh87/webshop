@@ -129,10 +129,14 @@
                                     <td class="label"><label for="pa_colors">Colors</label></td>
                                     <td class="value">
                                         <select id="pa_colors" style="width: 200px;" class="yith_wccl_custom" name="attribute_pa_color" data-attribute_name="attribute_pa_colors" data-show_option_none="yes" data-default_value="grey">
-                                            <option value="">Any Colors</option>
-                                            @foreach($colors as $key => $color)
-                                                <option value="{{ $key }}">{{ $color }}</option>
+                                            @if (!empty($product->product_color_ids))
+                                            @php
+                                                $idColors = explode(',', $product->product_color_ids);
+                                            @endphp
+                                            @foreach ($idColors as $key => $idColor)
+                                                <option value="{{ $idColor }}">{{ $colors[$idColor] }}</option>
                                             @endforeach
+                                            @endif
                                         </select>
                                     </td>
                                 </tr>
@@ -140,10 +144,14 @@
                                     <td class="label"><label for="pa_size">Size</label></td>
                                     <td class="value">
                                         <select id="pa_size" style="width: 200px;" class="" name="attribute_pa_size" data-attribute_name="attribute_pa_size" data-show_option_none="yes" data-default_value="m">
-                                            <option value="">Any Size</option>
-                                            @foreach($sizes as $key => $size)
-                                                <option value="{{ $key }}">{{ $size }}</option>
-                                            @endforeach
+                                            @if (!empty($product->product_size_ids))
+                                                @php
+                                                    $idSizes = explode(',', $product->product_size_ids);
+                                                @endphp
+                                                @foreach ($idSizes as $key => $idSize)
+                                                    <option value="{{ $idSize }}">{{ $sizes[$idSize] }}</option>
+                                                @endforeach
+                                            @endif
                                         </select>
                                     </td>
                                 </tr>
