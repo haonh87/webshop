@@ -166,7 +166,9 @@
                                                         <figure class="cmsmasters_product_img">
                                                             <a href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/">
                                                                 @foreach($featureProduct->productImages as $key => $productImage)
+                                                                @if ($key < 2)
                                                                     <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
+                                                                @endif
                                                                 @endforeach
                                                             </a>
                                                             <div class="button_to_cart_wrap"><a rel="nofollow" href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/" data-quantity="1" data-product_id="13743" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
@@ -271,7 +273,9 @@
                                                             <figure class="cmsmasters_product_img">
                                                                 <a href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/">
                                                                     @foreach($newProduct->productImages as $key => $productImage)
+                                                                        @if ($key < 2)
                                                                         <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
+                                                                        @endif
                                                                     @endforeach
                                                                 </a>
                                                                 <div class="button_to_cart_wrap"><a rel="nofollow" href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Add to cart</a></div>

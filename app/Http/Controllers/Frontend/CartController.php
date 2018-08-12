@@ -22,15 +22,8 @@ class CartController extends BaseController
     public function index()
     {
         
-        $blade_include = 'frontend.content.cart_detail';
-        $sub_navi = '<li>
-                        <a href="'.route("cart.index").'" style="display: none;"></a>
-                        <span>'.trans('lang.shopping_cart').'</span>
-                    </li>';
-        return view('frontend.main_content')->with('parameters',null)
-                                            ->with('parameters2', null)
-                                            ->with('sub_navi', $sub_navi)
-                                            ->with('blade_include', $blade_include);
+        die('xxx');
+        
     }
 
     /**
