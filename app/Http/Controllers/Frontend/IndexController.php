@@ -91,10 +91,12 @@ class IndexController extends BaseController
         $product = $this->productService->findProductById($id);
         $sizes = $this->productSizeService->getAllProductSize();
         $colors = $this->productColorService->getAllColor();
+        $relateProducts = $this->productService->getRelateProduct($product);
         return view('frontend.product_detail', [
             'product' => $product,
             'sizes' => $sizes,
-            'colors' => $colors
+            'colors' => $colors,
+            'relateProducts' => $relateProducts
         ]);
     }
 

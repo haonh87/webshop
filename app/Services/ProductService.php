@@ -98,6 +98,15 @@ class ProductService
             ->groupBy('votes.product_id')->where('products.id', $id)->first();
     }
 
+    public function getRelateProduct($product)
+    {
+        return $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->where('products.id', '!=',$product->id)
+            ->where('products.category_id', $product->category_id)->limit(4)->get();
+    }
+
     public function getMaxMinPrice()
     {
         return $this->productModel->select(DB::raw("MAX(price) AS max_price"), DB::raw("MIN(price) AS min_price"))->first();
