@@ -21,9 +21,7 @@ class CartController extends BaseController
      */
     public function index()
     {
-        
-        die('xxx');
-        
+        return view('frontend.cart');
     }
 
     /**
