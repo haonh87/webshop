@@ -151,76 +151,31 @@
                            class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav"><h3
                                 class="widgettitle">Select color</h3>
                         <form method="get" action="http://sports-store.cmsmasters.net/shop/"
-                              class="woocommerce-widget-layered-nav-dropdown"><select
+                              class="woocommerce-widget-layered-nav-dropdown">
+                            <select
                                     class="woocommerce-widget-layered-nav-dropdown dropdown_layered_nav_colors select2-hidden-accessible"
                                     tabindex="-1" aria-hidden="true">
                                 <option value="">Any Colors</option>
-                                <option value="black">Black</option>
-                                <option value="blue">Blue</option>
-                                <option value="dark-blue">Dark blue</option>
-                                <option value="grey">Grey</option>
-                                <option value="orange">Orange</option>
-                                <option value="pink">Pink</option>
-                                <option value="purple">Purple</option>
-                                <option value="red">Red</option>
-                                <option value="turquoise">Turquoise</option>
-                                <option value="white">White</option>
-                                <option value="yellow">Yellow</option>
-                            </select><span class="select2 select2-container select2-container--default" dir="ltr"
-                                           style="width: 100%;"><span class="selection"><span
-                                            class="select2-selection select2-selection--single" aria-haspopup="true"
-                                            aria-expanded="false" tabindex="0" aria-labelledby="select2-a0b0-container"
-                                            role="combobox"><span class="select2-selection__rendered"
-                                                                  id="select2-a0b0-container" role="textbox"
-                                                                  aria-readonly="true"><span
-                                                    class="select2-selection__placeholder">Any Colors</span></span><span
-                                                class="select2-selection__arrow" role="presentation"><b
-                                                    role="presentation"></b></span></span></span><span
-                                        class="dropdown-wrapper" aria-hidden="true"></span></span><input type="hidden"
-                                                                                                         name="filter_colors"
-                                                                                                         value="">
+                                @foreach($colors as $key => $color)
+                                    <option value="{{ $key }}">{{ $color }}</option>
+                                @endforeach
+                            </select>
                         </form>
                     </aside>
                     <aside id="woocommerce_layered_nav-4"
                            class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav"><h3
                                 class="widgettitle">Select size</h3>
                         <form method="get" action="http://sports-store.cmsmasters.net/shop/"
-                              class="woocommerce-widget-layered-nav-dropdown"><select
+                              class="woocommerce-widget-layered-nav-dropdown">
+                            <select
                                     class="woocommerce-widget-layered-nav-dropdown dropdown_layered_nav_size select2-hidden-accessible"
                                     tabindex="-1" aria-hidden="true">
                                 <option value="">Any Size</option>
-                                <option value="xs">XS</option>
-                                <option value="s">S</option>
-                                <option value="m">M</option>
-                                <option value="l">L</option>
-                                <option value="xl">XL</option>
-                                <option value="xxl">XXL</option>
-                            </select><span class="select2 select2-container select2-container--default" dir="ltr"
-                                           style="width: 100%;"><span class="selection"><span
-                                            class="select2-selection select2-selection--single" aria-haspopup="true"
-                                            aria-expanded="false" tabindex="0" aria-labelledby="select2-trgo-container"
-                                            role="combobox"><span class="select2-selection__rendered"
-                                                                  id="select2-trgo-container" role="textbox"
-                                                                  aria-readonly="true"><span
-                                                    class="select2-selection__placeholder">Any Size</span></span><span
-                                                class="select2-selection__arrow" role="presentation"><b
-                                                    role="presentation"></b></span></span></span><span
-                                        class="dropdown-wrapper" aria-hidden="true"></span></span><input type="hidden"
-                                                                                                         name="filter_size"
-                                                                                                         value="">
+                                @foreach($sizes as $key => $size)
+                                    <option value="{{ $key }}">{{ $size }}</option>
+                                @endforeach
+                            </select>
                         </form>
-                    </aside>
-                    <aside id="yith-woocompare-widget-2" class="widget yith-woocompare-widget"><h3 class="widgettitle">
-                            Product Compare</h3>
-                        <ul class="products-list" data-lang="">
-                            <li class="list_empty">No products to compare</li>
-                        </ul>
-
-                        <a href="http://sports-store.cmsmasters.net?action=yith-woocompare-remove-product&amp;id=all"
-                           data-product_id="all" class="clear-all" rel="nofollow">Clear all</a>
-                        <a href="http://sports-store.cmsmasters.net/yith-compare/" class="compare added button"
-                           rel="nofollow">Compare</a>
-
                     </aside>
                     <aside id="woocommerce_recently_viewed_products-2"
                            class="widget woocommerce widget_recently_viewed_products"><h3 class="widgettitle">Recently

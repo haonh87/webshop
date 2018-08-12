@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Services\CategoryService;
+use App\Services\ProductColorService;
 use App\Services\ProductService;
+use App\Services\ProductSizeService;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,17 +22,23 @@ class IndexController extends BaseController
 
     protected $categoryService;
     protected $productService;
+    protected $productSizeService;
+    protected $productColorService;
     protected $numberFeature = 12;
     protected $numberNew = 8;
      /**
      * Constructor function.
      * Set global fro category all page
      **/
-    public function __construct(CategoryService $categoryService, ProductService $productService)
+    public function __construct(CategoryService $categoryService, ProductService $productService,
+                                ProductSizeService $productSizeService, ProductColorService $productColorService
+    )
     {
          parent::__construct();
          $this->categoryService = $categoryService;
          $this->productService = $productService;
+         $this->productSizeService = $productSizeService;
+         $this->productColorService = $productColorService;
     }
 
     /**
@@ -58,10 +66,14 @@ class IndexController extends BaseController
         $products = $this->productService->getAllProductForView()->paginate(2);
         $maxMinPrice = $this->productService->getMaxMinPrice();
         $categories = $this->categoryService->getAllCategories();
+        $sizes = $this->productSizeService->getAllProductSize();
+        $colors = $this->productColorService->getAllColor();
         return view('frontend.product_list', [
             'products' => $products,
             'maxMinPrice' => $maxMinPrice,
             'categories' => $categories,
+            'sizes' => $sizes,
+            'colors' => $colors
         ]);
     }
 
