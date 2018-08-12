@@ -167,18 +167,6 @@
 </head>
 <body class="home page-template-default">
 <div id="page" class="csstransition chrome_only cmsmasters_liquid cmsmasters_heading_after_header hfeed site">
-    @if (session('message'))
-        <div class="alert alert-success">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong></strong> {{ session('message') }}
-        </div>
-    @endif
-    @if (session('message_error'))
-        <div class="alert alert-warning">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong></strong> {{ session('message_error') }}
-        </div>
-    @endif
     @include('layouts.header')
     @yield('content')
 </div>

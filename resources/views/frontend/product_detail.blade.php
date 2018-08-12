@@ -4,6 +4,7 @@
 @section('content')
     <div id="content">
         @include('frontend.slider')
+        @include('frontend.message')
         <div class="content_wrap fullwidth">
             <div class="middle_content entry">
             <div id="product-13483" class="post-13483 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts first instock shipping-taxable purchasable product-type-variable">
@@ -120,14 +121,14 @@
                             </div>
                         </div>
 
-                        <form class="variations_form cart initialized" action="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/" method="post" enctype="multipart/form-data" style="display: block;" current-image="13487">
-
+                        <form class="variations_form cart initialized" action="{{ route('cart.store') }}" method="post" enctype="multipart/form-data" style="display: block;">
+                            {{ csrf_field() }}
                             <table class="variations" cellspacing="0">
                                 <tbody>
                                 <tr>
                                     <td class="label"><label for="pa_colors">Colors</label></td>
                                     <td class="value">
-                                        <select id="pa_colors" style="width: 200px;" class="yith_wccl_custom" name="attribute_pa_colors" data-attribute_name="attribute_pa_colors" data-show_option_none="yes" data-default_value="grey">
+                                        <select id="pa_colors" style="width: 200px;" class="yith_wccl_custom" name="attribute_pa_color" data-attribute_name="attribute_pa_colors" data-show_option_none="yes" data-default_value="grey">
                                             <option value="">Any Colors</option>
                                             @foreach($colors as $key => $color)
                                                 <option value="{{ $key }}">{{ $color }}</option>
@@ -162,11 +163,9 @@
                                     </div>
 
                                     <button type="submit" class="single_add_to_cart_button button alt">Add to cart</button>
-
-
-                                    <input type="hidden" name="add-to-cart" value="13483">
-                                    <input type="hidden" name="product_id" value="13483">
-                                    <input type="hidden" name="variation_id" class="variation_id" value="13495">
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="product_name" value="{{ $product->name }}">
+                                    <input type="hidden" name="product_price" value="{{ $product->price }}">
                                 </div>
                             </div>
 

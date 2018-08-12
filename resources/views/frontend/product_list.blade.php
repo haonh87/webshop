@@ -4,6 +4,7 @@
 @section('content')
     <div id="content">
         @include('frontend.slider')
+        @include('frontend.message')
         <div class="middle_inner">
             <div class="content_wrap l_sidebar">
 

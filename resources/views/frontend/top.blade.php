@@ -5,6 +5,8 @@
     <div id="content">
         @include('frontend.slider')
 
+        @include('frontend.message')
+
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">

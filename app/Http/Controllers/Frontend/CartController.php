@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Response;
 use Cart;
@@ -41,46 +39,30 @@ class CartController extends BaseController
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $data = $request->all();
-//        dd($data);
-        $hasError = false;
-        if(empty($data['size_option']))
+        $cartExists = Cart::search(function($key, $value) {
+            return $key->id == Request::get('product_id');
+        });
+        if($cartExists->count())
         {
-            $hasError = true;
-            $err_msg['size'] = trans('lang.size_require');
+            foreach ($cartExists as $cart) {
+                Cart::update($cart->rowId, $cart->qty + Request::get('quantity'));
+            }
+        } else {
+            Cart::add(array(
+                'id'=>Request::get('product_id'),
+                'name' => Request::get('product_name'),
+                'qty' => Request::get('quantity'),
+                'price' => Request::get('product_price'),
+                'options' => array('size_option' => Request::get('attribute_pa_size'), 'color'=>Request::get('attribute_pa_color'))));
         }
-        if(!isset($data['color']))
-        {
-            $hasError = true;
-            $err_msg['color'] = trans('lang.color_requred');
-        }
-        if($hasError){
-            return response()->json(["error"=>$err_msg]);
-        }
-        $product = Product::findOrFail($data['product_id']);
-        $product_name = $product->localeName();
-        $cartExists = Cart::search(['id' =>$product->id,'color'=>$data['color'],'size'=>$data['size_option']]);
-        if($cartExists)
-        {
-            $cart = Cart::get($cartExists[0]);
-            Cart::update($cartExists[0], $cart->qty+$data['quantity']);
-        }
-        else
-        {
-            Cart::associate('Product', 'App')->add(array('id'=>$product->id,
-                            'name' => $product->localeName(),
-                            'qty' => $data['quantity'],
-                            'price' => $product->price,
-                            'options' => array('size_option' => $data['size_option'], 'color'=>$data['color'])));
-        }
-        $prduct_link = '<a href="'.route('product.show',['product_id'=>$product->id]).'">'.$product->localeName().'</a>';
-        $link_to_cart = '<a href="'.route('cart.index').'">shopping cart!</a>';
-        $success = trans('lang.your_secces_added').$prduct_link.trans('lang.to_your'). $link_to_cart;
+        $prduct_link = Request::get('product_name').' has been added to your cart';
+        $link_to_cart = '<a class="button wc-forward" href="'.route('cart.index').'">shopping cart!</a>';
+        $success = $link_to_cart.$prduct_link;
         $message=['success'=>$success];
 
-        return response()->json($message);
+        return redirect()->back()->with('message_cart', $success);;
     }
 
     /**
