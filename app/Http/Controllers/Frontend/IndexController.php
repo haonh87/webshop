@@ -65,7 +65,8 @@ class IndexController extends BaseController
     public function getProductList($categoryName = null)
     {
         $category = $this->categoryService->findIdByName($categoryName);
-        $products = $this->productService->getAllProductForView($category->id)->paginate($this->numberProductList);
+        $categoryId = isset($category) ? $category->id : '';
+        $products = $this->productService->getAllProductForView($categoryId)->paginate($this->numberProductList);
         $maxMinPrice = $this->productService->getMaxMinPrice();
         $categories = $this->categoryService->getAllCategories();
         $sizes = $this->productSizeService->getAllProductSize();
