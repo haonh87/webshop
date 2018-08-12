@@ -142,7 +142,7 @@
                         <ul class="product-categories">
                             @foreach( $categories as $category )
                             <li class="cat-item cat-item-{{ $category->id }}">
-                                <a href="">{{ $category->name }}</a>
+                                <a href="{{ route('product.list', ['category' => $category->name]) }}">{{ $category->name }}</a>
                             </li>
                             @endforeach
                         </ul>

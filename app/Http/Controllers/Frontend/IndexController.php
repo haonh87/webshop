@@ -62,9 +62,10 @@ class IndexController extends BaseController
     }
 
 
-    public function getProductList()
+    public function getProductList($categoryName = null)
     {
-        $products = $this->productService->getAllProductForView()->paginate($this->numberProductList);
+        $category = $this->categoryService->findIdByName($categoryName);
+        $products = $this->productService->getAllProductForView($category->id)->paginate($this->numberProductList);
         $maxMinPrice = $this->productService->getMaxMinPrice();
         $categories = $this->categoryService->getAllCategories();
         $sizes = $this->productSizeService->getAllProductSize();
@@ -77,6 +78,7 @@ class IndexController extends BaseController
             'colors' => $colors
         ]);
     }
+
 
     /**
      * Display the specified resource.

@@ -78,12 +78,16 @@ class ProductService
             ->limit($numberProducts)->get();
     }
 
-    public function getAllProductForView()
+    public function getAllProductForView($categoryId)
     {
-        return $this->productModel->with('category')->with('productImages')
+        $result = $this->productModel->with('category')->with('productImages')
             ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
             ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
             ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc');
+        if (!empty($categoryId)) {
+            $result->where('products.category_id', $categoryId);
+        }
+        return $result;
     }
 
     public function getMaxMinPrice()
