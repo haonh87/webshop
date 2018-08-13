@@ -3,10 +3,10 @@
 @stop
 @section('content')
     <div id="content">
-        @include('frontend.slider')
+        @include('frontend.header_line', ['name' => 'Product list'])
         @include('frontend.message')
         <div class="middle_inner">
-            <div class="content_wrap l_sidebar">
+            <div class="content_wrap l_sidebar product_list_wrap">
 
                 <!--  Start Content  -->
                 <div class="content entry fr" role="main">

@@ -103,3 +103,7 @@ body .headline {
 body .headline .headline_outer {
     border-bottom: 0px;
 }
+.product_list_wrap {
+    width: 100%;
+    padding: 0 2%;
+}

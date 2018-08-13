@@ -3,7 +3,7 @@
 @stop
 @section('content')
     <div id="content">
-        @include('frontend.slider')
+        @include('frontend.header_line', ['name' => 'Product detail'])
         @include('frontend.message')
         <div class="content_wrap fullwidth">
             <div class="middle_content entry">
