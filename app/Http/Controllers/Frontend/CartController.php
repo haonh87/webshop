@@ -39,6 +39,7 @@ class CartController extends BaseController
     public function index()
     {
         $carts = Cart::content();
+        dd($carts);
         $sizes = $this->productSizeService->getAllProductSize();
         $colors = $this->productColorService->getAllColor();
         return view('frontend.cart', [
@@ -71,7 +72,9 @@ class CartController extends BaseController
                 'qty' => Request::get('quantity'),
                 'price' => Request::get('product_price'),
                 'product_image' => Request::get('product_image'),
-                'options' => array('size_option' => Request::get('attribute_pa_size'), 'color'=>Request::get('attribute_pa_color'))));
+                'size' => Request::get('attribute_pa_size'),
+                'color' => Request::get('attribute_pa_color'),
+            ));
         }
         $prduct_link = Request::get('product_name').' has been added to your cart';
         $link_to_cart = '<a class="button wc-forward" href="'.route('cart.index').'">shopping cart!</a>';

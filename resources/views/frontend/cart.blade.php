@@ -42,11 +42,11 @@
                                                         <a href="{{ route('product.show', ['product' => $cart->id]) }}">Modern Sporty Fashion Sneaker</a><dl class="variation">
                                                             <dt class="variation-Colors">Color:</dt>
                                                             <dd class="variation-Colors">
-                                                                <p>{{ $colors[$cart->CartItemOptions->color] }}</p>
+                                                                <p>{{ $colors[$cart->color] }}</p>
                                                             </dd>
                                                             <dt class="variation-MenShoesSize">Size:</dt>
                                                             <dd class="variation-MenShoesSize">
-                                                                <p>{{ $colors[$cart->CartItemOptions->size_option] }}</p>
+                                                                <p>{{ $colors[$cart->size] }}</p>
                                                             </dd>
                                                         </dl>
                                                     </td>
