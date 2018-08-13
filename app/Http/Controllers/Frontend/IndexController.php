@@ -89,7 +89,7 @@ class IndexController extends BaseController
      */
     public function show($id)
     {
-        $product = $this->productService->findProductById($id);
+        $product = $this->productService->findProductByIdView($id);
         $sizes = $this->productSizeService->getAllProductSize();
         $colors = $this->productColorService->getAllColor();
         $relateProducts = $this->productService->getRelateProduct($product);
