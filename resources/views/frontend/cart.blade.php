@@ -25,8 +25,13 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-
+                                                @php
+                                                $total = 0;
+                                                @endphp
                                                 @foreach($carts as $key => $cart)
+                                                    @php
+                                                    $total = $total + $cart->subtotal;
+                                                    @endphp
                                                 <tr class="woocommerce-cart-form__cart-item cart_item">
 
                                                     <td class="product-remove">
@@ -63,7 +68,7 @@
                                                     </td>
 
                                                     <td class="product-subtotal" data-title="Total">
-                                                        <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>125.00</span>						</td>
+                                                        <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->subtotal, 2)  }}</span>						</td>
                                                 </tr>
                                                 @endforeach
                                                 <tr>
@@ -89,11 +94,11 @@
 
                                                     <tbody><tr class="cart-subtotal">
                                                         <th>Subtotal</th>
-                                                        <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>125.00</span></td>
+                                                        <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}</span></span></td>
                                                     </tr>
                                                     <tr class="order-total">
                                                         <th>Total</th>
-                                                        <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">£</span></span>125.00</span></strong> </td>
+                                                        <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}</span></strong> </td>
                                                     </tr>
                                                     </tbody></table>
 
