@@ -41,19 +41,19 @@
                                         <span class="quantity">{{ $cart->qty }} × <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->price, 2)  }}</span></span>
                                     </li>
                                 @endforeach
-                                <p class="woocommerce-mini-cart__total total">
-                                    <strong>Subtotal:</strong>
-                                    <span class="woocommerce-Price-amount amount">
-                                        <span>
-                                            <span class="woocommerce-Price-currencySymbol">VND</span>
-                                        </span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}
-                                    </span>
-                                </p>
-                                <p class="woocommerce-mini-cart__buttons buttons">
-                                    <a href="{{ route('cart.index') }}" class="button wc-forward">View cart</a>
-                                    <a href="{{ route('cart.checkout') }}" class="button checkout wc-forward">Checkout</a>
-                                </p>
                             </ul>
+                            <p class="woocommerce-mini-cart__total total">
+                                <strong>Subtotal:</strong>
+                                <span class="woocommerce-Price-amount amount">
+                                    <span>
+                                        <span class="woocommerce-Price-currencySymbol">VND</span>
+                                    </span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}
+                                </span>
+                            </p>
+                            <p class="woocommerce-mini-cart__buttons buttons">
+                                <a href="{{ route('cart.index') }}" class="button wc-forward">View cart</a>
+                                <a href="{{ route('cart.checkout') }}" class="button checkout wc-forward">Checkout</a>
+                            </p>
                         @endif
                     </div>
                 </div>

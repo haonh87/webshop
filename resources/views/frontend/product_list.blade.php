@@ -225,10 +225,40 @@
                     <aside id="woocommerce_widget_cart-2" class="widget woocommerce widget_shopping_cart"><h3
                                 class="widgettitle">Your Cart</h3>
                         <div class="widget_shopping_cart_content">
-
-                            <p class="woocommerce-mini-cart__empty-message">No products in the cart.</p>
-
-
+                            @if(count($cartShare) == 0)
+                                <p class="woocommerce-mini-cart__empty-message">No products in the cart.</p>
+                            @else
+                                <ul class="woocommerce-mini-cart cart_list product_list_widget">
+                                    @php
+                                        $total = 0;
+                                    @endphp
+                                    @foreach($cartShare as $key => $cart)
+                                        @php
+                                            $total = $total + $cart->subtotal;
+                                        @endphp
+                                        <li class="woocommerce-mini-cart-item mini_cart_item">
+                                            <a href="{{ route('cart.destroy', ['cart' => $cart->rowId]) }}" class="remove remove_from_cart_button" aria-label="Remove this item">×</a>
+                                            <a href="{{ route('product.show', ['product' => $cart->id]) }}">
+                                                <img width="540" height="540" src="{{ asset('images/'.$cart->options->image) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" sizes="(max-width: 540px) 100vw, 540px">
+                                                {{ $cart->name }}&nbsp;
+                                            </a>
+                                            <span class="quantity">{{ $cart->qty }} × <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->price, 2)  }}</span></span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <p class="woocommerce-mini-cart__total total">
+                                    <strong>Subtotal:</strong>
+                                    <span class="woocommerce-Price-amount amount">
+                                    <span>
+                                        <span class="woocommerce-Price-currencySymbol">VND</span>
+                                    </span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}
+                                </span>
+                                </p>
+                                <p class="woocommerce-mini-cart__buttons buttons">
+                                    <a href="{{ route('cart.index') }}" class="button wc-forward">View cart</a>
+                                    <a href="{{ route('cart.checkout') }}" class="button checkout wc-forward">Checkout</a>
+                                </p>
+                            @endif
                         </div>
                     </aside>
                 </div>
