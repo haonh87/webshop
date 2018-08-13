@@ -6,7 +6,6 @@ use Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Response;
 use Cart;
-use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Customer;
