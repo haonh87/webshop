@@ -184,6 +184,7 @@
                            class="widget woocommerce widget_recently_viewed_products"><h3 class="widgettitle">Recently
                             viewed products</h3>
                         @if(empty($recentlyProduct))
+                            <p>khong co san pham</p>
                         @else
                             <ul class="product_list_widget">
                                 @foreach($recentlyProduct as $product)
