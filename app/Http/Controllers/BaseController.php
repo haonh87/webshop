@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\WishProduct;
 use Illuminate\Support\Facades\Auth;
+use Cart;
+use View;
 
 class BaseController extends Controller
 {
@@ -18,6 +20,7 @@ class BaseController extends Controller
      **/
     public function __construct()
     {
-
+        $cartShare = Cart::content();
+        View::share('cartShare', $cartShare);
     }
 }

@@ -8,7 +8,6 @@ use App\Services\ProductService;
 use App\Services\ProductSizeService;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\BaseController;
 use App\Models\Product;
 use Illuminate\Http\Response;
