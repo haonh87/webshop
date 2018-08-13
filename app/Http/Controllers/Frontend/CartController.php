@@ -11,9 +11,26 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Customer;
 use Auth;
+use App\Services\ProductColorService;
+use App\Services\ProductSizeService;
 
 class CartController extends BaseController
 {
+
+    protected $productSizeService;
+    protected $productColorService;
+
+    /**
+     * Constructor function.
+     * Set global fro category all page
+     **/
+    public function __construct(ProductSizeService $productSizeService, ProductColorService $productColorService
+    )
+    {
+        parent::__construct();
+        $this->productSizeService = $productSizeService;
+        $this->productColorService = $productColorService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +38,14 @@ class CartController extends BaseController
      */
     public function index()
     {
-        return view('frontend.cart');
+        $carts = Cart::content();
+        $sizes = $this->productSizeService->getAllProductSize();
+        $colors = $this->productColorService->getAllColor();
+        return view('frontend.cart', [
+            'carts' => $carts,
+            'sizes' => $sizes,
+            'colors' => $colors
+        ]);
     }
 
     /**
@@ -46,6 +70,7 @@ class CartController extends BaseController
                 'name' => Request::get('product_name'),
                 'qty' => Request::get('quantity'),
                 'price' => Request::get('product_price'),
+                'product_image' => Request::get('product_image'),
                 'options' => array('size_option' => Request::get('attribute_pa_size'), 'color'=>Request::get('attribute_pa_color'))));
         }
         $prduct_link = Request::get('product_name').' has been added to your cart';
