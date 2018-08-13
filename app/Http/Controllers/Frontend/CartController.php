@@ -39,7 +39,6 @@ class CartController extends BaseController
     public function index()
     {
         $carts = Cart::content();
-        dd($carts);
         $sizes = $this->productSizeService->getAllProductSize();
         $colors = $this->productColorService->getAllColor();
         return view('frontend.cart', [
