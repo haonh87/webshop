@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Vote;
 use App\Models\Category;
 use LaravelLocalization;
+use Session;
 
 class IndexController extends BaseController
 {
@@ -70,12 +71,18 @@ class IndexController extends BaseController
         $categories = $this->categoryService->getAllCategories();
         $sizes = $this->productSizeService->getAllProductSize();
         $colors = $this->productColorService->getAllColor();
+        $sessionIds = Session::get('productIds');
+        $recentlyProduct = '';
+        if (!empty($sessionIds)) {
+            $recentlyProduct = $this->productService->getRecentlyProduct($sessionIds)->get();
+        }
         return view('frontend.product_list', [
             'products' => $products,
             'maxMinPrice' => $maxMinPrice,
             'categories' => $categories,
             'sizes' => $sizes,
-            'colors' => $colors
+            'colors' => $colors,
+            'recentlyProduct' => $recentlyProduct
         ]);
     }
 
@@ -92,6 +99,15 @@ class IndexController extends BaseController
         $sizes = $this->productSizeService->getAllProductSize();
         $colors = $this->productColorService->getAllColor();
         $relateProducts = $this->productService->getRelateProduct($product);
+        //push id to session
+        $sessionIds = Session::get('productIds');
+        if (empty($sessionIds)) {
+            Session::push('productIds', (int)$id);
+        } else {
+            if (!in_array($id, $sessionIds)) {
+                Session::push('productIds', array_push($sessionIds,$id));
+            }
+        }
         return view('frontend.product_detail', [
             'product' => $product,
             'sizes' => $sizes,

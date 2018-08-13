@@ -111,4 +111,13 @@ class ProductService
     {
         return $this->productModel->select(DB::raw("MAX(price) AS max_price"), DB::raw("MIN(price) AS min_price"))->first();
     }
+
+    public function getRecentlyProduct($ids = null)
+    {
+        $result = $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->whereIn('products.id', $ids);
+        return $result;
+    }
 }
