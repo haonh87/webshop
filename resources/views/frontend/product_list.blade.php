@@ -29,26 +29,26 @@
                                 <li class="post-13483 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts first instock shipping-taxable purchasable product-type-variable">
                                     <article class="cmsmasters_product">
                                         <figure class="cmsmasters_product_img">
-                                            <a href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/">
+                                            <a href="{{ route('product.show', ['product' => $product->id]) }}">
                                                 @foreach($product->productImages as $key => $productImage)
                                                     @if ($key < 2)
                                                     <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
                                                     @endif
                                                 @endforeach
                                             </a>
-                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Add to cart</a></div>
+                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $product->id]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
                                         </figure>
                                         <div class="cmsmasters_product_inner">
                                         </div>
                                         <header class="cmsmasters_product_header entry-header">
                                             <h5 class="cmsmasters_product_title entry-title">
-                                                <a href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/">
+                                                <a href="{{ route('product.show', ['product' => $product->id]) }}">
                                                     {{ $product->name }}
                                                 </a>
                                             </h5>
                                         </header>
                                         <div class="cmsmasters_product_cat entry-meta">
-                                            <a href="http://sports-store.cmsmasters.net/product-category/for-men/" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
+                                            <a href="{{ route('product.list', ['category' => $product->category->name]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
                                                                     $product->category->name }}</a></div>
                                         <div class="cmsmasters_product_info">
 
