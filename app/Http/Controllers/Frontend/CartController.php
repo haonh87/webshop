@@ -82,7 +82,7 @@ class CartController extends BaseController
         $success = $link_to_cart.$prduct_link;
         $message=['success'=>$success];
 
-        return redirect()->back()->with('message_cart', $success);;
+        return redirect()->back()->with('message_cart', $success);
     }
 
     /**
@@ -112,9 +112,7 @@ class CartController extends BaseController
     {
         $product_name = Cart::get($id)->name;
         Cart::remove($id);
-        $success = trans('lang.remove').$product_name;
-        $message = Cart::count().'item(s) - '.Cart::total()*1.2; 
-        return response()->json(['total'=>$message, 'success'=>$success]);
+        return redirect()->back()->with('message_cart', 'Xóa thành công '. $product_name);
     }
 
     public function getCheckout()

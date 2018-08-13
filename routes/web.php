@@ -23,8 +23,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 
     Route::get('/cart', ['as' => 'cart.index', 'uses' => 'Frontend\CartController@index']);
     Route::post('/cart', ['as' => 'cart.store', 'uses' => 'Frontend\CartController@store']);
-    Route::delete('/cart/{cart}', ['as' => 'cart.destroy', 'uses' => 'Frontend\CartController@destroy']);
-    Route::match(['put', 'patch'], '/cart/{cart}', ['as' => 'cart.update', 'uses' => 'Frontend\CartController@update']);
+    Route::delete('/cart_destroy/{cart}', ['as' => 'cart.destroy', 'uses' => 'Frontend\CartController@destroy']);
+    Route::match(['put', 'patch'], '/cart', ['as' => 'cart.update', 'uses' => 'Frontend\CartController@update']);
 
     Route::get('/checkout', ['as' => 'cart.checkout', 'uses' => 'Frontend\CartController@getCheckout']);
     Route::get('/contact', ['as' => 'contact', 'uses' => 'Frontend\IndexController@getContact']);

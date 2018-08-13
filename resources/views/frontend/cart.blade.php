@@ -11,8 +11,8 @@
                         <div id="cmsmasters_column_0a1a0d6f3a" class="cmsmasters_column one_first">
                             <div class="cmsmasters_column_inner"><div class="cmsmasters_text">
                                     <div class="woocommerce">
-                                        <form class="woocommerce-cart-form" action="http://sports-store.cmsmasters.net/cart/" method="post">
-
+                                        <form class="woocommerce-cart-form" action="{{ route('cart.update') }}" method="post">
+                                            {{ csrf_field() }}
                                             <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
                                                 <thead>
                                                 <tr>
@@ -44,7 +44,7 @@
                                                     </td>
 
                                                     <td class="product-name" data-title="Product">
-                                                        <a href="{{ route('product.show', ['product' => $cart->id]) }}">Modern Sporty Fashion Sneaker</a><dl class="variation">
+                                                        <a href="{{ route('product.show', ['product' => $cart->id]) }}">{{ $cart->name }}</a><dl class="variation">
                                                             <dt class="variation-Colors">Color:</dt>
                                                             <dd class="variation-Colors">
                                                                 <p>{{ isset($colors[$cart->options->color]) ? $colors[$cart->options->color] : '' }}</p>
