@@ -63,7 +63,7 @@
                                                     <td class="product-quantity" data-title="Quantity">
                                                         <div class="quantity">
                                                             <label class="screen-reader-text" for="quantity">Quantity</label>
-                                                            <input type="number" id="quantity" class="input-text qty text" step="1" min="0" max="" name="cart[{{ $cart->rowId }}][qty]" value="{{ $cart->qty }}" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
+                                                            <input type="number" id="quantity" class="input-text qty text" step="1" min="1" max="" name="cart[{{ $cart->rowId }}][qty]" value="{{ $cart->qty }}" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
                                                         </div>
                                                     </td>
 
