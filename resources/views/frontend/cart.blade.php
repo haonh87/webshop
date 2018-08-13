@@ -3,6 +3,7 @@
 @stop
 @section('content')
     <div id="content">
+        @include('frontend.header_line', ['name' => 'Cart'])
         @include('frontend.message')
         <div class="cmsmasters_row_outer_parent" style="padding-top: 60px; padding-bottom: 60px">
             <div class="cmsmasters_row_outer">
