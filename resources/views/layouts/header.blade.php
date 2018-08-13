@@ -18,9 +18,44 @@
                 </div>
                 <div class="cmsmasters_dynamic_cart"><a href="http://sports-store.cmsmasters.net/cart/"
                                                         class="cmsmasters_dynamic_cart_button"><span
-                                class="cmsmasters_theme_icon_basket">0</span></a><span
+                                class="cmsmasters_theme_icon_basket">{{ count($cartShare) }}</span></a><span
                             class="cmsmasters_dynamic_cart_button_hide"></span>
-                    <div class="widget_shopping_cart_content"></div>
+                    <div class="widget_shopping_cart_content">
+                        @if(count($cartShare) == 0)
+                            <p class="woocommerce-mini-cart__empty-message">No products in the cart.</p>
+                        @else
+                            <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                @php
+                                    $total = 0;
+                                @endphp
+                                @foreach($cartShare as $key => $cart)
+                                    @php
+                                        $total = $total + $cart->subtotal;
+                                    @endphp
+                                    <li class="woocommerce-mini-cart-item mini_cart_item">
+                                        <a href="{{ route('cart.destroy', ['cart' => $cart->rowId]) }}" class="remove remove_from_cart_button" aria-label="Remove this item">×</a>
+                                        <a href="{{ route('product.show', ['product' => $cart->id]) }}">
+                                            <img width="540" height="540" src="{{ asset('images/'.$cart->options->image) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" sizes="(max-width: 540px) 100vw, 540px">
+                                            {{ $cart->name }}&nbsp;
+                                        </a>
+                                        <span class="quantity">{{ $cart->qty }} × <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->price, 2)  }}</span></span>
+                                    </li>
+                                @endforeach
+                                <p class="woocommerce-mini-cart__total total">
+                                    <strong>Subtotal:</strong>
+                                    <span class="woocommerce-Price-amount amount">
+                                        <span>
+                                            <span class="woocommerce-Price-currencySymbol">VND</span>
+                                        </span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}
+                                    </span>
+                                </p>
+                                <p class="woocommerce-mini-cart__buttons buttons">
+                                    <a href="{{ route('cart.index') }}" class="button wc-forward">View cart</a>
+                                    <a href="{{ route('cart.checkout') }}" class="button checkout wc-forward">Checkout</a>
+                                </p>
+                            </ul>
+                        @endif
+                    </div>
                 </div>
                 <div class="cmsmasters_wishlist_wrap"><a href="http://sports-store.cmsmasters.net/wishlist/"
                                                          class="cmsmasters_theme_icon_like cmsmasters_wishlist_button"
