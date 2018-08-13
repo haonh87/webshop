@@ -91,15 +91,17 @@ class CartController extends BaseController
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request)
+    public function update()
     {
-        die('xxxx');
-        $quantity = $request->get('quantity');
-        if(is_null(Cart::get($rowId))){
-            return response()->json(['error'=>trans('lang.error')]);
+        $carts = Request::get('cart');
+        foreach ($carts as $key => $cart) {
+            $quantity = $cart['qty'];
+            if(is_null(Cart::get($key))){
+                return redirect()->back()->with('message_cart', 'Update cart error');
+            }
+            Cart::update($key, $quantity);
         }
-        Cart::update($rowId, $quantity);
-        return response()->json(['success'=>trans('lang.success')]);
+        return redirect()->back()->with('message_cart', 'Update cart success');
     }
 
     /**
