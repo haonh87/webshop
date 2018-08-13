@@ -183,44 +183,42 @@
                     <aside id="woocommerce_recently_viewed_products-2"
                            class="widget woocommerce widget_recently_viewed_products"><h3 class="widgettitle">Recently
                             viewed products</h3>
-                        <ul class="product_list_widget">
-                            <li>
-
-                                <a href="http://sports-store.cmsmasters.net/product/different-tools-for-fitness/">
-                                    <img width="540" height="540"
-                                         src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4.jpg"
-                                         class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                         alt=""
-                                         srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-180x180.jpg 180w"
-                                         sizes="(max-width: 540px) 100vw, 540px"> <span class="product-title">Different Tools for Fitness</span>
-                                </a>
-
-
-                                <div class="cmsmasters_star_rating" itemscope=""
-                                     itemtype="http://schema.org/AggregateRating" title="Rated 4.00 out of 5">
-                                    <div class="cmsmasters_star_trans_wrap">
-                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                    </div>
-                                    <div class="cmsmasters_star_color_wrap" style="width:80%">
-                                        <div class="cmsmasters_star_color_inner">
-                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                        @if(empty($recentlyProduct))
+                        @else
+                            <ul class="product_list_widget">
+                                @foreach($recentlyProduct as $product)
+                                <li>
+                                    <a href="{{ route('product.show', ['product' => $product->id]) }}">
+                                        <img width="540" height="540"
+                                             src="{{ asset('images/' .$product->productImages[0]->img_path) }}"
+                                             class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" sizes="(max-width: 540px) 100vw, 540px">
+                                        <span class="product-title">{{ $product->name }}</span>
+                                    </a>
+                                    <div class="cmsmasters_star_rating" itemscope=""
+                                         itemtype="http://schema.org/AggregateRating" title="Rated 4.00 out of 5">
+                                        <div class="cmsmasters_star_trans_wrap">
+                                            <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                            <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                            <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                            <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                            <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
                                         </div>
+                                        <div class="cmsmasters_star_color_wrap" style="width:80%">
+                                            <div class="cmsmasters_star_color_inner">
+                                                @for($i = 0; $i< (int)$product->total_star; $i++)
+                                                    <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                @endfor
+                                            </div>
+                                        </div>
+                                        <span class="rating dn"><strong itemprop="ratingValue">{{ $product->total_star }}</strong> out of 5</span>
                                     </div>
-                                    <span class="rating dn"><strong itemprop="ratingValue">4.00</strong> out of 5</span>
-                                </div>
 
-                                <span class="woocommerce-Price-amount amount"><span><span
-                                                class="woocommerce-Price-currencySymbol">£</span></span>18.00</span>
-                            </li>
-                        </ul>
+                                    <span class="woocommerce-Price-amount amount"><span><span
+                                                    class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($product->price, 2)  }}</span>
+                                </li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </aside>
                     <aside id="woocommerce_widget_cart-2" class="widget woocommerce widget_shopping_cart"><h3
                                 class="widgettitle">Your Cart</h3>
