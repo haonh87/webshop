@@ -1,6 +1,8 @@
 @if(Session::has('message_cart'))
-    <div class="woocommerce-message" role="alert">
-        {!! Session::get('message_cart') !!}
+    <div class="cmsmasters_row_inner">
+        <div class="woocommerce-message" role="alert">
+            {!! Session::get('message_cart') !!}
+        </div>
     </div>
 @endif
 @if(Session::has('message'))
