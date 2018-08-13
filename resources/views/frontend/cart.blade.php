@@ -34,7 +34,7 @@
 
                                                     <td class="product-thumbnail">
                                                         <a href="{{ route('product.show', ['product' => $cart->id]) }}">
-                                                            <img width="540" height="540" src="{{ asset('images/'.$cart->product_image) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="">
+                                                            <img width="540" height="540" src="{{ asset('images/'.$cart->options->image) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="">
                                                         </a>
                                                     </td>
 
@@ -42,11 +42,11 @@
                                                         <a href="{{ route('product.show', ['product' => $cart->id]) }}">Modern Sporty Fashion Sneaker</a><dl class="variation">
                                                             <dt class="variation-Colors">Color:</dt>
                                                             <dd class="variation-Colors">
-                                                                <p>{{ $colors[$cart->color] }}</p>
+                                                                <p>{{ isset($colors[$cart->options->color]) ? $colors[$cart->options->color] : '' }}</p>
                                                             </dd>
                                                             <dt class="variation-MenShoesSize">Size:</dt>
                                                             <dd class="variation-MenShoesSize">
-                                                                <p>{{ $colors[$cart->size] }}</p>
+                                                                <p>{{ isset($sizes[$cart->options->size]) ? $sizes[$cart->options->size] : '' }}</p>
                                                             </dd>
                                                         </dl>
                                                     </td>

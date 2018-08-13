@@ -43,8 +43,8 @@ class CartController extends BaseController
         $colors = $this->productColorService->getAllColor();
         return view('frontend.cart', [
             'carts' => $carts,
-            'sizes' => $sizes,
-            'colors' => $colors
+            'sizes' => $sizes->toArray(),
+            'colors' => $colors->toArray()
         ]);
     }
 
@@ -70,9 +70,11 @@ class CartController extends BaseController
                 'name' => Request::get('product_name'),
                 'qty' => Request::get('quantity'),
                 'price' => Request::get('product_price'),
-                'product_image' => Request::get('product_image'),
-                'size' => Request::get('attribute_pa_size'),
-                'color' => Request::get('attribute_pa_color'),
+                'options' => [
+                    'size' => Request::get('attribute_pa_size'),
+                    'color' => Request::get('attribute_pa_color'),
+                    'image' => Request::get('product_image'),
+                ]
             ));
         }
         $prduct_link = Request::get('product_name').' has been added to your cart';
