@@ -68,16 +68,14 @@
                                                     </td>
 
                                                     <td class="product-subtotal" data-title="Total">
-                                                        <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->subtotal, 2)  }}</span>						</td>
+                                                        <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->subtotal, 2)  }}</span>
+                                                    </td>
                                                 </tr>
                                                 @endforeach
                                                 <tr>
                                                     <td colspan="6" class="actions">
-
-                                                        <button type="submit" class="button" name="update_cart" value="Update cart" disabled="">Update cart</button>
-
-
-                                                        <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="{{ $cart->rowId }}"><input type="hidden" name="_wp_http_referer" value="/cart/">				</td>
+                                                        <button type="submit" class="button" name="update_cart" value="Update cart">Update cart</button>
+                                                    </td>
                                                 </tr>
 
                                                 </tbody>

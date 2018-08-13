@@ -91,8 +91,9 @@ class CartController extends BaseController
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $rowId)
+    public function update(Request $request)
     {
+        die('xxxx');
         $quantity = $request->get('quantity');
         if(is_null(Cart::get($rowId))){
             return response()->json(['error'=>trans('lang.error')]);
