@@ -8,7 +8,7 @@
         <div class="cmsmasters_row_outer_parent create_user" style="padding-top: 70px; padding-bottom: 60px">
             <div class="cmsmasters_row_outer">
                 <div class="cmsmasters_row_inner">
-                    <form action="{{ route('myaccount.store') }}" method="POST">
+                    <form action="{{ route('myaccount.update') }}" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="col-md-9 col-md-offset-3">

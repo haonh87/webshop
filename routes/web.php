@@ -39,7 +39,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
         Route::get('edit/{myaccount?}', ['as' => 'myaccount.edit', 'uses' => 'Frontend\MyAccountController@edit']);
         Route::get('/order', ['as' => 'myaccount.old.orders', 'uses' => 'Frontend\MyAccountController@old_orders']);
         Route::get('/order/{order}', ['as' => 'myaccount.order.show', 'uses' => 'Frontend\MyAccountController@show_order']);
-        Route::match(['put', 'patch'], '/{myaccount}', ['as' => 'myaccount.update', 'uses' => 'Frontend\MyAccountController@update']);
+        Route::post('/update', ['as' => 'myaccount.update', 'uses' => 'Frontend\MyAccountController@update']);
         // Password reset link request routes...
         Route::get('password/email', ['as' => 'myaccount.password.email', 'uses' => 'Frontend\MyAccountController@getEmail']);
         Route::post('password/email', ['as' => 'myaccount.password.email', 'uses' => 'Frontend\MyAccountController@postEmail']);

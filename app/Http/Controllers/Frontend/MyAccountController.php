@@ -83,7 +83,7 @@ class MyAccountController extends BaseController
      * @param Request $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         if(!Auth::check())
             return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
