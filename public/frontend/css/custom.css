@@ -91,3 +91,19 @@
     margin: auto;
     float: initial;
 }
+.woocommerce-message {
+    margin-bottom: 0px;
+    margin-top: 30px;
+}
+body .headline {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dbdbdb;
+}
+body .headline .headline_outer {
+    border-bottom: 0px;
+}
+.product_list_wrap {
+    width: 100%;
+    padding: 0 2%;
+}

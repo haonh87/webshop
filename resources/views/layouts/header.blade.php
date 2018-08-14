@@ -81,12 +81,54 @@
                                                             class="nav_title">Home Shop</span></span></a></li>
                                     </ul>
                                 </li>
+                                <li id="menu-item-12979"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12979 menu-item-depth-0">
+                                    <a><span class="nav_item_wrap"><span
+                                                    class="nav_title">Features</span></span></a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-13040"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13040 menu-item-depth-1">
+                                            <a href="http://sports-store.cmsmasters.net/new-collection/"><span
+                                                        class="nav_item_wrap"><span
+                                                            class="nav_title">New Collection</span></span></a></li>
+                                        <li id="menu-item-14039"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14039 menu-item-depth-1">
+                                            <a href="http://sports-store.cmsmasters.net/product/different-tools-for-fitness/"><span
+                                                        class="nav_item_wrap"><span
+                                                            class="nav_title">Product Simple</span></span></a></li>
+                                        <li id="menu-item-14040"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14040 menu-item-depth-1">
+                                            <a href="http://sports-store.cmsmasters.net/product/classic-sports-bra/"><span
+                                                        class="nav_item_wrap"><span
+                                                            class="nav_title">Product Extended</span></span></a>
+                                        </li>
+                                        <li id="menu-item-14046"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14046 menu-item-depth-1">
+                                            <a href="http://sports-store.cmsmasters.net/cart/"><span
+                                                        class="nav_item_wrap"><span
+                                                            class="nav_title">Cart</span></span></a></li>
+                                        <li id="menu-item-14045"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14045 menu-item-depth-1">
+                                            <a href="http://sports-store.cmsmasters.net/wishlist/"><span
+                                                        class="nav_item_wrap"><span
+                                                            class="nav_title">Wishlist</span></span></a></li>
+                                        <li id="menu-item-13037"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13037 menu-item-depth-1">
+                                            <a href="http://sports-store.cmsmasters.net/blog/"><span
+                                                        class="nav_item_wrap"><span
+                                                            class="nav_title">Blog</span></span></a></li>
+                                        <li id="menu-item-13038"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13038 menu-item-depth-1">
+                                            <a href="http://sports-store.cmsmasters.net/contacts/"><span
+                                                        class="nav_item_wrap"><span
+                                                            class="nav_title">Contacts</span></span></a></li>
+                                    </ul>
+                                </li>
                                 <li id="menu-item-13036"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13036 menu-item-depth-0">
                                     <a href="{{ route('product.list', ['category' => 'Women']) }}"><span
                                                 class="nav_item_wrap"><span
                                                     class="nav_title">Women</span></span></a></li>
-
                                 <li id="menu-item-13028"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13028 menu-item-depth-0">
                                     <a href="{{ route('product.list', ['category' => 'Men']) }}"><span
