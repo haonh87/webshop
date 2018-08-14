@@ -78,14 +78,20 @@ class ProductService
             ->limit($numberProducts)->get();
     }
 
-    public function getAllProductForView($categoryId)
+    public function getAllProductForView($categoryId, $dataRequest)
     {
         $result = $this->productModel->with('category')->with('productImages')
             ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
             ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
-            ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc');
+            ->groupBy('votes.product_id');
         if (!empty($categoryId)) {
             $result->where('products.category_id', $categoryId);
+        }
+        if (isset($dataRequest['orderby'])) {
+            $convert = explode('-', $dataRequest['orderby']);
+            $result->orderBy($convert[0], $convert[1]);
+        } else {
+            $result->orderBy('products.created_at', 'desc');
         }
         return $result;
     }

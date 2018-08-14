@@ -7,20 +7,19 @@
         @include('frontend.message')
         <div class="middle_inner">
             <div class="content_wrap l_sidebar product_list_wrap">
-
                 <!--  Start Content  -->
                 <div class="content entry fr" role="main">
                     <div class="cmsmasters_woo_wrap_result"><p class="woocommerce-result-count">
-                            Showing 1–16 of 35 results</p>
-                        <form class="woocommerce-ordering" method="get">
-                            <select name="orderby" class="orderby">
-                                <option value="popularity">Sort by popularity</option>
-                                <option value="rating" selected="selected">Sort by average rating</option>
-                                <option value="date">Sort by newness</option>
-                                <option value="price">Sort by price: low to high</option>
-                                <option value="price-desc">Sort by price: high to low</option>
+                            Showing {{ $products->firstItem() }}–{{ $products->lastItem() }} of {{ $products->total() }} results</p>
+                        <form class="woocommerce-ordering"  method="get" action="{{ route('product.list') }}">
+                            <select name="orderby" class="orderby" onchange="this.form.submit()">
+                                <option value="">Chọn kiểu sắp xếp</option>
+                                <option value="total_star-desc">Sort by average rating</option>
+                                <option value="products.created_at-desc">Sort by newness</option>
+                                <option value="products.price-asc">Sort by price: low to high</option>
+                                <option value="products.price-desc">Sort by price: high to low</option>
                             </select>
-                            <input type="hidden" name="paged" value="1">
+                            <input type="hidden" name="paged" value="{{ $products->currentPage() }}">
                         </form>
                     </div>
                     <div class="cmsmasters_products_wrap">
