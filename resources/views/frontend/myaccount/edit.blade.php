@@ -30,18 +30,6 @@
                                 <span class="has-error">{{$errors->first('email')}}</span>
                             </div>
                             <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                <label for="txtpassword">{{ trans('lang.password') }}</label>
-                                <input type="password" required="" value="{{ Auth::user()->password }}" class="form-control" id="password" name="password"
-                                       placeholder="{{ trans('lang.password') }}">
-                                <span class="has-error">{{$errors->first('password')}}</span>
-                            </div>
-                            <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                <label for="txtpassword_confirmation">{{ trans('lang.confirm_password') }}</label>
-                                <input type="password" required="" value="{{ Auth::user()->password }}" class="form-control" id="cf_password" name="cf_password"
-                                       placeholder="{{ trans('lang.confirm_password') }}">
-                                <span class="has-error">{{$errors->first('cf_password')}}</span>
-                            </div>
-                            <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                 <button type="submit" class="btn btn-success">{{ trans('lang.submit') }}</button>
                             </div>
                         </div>

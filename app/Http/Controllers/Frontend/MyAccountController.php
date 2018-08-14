@@ -56,7 +56,7 @@ class MyAccountController extends BaseController
      */
     public function store(Request $request)
     {
-        $dataUser = $request->except('cf_password', '_token', 'cf_password');
+        $dataUser = $request->except('_token');
         $dataUser['role_id'] = 3;
         $dataUser['is_active'] = 1;
         $user = $this->userService->createUser($dataUser);
@@ -88,7 +88,7 @@ class MyAccountController extends BaseController
         if(!Auth::check())
             return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
         else {
-            $dataUser = $request->except('cf_password', '_token', 'cf_password');
+            $dataUser = $request->except('_token');
             $this->userService->udpateUser($dataUser, Auth::user()->id);
             return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
         }

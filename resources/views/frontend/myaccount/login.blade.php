@@ -40,10 +40,6 @@
                                                            value="forever"> <span>Remember me</span>
                                                 </label>
                                             </p>
-                                            <p class="woocommerce-LostPassword lost_password">
-                                                <a href="#">Lost
-                                                    your password?</a>
-                                            </p>
                                         </form>
                                     </div>
                                 </div>
