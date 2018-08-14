@@ -5,6 +5,8 @@
     <div id="content">
         @include('frontend.slider')
 
+        @include('frontend.message')
+
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
@@ -15,7 +17,7 @@
                                     <div class="cmsmasters_column_inner">
                                         <div class="cmsmasters_featured_block cmsmasters_featured_block_hover article-style-1">
                                             <a class="cmsmasters_featured_block_link"
-                                               href="http://sports-store.cmsmasters.net/men/">
+                                               href="{{ route('product.list', ['category' => $category->name]) }}">
                                                 <img src="{{ asset($category->image_url) }}" alt="">
                                             @php
                                                 $categoryDescription = explode('-', $category->description);
@@ -162,22 +164,24 @@
                                                 <article class="post-13743 product type-product status-publish has-post-thumbnail product_cat-shoes product_cat-sneakers product_cat-unisex product_tag-shoes product_tag-sneakers product_tag-unisex first instock shipping-taxable purchasable product-type-variable">
                                                     <div class="cmsmasters_product">
                                                         <figure class="cmsmasters_product_img">
-                                                            <a href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/">
+                                                            <a href="{{ route('product.show', ['product' => $featureProduct->id]) }}">
                                                                 @foreach($featureProduct->productImages as $key => $productImage)
+                                                                @if ($key < 2)
                                                                     <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
+                                                                @endif
                                                                 @endforeach
                                                             </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/" data-quantity="1" data-product_id="13743" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
+                                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $featureProduct->id]) }}" data-quantity="1" data-product_id="13743" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
                                                                     options</a></div>
                                                         </figure>
                                                         <div class="cmsmasters_product_inner">
                                                             <header class="cmsmasters_product_header entry-header">
                                                                 <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="http://sports-store.cmsmasters.net/product/unisex-high-top-sneaker/">{{ $featureProduct->name }}</a>
+                                                                    <a href="{{ route('product.show', ['product' => $featureProduct->id]) }}">{{ $featureProduct->name }}</a>
                                                                 </h5>
                                                             </header>
                                                             <div class="cmsmasters_product_cat entry-meta">
-                                                                <a href="http://sports-store.cmsmasters.net/product-category/shoes/" class="cmsmasters_cat_color cmsmasters_cat_73" rel="category tag">{{ $featureProduct->category->name }}</a>
+                                                                <a href="{{ route('product.list', ['category' => $featureProduct->category->name]) }}" class="cmsmasters_cat_color cmsmasters_cat_73" rel="category tag">{{ $featureProduct->category->name }}</a>
                                                             </div>
                                                             <div class="cmsmasters_product_info">
 
@@ -267,24 +271,26 @@
                                                     <li class="post-13483 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts first instock shipping-taxable purchasable product-type-variable">
                                                         <article class="cmsmasters_product">
                                                             <figure class="cmsmasters_product_img">
-                                                                <a href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/">
+                                                                <a href="{{ route('product.show', ['product' => $newProduct->id]) }}">
                                                                     @foreach($newProduct->productImages as $key => $productImage)
+                                                                        @if ($key < 2)
                                                                         <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
+                                                                        @endif
                                                                     @endforeach
                                                                 </a>
-                                                                <div class="button_to_cart_wrap"><a rel="nofollow" href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Add to cart</a></div>
+                                                                <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $newProduct->id]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
                                                             </figure>
                                                             <div class="cmsmasters_product_inner">
                                                             </div>
                                                                 <header class="cmsmasters_product_header entry-header">
                                                                     <h5 class="cmsmasters_product_title entry-title">
-                                                                        <a href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/">
+                                                                        <a href="{{ route('product.show', ['product' => $newProduct->id]) }}">
                                                                             {{ $newProduct->name }}
                                                                         </a>
                                                                     </h5>
                                                                 </header>
                                                                 <div class="cmsmasters_product_cat entry-meta">
-                                                                    <a href="http://sports-store.cmsmasters.net/product-category/for-men/" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
+                                                                    <a href="{{ route('product.list', ['category' => $newProduct->category->name]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
                                                                     $newProduct->category->name }}</a></div>
                                                                 <div class="cmsmasters_product_info">
 
@@ -312,88 +318,6 @@
                                                     </li>
                                                 @endforeach
                                                 </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="widget widget-style-1">
-            <div class="cmsmasters_row_outer_parent">
-                <div class="cmsmasters_row_outer">
-                    <div class="cmsmasters_row_inner cmsmasters_row_fullwidth cmsmasters_row_no_margin">
-                        <div class="cmsmasters_row_margin cmsmasters_row_columns_behavior cmsmasters_131313">
-                            <div id="cmsmasters_column_9d7b062762" class="cmsmasters_column one_third">
-                                <div class="cmsmasters_column_inner">
-                                    <div id="cmsmasters_fb_1808b1029c" class="cmsmasters_featured_block">
-                                        <div class="featured_block_inner">
-                                            <div class="featured_block_text">
-                                                <div style="text-align: center;">
-                                                    <div id="cmsmasters_heading_82a4a2415c"
-                                                         class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                        <h2 class="cmsmasters_heading">High Performence. High
-                                                            Style </h2>
-                                                    </div>
-                                                    <br>
-                                                    <span style="color: #ffffff; font-size: 22px;">Get the discount OF 20%</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="cmsmasters_column_550e82dfec" class="cmsmasters_column one_third">
-                                <div class="cmsmasters_column_inner">
-                                    <div id="cmsmasters_fb_4371fcc3a9" class="cmsmasters_featured_block">
-                                        <div class="featured_block_inner">
-                                            <div class="featured_block_text">
-                                                <div style="text-align: center;">
-                                                    <div id="cmsmasters_heading_89c8274fdd"
-                                                         class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                        <h2 class="cmsmasters_heading">FIND MORE
-                                                            INFORMATION</h2>
-                                                    </div>
-                                                    <div style="color: #ffffff; font-size: 22px; display: inline; line-height: 50px;">
-                                                        Download Mobile Apps
-                                                        <div id="cmsmasters_divider_b89abcef3b" class="cl"></div>
-                                                    </div>
-                                                </div>
-                                                <div style="text-align: center;">
-                                                    <div class="aligncenter">
-                                                        <div class="cmsmasters_img  cmsmasters_image_c"><a href="#"><img
-                                                                        src="{{ asset('images/line.jpg') }}"
-                                                                        alt="app-store"></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="cmsmasters_column_3b774dbc35" class="cmsmasters_column one_third">
-                                <div class="cmsmasters_column_inner">
-                                    <div id="cmsmasters_fb_e83e0f6a41" class="cmsmasters_featured_block">
-                                        <div class="featured_block_inner">
-                                            <div class="featured_block_text">
-                                                <div style="text-align: center;">
-                                                    <div id="cmsmasters_heading_a9cf50b7e9"
-                                                         class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                        <h3 class="cmsmasters_heading">special offer</h3>
-                                                    </div>
-                                                    <div id="cmsmasters_heading_99415f176f"
-                                                         class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                        <h2 class="cmsmasters_heading"><a
-                                                                    href="http://sports-store.cmsmasters.net/shop-2/">Save
-                                                                25%</a></h2>
-                                                    </div>
-                                                    <br>
-                                                    <span style="color: #ffffff; font-size: 22px;">Home Gym Equipment</span>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

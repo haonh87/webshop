@@ -108,6 +108,9 @@
     <script type="text/javascript" src="{{ asset('frontend/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/extensions/revolution.extension.navigation.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/owlcarousel.min.js') }}"></script>
+    <script type='text/javascript'>
+        var cmsmasters_script = {"theme_url":"http:\/\/sports-store.cmsmasters.net\/wp-content\/themes\/sports-store","site_url":"http:\/\/sports-store.cmsmasters.net\/","ajaxurl":"http:\/\/sports-store.cmsmasters.net\/wp-admin\/admin-ajax.php","nonce_ajax_like":"e8cc90de80","nonce_ajax_view":"e7dbe2aa82","project_puzzle_proportion":"1","gmap_api_key":"AIzaSyDtfUlgzSb3LShTSAju_3gMO00kM_iXGxs","gmap_api_key_notice":"Please add your Google Maps API key","gmap_api_key_notice_link":"read more how","primary_color":"#fa5400","ilightbox_skin":"dark","ilightbox_path":"vertical","ilightbox_infinite":"0","ilightbox_aspect_ratio":"1","ilightbox_mobile_optimizer":"1","ilightbox_max_scale":"1","ilightbox_min_scale":"0.2","ilightbox_inner_toolbar":"0","ilightbox_smart_recognition":"0","ilightbox_fullscreen_one_slide":"0","ilightbox_fullscreen_viewport":"center","ilightbox_controls_toolbar":"1","ilightbox_controls_arrows":"0","ilightbox_controls_fullscreen":"1","ilightbox_controls_thumbnail":"1","ilightbox_controls_keyboard":"1","ilightbox_controls_mousewheel":"1","ilightbox_controls_swipe":"1","ilightbox_controls_slideshow":"0","ilightbox_close_text":"Close","ilightbox_enter_fullscreen_text":"Enter Fullscreen (Shift+Enter)","ilightbox_exit_fullscreen_text":"Exit Fullscreen (Shift+Enter)","ilightbox_slideshow_text":"Slideshow","ilightbox_next_text":"Next","ilightbox_previous_text":"Previous","ilightbox_load_image_error":"An error occurred when trying to load photo.","ilightbox_load_contents_error":"An error occurred when trying to load contents.","ilightbox_missing_plugin_error":"The content your are attempting to view requires the <a href='{pluginspage}' target='_blank'>{type} plugin<\\\/a>."};
+        </script>
     <script type="text/javascript" src="{{ asset('frontend/js/jquery.script.js') }}"></script>
 
     <!-- LayerSlider updates and docs at: https://layerslider.kreaturamedia.com -->
@@ -165,21 +168,8 @@
 </head>
 <body class="home page-template-default">
 <div id="page" class="csstransition chrome_only cmsmasters_liquid cmsmasters_heading_after_header hfeed site">
-    @if (session('message'))
-        <div class="alert alert-success">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong></strong> {{ session('message') }}
-        </div>
-    @endif
-    @if (session('message_error'))
-        <div class="alert alert-warning">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong></strong> {{ session('message_error') }}
-        </div>
-    @endif
     @include('layouts.header')
     @yield('content')
 </div>
-@include('login')
 @include('layouts.footer')
 </body>

@@ -12,7 +12,7 @@
         }
     </style>
     <div id="content">
-        @include('frontend.header_line', ['name' => 'About Us'])
+        @include('frontend.header_line', ['name' => 'Instructions'])
         @include('frontend.message')
         <div class="middle_inner">
             <div class="content_wrap fullwidth">

@@ -3,9 +3,10 @@
 @stop
 @section('content')
     <div id="content">
-        @include('frontend.slider')
+        @include('frontend.header_line', ['name' => 'Product list'])
+        @include('frontend.message')
         <div class="middle_inner">
-            <div class="content_wrap l_sidebar">
+            <div class="content_wrap l_sidebar product_list_wrap">
 
                 <!--  Start Content  -->
                 <div class="content entry fr" role="main">
@@ -28,24 +29,26 @@
                                 <li class="post-13483 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts first instock shipping-taxable purchasable product-type-variable">
                                     <article class="cmsmasters_product">
                                         <figure class="cmsmasters_product_img">
-                                            <a href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/">
+                                            <a href="{{ route('product.show', ['product' => $product->id]) }}">
                                                 @foreach($product->productImages as $key => $productImage)
+                                                    @if ($key < 2)
                                                     <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
+                                                    @endif
                                                 @endforeach
                                             </a>
-                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Add to cart</a></div>
+                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $product->id]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
                                         </figure>
                                         <div class="cmsmasters_product_inner">
                                         </div>
                                         <header class="cmsmasters_product_header entry-header">
                                             <h5 class="cmsmasters_product_title entry-title">
-                                                <a href="http://sports-store.cmsmasters.net/product/mens-sport-quick-dry-t-shirt-grey/">
+                                                <a href="{{ route('product.show', ['product' => $product->id]) }}">
                                                     {{ $product->name }}
                                                 </a>
                                             </h5>
                                         </header>
                                         <div class="cmsmasters_product_cat entry-meta">
-                                            <a href="http://sports-store.cmsmasters.net/product-category/for-men/" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
+                                            <a href="{{ route('product.list', ['category' => $product->category->name]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
                                                                     $product->category->name }}</a></div>
                                         <div class="cmsmasters_product_info">
 
@@ -142,7 +145,7 @@
                         <ul class="product-categories">
                             @foreach( $categories as $category )
                             <li class="cat-item cat-item-{{ $category->id }}">
-                                <a href="">{{ $category->name }}</a>
+                                <a href="{{ route('product.list', ['category' => $category->name]) }}">{{ $category->name }}</a>
                             </li>
                             @endforeach
                         </ul>
@@ -151,126 +154,110 @@
                            class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav"><h3
                                 class="widgettitle">Select color</h3>
                         <form method="get" action="http://sports-store.cmsmasters.net/shop/"
-                              class="woocommerce-widget-layered-nav-dropdown"><select
+                              class="woocommerce-widget-layered-nav-dropdown">
+                            <select
                                     class="woocommerce-widget-layered-nav-dropdown dropdown_layered_nav_colors select2-hidden-accessible"
                                     tabindex="-1" aria-hidden="true">
                                 <option value="">Any Colors</option>
-                                <option value="black">Black</option>
-                                <option value="blue">Blue</option>
-                                <option value="dark-blue">Dark blue</option>
-                                <option value="grey">Grey</option>
-                                <option value="orange">Orange</option>
-                                <option value="pink">Pink</option>
-                                <option value="purple">Purple</option>
-                                <option value="red">Red</option>
-                                <option value="turquoise">Turquoise</option>
-                                <option value="white">White</option>
-                                <option value="yellow">Yellow</option>
-                            </select><span class="select2 select2-container select2-container--default" dir="ltr"
-                                           style="width: 100%;"><span class="selection"><span
-                                            class="select2-selection select2-selection--single" aria-haspopup="true"
-                                            aria-expanded="false" tabindex="0" aria-labelledby="select2-a0b0-container"
-                                            role="combobox"><span class="select2-selection__rendered"
-                                                                  id="select2-a0b0-container" role="textbox"
-                                                                  aria-readonly="true"><span
-                                                    class="select2-selection__placeholder">Any Colors</span></span><span
-                                                class="select2-selection__arrow" role="presentation"><b
-                                                    role="presentation"></b></span></span></span><span
-                                        class="dropdown-wrapper" aria-hidden="true"></span></span><input type="hidden"
-                                                                                                         name="filter_colors"
-                                                                                                         value="">
+                                @foreach($colors as $key => $color)
+                                    <option value="{{ $key }}">{{ $color }}</option>
+                                @endforeach
+                            </select>
                         </form>
                     </aside>
                     <aside id="woocommerce_layered_nav-4"
                            class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav"><h3
                                 class="widgettitle">Select size</h3>
                         <form method="get" action="http://sports-store.cmsmasters.net/shop/"
-                              class="woocommerce-widget-layered-nav-dropdown"><select
+                              class="woocommerce-widget-layered-nav-dropdown">
+                            <select
                                     class="woocommerce-widget-layered-nav-dropdown dropdown_layered_nav_size select2-hidden-accessible"
                                     tabindex="-1" aria-hidden="true">
                                 <option value="">Any Size</option>
-                                <option value="xs">XS</option>
-                                <option value="s">S</option>
-                                <option value="m">M</option>
-                                <option value="l">L</option>
-                                <option value="xl">XL</option>
-                                <option value="xxl">XXL</option>
-                            </select><span class="select2 select2-container select2-container--default" dir="ltr"
-                                           style="width: 100%;"><span class="selection"><span
-                                            class="select2-selection select2-selection--single" aria-haspopup="true"
-                                            aria-expanded="false" tabindex="0" aria-labelledby="select2-trgo-container"
-                                            role="combobox"><span class="select2-selection__rendered"
-                                                                  id="select2-trgo-container" role="textbox"
-                                                                  aria-readonly="true"><span
-                                                    class="select2-selection__placeholder">Any Size</span></span><span
-                                                class="select2-selection__arrow" role="presentation"><b
-                                                    role="presentation"></b></span></span></span><span
-                                        class="dropdown-wrapper" aria-hidden="true"></span></span><input type="hidden"
-                                                                                                         name="filter_size"
-                                                                                                         value="">
+                                @foreach($sizes as $key => $size)
+                                    <option value="{{ $key }}">{{ $size }}</option>
+                                @endforeach
+                            </select>
                         </form>
-                    </aside>
-                    <aside id="yith-woocompare-widget-2" class="widget yith-woocompare-widget"><h3 class="widgettitle">
-                            Product Compare</h3>
-                        <ul class="products-list" data-lang="">
-                            <li class="list_empty">No products to compare</li>
-                        </ul>
-
-                        <a href="http://sports-store.cmsmasters.net?action=yith-woocompare-remove-product&amp;id=all"
-                           data-product_id="all" class="clear-all" rel="nofollow">Clear all</a>
-                        <a href="http://sports-store.cmsmasters.net/yith-compare/" class="compare added button"
-                           rel="nofollow">Compare</a>
-
                     </aside>
                     <aside id="woocommerce_recently_viewed_products-2"
                            class="widget woocommerce widget_recently_viewed_products"><h3 class="widgettitle">Recently
                             viewed products</h3>
-                        <ul class="product_list_widget">
-                            <li>
-
-                                <a href="http://sports-store.cmsmasters.net/product/different-tools-for-fitness/">
-                                    <img width="540" height="540"
-                                         src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4.jpg"
-                                         class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
-                                         alt=""
-                                         srcset="http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4.jpg 600w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-150x150.jpg 150w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-300x300.jpg 300w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-70x70.jpg 70w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-360x360.jpg 360w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-580x580.jpg 580w, http://sports-store.cmsmasters.net/wp-content/uploads/2015/05/1-4-180x180.jpg 180w"
-                                         sizes="(max-width: 540px) 100vw, 540px"> <span class="product-title">Different Tools for Fitness</span>
-                                </a>
-
-
-                                <div class="cmsmasters_star_rating" itemscope=""
-                                     itemtype="http://schema.org/AggregateRating" title="Rated 4.00 out of 5">
-                                    <div class="cmsmasters_star_trans_wrap">
-                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                        <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
-                                    </div>
-                                    <div class="cmsmasters_star_color_wrap" style="width:80%">
-                                        <div class="cmsmasters_star_color_inner">
-                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                            <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                        @if(empty($recentlyProduct))
+                            <p>khong co san pham</p>
+                        @else
+                            <ul class="product_list_widget">
+                                @foreach($recentlyProduct as $product)
+                                <li>
+                                    <a href="{{ route('product.show', ['product' => $product->id]) }}">
+                                        <img width="540" height="540"
+                                             src="{{ asset('images/' .$product->productImages[0]->img_path) }}"
+                                             class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" sizes="(max-width: 540px) 100vw, 540px">
+                                        <span class="product-title">{{ $product->name }}</span>
+                                    </a>
+                                    <div class="cmsmasters_star_rating" itemscope=""
+                                         itemtype="http://schema.org/AggregateRating" title="Rated 4.00 out of 5">
+                                        <div class="cmsmasters_star_trans_wrap">
+                                            <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                            <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                            <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                            <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
+                                            <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
                                         </div>
+                                        <div class="cmsmasters_star_color_wrap" style="width:80%">
+                                            <div class="cmsmasters_star_color_inner">
+                                                @for($i = 0; $i< (int)$product->total_star; $i++)
+                                                    <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                @endfor
+                                            </div>
+                                        </div>
+                                        <span class="rating dn"><strong itemprop="ratingValue">{{ $product->total_star }}</strong> out of 5</span>
                                     </div>
-                                    <span class="rating dn"><strong itemprop="ratingValue">4.00</strong> out of 5</span>
-                                </div>
 
-                                <span class="woocommerce-Price-amount amount"><span><span
-                                                class="woocommerce-Price-currencySymbol">£</span></span>18.00</span>
-                            </li>
-                        </ul>
+                                    <span class="woocommerce-Price-amount amount"><span><span
+                                                    class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($product->price, 2)  }}</span>
+                                </li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </aside>
                     <aside id="woocommerce_widget_cart-2" class="widget woocommerce widget_shopping_cart"><h3
                                 class="widgettitle">Your Cart</h3>
                         <div class="widget_shopping_cart_content">
-
-                            <p class="woocommerce-mini-cart__empty-message">No products in the cart.</p>
-
-
+                            @if(count($cartShare) == 0)
+                                <p class="woocommerce-mini-cart__empty-message">No products in the cart.</p>
+                            @else
+                                <ul class="woocommerce-mini-cart cart_list product_list_widget">
+                                    @php
+                                        $total = 0;
+                                    @endphp
+                                    @foreach($cartShare as $key => $cart)
+                                        @php
+                                            $total = $total + $cart->subtotal;
+                                        @endphp
+                                        <li class="woocommerce-mini-cart-item mini_cart_item">
+                                            <a href="{{ route('cart.destroy', ['cart' => $cart->rowId]) }}" class="remove remove_from_cart_button" aria-label="Remove this item">×</a>
+                                            <a href="{{ route('product.show', ['product' => $cart->id]) }}">
+                                                <img width="540" height="540" src="{{ asset('images/'.$cart->options->image) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" sizes="(max-width: 540px) 100vw, 540px">
+                                                {{ $cart->name }}&nbsp;
+                                            </a>
+                                            <span class="quantity">{{ $cart->qty }} × <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->price, 2)  }}</span></span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <p class="woocommerce-mini-cart__total total">
+                                    <strong>Subtotal:</strong>
+                                    <span class="woocommerce-Price-amount amount">
+                                    <span>
+                                        <span class="woocommerce-Price-currencySymbol">VND</span>
+                                    </span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}
+                                </span>
+                                </p>
+                                <p class="woocommerce-mini-cart__buttons buttons">
+                                    <a href="{{ route('cart.index') }}" class="button wc-forward">View cart</a>
+                                    <a href="{{ route('cart.checkout') }}" class="button checkout wc-forward">Checkout</a>
+                                </p>
+                            @endif
                         </div>
                     </aside>
                 </div>

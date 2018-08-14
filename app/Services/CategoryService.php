@@ -149,4 +149,9 @@ class CategoryService
     {
         return $this->categoryModel->whereIn('name', $this->MWcategory)->get();
     }
+
+    public function findIdByName($categoryName = null)
+    {
+        return $this->categoryModel->where('name', $categoryName)->first();
+    }
 }

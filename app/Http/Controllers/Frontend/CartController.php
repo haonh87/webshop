@@ -2,20 +2,34 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Response;
 use Cart;
-use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Customer;
 use Auth;
+use App\Services\ProductColorService;
+use App\Services\ProductSizeService;
 
 class CartController extends BaseController
 {
+
+    protected $productSizeService;
+    protected $productColorService;
+
+    /**
+     * Constructor function.
+     * Set global fro category all page
+     **/
+    public function __construct(ProductSizeService $productSizeService, ProductColorService $productColorService
+    )
+    {
+        parent::__construct();
+        $this->productSizeService = $productSizeService;
+        $this->productColorService = $productColorService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,16 +37,14 @@ class CartController extends BaseController
      */
     public function index()
     {
-        
-        $blade_include = 'frontend.content.cart_detail';
-        $sub_navi = '<li>
-                        <a href="'.route("cart.index").'" style="display: none;"></a>
-                        <span>'.trans('lang.shopping_cart').'</span>
-                    </li>';
-        return view('frontend.main_content')->with('parameters',null)
-                                            ->with('parameters2', null)
-                                            ->with('sub_navi', $sub_navi)
-                                            ->with('blade_include', $blade_include);
+        $carts = Cart::content();
+        $sizes = $this->productSizeService->getAllProductSize();
+        $colors = $this->productColorService->getAllColor();
+        return view('frontend.cart', [
+            'carts' => $carts,
+            'sizes' => $sizes->toArray(),
+            'colors' => $colors->toArray()
+        ]);
     }
 
     /**
@@ -41,46 +53,35 @@ class CartController extends BaseController
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $data = $request->all();
-//        dd($data);
-        $hasError = false;
-        if(empty($data['size_option']))
+        $cartExists = Cart::search(function($key, $value) {
+            return $key->id == Request::get('product_id');
+        });
+        if($cartExists->count())
         {
-            $hasError = true;
-            $err_msg['size'] = trans('lang.size_require');
+            foreach ($cartExists as $cart) {
+                Cart::update($cart->rowId, $cart->qty + Request::get('quantity'));
+            }
+        } else {
+            Cart::add(array(
+                'id'=>Request::get('product_id'),
+                'name' => Request::get('product_name'),
+                'qty' => Request::get('quantity'),
+                'price' => Request::get('product_price'),
+                'options' => [
+                    'size' => Request::get('attribute_pa_size'),
+                    'color' => Request::get('attribute_pa_color'),
+                    'image' => Request::get('product_image'),
+                ]
+            ));
         }
-        if(!isset($data['color']))
-        {
-            $hasError = true;
-            $err_msg['color'] = trans('lang.color_requred');
-        }
-        if($hasError){
-            return response()->json(["error"=>$err_msg]);
-        }
-        $product = Product::findOrFail($data['product_id']);
-        $product_name = $product->localeName();
-        $cartExists = Cart::search(['id' =>$product->id,'color'=>$data['color'],'size'=>$data['size_option']]);
-        if($cartExists)
-        {
-            $cart = Cart::get($cartExists[0]);
-            Cart::update($cartExists[0], $cart->qty+$data['quantity']);
-        }
-        else
-        {
-            Cart::associate('Product', 'App')->add(array('id'=>$product->id,
-                            'name' => $product->localeName(),
-                            'qty' => $data['quantity'],
-                            'price' => $product->price,
-                            'options' => array('size_option' => $data['size_option'], 'color'=>$data['color'])));
-        }
-        $prduct_link = '<a href="'.route('product.show',['product_id'=>$product->id]).'">'.$product->localeName().'</a>';
-        $link_to_cart = '<a href="'.route('cart.index').'">shopping cart!</a>';
-        $success = trans('lang.your_secces_added').$prduct_link.trans('lang.to_your'). $link_to_cart;
+        $prduct_link = Request::get('product_name').' has been added to your cart';
+        $link_to_cart = '<a class="button wc-forward" href="'.route('cart.index').'">shopping cart!</a>';
+        $success = $link_to_cart.$prduct_link;
         $message=['success'=>$success];
 
-        return response()->json($message);
+        return redirect()->back()->with('message_cart', $success);
     }
 
     /**
@@ -90,14 +91,17 @@ class CartController extends BaseController
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $rowId)
+    public function update()
     {
-        $quantity = $request->get('quantity');
-        if(is_null(Cart::get($rowId))){
-            return response()->json(['error'=>trans('lang.error')]);
+        $carts = Request::get('cart');
+        foreach ($carts as $key => $cart) {
+            $quantity = $cart['qty'];
+            if(is_null(Cart::get($key))){
+                return redirect()->back()->with('message_cart', 'Update cart error');
+            }
+            Cart::update($key, $quantity);
         }
-        Cart::update($rowId, $quantity);
-        return response()->json(['success'=>trans('lang.success')]);
+        return redirect()->back()->with('message_cart', 'Update cart success');
     }
 
     /**
@@ -110,9 +114,7 @@ class CartController extends BaseController
     {
         $product_name = Cart::get($id)->name;
         Cart::remove($id);
-        $success = trans('lang.remove').$product_name;
-        $message = Cart::count().'item(s) - '.Cart::total()*1.2; 
-        return response()->json(['total'=>$message, 'success'=>$success]);
+        return redirect()->back()->with('message_cart', 'Xóa thành công '. $product_name);
     }
 
     public function getCheckout()

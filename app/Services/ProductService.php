@@ -78,16 +78,46 @@ class ProductService
             ->limit($numberProducts)->get();
     }
 
-    public function getAllProductForView()
+    public function getAllProductForView($categoryId)
+    {
+        $result = $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc');
+        if (!empty($categoryId)) {
+            $result->where('products.category_id', $categoryId);
+        }
+        return $result;
+    }
+
+    public function findProductByIdView($id)
     {
         return $this->productModel->with('category')->with('productImages')
             ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
             ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
-            ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc');
+            ->groupBy('votes.product_id')->where('products.id', $id)->first();
+    }
+
+    public function getRelateProduct($product)
+    {
+        return $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->where('products.id', '!=',$product->id)
+            ->where('products.category_id', $product->category_id)->limit(4)->get();
     }
 
     public function getMaxMinPrice()
     {
         return $this->productModel->select(DB::raw("MAX(price) AS max_price"), DB::raw("MIN(price) AS min_price"))->first();
+    }
+
+    public function getRecentlyProduct($ids = null)
+    {
+        $result = $this->productModel->with('category')->with('productImages')
+            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
+            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('votes.product_id')->whereIn('products.id', $ids);
+        return $result;
     }
 }

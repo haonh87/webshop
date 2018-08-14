@@ -4,11 +4,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 
     Route::get('login/{social}', ["as" => "social.login", "uses" => 'Auth\AuthController@redirectToProvider']);
     Route::get('login/{social}/callback', 'Auth\AuthController@handleProviderCallback');
-    Route::get('/aboutUs', ['as' => 'aboutUs', 'uses' => 'Frontend\AboutUsController@index']);
+    Route::get('/about-us', ['as' => 'aboutUs', 'uses' => 'Frontend\AboutUsController@index']);
     Route::get('/instructions', ['as' => 'instructions', 'uses' => 'Frontend\InstructionsController@index']);
 
-    Route::post('customer/login', 'Auth\CustomerLoginController@login');
-    Route::get('customer/logout', 'Auth\CustomerLoginController@logout')->name('customer.logout');
+    Route::get('customer/login', ["as" => "customer.login", "uses" => "Frontend\CustomerLoginController@login"]);
+    Route::post('customer/login', ["as" => "customer.postLogin", "uses" => "Frontend\CustomerLoginController@postCustomerLogin"]);
 
     Route::get('/', ["as" => "index", "uses" => "Frontend\IndexController@index"]);
     Route::get('/category/{id}', ['as' => "category", 'uses' => 'Frontend\IndexController@showProductByCategory']);
@@ -24,13 +24,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::delete('/wishlist/{wishlist}', ['as' => 'wishlist.destroy', 'uses' => 'Frontend\WishListController@destroy']);
 
     Route::get('/product', ['as' => 'product.index', 'uses' => 'Frontend\IndexController@index']);
-    Route::get('/product-list', ['as' => 'product.list', 'uses' => 'Frontend\IndexController@getProductList']);
+    Route::get('/product-list/{category?}', ['as' => 'product.list', 'uses' => 'Frontend\IndexController@getProductList']);
     Route::get('/product/{product}', ['as' => 'product.show', 'uses' => 'Frontend\IndexController@show']);
 
     Route::get('/cart', ['as' => 'cart.index', 'uses' => 'Frontend\CartController@index']);
     Route::post('/cart', ['as' => 'cart.store', 'uses' => 'Frontend\CartController@store']);
-    Route::delete('/cart/{cart}', ['as' => 'cart.destroy', 'uses' => 'Frontend\CartController@destroy']);
-    Route::match(['put', 'patch'], '/cart/{cart}', ['as' => 'cart.update', 'uses' => 'Frontend\CartController@update']);
+    Route::get('/cart_destroy/{cart}', ['as' => 'cart.destroy', 'uses' => 'Frontend\CartController@destroy']);
+    Route::post('/cart_update', ['as' => 'cart.update', 'uses' => 'Frontend\CartController@update']);
 
     Route::get('/checkout', ['as' => 'cart.checkout', 'uses' => 'Frontend\CartController@getCheckout']);
     Route::get('/contact', ['as' => 'contact', 'uses' => 'Frontend\IndexController@getContact']);
