@@ -6,13 +6,9 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\BaseController;
-use App\Models\Product;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Vote;
-use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 
@@ -30,12 +26,9 @@ class MyAccountController extends BaseController
     public function index()
     {
         if(!Auth::check())
-            return redirect()->route('myaccount.create')->with('message_cart', 'Bạn chưa có tài khoản hãy tạo tài khoản');
+            return redirect()->route('')->with('message', 'Hãy đăng nhập!');
         else {
-            $sub_navi = '<li>
-                        <a href="'.route("myaccount.index").'" style="display: none;">'.trans('lang.my_account').'</a>
-                    </li>';
-            return view('frontend.myaccount.index')->with('sub_navi', $sub_navi);
+            return view('frontend.myaccount.index')->with('sub_navi', '');
         }
     }
     /**
@@ -48,11 +41,7 @@ class MyAccountController extends BaseController
         if(Auth::check()){
             return redirect()->route('index');
         }
-        $sub_navi= '<li>
-                        <a href="'.route("myaccount.index").'" style="display: none;">'.trans('lang.my_account').'</a>
-
-                    </li>';
-        return view('frontend.myaccount.create')->with('sub_navi', $sub_navi);
+        return view('frontend.myaccount.create')->with('sub_navi', '');
     }
 
     /**
@@ -104,11 +93,6 @@ class MyAccountController extends BaseController
             return redirect()->route('authLogin')->with('message', trans('lang.success'));
 
     }
-    public function show($id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -179,9 +163,6 @@ class MyAccountController extends BaseController
                     $user = User::findOrFail($id);
                     $user->password = \Hash::make($request->input("txtpassword"));
                     $user->role_id = "3";
-                    //dump($user->password);
-                    //dump($user);
-                    //die;
                     $user->save();
                     return redirect()->route('myaccount.index', $id)->with('message', trans('lang.success'));
             }
@@ -243,10 +224,6 @@ class MyAccountController extends BaseController
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
-    {
-   //
-    }
     public function old_orders()
     {
         if (!Auth::check())
