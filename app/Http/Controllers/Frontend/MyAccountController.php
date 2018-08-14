@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Response;
@@ -14,9 +15,12 @@ use Validator;
 
 class MyAccountController extends BaseController
 {
-    public function __construct()
+
+    protected $userService;
+    public function __construct(UserService $userService)
     {
         parent::__construct();
+        $this->userService = $userService;
     }
     /**
      * Display a listing of the resource.
@@ -39,9 +43,9 @@ class MyAccountController extends BaseController
     public function create()
     {
         if(Auth::check()){
-            return redirect()->route('index');
+            return view('frontend.myaccount.detail')->with('message', 'Đã đăng nhập!');
         }
-        return view('frontend.myaccount.create')->with('sub_navi', '');
+        return view('frontend.myaccount.create');
     }
 
     /**
@@ -52,46 +56,15 @@ class MyAccountController extends BaseController
      */
     public function store(Request $request)
     {
-
-            $messages = [
-                'txtname.required' => 'The name field is required.',
-                'txtemail.required' => 'The email field is required.',
-                'txtpassword.required' => 'The password field is required.',
-                'txtpassword_confirmation.required' => 'The password confirm and password must match.',
-                'txtbirthday.required' => 'The birthday field is required.',
-            ];
-            $rules = [
-                'txtname' => 'required|max:255',
-                'txtemail' => 'required|max:255',
-                'txtpassword' => 'required|confirmed|min:6',
-                'txtpassword_confirmation' => 'same:txtpassword',
-                'txtbirthday' => 'required',
-            ];
-            $this->validate($request, $rules, $messages);
-
-            $user = new User();
-            $user->name = $request->input("txtname");
-            $user->birthdate = $request->input("txtbirthday");
-            $user->gender = $request->input("txtgender");
-            $user->email = $request->input("txtemail");
-            $user->password =  \Hash::make($request->input("txtpassword"));
-            $user->customer_id= null ;
-            $user->save();
-        //send mail
-            $data = array(
-                'pass' => $user->password,
-                'server' => 'mpmoda',
-            );
-            if($user){
-                \Mail::send('emails.email_register',$data, function($message) use ($user){
-                    $message->from($user->email, 'Admin');
-                    $message->to($user->email, $user->name)
-                        ->subject('Verify your Account');
-                });
-            }
-        //end send mail
-            return redirect()->route('authLogin')->with('message', trans('lang.success'));
-
+        $dataUser = $request->except('cf_password', '_token');
+        $dataUser['role_id'] = 3;
+        $dataUser['is_active'] = 1;
+        $user = $this->userService->createUser($dataUser);
+        if ($user) {
+            return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
+        } else {
+            return redirect()->back()->with('message_error', 'Tạo tài khoản không thành công');
+        }
     }
     /**
      * Show the form for editing the specified resource.

@@ -13,41 +13,33 @@
 
                         <div class="col-md-9 col-md-offset-3">
                             <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                <label for="txtlastname">{{ trans('name') }}</label>
-                                <input type="text"  required="" class="form-control" id="txtname" name="txtname" placeholder="{{ trans('name') }}"
-                                       value="{{  Session::getOldInput('txtlastname') }}"/>
+                                <label for="fullname">Fullname</label>
+                                <input required="" type="text" class="form-control" id="fullname" name="fullname"
+                                       placeholder="Fullname">
+                                <span class="has-error">{{$errors->first('fullname')}}</span>
+                            </div>
+                            <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="txtlastname">{{ trans('username') }}</label>
+                                <input type="text"  required="" class="form-control" id="username" name="username" placeholder="{{ trans('username') }}"
+                                       value="{{  Session::getOldInput('username') }}"/>
                             </div>
                             <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                 <label for="txtemail">{{ trans('lang.email') }}</label>
-                                <input type="email" required="" class="form-control" id="txtemail" name="txtemail" placeholder="{{ trans('lang.email') }}"
-                                       value="{{  Session::getOldInput('txtemail') }}"/>
-                                <span class="has-error">{{$errors->first('txtemail')}}</span>
+                                <input type="email" required="" class="form-control" id="email" name="email" placeholder="{{ trans('lang.email') }}"
+                                       value="{{  Session::getOldInput('email') }}"/>
+                                <span class="has-error">{{$errors->first('email')}}</span>
                             </div>
                             <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                 <label for="txtpassword">{{ trans('lang.password') }}</label>
-                                <input type="password" required="" class="form-control" id="txtpassword" name="txtpassword"
+                                <input type="password" required="" class="form-control" id="password" name="password"
                                        placeholder="{{ trans('lang.password') }}">
-                                <span class="has-error">{{$errors->first('txtpassword')}}</span>
+                                <span class="has-error">{{$errors->first('password')}}</span>
                             </div>
                             <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                 <label for="txtpassword_confirmation">{{ trans('lang.confirm_password') }}</label>
-                                <input type="password" required="" class="form-control" id="txtpassword_confirmation" name="txtpassword_confirmation"
+                                <input type="password" required="" class="form-control" id="cf_password" name="cf_password"
                                        placeholder="{{ trans('lang.confirm_password') }}">
-                                <span class="has-error">{{$errors->first('txtpassword_confirmation')}}</span>
-                            </div>
-                            <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                <label for="txtbirthday">{{ trans('lang.birth_day') }}</label>
-                                <input required="" type="date" class="form-control" id="txtbirthday" name="txtbirthday"
-                                       placeholder="{{ trans('lang.birth_day') }}">
-                                <span class="has-error">{{$errors->first('txtbirthday')}}</span>
-                            </div>
-                            <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                <label class="radio-inline">
-                                    <input type="radio" name="txtgender" id="inlineRadio1" value="0"> {{ trans('lang.male') }}
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="txtgender" id="inlineRadio2" checked value="1">{{ trans('lang.female') }}
-                                </label>
+                                <span class="has-error">{{$errors->first('cf_password')}}</span>
                             </div>
                             <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                 <button type="submit" class="btn btn-success">{{ trans('lang.submit') }}</button>
