@@ -26,9 +26,9 @@ class MyAccountController extends BaseController
     public function index()
     {
         if(!Auth::check())
-            return redirect()->route('')->with('message', 'Hãy đăng nhập!');
+            return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
         else {
-            return view('frontend.myaccount.index')->with('sub_navi', '');
+            return view('frontend.myaccount.detail')->with('sub_navi', '');
         }
     }
     /**
