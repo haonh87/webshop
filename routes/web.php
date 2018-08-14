@@ -36,7 +36,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
         Route::get('/', ['as' => 'myaccount.index', 'uses' => 'Frontend\MyAccountController@index']);
         Route::post('/', ['as' => 'myaccount.store', 'uses' => 'Frontend\MyAccountController@store']);
         Route::get('/create', ['as' => 'myaccount.create', 'uses' => 'Frontend\MyAccountController@create']);
-        Route::get('/{myaccount}/edit', ['as' => 'myaccount.edit', 'uses' => 'Frontend\MyAccountController@edit']);
+        Route::get('edit/{myaccount?}', ['as' => 'myaccount.edit', 'uses' => 'Frontend\MyAccountController@edit']);
         Route::get('/order', ['as' => 'myaccount.old.orders', 'uses' => 'Frontend\MyAccountController@old_orders']);
         Route::get('/order/{order}', ['as' => 'myaccount.order.show', 'uses' => 'Frontend\MyAccountController@show_order']);
         Route::match(['put', 'patch'], '/{myaccount}', ['as' => 'myaccount.update', 'uses' => 'Frontend\MyAccountController@update']);

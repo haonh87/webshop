@@ -56,7 +56,7 @@ class MyAccountController extends BaseController
      */
     public function store(Request $request)
     {
-        $dataUser = $request->except('cf_password', '_token');
+        $dataUser = $request->except('cf_password', '_token', 'cf_password');
         $dataUser['role_id'] = 3;
         $dataUser['is_active'] = 1;
         $user = $this->userService->createUser($dataUser);
@@ -66,90 +66,13 @@ class MyAccountController extends BaseController
             return redirect()->back()->with('message_error', 'Tạo tài khoản không thành công');
         }
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit_password($id)
-    {
-        if (!Auth::check())
-            return view('admin.login');
-        else {
-            $sub_navi = '<li>
-                        <a href="' . route("myaccount.index") . '" style="display: none;">'.trans('lang.my_account').'</a>
-                    </li>';
-            return view('frontend.myaccount.edit_password')->with('sub_navi', $sub_navi);
-        }
-    }
-    public function update_password(Request $request, $id)
+
+    public function edit($id = null)
     {
         if(!Auth::check())
-            return view('admin.login');
+            return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
         else {
-            if(Auth::user()->role_id != 4){
-                $messages = [
-                    'txtoldpassword.required' => 'The name field is required.',
-                    'txtpassword.required' => 'The password field is required.',
-                    'txtpassword_confirmation.required' => 'The password confirm and password must match.',
-                ];
-                $rules = [
-                    'txtoldpassword' => 'required|max:255',
-                    'txtpassword' => 'required|confirmed|min:6',
-                    'txtpassword_confirmation' => 'same:txtpassword',
-                ];
-                $validator = Validator::make($request->input(), $rules, $messages);
-                if ($validator->fails())
-                {
-                    return Redirect()->route('myaccount.edit.password')->withErrors($validator)->withInput();
-                }
-                $Password1= $request->input("txtoldpassword");
-                $Password2= Auth::user()->password;
-                if (Hash::check($Password1, $Password2)) {
-                    $user = User::findOrFail($id);
-                    $user->password = \Hash::make($request->input("txtpassword"));
-                    //dump($user->password);
-                    //dump($user);
-                    //die;
-                    $user->save();
-                    return redirect()->route('myaccount.index', $id)->with('message', trans('lang.success'));
-                }else{
-                    $validator->getMessageBag()->add('txtoldpassword', 'Password wrong');
-                    return Redirect()->route('myaccount.edit.password')->withErrors($validator)->withInput();
-                }
-            }else{
-                $messages = [
-                    'txtpassword.required' => 'The password field is required.',
-                    'txtpassword_confirmation.required' => 'The password confirm and password must match.',
-                ];
-                $rules = [
-                    'txtpassword' => 'required|confirmed|min:6',
-                    'txtpassword_confirmation' => 'same:txtpassword',
-                ];
-                $validator = Validator::make($request->input(), $rules, $messages);
-                if ($validator->fails())
-                {
-                    return Redirect()->route('myaccount.edit.password')->withErrors($validator)->withInput();
-                }
-                $Password2= Auth::user()->password;
-                    $user = User::findOrFail($id);
-                    $user->password = \Hash::make($request->input("txtpassword"));
-                    $user->role_id = "3";
-                    $user->save();
-                    return redirect()->route('myaccount.index', $id)->with('message', trans('lang.success'));
-            }
-        }
-    }
-    public function edit($id)
-    {
-        if(!Auth::check())
-            return view('admin.login');
-        else {
-            $sub_navi = '<li>
-                        <a href="' . route("myaccount.index") . '" style="display: none;">'.trans('lang.my_account').'</a>
-                    </li>';
-            return view('frontend.myaccount.edit')->with('sub_navi', $sub_navi);
+            return view('frontend.myaccount.edit')->with('message', 'Sửa thông tin người dùng.');
         }
     }
 
@@ -163,31 +86,11 @@ class MyAccountController extends BaseController
     public function update(Request $request, $id)
     {
         if(!Auth::check())
-            return view('admin.login');
+            return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
         else {
-            /*if($request->ajax()){
-                $message = ["success"=>"success", "massage"=>"login success"];
-                return response()->json($message);
-            }else{}*/
-            $messages = [
-                'txtname.required' => 'The name field is required.',
-                'txtemail.required' => 'The email field is required.',
-                'txtbirthday.required' => 'The birthday field is required.',
-            ];
-            $rules = [
-                'txtname' => 'required|max:255',
-                'txtemail' => 'required|max:255',
-                'txtbirthday' => 'required',
-            ];
-            $this->validate($request, $rules, $messages);
-
-            $user = User::findOrFail($id);
-            $user->name = $request->input("txtname");
-            $user->birthdate = $request->input("txtbirthday");
-            $user->gender = $request->input("txtgender");
-            $user->email = $request->input("txtemail");
-            $user->save();
-            return redirect()->route('myaccount.index', $id)->with('message', trans('lang.success'));
+            $dataUser = $request->except('cf_password', '_token', 'cf_password');
+            $this->userService->udpateUser($dataUser, Auth::user()->id);
+            return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
         }
     }
 
