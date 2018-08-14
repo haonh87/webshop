@@ -32,7 +32,7 @@ class MyAccountController extends BaseController
         if(!Auth::check())
             return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
         else {
-            return view('frontend.myaccount.detail')->with('sub_navi', '');
+            return view('frontend.myaccount.edit')->with('sub_navi', '');
         }
     }
     /**
@@ -43,7 +43,7 @@ class MyAccountController extends BaseController
     public function create()
     {
         if(Auth::check()){
-            return view('frontend.myaccount.detail')->with('message', 'Đã đăng nhập!');
+            return view('frontend.myaccount.edit')->with('message', 'Đã đăng nhập!');
         }
         return view('frontend.myaccount.create');
     }

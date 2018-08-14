@@ -357,34 +357,6 @@
                                             </p></div>
 
                                     </div>
-
-                                    <div class="woocommerce-account-fields">
-
-                                        <p class="form-row form-row-wide create-account woocommerce-validated">
-                                            <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                                                <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
-                                                       id="createaccount" type="checkbox" name="createaccount"
-                                                       value="1"> <span>Create an account?</span>
-                                            </label>
-                                        </p>
-
-
-                                        <div class="create-account" style="display: none;">
-                                            <p class="form-row validate-required" id="account_password_field"
-                                               data-priority=""><label for="account_password" class="">Create account
-                                                    password&nbsp;<abbr class="required"
-                                                                        title="required">*</abbr></label><span
-                                                        class="woocommerce-input-wrapper"><input type="password"
-                                                                                                 class="input-text "
-                                                                                                 name="account_password"
-                                                                                                 id="account_password"
-                                                                                                 placeholder="Password"
-                                                                                                 value=""></span></p>
-                                            <div class="clear"></div>
-                                        </div>
-
-
-                                    </div>
                                 </div>
 
                                 <div class="col-2">
