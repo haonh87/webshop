@@ -29,7 +29,7 @@
                                 <div id="cmsmasters_column_c731b5760e" class="cmsmasters_column one_first">
                                     <div class="cmsmasters_column_inner">
                                         <div class="cmsmasters_text">
-                                            {!!html_entity_decode($info->content) !!}
+                                            {!!html_entity_decode(@$info->content) !!}
                                         </div>
                                     </div>
                                 </div>
