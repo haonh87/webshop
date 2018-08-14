@@ -121,12 +121,12 @@
                     </aside>
                     <aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter"><h3
                                 class="widgettitle">Filter by price</h3>
-                        <form method="get" action="http://sports-store.cmsmasters.net/shop/">
+                        <form method="get" action="{{ route('product.list') }}">
                             <div class="price_slider_wrapper">
                                 <div class="price_slider" style="display:none;"></div>
                                 <div class="price_slider_amount">
-                                    <input type="text" id="min_price" name="min_price" value="{{ $maxMinPrice->min_price }}" data-min="{{ $maxMinPrice->min_price }}" placeholder="Min price">
-                                    <input type="text" id="max_price" name="max_price" value="{{ $maxMinPrice->max_price }}" data-max="{{ $maxMinPrice->max_price }}" placeholder="Max price">
+                                    <input type="text" id="min_price" name="min_price" value="{{ isset($condition['min_price']) ? $condition['min_price'] : $maxMinPrice->min_price }}" data-min="{{ $maxMinPrice->min_price }}" placeholder="Min price">
+                                    <input type="text" id="max_price" name="max_price" value="{{ isset($condition['max_price']) ? $condition['max_price'] : $maxMinPrice->max_price }}" data-max="{{ $maxMinPrice->max_price }}" placeholder="Max price">
                                     <button type="submit" class="button">Filter</button>
                                     <div class="price_label" style="display:none;">
                                         Price: <span class="from"></span> — <span class="to"></span>
