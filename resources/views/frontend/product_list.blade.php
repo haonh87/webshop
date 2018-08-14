@@ -13,7 +13,7 @@
                             Showing {{ $products->firstItem() }}–{{ $products->lastItem() }} of {{ $products->total() }} results</p>
                         <form class="woocommerce-ordering"  method="get" action="{{ route('product.list') }}">
                             <select name="orderby" class="orderby" onchange="this.form.submit()">
-                                <option value="">Chọn kiểu sắp xếp</option>
+                                <option value="default">Chọn kiểu sắp xếp</option>
                                 <option value="total_star-desc">Sort by average rating</option>
                                 <option value="products.created_at-desc">Sort by newness</option>
                                 <option value="products.price-asc">Sort by price: low to high</option>
@@ -86,7 +86,7 @@
                     <aside id="yith_woocommerce_ajax_search-2"
                            class="widget woocommerce widget_product_search yith_woocommerce_ajax_search">
                         <div class="yith-ajaxsearchform-container cmsmasters_ajax_search_premium">
-                            <form method="get" id="yith-ajaxsearchform" action="http://sports-store.cmsmasters.net/">
+                            <form method="get" id="yith-ajaxsearchform" action="{{ route('product.list') }}">
                                 <div class="yith-ajaxsearchform-container">
                                     <div class="yith-ajaxsearchform-select">
                                         <input type="hidden" name="post_type" class="yit_wcas_post_type"
@@ -96,7 +96,7 @@
                                     <div class="search-navigation_wrap">
                                         <div class="search-navigation">
                                             <label class="screen-reader-text" for="yith-s">Search for:</label>
-                                            <input type="search" value="" name="s" id="yith-s" class="yith-s empty"
+                                            <input type="search" value="" name="search" id="yith-s" class="yith-s empty"
                                                    placeholder="Search for products" data-append-to=".search-navigation"
                                                    data-loader-icon="http://sports-store.cmsmasters.net/wp-content/plugins/yith-woocommerce-ajax-search-premium/assets/images/preloader.gif"
                                                    data-min-chars="3" autocomplete="off">
@@ -115,23 +115,13 @@
                                 class="widgettitle">Filter by price</h3>
                         <form method="get" action="http://sports-store.cmsmasters.net/shop/">
                             <div class="price_slider_wrapper">
-                                <div class="price_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                                     style="">
-                                    <div class="ui-slider-range ui-widget-header ui-corner-all"
-                                         style="left: 0%; width: 100%;"></div>
-                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"
-                                          style="left: 0%;"></span><span
-                                            class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"
-                                            style="left: 100%;"></span></div>
+                                <div class="price_slider" style="display:none;"></div>
                                 <div class="price_slider_amount">
-                                    <input type="text" id="min_price" name="min_price" value="{{ $maxMinPrice->min_price }}" data-min="{{ $maxMinPrice->min_price }}"
-                                           placeholder="Min price" style="display: none;">
-                                    <input type="text" id="max_price" name="max_price" value="{{ $maxMinPrice->max_price }}" data-max="{{ $maxMinPrice->max_price }}"
-                                           placeholder="Max price" style="display: none;">
+                                    <input type="text" id="min_price" name="min_price" value="{{ $maxMinPrice->min_price }}" data-min="{{ $maxMinPrice->min_price }}" placeholder="Min price">
+                                    <input type="text" id="max_price" name="max_price" value="{{ $maxMinPrice->max_price }}" data-max="{{ $maxMinPrice->max_price }}" placeholder="Max price">
                                     <button type="submit" class="button">Filter</button>
-                                    <div class="price_label" style="">
-                                        Price: <span class="from"><span>D</span>{{ $maxMinPrice->min_price }}</span> — <span
-                                                class="to"><span>D</span>{{ $maxMinPrice->max_price }}</span>
+                                    <div class="price_label" style="display:none;">
+                                        Price: <span class="from"></span> — <span class="to"></span>
                                     </div>
 
                                     <div class="clear"></div>
@@ -152,12 +142,12 @@
                     <aside id="woocommerce_layered_nav-2"
                            class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav"><h3
                                 class="widgettitle">Select color</h3>
-                        <form method="get" action="http://sports-store.cmsmasters.net/shop/"
+                        <form method="get" action="{{ route('product.list') }}"
                               class="woocommerce-widget-layered-nav-dropdown">
-                            <select
+                            <select name="color" onchange="this.form.submit()"
                                     class="woocommerce-widget-layered-nav-dropdown dropdown_layered_nav_colors select2-hidden-accessible"
                                     tabindex="-1" aria-hidden="true">
-                                <option value="">Any Colors</option>
+                                <option value="default">Any Colors</option>
                                 @foreach($colors as $key => $color)
                                     <option value="{{ $key }}">{{ $color }}</option>
                                 @endforeach
@@ -167,12 +157,12 @@
                     <aside id="woocommerce_layered_nav-4"
                            class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav"><h3
                                 class="widgettitle">Select size</h3>
-                        <form method="get" action="http://sports-store.cmsmasters.net/shop/"
+                        <form method="get" action="{{ route('product.list') }}"
                               class="woocommerce-widget-layered-nav-dropdown">
-                            <select
+                            <select name="size" onchange="this.form.submit()"
                                     class="woocommerce-widget-layered-nav-dropdown dropdown_layered_nav_size select2-hidden-accessible"
                                     tabindex="-1" aria-hidden="true">
-                                <option value="">Any Size</option>
+                                <option value="default">Any Size</option>
                                 @foreach($sizes as $key => $size)
                                     <option value="{{ $key }}">{{ $size }}</option>
                                 @endforeach

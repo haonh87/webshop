@@ -83,7 +83,8 @@ class IndexController extends BaseController
             'categories' => $categories,
             'sizes' => $sizes,
             'colors' => $colors,
-            'recentlyProduct' => $recentlyProduct
+            'recentlyProduct' => $recentlyProduct,
+            'condition' => $dataRequest
         ]);
     }
 

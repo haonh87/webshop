@@ -87,11 +87,20 @@ class ProductService
         if (!empty($categoryId)) {
             $result->where('products.category_id', $categoryId);
         }
-        if (isset($dataRequest['orderby'])) {
+        if (isset($dataRequest['orderby']) && $dataRequest['orderby'] != 'default') {
             $convert = explode('-', $dataRequest['orderby']);
             $result->orderBy($convert[0], $convert[1]);
         } else {
             $result->orderBy('products.created_at', 'desc');
+        }
+        if (isset($dataRequest['color']) && $dataRequest['color'] != 'default') {
+            $result->where('products.product_color_ids', 'LIKE', '%'.$dataRequest['color'].'%');
+        }
+        if (isset($dataRequest['size']) && $dataRequest['size'] != 'default') {
+            $result->where('products.product_size_ids', 'LIKE', '%'.$dataRequest['size'].'%');
+        }
+        if (isset($dataRequest['search'])) {
+            $result->where('products.name', 'LIKE', '%'.$dataRequest['search'].'%');
         }
         return $result;
     }
