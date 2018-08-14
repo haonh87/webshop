@@ -14,10 +14,10 @@
                         <form class="woocommerce-ordering"  method="get" action="{{ route('product.list') }}">
                             <select name="orderby" class="orderby" onchange="this.form.submit()">
                                 <option value="default">Chọn kiểu sắp xếp</option>
-                                <option value="total_star-desc">Sort by average rating</option>
-                                <option value="products.created_at-desc">Sort by newness</option>
-                                <option value="products.price-asc">Sort by price: low to high</option>
-                                <option value="products.price-desc">Sort by price: high to low</option>
+                                <option value="total_star-desc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'total_star-desc') ? 'selected' : '' }}>Sort by average rating</option>
+                                <option value="products.created_at-desc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'products.created_at-desc') ? 'selected' : '' }}>Sort by newness</option>
+                                <option value="products.price-asc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'products.price-asc') ? 'selected' : '' }}>Sort by price: low to high</option>
+                                <option value="products.price-desc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'products.price-desc') ? 'selected' : '' }}>Sort by price: high to low</option>
                             </select>
                             <input type="hidden" name="paged" value="{{ $products->currentPage() }}">
                         </form>
@@ -96,7 +96,7 @@
                                     <div class="search-navigation_wrap">
                                         <div class="search-navigation">
                                             <label class="screen-reader-text" for="yith-s">Search for:</label>
-                                            <input type="search" value="" name="search" id="yith-s" class="yith-s empty"
+                                            <input type="search" value="{{ isset($condition['search']) ? $condition['search'] : '' }}" name="search" id="yith-s" class="yith-s empty"
                                                    placeholder="Search for products" data-append-to=".search-navigation"
                                                    data-loader-icon="http://sports-store.cmsmasters.net/wp-content/plugins/yith-woocommerce-ajax-search-premium/assets/images/preloader.gif"
                                                    data-min-chars="3" autocomplete="off">
@@ -149,7 +149,7 @@
                                     tabindex="-1" aria-hidden="true">
                                 <option value="default">Any Colors</option>
                                 @foreach($colors as $key => $color)
-                                    <option value="{{ $key }}">{{ $color }}</option>
+                                    <option value="{{ $key }}" {{ (isset($condition['color']) && $condition['color'] == $key) ? 'selected' : '' }}>{{ $color }}</option>
                                 @endforeach
                             </select>
                         </form>
@@ -164,7 +164,7 @@
                                     tabindex="-1" aria-hidden="true">
                                 <option value="default">Any Size</option>
                                 @foreach($sizes as $key => $size)
-                                    <option value="{{ $key }}">{{ $size }}</option>
+                                    <option value="{{ $key }}" {{ (isset($condition['size']) && $condition['size'] == $key) ? 'selected' : '' }}>{{ $size }}</option>
                                 @endforeach
                             </select>
                         </form>
