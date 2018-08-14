@@ -1,5 +1,13 @@
 @extends('layouts.master')
 @section('script')
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type='text/javascript' src='http://sports-store.cmsmasters.net/wp-content/plugins/woocommerce/assets/js/frontend/price-slider.min.js'></script>
+    <script type='text/javascript' src='http://sports-store.cmsmasters.net/wp-content/plugins/woocommerce/assets/js/accounting/accounting.min.js'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var woocommerce_price_slider_params = {"currency_format_num_decimals":"0","currency_format_symbol":"\u00a3","currency_format_decimal_sep":".","currency_format_thousand_sep":",","currency_format":"<span>%s<\/span>%v"};
+        /* ]]> */
+    </script>
 @stop
 @section('content')
     <div id="content">
