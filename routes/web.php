@@ -30,7 +30,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('/contact', ['as' => 'contact', 'uses' => 'Frontend\IndexController@getContact']);
     Route::post('/contact', ['as' => 'contact', 'uses' => 'Frontend\IndexController@postContact']);
     Route::post('/checkout', ['as' => 'cart.checkout', 'uses' => 'Frontend\CartController@postCheckout']);
-    route::group(["prefix" => "myaccount"], function () {
+    route::group(["prefix" => "my-account"], function () {
         Route::match(['put', 'patch'], '/{id}/EditPassword', ['as' => 'myaccount.edit.password', 'uses' => 'Frontend\MyAccountController@update_password']);
         Route::get('/{id}/EditPassword', ['as' => 'myaccount.edit.password', 'uses' => 'Frontend\MyAccountController@edit_password']);
         Route::get('/', ['as' => 'myaccount.index', 'uses' => 'Frontend\MyAccountController@index']);

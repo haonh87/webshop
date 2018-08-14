@@ -30,7 +30,7 @@ class MyAccountController extends BaseController
     public function index()
     {
         if(!Auth::check())
-            return redirect()->back()->withErrors(['myaccount'=>trans('lang.view_account')]);
+            return redirect()->route('myaccount.create')->with('message_cart', 'Bạn chưa có tài khoản hãy tạo tài khoản');
         else {
             $sub_navi = '<li>
                         <a href="'.route("myaccount.index").'" style="display: none;">'.trans('lang.my_account').'</a>
