@@ -122,31 +122,10 @@ class CartController extends BaseController
         if(Cart::total() == 0){
             return redirect()->back();
         }
-        $products = null;
-        $category = null;
-        $sub_navi ='
-        <li><a href="'.route('cart.index').'">'.trans('lang.shopping_cart').'</a></li>
-        <li><a href="'.route('cart.checkout').'" style="display: none;">'.trans('lang.checkout').'</a><span>'.trans('lang.checkout').'</span></li>
-        ';
-        if(Auth::check()){
-            if ($cus = Customer::where('email', Auth::user()->email)->first()) {
-                $cus->name = Auth::user()->name;
-                $cus->email = Auth::user()->email;
-                $cus->save();
-            }else{
-                $cus = new Customer;
-                $cus->name = Auth::user()->name;
-                $cus->email = Auth::user()->email;
-                $cus->save();
-            }
-            Auth::user()->customer_id = $cus->id;
-            Auth::user()->save();
-        }
-        $blade_include = 'frontend.content.checkout';
-        return view('frontend.main_content')->with('parameters', $products)
-                                            ->with('parameters2', $category)
-                                            ->with('sub_navi', $sub_navi)
-                                            ->with('blade_include', $blade_include);
+        $carts = Cart::content();
+        return view('frontend.content.checkout', [
+            'carts' => $carts,
+        ]);
     }
 
     public function postCheckout(Request $request)

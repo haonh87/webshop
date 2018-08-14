@@ -1,207 +1,472 @@
+@extends('layouts.master')
 @section('script')
-<script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
-<script type="text/javascript">
-  $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-    }
-});
-</script>
 @stop
-<div id="content" class="col-sm-9">
-	<h1>{{ trans('lang.checkout') }}</h1>
-	<div class="panel-group" id="accordion">
-		<div class="panel panel-default">
-			<div class="panel-collapse collapse in"
-				id="collapse-checkout-confirm" style="height: auto;">
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table class="table table-bordered table-hover">
-							<thead>
-								<tr>
-									<td class="text-left">{{ trans('lang.product_name') }}</td>
-									<td class="text-left">{{ trans('lang.model') }}</td>
-									<td class="text-right">{{ trans('lang.quantity') }}</td>
-									<td class="text-right">{{ trans('lang.unit_price') }}</td>
-									<td class="text-right">{{ trans('lang.total') }}</td>
-								</tr>
-							</thead>
-							<tbody>
-							@foreach(Cart::content() as $item)
-								<?php
-								$product = $item->product;
-								$img_src = "images/products/product".$item->id."/";
-								$product_color = App\Models\ProductColor::find($item->options->color);
-								$product_size = App\Models\ProductSize::find($item->options->size_option);
-								?>
-								<tr>
-									<td class="text-left">
-										<a href="{{ route('product.show', ['product_id'=>$item->id]) }}">{{ $product->localeName() }}</a>
-										<br>
-										<small>Color: {{ $product_color->localeColor() }}</small>
-										<br>
-										<small>Size: {{ $product_size->size }}</small>
+@section('content')
+    <div id="content">
+        @include('frontend.header_line', ['name' => 'Checkout'])
+        @include('frontend.message')
+        <div class="middle_inner">
+            <div class="content_wrap fullwidth">
+                <div class="middle_content entry">
+                    <div class="woocommerce">
+                        <form name="checkout" method="post" class="checkout woocommerce-checkout"
+                              action="http://sports-store.cmsmasters.net/checkout/" enctype="multipart/form-data"
+                              novalidate="novalidate">
+                            <div class="col2-set" id="customer_details">
+                                <div class="col-1">
+                                    <div class="woocommerce-billing-fields">
+                                        <h3>Billing details</h3>
+                                        <div class="woocommerce-billing-fields__field-wrapper">
+                                            <p class="form-row form-row-first validate-required"
+                                               id="billing_first_name_field" data-priority="10"><label
+                                                        for="billing_first_name" class="">First name&nbsp;<abbr
+                                                            class="required" title="required">*</abbr></label><span
+                                                        class="woocommerce-input-wrapper"><input type="text"
+                                                                                                 class="input-text "
+                                                                                                 name="billing_first_name"
+                                                                                                 id="billing_first_name"
+                                                                                                 placeholder="" value=""
+                                                                                                 autocomplete="given-name"></span>
+                                            </p>
+                                            <p class="form-row form-row-last validate-required"
+                                               id="billing_last_name_field" data-priority="20"><label
+                                                        for="billing_last_name" class="">Last name&nbsp;<abbr
+                                                            class="required" title="required">*</abbr></label><span
+                                                        class="woocommerce-input-wrapper"><input type="text"
+                                                                                                 class="input-text "
+                                                                                                 name="billing_last_name"
+                                                                                                 id="billing_last_name"
+                                                                                                 placeholder="" value=""
+                                                                                                 autocomplete="family-name"></span>
+                                            </p>
+                                            <p class="form-row form-row-wide" id="billing_company_field"
+                                               data-priority="30"><label for="billing_company" class="">Company name&nbsp;<span
+                                                            class="optional">(optional)</span></label><span
+                                                        class="woocommerce-input-wrapper"><input type="text"
+                                                                                                 class="input-text "
+                                                                                                 name="billing_company"
+                                                                                                 id="billing_company"
+                                                                                                 placeholder="" value=""
+                                                                                                 autocomplete="organization"></span>
+                                            </p>
+                                            <p class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated"
+                                               id="billing_country_field" data-priority="40"><label
+                                                        for="billing_country" class="">Country&nbsp;<abbr
+                                                            class="required" title="required">*</abbr></label><span
+                                                        class="woocommerce-input-wrapper"><select name="billing_country"
+                                                                                                  id="billing_country"
+                                                                                                  class="country_to_state country_select select2-hidden-accessible"
+                                                                                                  autocomplete="country"
+                                                                                                  tabindex="-1"
+                                                                                                  aria-hidden="true"><option
+                                                                value="">Select a country…</option><option value="AX">Åland Islands</option><option
+                                                                value="AF">Afghanistan</option><option value="AL">Albania</option><option
+                                                                value="DZ">Algeria</option><option value="AS">American Samoa</option><option
+                                                                value="AD">Andorra</option><option
+                                                                value="AO">Angola</option><option
+                                                                value="AI">Anguilla</option><option value="AQ">Antarctica</option><option
+                                                                value="AG">Antigua and Barbuda</option><option
+                                                                value="AR">Argentina</option><option
+                                                                value="AM">Armenia</option><option
+                                                                value="AW">Aruba</option><option
+                                                                value="AU">Australia</option><option
+                                                                value="AT">Austria</option><option
+                                                                value="AZ">Azerbaijan</option><option
+                                                                value="BS">Bahamas</option><option
+                                                                value="BH">Bahrain</option><option
+                                                                value="BD">Bangladesh</option><option value="BB">Barbados</option><option
+                                                                value="BY">Belarus</option><option
+                                                                value="PW">Belau</option><option
+                                                                value="BE">Belgium</option><option
+                                                                value="BZ">Belize</option><option
+                                                                value="BJ">Benin</option><option
+                                                                value="BM">Bermuda</option><option
+                                                                value="BT">Bhutan</option><option
+                                                                value="BO">Bolivia</option><option value="BQ">Bonaire, Saint Eustatius and Saba</option><option
+                                                                value="BA">Bosnia and Herzegovina</option><option
+                                                                value="BW">Botswana</option><option value="BV">Bouvet Island</option><option
+                                                                value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option
+                                                                value="VG">British Virgin Islands</option><option
+                                                                value="BN">Brunei</option><option
+                                                                value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option
+                                                                value="BI">Burundi</option><option
+                                                                value="KH">Cambodia</option><option
+                                                                value="CM">Cameroon</option><option
+                                                                value="CA">Canada</option><option
+                                                                value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option
+                                                                value="CF">Central African Republic</option><option
+                                                                value="TD">Chad</option><option
+                                                                value="CL">Chile</option><option
+                                                                value="CN">China</option><option value="CX">Christmas Island</option><option
+                                                                value="CC">Cocos (Keeling) Islands</option><option
+                                                                value="CO">Colombia</option><option
+                                                                value="KM">Comoros</option><option value="CG">Congo (Brazzaville)</option><option
+                                                                value="CD">Congo (Kinshasa)</option><option value="CK">Cook Islands</option><option
+                                                                value="CR">Costa Rica</option><option
+                                                                value="HR">Croatia</option><option
+                                                                value="CU">Cuba</option><option
+                                                                value="CW">Curaçao</option><option
+                                                                value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option
+                                                                value="DK">Denmark</option><option
+                                                                value="DJ">Djibouti</option><option
+                                                                value="DM">Dominica</option><option value="DO">Dominican Republic</option><option
+                                                                value="EC">Ecuador</option><option
+                                                                value="EG">Egypt</option><option
+                                                                value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option
+                                                                value="ER">Eritrea</option><option
+                                                                value="EE">Estonia</option><option
+                                                                value="ET">Ethiopia</option><option value="FK">Falkland Islands</option><option
+                                                                value="FO">Faroe Islands</option><option
+                                                                value="FJ">Fiji</option><option
+                                                                value="FI">Finland</option><option
+                                                                value="FR">France</option><option value="GF">French Guiana</option><option
+                                                                value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option
+                                                                value="GA">Gabon</option><option
+                                                                value="GM">Gambia</option><option
+                                                                value="GE">Georgia</option><option
+                                                                value="DE">Germany</option><option
+                                                                value="GH">Ghana</option><option
+                                                                value="GI">Gibraltar</option><option
+                                                                value="GR">Greece</option><option
+                                                                value="GL">Greenland</option><option
+                                                                value="GD">Grenada</option><option
+                                                                value="GP">Guadeloupe</option><option
+                                                                value="GU">Guam</option><option
+                                                                value="GT">Guatemala</option><option
+                                                                value="GG">Guernsey</option><option
+                                                                value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option
+                                                                value="GY">Guyana</option><option
+                                                                value="HT">Haiti</option><option value="HM">Heard Island and McDonald Islands</option><option
+                                                                value="HN">Honduras</option><option
+                                                                value="HK">Hong Kong</option><option
+                                                                value="HU">Hungary</option><option
+                                                                value="IS">Iceland</option><option
+                                                                value="IN">India</option><option
+                                                                value="ID">Indonesia</option><option
+                                                                value="IR">Iran</option><option value="IQ">Iraq</option><option
+                                                                value="IE">Ireland</option><option value="IM">Isle of Man</option><option
+                                                                value="IL">Israel</option><option
+                                                                value="IT">Italy</option><option
+                                                                value="CI">Ivory Coast</option><option value="JM">Jamaica</option><option
+                                                                value="JP">Japan</option><option
+                                                                value="JE">Jersey</option><option
+                                                                value="JO">Jordan</option><option
+                                                                value="KZ">Kazakhstan</option><option
+                                                                value="KE">Kenya</option><option
+                                                                value="KI">Kiribati</option><option
+                                                                value="KW">Kuwait</option><option
+                                                                value="KG">Kyrgyzstan</option><option
+                                                                value="LA">Laos</option><option
+                                                                value="LV">Latvia</option><option
+                                                                value="LB">Lebanon</option><option
+                                                                value="LS">Lesotho</option><option
+                                                                value="LR">Liberia</option><option
+                                                                value="LY">Libya</option><option value="LI">Liechtenstein</option><option
+                                                                value="LT">Lithuania</option><option value="LU">Luxembourg</option><option
+                                                                value="MO">Macao S.A.R., China</option><option
+                                                                value="MK">Macedonia</option><option value="MG">Madagascar</option><option
+                                                                value="MW">Malawi</option><option
+                                                                value="MY">Malaysia</option><option
+                                                                value="MV">Maldives</option><option
+                                                                value="ML">Mali</option><option
+                                                                value="MT">Malta</option><option value="MH">Marshall Islands</option><option
+                                                                value="MQ">Martinique</option><option value="MR">Mauritania</option><option
+                                                                value="MU">Mauritius</option><option
+                                                                value="YT">Mayotte</option><option
+                                                                value="MX">Mexico</option><option
+                                                                value="FM">Micronesia</option><option
+                                                                value="MD">Moldova</option><option
+                                                                value="MC">Monaco</option><option
+                                                                value="MN">Mongolia</option><option value="ME">Montenegro</option><option
+                                                                value="MS">Montserrat</option><option
+                                                                value="MA">Morocco</option><option
+                                                                value="MZ">Mozambique</option><option
+                                                                value="MM">Myanmar</option><option
+                                                                value="NA">Namibia</option><option
+                                                                value="NR">Nauru</option><option
+                                                                value="NP">Nepal</option><option
+                                                                value="NL">Netherlands</option><option value="NC">New Caledonia</option><option
+                                                                value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option
+                                                                value="NE">Niger</option><option
+                                                                value="NG">Nigeria</option><option
+                                                                value="NU">Niue</option><option value="NF">Norfolk Island</option><option
+                                                                value="KP">North Korea</option><option value="MP">Northern Mariana Islands</option><option
+                                                                value="NO">Norway</option><option
+                                                                value="OM">Oman</option><option
+                                                                value="PK">Pakistan</option><option value="PS">Palestinian Territory</option><option
+                                                                value="PA">Panama</option><option value="PG">Papua New Guinea</option><option
+                                                                value="PY">Paraguay</option><option
+                                                                value="PE">Peru</option><option
+                                                                value="PH">Philippines</option><option value="PN">Pitcairn</option><option
+                                                                value="PL">Poland</option><option
+                                                                value="PT">Portugal</option><option value="PR">Puerto Rico</option><option
+                                                                value="QA">Qatar</option><option
+                                                                value="RE">Reunion</option><option
+                                                                value="RO">Romania</option><option
+                                                                value="RU">Russia</option><option
+                                                                value="RW">Rwanda</option><option value="ST">São Tomé and Príncipe</option><option
+                                                                value="BL">Saint Barthélemy</option><option value="SH">Saint Helena</option><option
+                                                                value="KN">Saint Kitts and Nevis</option><option
+                                                                value="LC">Saint Lucia</option><option value="SX">Saint Martin (Dutch part)</option><option
+                                                                value="MF">Saint Martin (French part)</option><option
+                                                                value="PM">Saint Pierre and Miquelon</option><option
+                                                                value="VC">Saint Vincent and the Grenadines</option><option
+                                                                value="WS">Samoa</option><option
+                                                                value="SM">San Marino</option><option value="SA">Saudi Arabia</option><option
+                                                                value="SN">Senegal</option><option
+                                                                value="RS">Serbia</option><option
+                                                                value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option
+                                                                value="SG">Singapore</option><option
+                                                                value="SK">Slovakia</option><option
+                                                                value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option
+                                                                value="SO">Somalia</option><option value="ZA">South Africa</option><option
+                                                                value="GS">South Georgia/Sandwich Islands</option><option
+                                                                value="KR">South Korea</option><option value="SS">South Sudan</option><option
+                                                                value="ES">Spain</option><option
+                                                                value="LK">Sri Lanka</option><option
+                                                                value="SD">Sudan</option><option
+                                                                value="SR">Suriname</option><option value="SJ">Svalbard and Jan Mayen</option><option
+                                                                value="SZ">Swaziland</option><option
+                                                                value="SE">Sweden</option><option
+                                                                value="CH">Switzerland</option><option
+                                                                value="SY">Syria</option><option
+                                                                value="TW">Taiwan</option><option
+                                                                value="TJ">Tajikistan</option><option value="TZ">Tanzania</option><option
+                                                                value="TH">Thailand</option><option value="TL">Timor-Leste</option><option
+                                                                value="TG">Togo</option><option
+                                                                value="TK">Tokelau</option><option
+                                                                value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option
+                                                                value="TN">Tunisia</option><option
+                                                                value="TR">Turkey</option><option value="TM">Turkmenistan</option><option
+                                                                value="TC">Turks and Caicos Islands</option><option
+                                                                value="TV">Tuvalu</option><option
+                                                                value="UG">Uganda</option><option
+                                                                value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option
+                                                                value="GB">United Kingdom (UK)</option><option
+                                                                value="US">United States (US)</option><option
+                                                                value="UM">United States (US) Minor Outlying Islands</option><option
+                                                                value="VI">United States (US) Virgin Islands</option><option
+                                                                value="UY">Uruguay</option><option
+                                                                value="UZ">Uzbekistan</option><option
+                                                                value="VU">Vanuatu</option><option
+                                                                value="VA">Vatican</option><option
+                                                                value="VE">Venezuela</option><option value="VN"
+                                                                                                     selected="selected">Vietnam</option><option
+                                                                value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option
+                                                                value="YE">Yemen</option><option
+                                                                value="ZM">Zambia</option><option
+                                                                value="ZW">Zimbabwe</option></select><span
+                                                            class="select2 select2-container select2-container--default"
+                                                            dir="ltr" style="width: 100%;"><span class="selection"><span
+                                                                    class="select2-selection select2-selection--single"
+                                                                    aria-haspopup="true" aria-expanded="false"
+                                                                    tabindex="0"
+                                                                    aria-labelledby="select2-billing_country-container"
+                                                                    role="combobox"><span
+                                                                        class="select2-selection__rendered"
+                                                                        id="select2-billing_country-container"
+                                                                        role="textbox" aria-readonly="true"
+                                                                        title="Vietnam">Vietnam</span><span
+                                                                        class="select2-selection__arrow"
+                                                                        role="presentation"><b role="presentation"></b></span></span></span><span
+                                                                class="dropdown-wrapper"
+                                                                aria-hidden="true"></span></span><noscript><button
+                                                                type="submit" name="woocommerce_checkout_update_totals"
+                                                                value="Update country">Update country</button></noscript></span>
+                                            </p>
+                                            <p class="form-row form-row-wide address-field validate-required"
+                                               id="billing_address_1_field" data-priority="50"><label
+                                                        for="billing_address_1" class="">Street address&nbsp;<abbr
+                                                            class="required" title="required">*</abbr></label><span
+                                                        class="woocommerce-input-wrapper"><input type="text"
+                                                                                                 class="input-text "
+                                                                                                 name="billing_address_1"
+                                                                                                 id="billing_address_1"
+                                                                                                 placeholder="House number and street name"
+                                                                                                 value=""
+                                                                                                 autocomplete="address-line1"></span>
+                                            </p>
+                                            <p class="form-row form-row-wide address-field" id="billing_address_2_field"
+                                               data-priority="60" style="display: none;"><span
+                                                        class="woocommerce-input-wrapper"><input type="text"
+                                                                                                 class="input-text "
+                                                                                                 name="billing_address_2"
+                                                                                                 id="billing_address_2"
+                                                                                                 placeholder="Apartment, suite, unit etc. (optional)"
+                                                                                                 value=""
+                                                                                                 autocomplete="address-line2"></span>
+                                            </p>
+                                            <p class="form-row form-row-wide address-field validate-postcode"
+                                               id="billing_postcode_field" data-priority="65"
+                                               data-o_class="form-row form-row-wide address-field validate-postcode">
+                                                <label for="billing_postcode" class="">Postcode / ZIP&nbsp;<span
+                                                            class="optional">(optional)</span></label><span
+                                                        class="woocommerce-input-wrapper"><input type="text"
+                                                                                                 class="input-text "
+                                                                                                 name="billing_postcode"
+                                                                                                 id="billing_postcode"
+                                                                                                 placeholder="" value=""
+                                                                                                 autocomplete="postal-code"></span>
+                                            </p>
+                                            <p class="form-row form-row-wide address-field validate-required"
+                                               id="billing_city_field" data-priority="70"
+                                               data-o_class="form-row form-row-wide address-field validate-required">
+                                                <label for="billing_city" class="">Town / City&nbsp;<abbr
+                                                            class="required" title="required">*</abbr></label><span
+                                                        class="woocommerce-input-wrapper"><input type="text"
+                                                                                                 class="input-text "
+                                                                                                 name="billing_city"
+                                                                                                 id="billing_city"
+                                                                                                 placeholder="" value=""
+                                                                                                 autocomplete="address-level2"></span>
+                                            </p>
+                                            <p class="form-row form-row-wide address-field validate-state"
+                                               id="billing_state_field" style="display: none"
+                                               data-o_class="form-row form-row-wide address-field validate-state"><label
+                                                        for="billing_state" class="">State / County&nbsp;<span
+                                                            class="optional">(optional)</span></label><span
+                                                        class="woocommerce-input-wrapper"><input type="hidden"
+                                                                                                 class="hidden"
+                                                                                                 name="billing_state"
+                                                                                                 id="billing_state"
+                                                                                                 value=""
+                                                                                                 placeholder=""></span>
+                                            </p>
+                                            <p class="form-row form-row-wide validate-required validate-phone"
+                                               id="billing_phone_field" data-priority="100"><label for="billing_phone"
+                                                                                                   class="">Phone&nbsp;<abbr
+                                                            class="required" title="required">*</abbr></label><span
+                                                        class="woocommerce-input-wrapper"><input type="tel"
+                                                                                                 class="input-text "
+                                                                                                 name="billing_phone"
+                                                                                                 id="billing_phone"
+                                                                                                 placeholder="" value=""
+                                                                                                 autocomplete="tel"></span>
+                                            </p>
+                                            <p class="form-row form-row-wide validate-required validate-email"
+                                               id="billing_email_field" data-priority="110"><label for="billing_email"
+                                                                                                   class="">Email
+                                                    address&nbsp;<abbr class="required"
+                                                                       title="required">*</abbr></label><span
+                                                        class="woocommerce-input-wrapper"><input type="email"
+                                                                                                 class="input-text "
+                                                                                                 name="billing_email"
+                                                                                                 id="billing_email"
+                                                                                                 placeholder="" value=""
+                                                                                                 autocomplete="email username"></span>
+                                            </p></div>
 
-									</td>
-									<td class="text-left">{{ $item->product->artice_id }}</td>
-									<td class="text-right">{{ $item->qty }}</td>
-									<td class="text-right">{{ $item->price }}</td>
-									<td class="text-right">{{ $item->subtotal }}</td>
-								</tr>
-							@endforeach
-							</tbody>
-							<tfoot>
-								<tr>
-									<td colspan="4" class="text-right"><strong>{{ trans('lang.sub_total') }}:</strong></td>
-									<td class="text-right">${{ Cart::total() }}</td>
-								</tr>
-								<tr>
-									<td colspan="4" class="text-right"><strong>{{trans('lang.VAT') }} (20%):</strong></td>
-									<td class="text-right">${{ Cart::total()*0.2 }}</td>
-								</tr>
-								<tr>
-									<td colspan="4" class="text-right"><strong>{{ trans('lang.total') }}:</strong></td>
-									<td class="text-right">${{ Cart::total()*1.2 }}</td>
-								</tr>
-							</tfoot>
-						</table>
-					</div>
-					<div class="buttons">
-						<div class="pull-right">
-							<input type="button" value="Confirm Order" id="button-confirm"
-								class="btn btn-primary"  data-toggle="collapse" data-target="#user_info">
-						</div>
-						<div class="pull-left">
-							<a class="btn btn-large btn-info" href="{{ route('cart.index') }}">{{ trans('lang.back') }}</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div>
-		<?php 
-			$name = "";
-			$email = "";
-			$phone = "";
-			$mobile = "";
-			$company="";
-			$address1 = "";
-			$address2 = "";
-			$city = "";
-			if(Auth::check()){
-				if(Auth::user()->customer != null){
-					$name = Auth::user()->customer->name;
-					$email = Auth::user()->customer->email;
-					$phone = Auth::user()->customer->phone;
-					$mobile = Auth::user()->customer->mobile;
-					$address2 = Auth::user()->customer->address;
-				}
-			}
-		?>
-			<div class="collapse panel-body" id = "user_info">
-			<form action="{{ route('cart.checkout') }}" method="post" accept-charset="utf-8">
-				<div class="row">
-					<div class="col-sm-6">
-						<fieldset id="account">
-							<legend>{{ trans('lang.your_personal_details') }}</legend>
-							<div class="form-group required">
-								<label class="control-label" for="input-payment-lastname">{{ trans('lang.your_name') }}</label> <input type="text" name="lastname" value="{{ $name }}"
-									placeholder="Last Name" id="input-payment-lastname"
-									class="form-control" required >
-							</div>
-							<div class="form-group required">
-								<label class="control-label" for="input-payment-email">E-Mail</label>
-								<input type="email" name="email" value="{{ $email }}" placeholder="E-Mail" id="input-payment-email" class="form-control" required>
-							</div>
-							<div class="form-group required">
-								<label class="control-label" for="input-payment-telephone">
-								{{ trans('lang.telephone') }} (xxx-xxx-xxx)</label>
-								<input type="text" name="telephone" value="{{ $phone }}"
-									placeholder="Telephone" id="input-payment-telephone"
-									class="form-control" required pattern="^\d{4}-\d{3}-\d{4}$">
-							</div>
-							<div class="form-group">
-								<label class="control-label" for="input-payment-fax">{{ trans('lang.mobile') }}</label>
-								<input type="text" name="mobile" value="{{ $mobile }}" placeholder="Mobile"
-									id="input-payment-fax" class="form-control">
-							</div>
-						</fieldset>
-					</div>
-					<div class="col-sm-6">
-						<fieldset id="address" class="">
-							<legend>{{ trans('lang.your_address') }}</legend>
-							<div class="form-group">
-								<label class="control-label" for="input-payment-company">{{ trans('lang.company') }}</label>
-								<input type="text" name="company" value=""
-									placeholder="Company" id="input-payment-company"
-									class="form-control">
-							</div>
-							<div class="form-group required">
-								<label class="control-label" for="input-payment-address-1">{{ trans('lang.address') }}
-									1</label> <input type="text" name="address_1" value="{{ $address1 }}"
-									placeholder="Address 1" id="input-payment-address-1"
-									class="form-control" required>
-							</div>
-							<div class="form-group">
-								<label class="control-label" for="input-payment-address-2">{{ trans('lang.address') }}
-									2</label> <input type="text" name="address_2" value="{{ $address2 }}"
-									placeholder="Address 2" id="input-payment-address-2"
-									class="form-control">
-							</div>
-							<div class="form-group">
-								<label class="control-label" for="input-payment-city">{{ trans('lang.city') }}</label>
-								<input type="text" name="city" value="{{ $city }}" placeholder="City"
-									id="input-payment-city" class="form-control">
-							</div>
-							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							<div class="buttons">
-							<div class="pull-right">
-									<input type="submit" value="Submit" id="button-submit" class="btn btn-large btn-info"/>
-								</div>
-							</div>
-						</fieldset>
-					</div>
-				</div>
-			</form>
-			</div>
-		</div>
-	</div>
-</div>
-<script type="text/javascript">
-$(document).delegate('#button-login', 'click', function() {
-    $.ajax({
-        url: "{{ route('login') }}",
-        type: 'post',
-        data: $('#collapse-checkout-option :input'),
-        dataType: 'json',
-        beforeSend: function() {
-          $('#button-login').button('loading');
-    },  
-        complete: function() {
-            $('#button-login').button('reset');
-        },              
-        success: function(json) {
-            $('.alert, .text-danger').remove();
-            $('.form-group').removeClass('has-error');
-      
-            if (json['success']) {
-                $('#collapse-payment-address').toggle();
-            } else if (json['error']) {
-                $('#collapse-checkout-option .panel-body').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-           
-        // Highlight any found errors
-        $('input[name=\'email\']').parent().addClass('has-error');  
-        $('input[name=\'password\']').parent().addClass('has-error');    
-       }
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-            // alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    }); 
-});
+                                    </div>
 
-function isValidEmailAddress(emailAddress) {
-    var pattern = new RegExp(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/i);
-    return pattern.test(emailAddress);
-};
-//--></script>
+                                    <div class="woocommerce-account-fields">
+
+                                        <p class="form-row form-row-wide create-account woocommerce-validated">
+                                            <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                                                <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
+                                                       id="createaccount" type="checkbox" name="createaccount"
+                                                       value="1"> <span>Create an account?</span>
+                                            </label>
+                                        </p>
+
+
+                                        <div class="create-account" style="display: none;">
+                                            <p class="form-row validate-required" id="account_password_field"
+                                               data-priority=""><label for="account_password" class="">Create account
+                                                    password&nbsp;<abbr class="required"
+                                                                        title="required">*</abbr></label><span
+                                                        class="woocommerce-input-wrapper"><input type="password"
+                                                                                                 class="input-text "
+                                                                                                 name="account_password"
+                                                                                                 id="account_password"
+                                                                                                 placeholder="Password"
+                                                                                                 value=""></span></p>
+                                            <div class="clear"></div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <div class="woocommerce-shipping-fields">
+                                    </div>
+                                    <div class="woocommerce-additional-fields">
+
+
+                                        <h3>Additional information</h3>
+
+
+                                        <div class="woocommerce-additional-fields__field-wrapper">
+                                            <p class="form-row notes" id="order_comments_field" data-priority=""><label
+                                                        for="order_comments" class="">Order notes&nbsp;<span
+                                                            class="optional">(optional)</span></label><span
+                                                        class="woocommerce-input-wrapper"><textarea
+                                                            name="order_comments" class="input-text "
+                                                            id="order_comments"
+                                                            placeholder="Notes about your order, e.g. special notes for delivery."
+                                                            rows="2" cols="5"></textarea></span></p></div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 id="order_review_heading">Your order</h3>
+                            <div id="order_review" class="woocommerce-checkout-review-order">
+                                <table class="shop_table woocommerce-checkout-review-order-table">
+                                    <thead>
+                                    <tr>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-total">Total</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php
+                                        $total = 0;
+                                    @endphp
+                                    @foreach($carts as $key => $cart)
+                                        @php
+                                            $total = $total + $cart->subtotal;
+                                        @endphp
+                                    <tr class="cart_item">
+                                        <td class="product-name">
+                                            {{ $cart->name }}&nbsp; <strong
+                                                    class="product-quantity">× {{ $cart->qty }}</strong></td>
+                                        <td class="product-total">
+                                            <span class="woocommerce-Price-amount amount"><span><span
+                                                            class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->subtotal, 2)  }}</span>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="cart-subtotal">
+                                        <th>Subtotal</th>
+                                        <td><span class="woocommerce-Price-amount amount"><span><span
+                                                            class="woocommerce-Price-currencySymbol">VND</span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}</span></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th>Total</th>
+                                        <td><strong><span class="woocommerce-Price-amount amount"><span><span
+                                                                class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}</span></strong>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                                <div id="payment" class="woocommerce-checkout-payment">
+                                    <button type="submit" class="button alt" name="woocommerce_checkout_place_order"
+                                            id="place_order" value="Place order" data-value="Place order">Place
+                                        order
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="cl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+@stop
