@@ -4814,7 +4814,7 @@ body.home .middle_content .blog {
 hr {
   border: 0;
   border-bottom-style: solid;
-  margin: 44px 0;
+  margin: 15px 0;
 }
 hr,
 .cmsmasters_widget_divider,
@@ -7305,7 +7305,7 @@ hr,
   float: left;
 }
 .sidebar_layout_14141414 aside {
-  width: 21.6%;
+  width: 29.6%;
 }
 .sidebar_layout_141412 > aside:first-child,
 .sidebar_layout_141412 > aside:first-child + aside,
@@ -9265,3 +9265,4 @@ html.csstransitions .cmsmasters_column_sticky {
     opacity: 1;
   }
 }
+s

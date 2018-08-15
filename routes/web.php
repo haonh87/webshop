@@ -4,6 +4,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 
     Route::get('login/{social}', ["as" => "social.login", "uses" => 'Auth\AuthController@redirectToProvider']);
     Route::get('login/{social}/callback', 'Auth\AuthController@handleProviderCallback');
+    Route::get('/about-us', ['as' => 'aboutUs', 'uses' => 'Frontend\AboutUsController@index']);
+    Route::get('/instructions', ['as' => 'instructions', 'uses' => 'Frontend\InstructionsController@index']);
+
+    Route::get('customer/login', ["as" => "customer.login", "uses" => "Frontend\CustomerLoginController@login"]);
+    Route::post('customer/login', ["as" => "customer.postLogin", "uses" => "Frontend\CustomerLoginController@postCustomerLogin"]);
+
     Route::get('/', ["as" => "index", "uses" => "Frontend\IndexController@index"]);
     Route::get('/category/{id}', ['as' => "category", 'uses' => 'Frontend\IndexController@showProductByCategory']);
     Route::post('/product/vote', ['as' => 'product.vote', 'uses' => 'Frontend\IndexController@postVote']);
@@ -148,6 +154,25 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
         'as' => 'admin.product.size.delete',
         'uses' => 'ProductSizeController@destroy'
     ]);
+
+    Route::get('/configuration/{id?}', [
+        'as' => 'admin.configuration-management',
+        'uses' => 'ConfigurationController@index'
+    ]);
+
+    Route::post('/configuration/update/{id}', [
+        'as' => 'admin.configuration-management.update',
+        'uses' => 'ConfigurationController@update'
+    ]);
+
+    Route::post('/configuration/add', [
+        'as' => 'admin.configuration-management.add',
+        'uses' => 'ConfigurationController@store'
+    ]);
+    Route::post('/configuration/delete/{id}', [
+        'as' => 'admin.configuration-management.delete',
+        'uses' => 'ConfigurationController@destroy'
+    ]);
     //Route::resource("categories", "CategoryController");
     Route::resource("products", "ProductController");
     Route::post('/product/excel', ['as' => 'product.import.excel', 'uses' => 'ProductController@importProductFromExcelFile']);
@@ -186,6 +211,7 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
