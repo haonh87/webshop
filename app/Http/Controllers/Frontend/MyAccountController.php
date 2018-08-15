@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Order;
-use App\Models\OrderItem;
-use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Validator;
+use DB;
 
 class MyAccountController extends BaseController
 {
@@ -56,13 +53,22 @@ class MyAccountController extends BaseController
      */
     public function store(Request $request)
     {
-        $dataUser = $request->except('_token');
-        $dataUser['role_id'] = 3;
-        $dataUser['is_active'] = 1;
-        $user = $this->userService->createUser($dataUser);
-        if ($user) {
-            return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
-        } else {
+        DB::beginTransaction();
+        try {
+            $dataUser = $request->except('_token', 'address', 'mobile', 'gender', 'cf_password');
+            $dataCustomer = $request->except('_token','fullname', 'email', 'password', 'cf_password');
+            $dataUser['role_id'] = 3;
+            $dataUser['is_active'] = 1;
+            $user = $this->userService->createUser($dataUser);
+            if ($user) {
+                DB::commit();
+                return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
+            } else {
+                DB::rollback();
+                return redirect()->back()->with('message_account', 'Tạo tài khoản không thành công');
+            }
+        } catch (\Exception $e) {
+            DB::rollback();
             return redirect()->back()->with('message_account', 'Tạo tài khoản không thành công');
         }
     }
