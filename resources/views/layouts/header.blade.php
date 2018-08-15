@@ -43,7 +43,7 @@
                                 @endforeach
                             </ul>
                             <p class="woocommerce-mini-cart__total total">
-                                <strong>Subtotal:</strong>
+                                <strong>Tổng:</strong>
                                 <span class="woocommerce-Price-amount amount">
                                     <span>
                                         <span class="woocommerce-Price-currencySymbol">VND</span>
@@ -51,8 +51,8 @@
                                 </span>
                             </p>
                             <p class="woocommerce-mini-cart__buttons buttons">
-                                <a href="{{ route('cart.index') }}" class="button wc-forward">View cart</a>
-                                <a href="{{ route('cart.checkout') }}" class="button checkout wc-forward">Checkout</a>
+                                <a href="{{ route('cart.index') }}" class="button wc-forward">Giỏ Hàng</a>
+                                <a href="{{ route('cart.checkout') }}" class="button checkout wc-forward">Thanh Toán</a>
                             </p>
                         @endif
                     </div>
@@ -65,104 +65,26 @@
                         <div class="menu-main-menu-container">
                             <ul id="navigation" class="mid_nav navigation">
                                 <li id="menu-item-13035"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-7366 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-13035 menu-item-depth-0">
-                                    <a href="http://sports-store.cmsmasters.net/"><span
-                                                class="nav_item_wrap"><span class="nav_title">Home</span></span></a>
-                                    <ul class="sub-menu">
-                                        <li id="menu-item-14037"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-7366 current_page_item menu-item-14037 menu-item-depth-1">
-                                            <a href="http://sports-store.cmsmasters.net/"><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">Home</span></span></a></li>
-                                        <li id="menu-item-14085"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14085 menu-item-depth-1">
-                                            <a href="{{ route('product.list') }}"><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">Home Shop</span></span></a></li>
-                                    </ul>
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
+                                    <a href="{{ route('index') }}"><span
+                                                class="nav_item_wrap"><span class="nav_title">Trang Chủ</span></span></a>
                                 </li>
-                                <li id="menu-item-12979"
-                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12979 menu-item-depth-0">
-                                    <a><span class="nav_item_wrap"><span
-                                                    class="nav_title">Features</span></span></a>
-                                    <ul class="sub-menu">
-                                        <li id="menu-item-13040"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13040 menu-item-depth-1">
-                                            <a href="http://sports-store.cmsmasters.net/new-collection/"><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">New Collection</span></span></a></li>
-                                        <li id="menu-item-14039"
-                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14039 menu-item-depth-1">
-                                            <a href="http://sports-store.cmsmasters.net/product/different-tools-for-fitness/"><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">Product Simple</span></span></a></li>
-                                        <li id="menu-item-14040"
-                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14040 menu-item-depth-1">
-                                            <a href="http://sports-store.cmsmasters.net/product/classic-sports-bra/"><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">Product Extended</span></span></a>
-                                        </li>
-                                        <li id="menu-item-14046"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14046 menu-item-depth-1">
-                                            <a href="http://sports-store.cmsmasters.net/cart/"><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">Cart</span></span></a></li>
-                                        <li id="menu-item-14045"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14045 menu-item-depth-1">
-                                            <a href="http://sports-store.cmsmasters.net/wishlist/"><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">Wishlist</span></span></a></li>
-                                        <li id="menu-item-13037"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13037 menu-item-depth-1">
-                                            <a href="http://sports-store.cmsmasters.net/blog/"><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">Blog</span></span></a></li>
-                                        <li id="menu-item-13038"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13038 menu-item-depth-1">
-                                            <a href="http://sports-store.cmsmasters.net/contacts/"><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">Contacts</span></span></a></li>
-                                    </ul>
+                                <li id="menu-item-13035"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
+                                    <a href="{{ route('product.list') }}"><span
+                                                class="nav_item_wrap"><span class="nav_title">Sản Phẩm</span></span></a>
                                 </li>
-                                <li id="menu-item-13036"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13036 menu-item-depth-0">
-                                    <a href="{{ route('product.list', ['category' => 'Women']) }}"><span
-                                                class="nav_item_wrap"><span
-                                                    class="nav_title">Women</span></span></a></li>
-                                <li id="menu-item-13028"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13028 menu-item-depth-0">
-                                    <a href="{{ route('product.list', ['category' => 'Men']) }}"><span
-                                                class="nav_item_wrap"><span class="nav_title">Men</span></span></a>
-                                </li>
-
-
-                                <li id="menu-item-13028"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13028 menu-item-depth-0">
-                                    <a href="http://sports-store.cmsmasters.net/men/"><span
-                                                class="nav_item_wrap"><span class="nav_title">Checkout</span></span></a>
-                                </li>
-
                                 <li id="menu-item-13029"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
-                                    <a href="{{route('aboutUs')}}"><span class="nav_item_wrap"><span class="nav_title">About us</span></span></a>
+                                    <a href="{{route('aboutUs')}}"><span class="nav_item_wrap"><span class="nav_title">Bài Viết</span></span></a>
                                 </li>
-
-                                <li id="menu-item-12979"
-                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12979 menu-item-depth-0">
-                                    <a><span class="nav_item_wrap"><span
-                                                    class="nav_title">Account</span></span></a>
-                                    <ul class="sub-menu">
-                                        <li id="menu-item-13040"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13040 menu-item-depth-1">
-                                            <a href=""><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">Register</span></span></a></li>
-                                        <li id="menu-item-14039"
-                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14039 menu-item-depth-1">
-                                            {{--<a href="javascript:void(0)" class="mid_search_but cmsmasters_header_search_but">Login</a>--}}
-                                            <a href="{{route('customer.login')}}"><span class="nav_item_wrap"><span class="nav_title">Login</span></span></a>
-                                        </li>
-                                    </ul>
+                                <li id="menu-item-13029"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
+                                    <a href="{{route('instructions')}}"><span class="nav_item_wrap"><span class="nav_title">Giới Thiệu</span></span></a>
+                                </li>
+                                <li id="menu-item-13029"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
+                                    <a href="{{route('aboutUs')}}"><span class="nav_item_wrap"><span class="nav_title">Hướng Dẫn</span></span></a>
                                 </li>
                             </ul>
                         </div>
