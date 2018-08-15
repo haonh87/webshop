@@ -98,12 +98,23 @@ class MyAccountController extends BaseController
      */
     public function update(Request $request)
     {
-        if(!Auth::check())
-            return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
-        else {
-            $dataUser = $request->except('_token');
-            $this->userService->udpateUser($dataUser, Auth::user()->id);
-            return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
+        DB::beginTransaction();
+        try {
+            if(!Auth::check())
+                return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
+            else {
+                $dataUser = $request->except('_token', 'address', 'mobile', 'gender');
+                $dataCustomer = $request->except('_token', 'fullname', 'username', 'email');
+                $dataCustomer['name'] = $request->input('username');
+                $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
+                $this->userService->udpateUser($dataUser, Auth::user()->id);
+                $this->customerService->udpateCustomer($dataCustomer, $customer->id);
+                DB::commit();
+                return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
+            }
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->with('message_account', 'Cập nhật thất bại');
         }
     }
 }
