@@ -12,7 +12,7 @@
                         <div id="cmsmasters_column_1ba0178fc3" class="cmsmasters_column one_first">
                             <div class="cmsmasters_column_inner">
                                 <div class="cmsmasters_text">
-                                    <div class="woocommerce">
+                                    <div class="woocommerce woocommerce-message woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                         <h2>Đăng Nhập</h2>
                                         <form action="{{ route('login') }}" class="woocommerce-form woocommerce-form-login login" method="post">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
