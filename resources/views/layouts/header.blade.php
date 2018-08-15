@@ -76,15 +76,45 @@
                                 </li>
                                 <li id="menu-item-13029"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
-                                    <a href="{{route('aboutUs')}}"><span class="nav_item_wrap"><span class="nav_title">Bài Viết</span></span></a>
+                                    {{--<a href="{{route('posts')}}"><span class="nav_item_wrap"><span class="nav_title">Bài Viết</span></span></a>--}}
+                                    <a href="/"><span class="nav_item_wrap"><span class="nav_title">Bài Viết</span></span></a>
                                 </li>
                                 <li id="menu-item-13029"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
-                                    <a href="{{route('instructions')}}"><span class="nav_item_wrap"><span class="nav_title">Giới Thiệu</span></span></a>
+                                    <a href="{{route('aboutUs')}}"><span class="nav_item_wrap"><span class="nav_title">Giới Thiệu</span></span></a>
                                 </li>
                                 <li id="menu-item-13029"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
-                                    <a href="{{route('aboutUs')}}"><span class="nav_item_wrap"><span class="nav_title">Hướng Dẫn</span></span></a>
+                                    <a href="{{route('instructions')}}"><span class="nav_item_wrap"><span class="nav_title">Hướng Dẫn</span></span></a>
+                                </li>
+                                <li id="menu-item-13029"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-13029 menu-item-depth-0">
+                                    @if(\Auth::check())
+                                        <a><span class="nav_item_wrap"><span
+                                                        class="nav_title"></span> {{ Auth::user()->username }}</span></a>
+                                            <ul class="sub-menu">
+                                                <li id="menu-item-13040"
+                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13040 menu-item-depth-1">
+                                                    <a href="{{ route('customer.logout') }}"><span
+                                                                class="nav_item_wrap"><span
+                                                                    class="nav_title">Đăng xuất</span></span></a></li>
+                                            </ul>
+
+                                    @else
+                                    <a><span class="nav_item_wrap"><span
+                                                    class="nav_title">Tài khoản</span></span></a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-13040"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13040 menu-item-depth-1">
+                                            <a href="{{ route('myaccount.create') }}"><span
+                                                        class="nav_item_wrap"><span
+                                                            class="nav_title">Đăng ký</span></span></a></li>
+                                        <li id="menu-item-14039"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14039 menu-item-depth-1">
+                                            <a href="{{ route('myaccount.index') }}"><span class="nav_item_wrap"><span class="nav_title">Đăng nhập</span></span></a>
+                                        </li>
+                                    </ul>
+                                    @endif
                                 </li>
                             </ul>
                         </div>

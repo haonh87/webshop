@@ -7,8 +7,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('/about-us', ['as' => 'aboutUs', 'uses' => 'Frontend\AboutUsController@index']);
     Route::get('/instructions', ['as' => 'instructions', 'uses' => 'Frontend\InstructionsController@index']);
 
-    Route::get('customer/login', ["as" => "customer.login", "uses" => "Frontend\CustomerLoginController@login"]);
     Route::post('customer/login', ["as" => "customer.postLogin", "uses" => "Frontend\CustomerLoginController@postCustomerLogin"]);
+    Route::get('customer/logout', ["as" => "customer.logout", "uses" => "Frontend\CustomerLoginController@logout"]);
 
     Route::get('/', ["as" => "index", "uses" => "Frontend\IndexController@index"]);
     Route::get('/category/{id}', ['as' => "category", 'uses' => 'Frontend\IndexController@showProductByCategory']);
