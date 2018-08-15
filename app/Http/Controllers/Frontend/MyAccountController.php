@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Services\CustomerService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
@@ -14,10 +15,12 @@ class MyAccountController extends BaseController
 {
 
     protected $userService;
-    public function __construct(UserService $userService)
+    protected $customerService;
+    public function __construct(UserService $userService, CustomerService $customerService)
     {
         parent::__construct();
         $this->userService = $userService;
+        $this->customerService = $customerService;
     }
     /**
      * Display a listing of the resource.
@@ -56,11 +59,14 @@ class MyAccountController extends BaseController
         DB::beginTransaction();
         try {
             $dataUser = $request->except('_token', 'address', 'mobile', 'gender', 'cf_password');
-            $dataCustomer = $request->except('_token','fullname', 'email', 'password', 'cf_password');
+            $dataCustomer = $request->except('_token', 'username', 'fullname', 'email', 'password', 'cf_password');
             $dataUser['role_id'] = 3;
             $dataUser['is_active'] = 1;
             $user = $this->userService->createUser($dataUser);
             if ($user) {
+                $dataCustomer['name'] = $request->input('username');
+                $dataCustomer['user_id'] = $user;
+                $this->customerService->createCustomer($dataCustomer);
                 DB::commit();
                 return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
             } else {
