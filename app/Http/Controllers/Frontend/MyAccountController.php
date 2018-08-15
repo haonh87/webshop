@@ -79,12 +79,13 @@ class MyAccountController extends BaseController
         }
     }
 
-    public function edit($id = null)
+    public function edit()
     {
         if(!Auth::check())
             return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
         else {
-            return view('frontend.myaccount.edit')->with('message_account', 'Sửa thông tin người dùng.');
+            $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
+            return view('frontend.myaccount.edit')->with('customer', $customer)->with('message_account', 'Sửa thông tin người dùng.');
         }
     }
 
