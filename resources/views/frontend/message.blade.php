@@ -1,3 +1,10 @@
+@if(isset($message_account))
+    <div class="cmsmasters_row_inner">
+        <div class="woocommerce-message woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide" role="alert">
+            {!! $message_account !!}
+        </div>
+    </div>
+@endif
 @if(Session::has('message_cart'))
     <div class="cmsmasters_row_inner">
         <div class="woocommerce-message" role="alert">

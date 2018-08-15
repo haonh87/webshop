@@ -32,7 +32,8 @@ class MyAccountController extends BaseController
         if(!Auth::check())
             return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
         else {
-            return view('frontend.myaccount.edit')->with('message_account', 'Bạn đã đăng nhập!');
+            $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
+            return view('frontend.myaccount.edit', [''])->with('customer', $customer)->with('message_account', 'Bạn đã đăng nhập, Thông tin tài khoản!');
         }
     }
     /**
@@ -43,7 +44,8 @@ class MyAccountController extends BaseController
     public function create()
     {
         if(Auth::check()){
-            return view('frontend.myaccount.edit')->with('message_account', 'Đã đăng nhập!');
+            $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
+            return view('frontend.myaccount.edit', [''])->with('customer', $customer)->with('message_account', 'Bạn đã có tài khoản, Thông tin tài khoản!');
         }
         return view('frontend.myaccount.create')->with('message_account', 'Hãy điền đầy đủ thông tin!');
     }
@@ -85,7 +87,7 @@ class MyAccountController extends BaseController
             return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
         else {
             $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
-            return view('frontend.myaccount.edit')->with('customer', $customer)->with('message_account', 'Sửa thông tin người dùng.');
+            return view('frontend.myaccount.edit', [''])->with('customer', $customer)->with('message_account', 'Sửa thông tin người dùng.');
         }
     }
 

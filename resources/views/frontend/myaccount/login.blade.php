@@ -5,7 +5,7 @@
     <div id="content">
         @include('frontend.header_line', ['name' => 'Đăng nhập'])
         @include('frontend.message')
-        <div class="cmsmasters_row_outer_parent" style="padding-bottom: 60px; padding-top: 40px">
+        <div class="cmsmasters_row_outer_parent" style="padding-bottom: 40px; padding-top: 40px">
             <div class="cmsmasters_row_outer">
                 <div class="cmsmasters_row_inner">
                     <div class="cmsmasters_row_margin cmsmasters_11">

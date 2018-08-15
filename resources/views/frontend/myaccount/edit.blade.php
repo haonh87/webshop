@@ -5,7 +5,7 @@
     <div id="content">
         @include('frontend.header_line', ['name' => 'Sửa tài khoản'])
         @include('frontend.message')
-        <div class="cmsmasters_row_outer_parent create_user" style="padding-top: 70px; padding-bottom: 60px">
+        <div class="cmsmasters_row_outer_parent create_user" style="padding-top: 40px; padding-bottom: 40px">
             <div class="cmsmasters_row_outer">
                 <div class="cmsmasters_row_inner">
                     <form action="{{ route('myaccount.update') }}" method="POST">
