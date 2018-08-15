@@ -44,97 +44,97 @@
             </div>
         </div>
 
-        <div class="widget widget-style-2">
-            <div class="cmsmasters_row_outer_parent">
-                <div class="cmsmasters_row_outer">
-                    <div class="cmsmasters_row_inner">
-                        <div class="cmsmasters_row_margin cmsmasters_row_columns_behavior cmsmasters_131313">
-                            <div class="cmsmasters_column one_third">
-                                <div class="cmsmasters_column_inner">
-                                    <div id="cmsmasters_fb_016z4vrb3b"
-                                         class="cmsmasters_featured_block cmsmasters_featured_block_hover">
-                                        <a class="cmsmasters_featured_block_link"
-                                           href="http://sports-store.cmsmasters.net/shop"></a>
-                                        <div class="featured_block_inner">
-                                            <div class="featured_block_text">
-                                                <div id="cmsmasters_heading_89db67754d42"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h3 class="cmsmasters_heading">2017</h3>
-                                                </div>
-                                                <div id="cmsmasters_heading_ef927527455cb"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h2 class="cmsmasters_heading">BEST SELLING</h2>
-                                                </div>
-                                                <div id="cmsmasters_heading_be46b6r4d74e"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h5 class="cmsmasters_heading"><a
-                                                                href="http://sports-store.cmsmasters.net/new-collection/">Get
-                                                            the discount OF 20%</a></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cmsmasters_column one_third">
-                                <div class="cmsmasters_column_inner">
-                                    <div id="cmsmasters_fb_o5eqkmubb8"
-                                         class="cmsmasters_featured_block cmsmasters_featured_block_hover">
-                                        <a class="cmsmasters_featured_block_link"
-                                           href="http://sports-store.cmsmasters.net/new-collection/"></a>
-                                        <div class="featured_block_inner">
-                                            <div class="featured_block_text">
-                                                <div id="cmsmasters_heading_89db67754d41"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h3 class="cmsmasters_heading">Summer trends</h3>
-                                                </div>
-                                                <div id="cmsmasters_heading_ef927527454cb"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h2 class="cmsmasters_heading">NEW ARRIVALS</h2>
-                                                </div>
-                                                <div id="cmsmasters_heading_be46b6r4d73e"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h5 class="cmsmasters_heading"><a
-                                                                href="http://sports-store.cmsmasters.net/new-collection/">Shop
-                                                            Now</a></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cmsmasters_column one_third">
-                                <div class="cmsmasters_column_inner">
-                                    <div id="cmsmasters_fb_q0vgmjpmb"
-                                         class="cmsmasters_featured_block cmsmasters_featured_block_hover">
-                                        <a class="cmsmasters_featured_block_link"
-                                           href="http://sports-store.cmsmasters.net/shop"></a>
-                                        <div class="featured_block_inner">
-                                            <div class="featured_block_text">
-                                                <div id="cmsmasters_heading_892db754d41"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h3 class="cmsmasters_heading">BIG SALE</h3>
-                                                </div>
-                                                <div id="cmsmasters_heading_ef92347527cb"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h2 class="cmsmasters_heading">SUMMER TRENDS</h2>
-                                                </div>
-                                                <div id="cmsmasters_heading_be4678b6d73e"
-                                                     class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                                    <h5 class="cmsmasters_heading"><a
-                                                                href="http://sports-store.cmsmasters.net/new-collection/">top
-                                                            brands up to 80% off</a></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{--<div class="widget widget-style-2">--}}
+            {{--<div class="cmsmasters_row_outer_parent">--}}
+                {{--<div class="cmsmasters_row_outer">--}}
+                    {{--<div class="cmsmasters_row_inner">--}}
+                        {{--<div class="cmsmasters_row_margin cmsmasters_row_columns_behavior cmsmasters_131313">--}}
+                            {{--<div class="cmsmasters_column one_third">--}}
+                                {{--<div class="cmsmasters_column_inner">--}}
+                                    {{--<div id="cmsmasters_fb_016z4vrb3b"--}}
+                                         {{--class="cmsmasters_featured_block cmsmasters_featured_block_hover">--}}
+                                        {{--<a class="cmsmasters_featured_block_link"--}}
+                                           {{--href="http://sports-store.cmsmasters.net/shop"></a>--}}
+                                        {{--<div class="featured_block_inner">--}}
+                                            {{--<div class="featured_block_text">--}}
+                                                {{--<div id="cmsmasters_heading_89db67754d42"--}}
+                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
+                                                    {{--<h3 class="cmsmasters_heading">2017</h3>--}}
+                                                {{--</div>--}}
+                                                {{--<div id="cmsmasters_heading_ef927527455cb"--}}
+                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
+                                                    {{--<h2 class="cmsmasters_heading">BEST SELLING</h2>--}}
+                                                {{--</div>--}}
+                                                {{--<div id="cmsmasters_heading_be46b6r4d74e"--}}
+                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
+                                                    {{--<h5 class="cmsmasters_heading"><a--}}
+                                                                {{--href="http://sports-store.cmsmasters.net/new-collection/">Get--}}
+                                                            {{--the discount OF 20%</a></h5>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="cmsmasters_column one_third">--}}
+                                {{--<div class="cmsmasters_column_inner">--}}
+                                    {{--<div id="cmsmasters_fb_o5eqkmubb8"--}}
+                                         {{--class="cmsmasters_featured_block cmsmasters_featured_block_hover">--}}
+                                        {{--<a class="cmsmasters_featured_block_link"--}}
+                                           {{--href="http://sports-store.cmsmasters.net/new-collection/"></a>--}}
+                                        {{--<div class="featured_block_inner">--}}
+                                            {{--<div class="featured_block_text">--}}
+                                                {{--<div id="cmsmasters_heading_89db67754d41"--}}
+                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
+                                                    {{--<h3 class="cmsmasters_heading">Summer trends</h3>--}}
+                                                {{--</div>--}}
+                                                {{--<div id="cmsmasters_heading_ef927527454cb"--}}
+                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
+                                                    {{--<h2 class="cmsmasters_heading">NEW ARRIVALS</h2>--}}
+                                                {{--</div>--}}
+                                                {{--<div id="cmsmasters_heading_be46b6r4d73e"--}}
+                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
+                                                    {{--<h5 class="cmsmasters_heading"><a--}}
+                                                                {{--href="http://sports-store.cmsmasters.net/new-collection/">Shop--}}
+                                                            {{--Now</a></h5>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="cmsmasters_column one_third">--}}
+                                {{--<div class="cmsmasters_column_inner">--}}
+                                    {{--<div id="cmsmasters_fb_q0vgmjpmb"--}}
+                                         {{--class="cmsmasters_featured_block cmsmasters_featured_block_hover">--}}
+                                        {{--<a class="cmsmasters_featured_block_link"--}}
+                                           {{--href="http://sports-store.cmsmasters.net/shop"></a>--}}
+                                        {{--<div class="featured_block_inner">--}}
+                                            {{--<div class="featured_block_text">--}}
+                                                {{--<div id="cmsmasters_heading_892db754d41"--}}
+                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
+                                                    {{--<h3 class="cmsmasters_heading">BIG SALE</h3>--}}
+                                                {{--</div>--}}
+                                                {{--<div id="cmsmasters_heading_ef92347527cb"--}}
+                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
+                                                    {{--<h2 class="cmsmasters_heading">SUMMER TRENDS</h2>--}}
+                                                {{--</div>--}}
+                                                {{--<div id="cmsmasters_heading_be4678b6d73e"--}}
+                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
+                                                    {{--<h5 class="cmsmasters_heading"><a--}}
+                                                                {{--href="http://sports-store.cmsmasters.net/new-collection/">top--}}
+                                                            {{--brands up to 80% off</a></h5>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
@@ -144,7 +144,7 @@
                             <div class="cmsmasters_column one_first">
                                 <div class="cmsmasters_column_inner">
                                     <div class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                        <h3 class="cmsmasters_heading">Featured Products</h3>
+                                        <h3 class="cmsmasters_heading">Sản Phẩm Tốt</h3>
                                     </div>
                                     <div class="aligncenter">
                                         <div class="cmsmasters_img  cmsmasters_image_c"><img src="{{ asset('images/line.jpg') }}"
@@ -230,10 +230,10 @@
                             <div id="cmsmasters_column_e33c9de989" class="cmsmasters_column one_first">
                                 <div class="cmsmasters_column_inner">
                                     <div id="cmsmasters_heading_64e7aa0d48" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                        <h2 class="cmsmasters_heading colorFFF">Crossfit trending wear 2017</h2>
+                                        <h2 class="cmsmasters_heading colorFFF">Xu Hướng Thời Trang</h2>
                                     </div>
                                     <div id="cmsmasters_heading_yfuldl1f1s" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                        <h6 class="cmsmasters_heading colorFFF"> Most viewed video</h6>
+                                        <h6 class="cmsmasters_heading colorFFF">xem video</h6>
                                     </div>
                                     <div id="cmsmasters_divider_c6e561e1fd" class="cl"></div>
                                     <div class="aligncenter">
@@ -255,7 +255,7 @@
                             <div class="cmsmasters_column one_first">
                                 <div class="cmsmasters_column_inner">
                                     <div class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                        <h3 class="cmsmasters_heading">New Products</h3>
+                                        <h3 class="cmsmasters_heading">Sản Phẩm Mới</h3>
                                     </div>
                                     <div class="aligncenter">
                                         <div class="cmsmasters_img  cmsmasters_image_c"><img
@@ -337,7 +337,7 @@
                             <div id="cmsmasters_column_dbdeac3041" class="cmsmasters_column one_first">
                                 <div class="cmsmasters_column_inner">
                                     <div class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                        <h3 class="cmsmasters_heading">Latest News</h3>
+                                        <h3 class="cmsmasters_heading">Bài Viết Mới</h3>
                                     </div>
                                     <div class="aligncenter">
                                         <div class="cmsmasters_img  cmsmasters_image_c"><img
@@ -538,9 +538,9 @@
             <div class="cmsmasters_row_margin cmsmasters_11">
             <div id="cmsmasters_column_05f09afbff" class="cmsmasters_column one_first">
             <div class="cmsmasters_column_inner"><div id="cmsmasters_heading_62feb823c3" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                <h3 class="cmsmasters_heading">sign up for news &amp; get 15% off</h3>
+                <h3 class="cmsmasters_heading">Đăng Ký Nhận Tin Tức</h3>
             </div><div class="cmsmasters_text">
-            <div style="text-align: center;"><span style="color: #606060;">Make sure you don’t miss interesting happenings by joining our newsletter program</span></div>
+            <div style="text-align: center;"><span style="color: #606060;">Đảm bảo chắc chắn rằng bạn không bỏ lỡ sự kiện của chúng tôi</span></div>
             </div>
             <div id="cmsmasters_divider_554599f41f" class="cl"></div>
             </div></div>
@@ -555,9 +555,7 @@
             <div id="cmsmasters_column_05fe8184b7" class="cmsmasters_column one_third">
             <div class="cmsmasters_column_inner"><div class="cmsmasters_mailpoet"><div class="cmsmasters_mailpoet_form"><div class="widget_wysija_cont shortcode_wysija"><div id="msg-form-wysija-shortcode5b6e498d1e34e-1" class="wysija-msg ajax"></div><form id="form-wysija-shortcode5b6e498d1e34e-1" method="post" action="#wysija" class="widget_wysija shortcode_wysija">
             <p class="wysija-paragraph">
-                
-                
-                    <input type="text" name="wysija[user][email]" class="wysija-input validate[required,custom[email]]" title="Your Email" placeholder="Your Email" value="">
+                    <input type="text" name="wysija[user][email]" class="wysija-input validate[required,custom[email]]" title="Your Email" placeholder="Email" value="">
                 
                 
                 
@@ -567,7 +565,7 @@
                 
             </p>
 
-            <input class="wysija-submit wysija-submit-field" type="submit" value="Subscribe!">
+            <input class="wysija-submit wysija-submit-field" type="submit" value="Đăng Ký!">
 
                 <input type="hidden" name="form_id" value="1">
                 <input type="hidden" name="action" value="save">
