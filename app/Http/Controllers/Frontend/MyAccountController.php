@@ -30,9 +30,9 @@ class MyAccountController extends BaseController
     public function index()
     {
         if(!Auth::check())
-            return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
+            return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
         else {
-            return view('frontend.myaccount.edit')->with('sub_navi', '');
+            return view('frontend.myaccount.edit')->with('message_account', 'Bạn đã đăng nhập!');
         }
     }
     /**
@@ -43,9 +43,9 @@ class MyAccountController extends BaseController
     public function create()
     {
         if(Auth::check()){
-            return view('frontend.myaccount.edit')->with('message', 'Đã đăng nhập!');
+            return view('frontend.myaccount.edit')->with('message_account', 'Đã đăng nhập!');
         }
-        return view('frontend.myaccount.create');
+        return view('frontend.myaccount.create')->with('message_account', 'Hãy điền đầy đủ thông tin!');
     }
 
     /**
@@ -61,18 +61,18 @@ class MyAccountController extends BaseController
         $dataUser['is_active'] = 1;
         $user = $this->userService->createUser($dataUser);
         if ($user) {
-            return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
+            return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
         } else {
-            return redirect()->back()->with('message_error', 'Tạo tài khoản không thành công');
+            return redirect()->back()->with('message_account', 'Tạo tài khoản không thành công');
         }
     }
 
     public function edit($id = null)
     {
         if(!Auth::check())
-            return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
+            return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
         else {
-            return view('frontend.myaccount.edit')->with('message', 'Sửa thông tin người dùng.');
+            return view('frontend.myaccount.edit')->with('message_account', 'Sửa thông tin người dùng.');
         }
     }
 
@@ -86,11 +86,11 @@ class MyAccountController extends BaseController
     public function update(Request $request)
     {
         if(!Auth::check())
-            return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
+            return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
         else {
             $dataUser = $request->except('_token');
             $this->userService->udpateUser($dataUser, Auth::user()->id);
-            return view('frontend.myaccount.login')->with('message', 'Hãy đăng nhập!');
+            return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
         }
     }
 }
