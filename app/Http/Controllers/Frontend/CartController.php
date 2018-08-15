@@ -133,69 +133,12 @@ class CartController extends BaseController
 
     public function postCheckout(Request $request)
     {
-        $order_info = $request->except('_token');
-//        dd($order_info);
-        $order = new Order();
-        if(!Auth::check() || Auth::user()->customer == null ){
-            //if this email had n the system
-            if($customer= Customer::where('email', '=',$order_info['email'])->firstOrFail()){
-                Customer ::where('email', '=',$order_info['email'])->update(
-                [
-                    'name' => $order_info['lastname'],
-                    'phone' => $order_info['telephone'],
-                    'mobile' => $order_info['mobile'],
-                    'address' => $order_info['address_1'],
-                ]
-            );
-            }else{
-                $customer = new Customer();
-                $customer->name = $order_info['lastname'];
-                $customer->email = $order_info['email'];
-                $customer->phone = $order_info['telephone'];
-                $customer->mobile = $order_info['mobile'];
-                $customer->address = $order_info['address_1'];
-                $customer->save();
-            }
-            $order->customers_id = $customer->id;
+        if(!Auth::check()) {
+            return view('frontend.myaccount.login')->with('message_account', 'Bạn phải đăng nhập trước khi thanh toán hóa đơn!');
+        } else {
+            //save data to order
         }
-
-        else{
-            $order->customers_id = Auth::user()->customer_id;
-            $customer = Customer::find($order->customers_id);
-            $customer->name = $order_info['lastname'];
-            $customer->email = $order_info['email'];
-            $customer->phone = $order_info['telephone'];
-            $customer->mobile = $order_info['mobile'];
-            $customer->address = $order_info['address_1'];
-            $customer->save();
-        }
-        $order->status = '0';
-        $order->total = Cart::total()*1.2;
-        //send mail
-        $data = array(
-            'customer' => $customer,
-            'link' => route('index'),
-        );
-        if($customer){
-            \Mail::send('emails.email_check_out',$data, function($message) use ($customer){
-                $message->from('thienth3@gmail.com', 'Admin');
-                $message->to('thienth3@gmail.com', $customer->name)
-                    ->subject('Notification');
-            });
-        }
-        //end send mail
-        $order->save();
-        foreach (Cart::content() as $item) {
-            $order_item = new OrderItem();
-            $order_item->order_id = $order->id;
-            $order_item->product_id = $item->id;
-            $order_item->product_color_id = $item->options->color;
-            $order_item->product_size_id = $item->options->size_option;
-            $order_item->quantity = $item->qty;
-            $order_item->save();
-        }
-//        dd(Cart::content());
         Cart::destroy();
-        return \Redirect()->route('index')->with('message', trans('lang.complete_order'));
+        return \Redirect()->route('index')->with('message', 'Mua sản phẩm thành công!');
     }
 }
