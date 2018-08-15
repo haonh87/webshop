@@ -119,6 +119,9 @@ class CartController extends BaseController
 
     public function getCheckout()
     {
+        if(!Auth::check()) {
+            return view('frontend.myaccount.login')->with('message_account', 'Bạn phải đăng nhập trước khi thanh toán hóa đơn!');
+        }
         if(Cart::total() == 0){
             return redirect()->back();
         }
