@@ -76,8 +76,8 @@ class CartController extends BaseController
                 ]
             ));
         }
-        $prduct_link = Request::get('product_name').' has been added to your cart';
-        $link_to_cart = '<a class="button wc-forward" href="'.route('cart.index').'">shopping cart!</a>';
+        $prduct_link = Request::get('product_name').' đã thêm vào giỏ hàng';
+        $link_to_cart = '<a class="button wc-forward" href="'.route('cart.index').'">Giỏ Hàng</a>';
         $success = $link_to_cart.$prduct_link;
         $message=['success'=>$success];
 
@@ -97,11 +97,11 @@ class CartController extends BaseController
         foreach ($carts as $key => $cart) {
             $quantity = $cart['qty'];
             if(is_null(Cart::get($key))){
-                return redirect()->back()->with('message_cart', 'Update cart error');
+                return redirect()->back()->with('message_cart', 'Cập nhật giỏ hàng thất bại.');
             }
             Cart::update($key, $quantity);
         }
-        return redirect()->back()->with('message_cart', 'Update cart success');
+        return redirect()->back()->with('message_cart', 'Cập nhật giỏ hàng thành công.');
     }
 
     /**
