@@ -27,6 +27,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('/product-list/{category?}', ['as' => 'product.list', 'uses' => 'Frontend\IndexController@getProductList']);
     Route::get('/product/{product}', ['as' => 'product.show', 'uses' => 'Frontend\IndexController@show']);
 
+    Route::get('/post', ['as' => 'post.index', 'uses' => 'Frontend\PostController@index']);
+    Route::get('/post-list/{category?}', ['as' => 'product.list', 'uses' => 'Frontend\PostController@getList']);
+    Route::get('/post/{id}', ['as' => 'product.show', 'uses' => 'Frontend\PostController@show']);
+
     Route::get('/cart', ['as' => 'cart.index', 'uses' => 'Frontend\CartController@index']);
     Route::post('/cart', ['as' => 'cart.store', 'uses' => 'Frontend\CartController@store']);
     Route::get('/cart_destroy/{cart}', ['as' => 'cart.destroy', 'uses' => 'Frontend\CartController@destroy']);

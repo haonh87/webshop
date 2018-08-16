@@ -347,6 +347,7 @@
                                     <div class="cmsmasters_posts_slider cmsmasters_posts_slider_post">
                                         <div id="cmsmasters_owl_slider_4" class="cmsmasters_owl_slider" data-items="3" data-pagination="true"
                                              data-navigation="false" data-single-item="false" data-auto-play="5000">
+                                            @foreach($newPost as $post)
                                             <div class="cmsmasters_owl_slider_item">
                                                 <!--  Start Posts Slider Post Article  -->
                                                 <article id="post-10736"
@@ -354,173 +355,36 @@
                                                     <div class="cmsmasters_slider_post_outer">
                                                         <figure class="cmsmasters_img_rollover_wrap preloader">
                                                             <img width="580" height="420"
-                                                                 src="http://sports-store.cmsmasters.net/wp-content/uploads/2016/06/1-580x420.jpg"
+                                                                 src="{{ asset('images/' .@$post->image_url) }}"
                                                                  class="full-width wp-post-image"
-                                                                 alt="6 Ways to Get the Perfect Beach Body"
-                                                                 title="6 Ways to Get the Perfect Beach Body"><a
-                                                                    href="http://sports-store.cmsmasters.net/2017/05/06/6-ways-to-get-the-perfect-beach-body/"
-                                                                    title="6 Ways to Get the Perfect Beach Body"
-                                                                    class="cmsmasters_open_link"></a></figure>
+                                                                 alt="{{@$post->title}}"
+                                                                 title="{{@$post->title}}">
+                                                            <a href=""
+                                                               title="{{@$post->title}}"
+                                                               class="cmsmasters_open_link">
+
+                                                            </a>
+                                                        </figure>
                                                         <div class="cmsmasters_slider_post_info entry-meta">
-                                                            <span class="cmsmasters_slider_post_date"><abbr
-                                                                        class="published" title="May 6, 2017">May 6, 2017</abbr><abbr
-                                                                        class="dn date updated" title="July 25, 2017">July 25, 2017</abbr></span>
+                                                            <span class="cmsmasters_slider_post_date">
+                                                                <abbr class="published"
+                                                                      title="{{@$post->created_at}}">{{@$post->created_at}}
+                                                                </abbr>
+                                                                <abbr class="dn date updated"
+                                                                      title="{{@$post->updated_at}}">{{@$post->updated_at}}
+                                                                </abbr>
+                                                            </span>
                                                         </div>
                                                         <header class="cmsmasters_slider_post_header entry-header">
                                                             <h5 class="cmsmasters_slider_post_title entry-title">
-                                                                <a href="http://sports-store.cmsmasters.net/2017/05/06/6-ways-to-get-the-perfect-beach-body/">6
-                                                                    Ways to Get the Perfect Beach Body</a></h5>
+                                                                <a href="">{{@$post->title}}</a></h5>
+                                                            <p>{{@$post->postCategories->name}}</p>
                                                         </header>
                                                     </div>
                                                 </article>
                                                 <!--  Finish Posts Slider Post Article  -->
-
                                             </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Post Article  -->
-                                                <article id="post-2938"
-                                                         class="cmsmasters_slider_post post-2938 post type-post status-publish format-image has-post-thumbnail hentry category-advice post_format-post-format-image">
-                                                    <div class="cmsmasters_slider_post_outer">
-                                                        <figure class="cmsmasters_img_rollover_wrap preloader">
-                                                            <img width="580" height="420"
-                                                                 src="http://sports-store.cmsmasters.net/wp-content/uploads/2016/06/2-580x420.jpg"
-                                                                 class="full-width wp-post-image"
-                                                                 alt="How to Buy the Right Running Shoes?"
-                                                                 title="How to Buy the Right Running Shoes?"><a
-                                                                    href="http://sports-store.cmsmasters.net/2017/05/09/how-to-buy-the-right-running-shoes/"
-                                                                    title="How to Buy the Right Running Shoes?"
-                                                                    class="cmsmasters_open_link"></a></figure>
-                                                        <div class="cmsmasters_slider_post_info entry-meta">
-                                                            <span class="cmsmasters_slider_post_date"><abbr
-                                                                        class="published" title="May 9, 2017">May 9, 2017</abbr><abbr
-                                                                        class="dn date updated" title="July 25, 2017">July 25, 2017</abbr></span>
-                                                        </div>
-                                                        <header class="cmsmasters_slider_post_header entry-header">
-                                                            <h5 class="cmsmasters_slider_post_title entry-title">
-                                                                <a href="http://sports-store.cmsmasters.net/2017/05/09/how-to-buy-the-right-running-shoes/">How
-                                                                    to Buy the Right Running Shoes?</a></h5>
-                                                        </header>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Post Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Post Article  -->
-                                                <article id="post-103"
-                                                         class="cmsmasters_slider_post post-103 post type-post status-publish format-image has-post-thumbnail hentry category-advice category-fitness-fashion post_format-post-format-image">
-                                                    <div class="cmsmasters_slider_post_outer">
-                                                        <figure class="cmsmasters_img_rollover_wrap preloader">
-                                                            <img width="580" height="420"
-                                                                 src="http://sports-store.cmsmasters.net/wp-content/uploads/2016/06/3-580x420.jpg"
-                                                                 class="full-width wp-post-image"
-                                                                 alt="Friday Favorites: Fitness fashion, food + more"
-                                                                 title="Friday Favorites: Fitness fashion, food + more"><a
-                                                                    href="http://sports-store.cmsmasters.net/2017/05/11/friday-favorites-fitness-fashion-food-more/"
-                                                                    title="Friday Favorites: Fitness fashion, food + more"
-                                                                    class="cmsmasters_open_link"></a></figure>
-                                                        <div class="cmsmasters_slider_post_info entry-meta">
-                                                            <span class="cmsmasters_slider_post_date"><abbr
-                                                                        class="published" title="May 11, 2017">May 11, 2017</abbr><abbr
-                                                                        class="dn date updated" title="July 25, 2017">July 25, 2017</abbr></span>
-                                                        </div>
-                                                        <header class="cmsmasters_slider_post_header entry-header">
-                                                            <h5 class="cmsmasters_slider_post_title entry-title">
-                                                                <a href="http://sports-store.cmsmasters.net/2017/05/11/friday-favorites-fitness-fashion-food-more/">Friday
-                                                                    Favorites: Fitness fashion, food + more</a>
-                                                            </h5></header>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Post Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Post Article  -->
-                                                <article id="post-285"
-                                                         class="cmsmasters_slider_post post-285 post type-post status-publish format-image has-post-thumbnail hentry category-sports-together post_format-post-format-image">
-                                                    <div class="cmsmasters_slider_post_outer">
-                                                        <figure class="cmsmasters_img_rollover_wrap preloader">
-                                                            <img width="580" height="420"
-                                                                 src="http://sports-store.cmsmasters.net/wp-content/uploads/2016/06/4-580x420.jpg"
-                                                                 class="full-width wp-post-image"
-                                                                 alt="How does Sport Bring Communities Together?"
-                                                                 title="How does Sport Bring Communities Together?"><a
-                                                                    href="http://sports-store.cmsmasters.net/2017/05/15/how-does-sport-bring-communities-together/"
-                                                                    title="How does Sport Bring Communities Together?"
-                                                                    class="cmsmasters_open_link"></a></figure>
-                                                        <div class="cmsmasters_slider_post_info entry-meta">
-                                                            <span class="cmsmasters_slider_post_date"><abbr
-                                                                        class="published" title="May 15, 2017">May 15, 2017</abbr><abbr
-                                                                        class="dn date updated" title="July 25, 2017">July 25, 2017</abbr></span>
-                                                        </div>
-                                                        <header class="cmsmasters_slider_post_header entry-header">
-                                                            <h5 class="cmsmasters_slider_post_title entry-title">
-                                                                <a href="http://sports-store.cmsmasters.net/2017/05/15/how-does-sport-bring-communities-together/">How
-                                                                    does Sport Bring Communities Together?</a>
-                                                            </h5></header>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Post Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Post Article  -->
-                                                <article id="post-87"
-                                                         class="cmsmasters_slider_post post-87 post type-post status-publish format-image has-post-thumbnail hentry category-advice category-training post_format-post-format-image">
-                                                    <div class="cmsmasters_slider_post_outer">
-                                                        <figure class="cmsmasters_img_rollover_wrap preloader">
-                                                            <img width="580" height="420"
-                                                                 src="http://sports-store.cmsmasters.net/wp-content/uploads/2016/06/5-580x420.jpg"
-                                                                 class="full-width wp-post-image"
-                                                                 alt="How Long To Rest Between Sets &amp; Exercises"
-                                                                 title="How Long To Rest Between Sets &amp; Exercises"><a
-                                                                    href="http://sports-store.cmsmasters.net/2017/05/18/how-long-to-rest-between-sets-exercises/"
-                                                                    title="How Long To Rest Between Sets &amp; Exercises"
-                                                                    class="cmsmasters_open_link"></a></figure>
-                                                        <div class="cmsmasters_slider_post_info entry-meta">
-                                                            <span class="cmsmasters_slider_post_date"><abbr
-                                                                        class="published" title="May 18, 2017">May 18, 2017</abbr><abbr
-                                                                        class="dn date updated" title="July 25, 2017">July 25, 2017</abbr></span>
-                                                        </div>
-                                                        <header class="cmsmasters_slider_post_header entry-header">
-                                                            <h5 class="cmsmasters_slider_post_title entry-title">
-                                                                <a href="http://sports-store.cmsmasters.net/2017/05/18/how-long-to-rest-between-sets-exercises/">How
-                                                                    Long To Rest Between Sets &amp;
-                                                                    Exercises</a></h5></header>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Post Article  -->
-
-                                            </div>
-                                            <div class="cmsmasters_owl_slider_item">
-                                                <!--  Start Posts Slider Post Article  -->
-                                                <article id="post-85"
-                                                         class="cmsmasters_slider_post post-85 post type-post status-publish format-image has-post-thumbnail hentry category-advice category-training post_format-post-format-image">
-                                                    <div class="cmsmasters_slider_post_outer">
-                                                        <figure class="cmsmasters_img_rollover_wrap preloader">
-                                                            <img width="580" height="420"
-                                                                 src="http://sports-store.cmsmasters.net/wp-content/uploads/2016/06/6-580x420.jpg"
-                                                                 class="full-width wp-post-image"
-                                                                 alt="6 Full-Body Stretching Exercises"
-                                                                 title="6 Full-Body Stretching Exercises"><a
-                                                                    href="http://sports-store.cmsmasters.net/2017/05/21/6-full-body-stretching-exercises/"
-                                                                    title="6 Full-Body Stretching Exercises"
-                                                                    class="cmsmasters_open_link"></a></figure>
-                                                        <div class="cmsmasters_slider_post_info entry-meta">
-                                                            <span class="cmsmasters_slider_post_date"><abbr
-                                                                        class="published" title="May 21, 2017">May 21, 2017</abbr><abbr
-                                                                        class="dn date updated" title="July 25, 2017">July 25, 2017</abbr></span>
-                                                        </div>
-                                                        <header class="cmsmasters_slider_post_header entry-header">
-                                                            <h5 class="cmsmasters_slider_post_title entry-title">
-                                                                <a href="http://sports-store.cmsmasters.net/2017/05/21/6-full-body-stretching-exercises/">6
-                                                                    Full-Body Stretching Exercises</a></h5>
-                                                        </header>
-                                                    </div>
-                                                </article>
-                                                <!--  Finish Posts Slider Post Article  -->
-
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Post;
+use App\Models\PostCategory;
 
 /**
  * Class PostService
@@ -126,6 +127,17 @@ class PostService
         } else {
             return false;
         }
+    }
+
+
+    /**
+     * @param $numberPosts
+     * @return mixed
+     */
+    public function getNewestPostList($numberPosts)
+    {
+        $post = Post::latest()->limit($numberPosts)->get();
+        return $post;
     }
 
 }

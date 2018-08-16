@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\PostCategory;
 use App\Services\CategoryService;
 use App\Services\ProductColorService;
+use App\Services\PostService;
+use App\Services\PostCategoryService;
 use App\Services\ProductService;
 use App\Services\ProductSizeService;
 use Illuminate\Http\Request;
@@ -21,18 +24,22 @@ class IndexController extends BaseController
 {
 
     protected $categoryService;
+    protected $postCategoryService;
     protected $productService;
+    protected $postService;
     protected $productSizeService;
     protected $productColorService;
     protected $numberFeature = 12;
     protected $numberNew = 8;
+    protected $numberPost = 6;
     protected $numberProductList = 20;
      /**
      * Constructor function.
      * Set global fro category all page
      **/
     public function __construct(CategoryService $categoryService, ProductService $productService,
-                                ProductSizeService $productSizeService, ProductColorService $productColorService
+                                ProductSizeService $productSizeService, ProductColorService $productColorService,
+                                PostCategoryService $postCategoryService, PostService $postService
     )
     {
          parent::__construct();
@@ -40,6 +47,8 @@ class IndexController extends BaseController
          $this->productService = $productService;
          $this->productSizeService = $productSizeService;
          $this->productColorService = $productColorService;
+         $this->postCategoryService = $postCategoryService;
+         $this->postService = $postService;
     }
 
     /**
@@ -53,11 +62,14 @@ class IndexController extends BaseController
         $products = Product::paginate(PAGINATE);
         $featureProducts = $this->productService->getFeatureProducts($this->numberFeature);
         $newProducts = $this->productService->getNewProduct($this->numberNew);
+        $postWithCategory = $this->postService->getNewestPostList($this->numberNew);
+
         return view('frontend.top',[
             'wmCategory' => $wmCategory,
             'products' => $products,
             'featureProducts' => $featureProducts,
-            'newProducts' => $newProducts
+            'newProducts' => $newProducts,
+            'newPost' => $postWithCategory
         ]);
     }
 
