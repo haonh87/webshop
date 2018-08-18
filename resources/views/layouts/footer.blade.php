@@ -26,10 +26,13 @@
                     <h3 class="widgettitle">Tài khoản</h3>
                     <div class="textwidget">
                         <ul class="styled_list">
-                            <li><a href="{{ route('myaccount.index') }}">Đăng nhập</a></li>
-                            <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
-                            <li><a href="{{ route('myaccount.create') }}">Tạo tài khoản mới</a></li>
-                            <li><a href="{{ route('myaccount.edit') }}">Sửa thông tin tài khoản</a></li>
+                            @if (!\Auth::check())
+                                <li><a href="{{ route('myaccount.index') }}">Đăng nhập</a></li>
+                                <li><a href="{{ route('myaccount.create') }}">Tạo tài khoản mới</a></li>
+                            @else
+                                <li><a href="{{ route('myaccount.edit') }}">Sửa thông tin tài khoản</a></li>
+                                <li><a href="{{ route('customer.logout') }}">Đăng xuất</a></li>
+                            @endif
                         </ul>
                     </div>
                 </aside>

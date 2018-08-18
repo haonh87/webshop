@@ -13,13 +13,52 @@
                     <div class="resp_mid_nav_outer"><a class="responsive_nav resp_mid_nav"
                                                        href="javascript:void(0)"><span></span></a></div>
                 </div>
+                <div class="cmsmasters_account">
+                    @if (!\Auth::check())
+                    <a href="javascript:void(0)" class="cmsmasters_account_button"> Tài khoản</a>
+                    <span class="cmsmasters_account_button_hide"></span>
+                    <div class="widget_account_content">
+                        <ul class="woocommerce-mini-account account_list product_list_widget ">
+                            <li id="menu-myaccount-index">
+                                <a href="{{ route('myaccount.index') }}">
+                                    <span class="nav_item_wrap">
+                                        <span class="nav_title">Đăng nhập</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li id="menu-myaccount-create">
+                                <a href="{{ route('myaccount.create') }}">
+                                    <span class="nav_item_wrap">
+                                        <span class="nav_title">Đăng ký</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    @else
+                        <a href="javascript:void(0)" class="cmsmasters_account_button"> Xin chào {{ Auth::user()->username }}</a>
+                        <span class="cmsmasters_account_button_hide"></span>
+                        <div class="widget_account_content">
+                            <ul class="woocommerce-mini-account account_list product_list_widget ">
+                                <li id="menu-myaccount-logout">
+                                    <a href="{{ route('customer.logout') }}">
+                                    <span class="nav_item_wrap">
+                                        <span class="nav_title">Đăng xuất</span>
+                                    </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
+                </div>
                 <div class="mid_search_but_wrap"><a href="javascript:void(0)"
                                                     class="mid_search_but cmsmasters_header_search_but cmsmasters_theme_icon_search"></a>
                 </div>
-                <div class="cmsmasters_dynamic_cart"><a href="http://sports-store.cmsmasters.net/cart/"
-                                                        class="cmsmasters_dynamic_cart_button"><span
-                                class="cmsmasters_theme_icon_basket">{{ count($cartShare) }}</span></a><span
-                            class="cmsmasters_dynamic_cart_button_hide"></span>
+                <div class="cmsmasters_dynamic_cart">
+                    <a href="http://sports-store.cmsmasters.net/cart/" class="cmsmasters_dynamic_cart_button">
+                        <span class="cmsmasters_theme_icon_basket">{{ count($cartShare) }}</span>
+                    </a>
+                    <span class="cmsmasters_dynamic_cart_button_hide"></span>
                     <div class="widget_shopping_cart_content">
                         @if(count($cartShare) == 0)
                             <p class="woocommerce-mini-cart__empty-message">No products in the cart.</p>
@@ -76,8 +115,7 @@
                                 </li>
                                 <li id="menu-item-13029"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
-                                    {{--<a href="{{route('posts')}}"><span class="nav_item_wrap"><span class="nav_title">Bài Viết</span></span></a>--}}
-                                    <a href="/"><span class="nav_item_wrap"><span class="nav_title">Bài Viết</span></span></a>
+                                    <a href="{{route('post.index')}}"><span class="nav_item_wrap"><span class="nav_title">Bài Viết</span></span></a>
                                 </li>
                                 <li id="menu-item-13029"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
@@ -86,35 +124,6 @@
                                 <li id="menu-item-13029"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
                                     <a href="{{route('instructions')}}"><span class="nav_item_wrap"><span class="nav_title">Hướng Dẫn</span></span></a>
-                                </li>
-                                <li id="menu-item-13029"
-                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-13029 menu-item-depth-0">
-                                    @if(\Auth::check())
-                                        <a><span class="nav_item_wrap"><span
-                                                        class="nav_title"></span> {{ Auth::user()->username }}</span></a>
-                                            <ul class="sub-menu">
-                                                <li id="menu-item-13040"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13040 menu-item-depth-1">
-                                                    <a href="{{ route('customer.logout') }}"><span
-                                                                class="nav_item_wrap"><span
-                                                                    class="nav_title">Đăng xuất</span></span></a></li>
-                                            </ul>
-
-                                    @else
-                                    <a><span class="nav_item_wrap"><span
-                                                    class="nav_title">Tài khoản</span></span></a>
-                                    <ul class="sub-menu">
-                                        <li id="menu-item-13040"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13040 menu-item-depth-1">
-                                            <a href="{{ route('myaccount.create') }}"><span
-                                                        class="nav_item_wrap"><span
-                                                            class="nav_title">Đăng ký</span></span></a></li>
-                                        <li id="menu-item-14039"
-                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14039 menu-item-depth-1">
-                                            <a href="{{ route('myaccount.index') }}"><span class="nav_item_wrap"><span class="nav_title">Đăng nhập</span></span></a>
-                                        </li>
-                                    </ul>
-                                    @endif
                                 </li>
                             </ul>
                         </div>

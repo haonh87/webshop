@@ -24,12 +24,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::delete('/wishlist/{wishlist}', ['as' => 'wishlist.destroy', 'uses' => 'Frontend\WishListController@destroy']);
 
     Route::get('/product', ['as' => 'product.index', 'uses' => 'Frontend\IndexController@index']);
-    Route::get('/product-list/{category?}', ['as' => 'product.list', 'uses' => 'Frontend\IndexController@getProductList']);
+    Route::get('/product-list/{category?}', ['as' => 'product.list', 'uses' => 'Frontensd\IndexController@getProductList']);
     Route::get('/product/{product}', ['as' => 'product.show', 'uses' => 'Frontend\IndexController@show']);
 
     Route::get('/post', ['as' => 'post.index', 'uses' => 'Frontend\PostController@index']);
-    Route::get('/post-list/{category?}', ['as' => 'product.list', 'uses' => 'Frontend\PostController@getList']);
-    Route::get('/post/{id}', ['as' => 'product.show', 'uses' => 'Frontend\PostController@show']);
+    Route::get('/post-list/{category?}', ['as' => 'post.list', 'uses' => 'Frontend\PostController@getList']);
+    Route::get('/post/{id}', ['as' => 'post.show', 'uses' => 'Frontend\PostController@show']);
 
     Route::get('/cart', ['as' => 'cart.index', 'uses' => 'Frontend\CartController@index']);
     Route::post('/cart', ['as' => 'cart.store', 'uses' => 'Frontend\CartController@store']);

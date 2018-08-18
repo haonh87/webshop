@@ -359,7 +359,7 @@
                                                                  class="full-width wp-post-image"
                                                                  alt="{{@$post->title}}"
                                                                  title="{{@$post->title}}">
-                                                            <a href=""
+                                                            <a href="{{route('post.show', ['post' => $post->id])}}"
                                                                title="{{@$post->title}}"
                                                                class="cmsmasters_open_link">
 
@@ -377,7 +377,7 @@
                                                         </div>
                                                         <header class="cmsmasters_slider_post_header entry-header">
                                                             <h5 class="cmsmasters_slider_post_title entry-title">
-                                                                <a href="">{{@$post->title}}</a></h5>
+                                                                <a href="{{route('post.show', ['post' => $post->id])}}">{{@$post->title}}</a></h5>
                                                             <p>{{@$post->postCategories->name}}</p>
                                                         </header>
                                                     </div>

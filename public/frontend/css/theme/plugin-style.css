@@ -1673,6 +1673,9 @@ ul.order_details li strong {
 .cmsmasters_dynamic_cart .widget_shopping_cart_content .cart_list .quantity .amount {
   white-space: nowrap;
 }
+
+
+
 .cmsmasters_dynamic_cart .widget_shopping_cart_content .total {
   padding: 20px 15px 0;
   position: relative;
@@ -1706,6 +1709,193 @@ ul.order_details li strong {
   margin-top: 0;
   opacity: 1 !important;
 }
+
+/*-------------------------------------------------------------------------*/
+/* Account
+/*-------------------------------------------------------------------------*/
+.cmsmasters_account {
+  height: 100%;
+  margin: 0 0 0 15px;
+  position: relative;
+  float: right;
+}
+.cmsmasters_account .cmsmasters_account_cart_button_hide {
+  width: 100%;
+  height: 100%;
+  margin: auto !important;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+  cursor: pointer;
+}
+#page .cmsmasters_account .remove {
+  position: absolute;
+  left: auto;
+  right: 0;
+  top: 5px;
+}
+.enable_header_centered .cmsmasters_account {
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+}
+.enable_header_right .header_bot_inner .cmsmasters_account {
+  margin: 0 6px 0 0;
+  float: left;
+}
+.cmsmasters_account .cmsmasters_account_button {
+  display: block;
+  height: 100%;
+}
+.cmsmasters_account .cmsmasters_account_button > span {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+.cmsmasters_account .cmsmasters_account_button > span:before {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 5px 0 0;
+  font-size: 19px;
+}
+.cmsmasters_account .cmsmasters_account_button:after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.cmsmasters_account {
+  display: block;
+  height: 100%;
+  position: relative;
+  word-wrap: break-word;
+}
+#page .cmsmasters_account .remove {
+  font-size: 18px;
+  position: absolute;
+  left: auto;
+  right: 0;
+  top: 0;
+}
+.cmsmasters_account .widget_account_content {
+  width: 135px;
+  padding: 10px 0;
+  margin: 15px 0 0;
+  visibility: hidden;
+  position: absolute;
+  left: auto;
+  right: -5px;
+  top: 100%;
+  z-index: 1000;
+  opacity: 0 !important;
+}
+.cmsmasters_account .widget_account_content:before {
+  content: '';
+  border-bottom-width: 10px;
+  border-bottom-style: solid;
+  border-right-width: 8px;
+  border-right-style: solid;
+  border-left-width: 8px;
+  border-left-style: solid;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  display: block;
+  position: absolute;
+  right: 15px;
+  top: -10px;
+}
+.cmsmasters_account .widget_account_content .account_list {
+  list-style: none;
+  max-height: 200px;
+  margin: 0;
+  padding: 0 10px;
+}
+.cmsmasters_account .widget_account_content .account_list li {
+  min-height: 30px;
+  margin: 15px 0 0;
+  padding: 3px 0 0 25px;
+  position: relative;
+  overflow: hidden;
+}
+.cmsmasters_account .widget_account_content .account_list li:before {
+  content: none;
+}
+.cmsmasters_account .widget_account_content .account_list li:first-child {
+  margin: 0;
+}
+.cmsmasters_account .widget_account_content .account_list li.empty {
+  min-height: 1px;
+  padding: 0;
+}
+.cmsmasters_account .widget_account_content .account_list a {
+  display: block;
+}
+.cmsmasters_account .widget_account_content .account_list a:not(class="remove") {
+  padding-right: 20px;
+}
+.cmsmasters_account .widget_account_content .account_list img {
+  width: 40px;
+  height: 40px;
+  margin: auto !important;
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 0;
+  bottom: auto;
+  image-rendering: auto;
+}
+.cmsmasters_account .widget_account_content .account_list .quantity {
+  direction: rtl;
+  margin-top: 3px;
+}
+.cmsmasters_account .widget_account_content .account_list .quantity * {
+  display: inline-block;
+  direction: ltr;
+}
+.cmsmasters_account .widget_account_content .account_list .quantity .amount {
+  white-space: nowrap;
+}
+
+
+
+.cmsmasters_account .widget_account_content .total {
+  padding: 20px 15px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cmsmasters_account .widget_account_content .total strong {
+  outline: none;
+}
+.cmsmasters_account .widget_account_content .total .amount {
+  float: right;
+}
+.cmsmasters_account .widget_account_content .buttons {
+  margin: 0 -2%;
+  padding: 15px 15px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cmsmasters_account .widget_account_content .buttons .button {
+  width: 46%;
+  margin: 0 2%;
+  float: left;
+  padding: 0 10px;
+}
+.cmsmasters_account .widget_account_content .woocommerce-mini-account__empty-message {
+  padding: 0 15px;
+}
+.cmsmasters_account:hover .widget_account_content,
+.cmsmasters_account .cmsmasters_account_button:hover + .widget_account_content,
+.cmsmasters_account .widget_account_content:hover {
+  visibility: visible;
+  margin-top: 0;
+  opacity: 1 !important;
+}
+
 .cmsmasters_added_product_info {
   width: 260px;
   margin: 40px 0 0;
@@ -2127,6 +2317,13 @@ html.csstransitions .cmsmasters_dynamic_cart .cmsmasters_dynamic_cart_button {
   -o-transition: background-color .3s ease-in-out, color .3s ease-in-out;
   transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }
+html.csstransitions .cmsmasters_account .cmsmasters_account_button {
+  -webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
+  -moz-transition: background-color .3s ease-in-out, color .3s ease-in-out;
+  -ms-transition: background-color .3s ease-in-out, color .3s ease-in-out;
+  -o-transition: background-color .3s ease-in-out, color .3s ease-in-out;
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
 html.csstransitions .cmsmasters_product .cmsmasters_product_img img,
 html.csstransitions .cmsmasters_product .price {
   -webkit-transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
@@ -2156,6 +2353,14 @@ html.csstransitions .cmsmasters_dynamic_cart .widget_shopping_cart_content {
   -o-transition: opacity .3s ease-in-out, margin .3s ease-in-out, visibility .3s ease-in-out;
   transition: opacity .3s ease-in-out, margin .3s ease-in-out, visibility .3s ease-in-out;
 }
+
+html.csstransitions .cmsmasters_account .widget_account_content {
+  -webkit-transition: opacity .3s ease-in-out, margin .3s ease-in-out, visibility .3s ease-in-out;
+  -moz-transition: opacity .3s ease-in-out, margin .3s ease-in-out, visibility .3s ease-in-out;
+  -ms-transition: opacity .3s ease-in-out, margin .3s ease-in-out, visibility .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out, margin .3s ease-in-out, visibility .3s ease-in-out;
+  transition: opacity .3s ease-in-out, margin .3s ease-in-out, visibility .3s ease-in-out;
+}
 html.csstransitions .cmsmasters_product .cmsmasters_product_features > *,
 html.csstransitions .shipping_method + label:after,
 html.csstransitions .input-radio + label:after,
@@ -2167,6 +2372,14 @@ html.csstransitions .input-checkbox + label:after {
   transition: all 0.3s ease-in-out;
 }
 html.csstransitions .cmsmasters_dynamic_cart .widget_shopping_cart_content .cart_list img {
+  -webkit-transition: right .3s ease-in-out;
+  -moz-transition: right .3s ease-in-out;
+  -ms-transition: right .3s ease-in-out;
+  -o-transition: right .3s ease-in-out;
+  transition: right .3s ease-in-out;
+}
+
+html.csstransitions .cmsmasters_account .widget_account_content .account_list img {
   -webkit-transition: right .3s ease-in-out;
   -moz-transition: right .3s ease-in-out;
   -ms-transition: right .3s ease-in-out;

@@ -5292,6 +5292,7 @@
 	
 	/* Start Navigation Dropdown Text Color */
 	.cmsmasters_dynamic_cart .widget_shopping_cart_content,
+	.cmsmasters_account .widget_account_content,
 	.cmsmasters_added_product_info_text,
 	.navigation li .menu-item-mega-description-container, 
 	.navigation li .menu-item-mega-description-container * {
@@ -5309,6 +5310,10 @@
 	/* Start Navigation Dropdown Background Color */
 	.cmsmasters_dynamic_cart .widget_shopping_cart_content .buttons .button.checkout:hover,
 	.cmsmasters_dynamic_cart .widget_shopping_cart_content .buttons .button {
+		color:#191919;
+	}
+	.cmsmasters_account .widget_account_content .buttons .button.checkout:hover,
+	.cmsmasters_account .widget_account_content .buttons .button {
 		color:#191919;
 	}
 	
@@ -5333,6 +5338,14 @@
 	.cmsmasters_dynamic_cart .widget_shopping_cart_content:before {
 		border-bottom-color:#191919;
 	}
+
+	.cmsmasters_account .widget_account_content {
+		background-color:#191919;
+	}
+
+	.cmsmasters_account .widget_account_content:before {
+		border-bottom-color:#191919;
+	}
 	/* Finish Navigation Dropdown Background Color */
 	
 	
@@ -5350,6 +5363,9 @@
 	.cmsmasters_dynamic_cart .widget_shopping_cart_content a,
 	#page .cmsmasters_dynamic_cart .remove:hover,
 	.navigation li a {
+		color:rgba(255,255,255,0.65);
+	}
+	.cmsmasters_account .widget_account_content a {
 		color:rgba(255,255,255,0.65);
 	}
 	
@@ -5381,9 +5397,15 @@
 	.navigation li a .nav_tag {
 		color:#ffffff;
 	}
+	.cmsmasters_account .widget_account_content .buttons .button.checkout,
+	.cmsmasters_account .widget_account_content .buttons .button:hover,
+	.cmsmasters_account .widget_account_content a:hover,
+	#page .cmsmasters_account .remove {
+		color:#ffffff;
+	}
 	
-	.cmsmasters_dynamic_cart .widget_shopping_cart_content .buttons .button.checkout:hover,
-	.cmsmasters_dynamic_cart .widget_shopping_cart_content .buttons .button {
+	.cmsmasters_account .widget_account_content .buttons .button.checkout:hover,
+	.cmsmasters_account .widget_account_content .buttons .button {
 		background-color:#ffffff;
 	}
 	
@@ -5413,6 +5435,11 @@
 	.cmsmasters_dynamic_cart .widget_shopping_cart_content .buttons .button.checkout,
 	.cmsmasters_dynamic_cart .widget_shopping_cart_content .buttons .button:hover,
 	.navigation li a .nav_tag {
+		background-color:#ff4301;
+	}
+
+	.cmsmasters_account .widget_account_content .buttons .button.checkout,
+	.cmsmasters_account .widget_account_content .buttons .button:hover {
 		background-color:#ff4301;
 	}
 	/* Finish Navigation Dropdown Link Subtitle Color */
