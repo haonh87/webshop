@@ -3,7 +3,7 @@
 @stop
 @section('content')
     <div id="content">
-        @include('frontend.header_line', ['name' => 'Product detail'])
+        @include('frontend.header_line', ['name' => 'Chi tiết sản phẩm'])
         @include('frontend.message')
         <div class="content_wrap fullwidth">
             <div class="middle_content entry">
@@ -22,14 +22,14 @@
                                 </div>
                             </div>
                             <div class="thumbnails slider">
-                                <div class="caroufredsel_wrapper" style="display: block; text-align: left; float: none; position: relative; top: 0px; right: 0px; bottom: 0px; left: 0px; z-index: auto; width: 495px; height: 110px; margin: 0px; overflow: hidden;">
-                                    <ul class="yith_magnifier_gallery" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 1485px; height: 110px;">
+                                <div class="caroufredsel_wrapper">
+                                    <ul class="yith_magnifier_gallery">
                                         @if (count($product->productImages) > 1)
                                             @foreach($product->productImages as $key => $productImage)
                                                 @if ($key > 0)
                                                     <li class="yith_magnifier_thumbnail first" style="width: 155px;">
                                                         <a href="{{ asset('images/'. $product->productImages[$key]->img_path) }}" class="yith_magnifier_thumbnail first" title="Men’s Sport Quick Dry T-Shirt Grey-1" data-small="{{ asset('images/'. $product->productImages[$key]->img_path) }}">
-                                                            <img width="100" height="100" src="{{ asset('images/'. $product->productImages[$key]->img_path) }}" alt="" sizes="(max-width: 100px) 100vw, 100px">
+                                                            <img src="{{ asset('images/'. $product->productImages[$key]->img_path) }}" alt="" sizes="(max-width: 100px) 100vw, 100px">
                                                         </a>
                                                     </li>
                                                 @endif
@@ -126,7 +126,7 @@
                             <table class="variations" cellspacing="0">
                                 <tbody>
                                 <tr>
-                                    <td class="label"><label for="pa_colors">Colors</label></td>
+                                    <td class="label"><label for="pa_colors">Màu sắc</label></td>
                                     <td class="value">
                                         <select id="pa_colors" style="width: 200px;" class="yith_wccl_custom" name="attribute_pa_color" data-attribute_name="attribute_pa_colors" data-show_option_none="yes" data-default_value="grey">
                                             @if (!empty($product->product_color_ids))
@@ -141,7 +141,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="label"><label for="pa_size">Size</label></td>
+                                    <td class="label"><label for="pa_size">Kích cỡ</label></td>
                                     <td class="value">
                                         <select id="pa_size" style="width: 200px;" class="" name="attribute_pa_size" data-attribute_name="attribute_pa_size" data-show_option_none="yes" data-default_value="m">
                                             @if (!empty($product->product_size_ids))
@@ -170,7 +170,7 @@
                                         <input type="number" id="quantity_5b6f9b0e5a68e" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" aria-labelledby="">
                                     </div>
 
-                                    <button type="submit" class="single_add_to_cart_button button alt">Add to cart</button>
+                                    <button type="submit" class="single_add_to_cart_button button alt">Thêm Giỏ Hàng</button>
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <input type="hidden" name="product_name" value="{{ $product->name }}">
                                     <input type="hidden" name="product_price" value="{{ $product->price }}">
@@ -184,41 +184,16 @@
 
 
 
-                            <span class="sku_wrapper"><span class="product_meta_title">SKU: </span><span class="sku" data-o_content="N/A">{{ $product->model_ids }}</span></span>
+                            <span class="sku_wrapper"><span class="product_meta_title">Mã: </span><span class="sku" data-o_content="N/A">{{ $product->model_ids }}</span></span>
 
 
-                            <span class="posted_in"><span class="product_meta_title">Categories:</span>
+                            <span class="posted_in"><span class="product_meta_title">Danh muc:</span>
                                 <span class="product_meta_info">
                                     <a href="{{ route('product.list', ['category' => $product->category->name]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
                                     $product->category->name
                                     }}</a>
                                 </span>
                             </span>
-
-                        </div>
-                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-13483">
-                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                <a href="/product/mens-sport-quick-dry-t-shirt-grey/?add_to_wishlist=13483" rel="nofollow" data-product-id="13483" data-product-type="variable" class="add_to_wishlist">
-                                    Add to Wishlist</a>
-                                <img src="http://sports-store.cmsmasters.net/wp-content/plugins/yith-woocommerce-wishlist-premium/assets/images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden">
-                            </div>
-
-                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                <span class="feedback">Product added!</span>
-                                <a href="http://sports-store.cmsmasters.net/wishlist/" rel="nofollow">
-                                    Browse Wishlist	        </a>
-                            </div>
-
-                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                <span class="feedback">The product is already in the wishlist!</span>
-                                <a href="http://sports-store.cmsmasters.net/wishlist/" rel="nofollow">
-                                    Browse Wishlist	        </a>
-                            </div>
-
-                            <div style="clear:both"></div>
-                            <div class="yith-wcwl-wishlistaddresponse"></div>
 
                         </div>
 
@@ -238,17 +213,17 @@
                     <ul class="cmsmasters_tabs_list">
                         <li class="description_tab cmsmasters_tabs_list_item current_tab">
                             <a href="#tab-description">
-                                <span>Description</span>
+                                <span>Mô Tả</span>
                             </a>
                         </li>
                         <li class="additional_information_tab cmsmasters_tabs_list_item">
                             <a href="#tab-additional_information">
-                                <span>Additional information</span>
+                                <span>Thông tin sản phẩm</span>
                             </a>
                         </li>
                         <li class="reviews_tab cmsmasters_tabs_list_item">
                             <a href="#tab-reviews">
-                                <span>Reviews (1)</span>
+                                <span>Đánh giá</span>
                             </a>
                         </li>
                     </ul>
@@ -399,7 +374,7 @@
 
                 <section class="related products">
 
-                    <h2>Related products</h2>
+                    <h2>Sản phẩm liên quan</h2>
 
                     <div class="cmsmasters_products_wrap">
                         <ul class="products columns-4 cmsmasters_products">

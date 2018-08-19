@@ -78,14 +78,35 @@ class ProductService
             ->limit($numberProducts)->get();
     }
 
-    public function getAllProductForView($categoryId)
+    public function getAllProductForView($categoryId, $dataRequest)
     {
         $result = $this->productModel->with('category')->with('productImages')
             ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
             ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
-            ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc');
+            ->groupBy('votes.product_id');
         if (!empty($categoryId)) {
             $result->where('products.category_id', $categoryId);
+        }
+        if (isset($dataRequest['orderby']) && $dataRequest['orderby'] != 'default') {
+            $convert = explode('-', $dataRequest['orderby']);
+            $result->orderBy($convert[0], $convert[1]);
+        } else {
+            $result->orderBy('products.created_at', 'desc');
+        }
+        if (isset($dataRequest['color']) && $dataRequest['color'] != 'default') {
+            $result->where('products.product_color_ids', 'LIKE', '%'.$dataRequest['color'].'%');
+        }
+        if (isset($dataRequest['size']) && $dataRequest['size'] != 'default') {
+            $result->where('products.product_size_ids', 'LIKE', '%'.$dataRequest['size'].'%');
+        }
+        if (isset($dataRequest['search'])) {
+            $result->where('products.name', 'LIKE', '%'.$dataRequest['search'].'%');
+        }
+        if (isset($dataRequest['min_price'])) {
+            $result->where('products.price', '>=', $dataRequest['min_price']);
+        }
+        if (isset($dataRequest['max_price'])) {
+            $result->where('products.price', '<=', $dataRequest['max_price']);
         }
         return $result;
     }

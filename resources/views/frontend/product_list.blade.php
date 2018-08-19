@@ -1,26 +1,33 @@
 @extends('layouts.master')
 @section('script')
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type='text/javascript' src='http://sports-store.cmsmasters.net/wp-content/plugins/woocommerce/assets/js/frontend/price-slider.min.js'></script>
+    <script type='text/javascript' src='http://sports-store.cmsmasters.net/wp-content/plugins/woocommerce/assets/js/accounting/accounting.min.js'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var woocommerce_price_slider_params = {"currency_format_num_decimals":"0","currency_format_symbol":"\u00a3","currency_format_decimal_sep":".","currency_format_thousand_sep":",","currency_format":"<span>%s<\/span>%v"};
+        /* ]]> */
+    </script>
 @stop
 @section('content')
     <div id="content">
-        @include('frontend.header_line', ['name' => 'Product list'])
+        @include('frontend.header_line', ['name' => 'Danh sách sản phẩm'])
         @include('frontend.message')
         <div class="middle_inner">
             <div class="content_wrap l_sidebar product_list_wrap">
-
                 <!--  Start Content  -->
                 <div class="content entry fr" role="main">
                     <div class="cmsmasters_woo_wrap_result"><p class="woocommerce-result-count">
-                            Showing 1–16 of 35 results</p>
-                        <form class="woocommerce-ordering" method="get">
-                            <select name="orderby" class="orderby">
-                                <option value="popularity">Sort by popularity</option>
-                                <option value="rating" selected="selected">Sort by average rating</option>
-                                <option value="date">Sort by newness</option>
-                                <option value="price">Sort by price: low to high</option>
-                                <option value="price-desc">Sort by price: high to low</option>
+                            Hiển thị {{ $products->firstItem() }}–{{ $products->lastItem() }} của {{ $products->total() }} sản phẩm</p>
+                        <form class="woocommerce-ordering"  method="get" action="{{ route('product.list') }}">
+                            <select name="orderby" class="orderby" onchange="this.form.submit()">
+                                <option value="default">Chọn kiểu sắp xếp</option>
+                                <option value="total_star-desc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'total_star-desc') ? 'selected' : '' }}>Đánh giá cao nhất</option>
+                                <option value="products.created_at-desc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'products.created_at-desc') ? 'selected' : '' }}>Sản phẩm mới</option>
+                                <option value="products.price-asc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'products.price-asc') ? 'selected' : '' }}>Giá tăng dần</option>
+                                <option value="products.price-desc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'products.price-desc') ? 'selected' : '' }}>Giá giảm dần</option>
                             </select>
-                            <input type="hidden" name="paged" value="1">
+                            <input type="hidden" name="paged" value="{{ $products->currentPage() }}">
                         </form>
                     </div>
                     <div class="cmsmasters_products_wrap">
@@ -87,7 +94,7 @@
                     <aside id="yith_woocommerce_ajax_search-2"
                            class="widget woocommerce widget_product_search yith_woocommerce_ajax_search">
                         <div class="yith-ajaxsearchform-container cmsmasters_ajax_search_premium">
-                            <form method="get" id="yith-ajaxsearchform" action="http://sports-store.cmsmasters.net/">
+                            <form method="get" id="yith-ajaxsearchform" action="{{ route('product.list') }}">
                                 <div class="yith-ajaxsearchform-container">
                                     <div class="yith-ajaxsearchform-select">
                                         <input type="hidden" name="post_type" class="yit_wcas_post_type"
@@ -97,8 +104,8 @@
                                     <div class="search-navigation_wrap">
                                         <div class="search-navigation">
                                             <label class="screen-reader-text" for="yith-s">Search for:</label>
-                                            <input type="search" value="" name="s" id="yith-s" class="yith-s empty"
-                                                   placeholder="Search for products" data-append-to=".search-navigation"
+                                            <input type="search" value="{{ isset($condition['search']) ? $condition['search'] : '' }}" name="search" id="yith-s" class="yith-s empty"
+                                                   placeholder="Tìm Kiếm Sản Phẩm" data-append-to=".search-navigation"
                                                    data-loader-icon="http://sports-store.cmsmasters.net/wp-content/plugins/yith-woocommerce-ajax-search-premium/assets/images/preloader.gif"
                                                    data-min-chars="3" autocomplete="off">
 
@@ -113,26 +120,16 @@
                         </div>
                     </aside>
                     <aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter"><h3
-                                class="widgettitle">Filter by price</h3>
-                        <form method="get" action="http://sports-store.cmsmasters.net/shop/">
+                                class="widgettitle">Lọc theo giá</h3>
+                        <form method="get" action="{{ route('product.list') }}">
                             <div class="price_slider_wrapper">
-                                <div class="price_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                                     style="">
-                                    <div class="ui-slider-range ui-widget-header ui-corner-all"
-                                         style="left: 0%; width: 100%;"></div>
-                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"
-                                          style="left: 0%;"></span><span
-                                            class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"
-                                            style="left: 100%;"></span></div>
+                                <div class="price_slider" style="display:none;"></div>
                                 <div class="price_slider_amount">
-                                    <input type="text" id="min_price" name="min_price" value="{{ $maxMinPrice->min_price }}" data-min="{{ $maxMinPrice->min_price }}"
-                                           placeholder="Min price" style="display: none;">
-                                    <input type="text" id="max_price" name="max_price" value="{{ $maxMinPrice->max_price }}" data-max="{{ $maxMinPrice->max_price }}"
-                                           placeholder="Max price" style="display: none;">
-                                    <button type="submit" class="button">Filter</button>
-                                    <div class="price_label" style="">
-                                        Price: <span class="from"><span>D</span>{{ $maxMinPrice->min_price }}</span> — <span
-                                                class="to"><span>D</span>{{ $maxMinPrice->max_price }}</span>
+                                    <input type="text" id="min_price" name="min_price" value="{{ isset($condition['min_price']) ? $condition['min_price'] : $maxMinPrice->min_price }}" data-min="{{ $maxMinPrice->min_price }}" placeholder="Min price">
+                                    <input type="text" id="max_price" name="max_price" value="{{ isset($condition['max_price']) ? $condition['max_price'] : $maxMinPrice->max_price }}" data-max="{{ $maxMinPrice->max_price }}" placeholder="Max price">
+                                    <button type="submit" class="button">Lọc</button>
+                                    <div class="price_label" style="display:none;">
+                                        Giá: <span class="from"></span> — <span class="to"></span>
                                     </div>
 
                                     <div class="clear"></div>
@@ -141,7 +138,7 @@
                         </form>
                     </aside>
                     <aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
-                        <h3 class="widgettitle">Product categories</h3>
+                        <h3 class="widgettitle">Danh mục sản phẩm</h3>
                         <ul class="product-categories">
                             @foreach( $categories as $category )
                             <li class="cat-item cat-item-{{ $category->id }}">
@@ -152,39 +149,38 @@
                     </aside>
                     <aside id="woocommerce_layered_nav-2"
                            class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav"><h3
-                                class="widgettitle">Select color</h3>
-                        <form method="get" action="http://sports-store.cmsmasters.net/shop/"
+                                class="widgettitle">Chọn màu sắc</h3>
+                        <form method="get" action="{{ route('product.list') }}"
                               class="woocommerce-widget-layered-nav-dropdown">
-                            <select
+                            <select name="color" onchange="this.form.submit()"
                                     class="woocommerce-widget-layered-nav-dropdown dropdown_layered_nav_colors select2-hidden-accessible"
                                     tabindex="-1" aria-hidden="true">
-                                <option value="">Any Colors</option>
+                                <option value="default">Tất cả màu</option>
                                 @foreach($colors as $key => $color)
-                                    <option value="{{ $key }}">{{ $color }}</option>
+                                    <option value="{{ $key }}" {{ (isset($condition['color']) && $condition['color'] == $key) ? 'selected' : '' }}>{{ $color }}</option>
                                 @endforeach
                             </select>
                         </form>
                     </aside>
                     <aside id="woocommerce_layered_nav-4"
                            class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav"><h3
-                                class="widgettitle">Select size</h3>
-                        <form method="get" action="http://sports-store.cmsmasters.net/shop/"
+                                class="widgettitle">Chọn kích cỡ</h3>
+                        <form method="get" action="{{ route('product.list') }}"
                               class="woocommerce-widget-layered-nav-dropdown">
-                            <select
+                            <select name="size" onchange="this.form.submit()"
                                     class="woocommerce-widget-layered-nav-dropdown dropdown_layered_nav_size select2-hidden-accessible"
                                     tabindex="-1" aria-hidden="true">
-                                <option value="">Any Size</option>
+                                <option value="default">Tất cả kích cỡ</option>
                                 @foreach($sizes as $key => $size)
-                                    <option value="{{ $key }}">{{ $size }}</option>
+                                    <option value="{{ $key }}" {{ (isset($condition['size']) && $condition['size'] == $key) ? 'selected' : '' }}>{{ $size }}</option>
                                 @endforeach
                             </select>
                         </form>
                     </aside>
                     <aside id="woocommerce_recently_viewed_products-2"
-                           class="widget woocommerce widget_recently_viewed_products"><h3 class="widgettitle">Recently
-                            viewed products</h3>
+                           class="widget woocommerce widget_recently_viewed_products"><h3 class="widgettitle">Sản phẩm đã xem</h3>
                         @if(empty($recentlyProduct))
-                            <p>khong co san pham</p>
+                            <p>Không có sản phẩm đã xem</p>
                         @else
                             <ul class="product_list_widget">
                                 @foreach($recentlyProduct as $product)
@@ -222,10 +218,10 @@
                         @endif
                     </aside>
                     <aside id="woocommerce_widget_cart-2" class="widget woocommerce widget_shopping_cart"><h3
-                                class="widgettitle">Your Cart</h3>
+                                class="widgettitle">Giỏ hàng</h3>
                         <div class="widget_shopping_cart_content">
                             @if(count($cartShare) == 0)
-                                <p class="woocommerce-mini-cart__empty-message">No products in the cart.</p>
+                                <p class="woocommerce-mini-cart__empty-message">Không có sản phẩm nào trong giỏ hàng</p>
                             @else
                                 <ul class="woocommerce-mini-cart cart_list product_list_widget">
                                     @php
@@ -246,7 +242,7 @@
                                     @endforeach
                                 </ul>
                                 <p class="woocommerce-mini-cart__total total">
-                                    <strong>Subtotal:</strong>
+                                    <strong>Tổng:</strong>
                                     <span class="woocommerce-Price-amount amount">
                                     <span>
                                         <span class="woocommerce-Price-currencySymbol">VND</span>
@@ -254,8 +250,8 @@
                                 </span>
                                 </p>
                                 <p class="woocommerce-mini-cart__buttons buttons">
-                                    <a href="{{ route('cart.index') }}" class="button wc-forward">View cart</a>
-                                    <a href="{{ route('cart.checkout') }}" class="button checkout wc-forward">Checkout</a>
+                                    <a href="{{ route('cart.index') }}" class="button wc-forward">Giỏ Hàng</a>
+                                    <a href="{{ route('cart.checkout') }}" class="button checkout wc-forward">Thanh Toán</a>
                                 </p>
                             @endif
                         </div>

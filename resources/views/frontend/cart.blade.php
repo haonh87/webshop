@@ -3,7 +3,7 @@
 @stop
 @section('content')
     <div id="content">
-        @include('frontend.header_line', ['name' => 'Cart'])
+        @include('frontend.header_line', ['name' => 'Giỏ Hàng'])
         @include('frontend.message')
         <div class="cmsmasters_row_outer_parent" style="padding-top: 60px; padding-bottom: 60px">
             <div class="cmsmasters_row_outer">
@@ -19,10 +19,10 @@
                                                 <tr>
                                                     <th class="product-remove">&nbsp;</th>
                                                     <th class="product-thumbnail">&nbsp;</th>
-                                                    <th class="product-name">Product</th>
-                                                    <th class="product-price">Price</th>
-                                                    <th class="product-quantity">Quantity</th>
-                                                    <th class="product-subtotal">Total</th>
+                                                    <th class="product-name">Sản phẩm</th>
+                                                    <th class="product-price">Giá</th>
+                                                    <th class="product-quantity">Số lượng</th>
+                                                    <th class="product-subtotal">Tổng</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -63,7 +63,7 @@
 
                                                     <td class="product-quantity" data-title="Quantity">
                                                         <div class="quantity">
-                                                            <label class="screen-reader-text" for="quantity">Quantity</label>
+                                                            <label class="screen-reader-text" for="quantity">Tổng</label>
                                                             <input type="number" id="quantity" class="input-text qty text" step="1" min="1" max="" name="cart[{{ $cart->rowId }}][qty]" value="{{ $cart->qty }}" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
                                                         </div>
                                                     </td>
@@ -75,7 +75,7 @@
                                                 @endforeach
                                                 <tr>
                                                     <td colspan="6" class="actions">
-                                                        <button type="submit" class="button" name="update_cart" value="Update cart">Update cart</button>
+                                                        <button type="submit" class="button" name="update_cart" value="Update cart">Cập Nhật Giỏ Hàng</button>
                                                     </td>
                                                 </tr>
 
@@ -87,16 +87,16 @@
                                             <div class="cart_totals ">
 
 
-                                                <h2>Cart totals</h2>
+                                                <h2>Tổng giỏ hàng</h2>
 
                                                 <table cellspacing="0" class="shop_table shop_table_responsive">
 
                                                     <tbody><tr class="cart-subtotal">
-                                                        <th>Subtotal</th>
+                                                        <th>Tổng phụ</th>
                                                         <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}</span></span></td>
                                                     </tr>
                                                     <tr class="order-total">
-                                                        <th>Total</th>
+                                                        <th>Tổng</th>
                                                         <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($total, 2)  }}</span></strong> </td>
                                                     </tr>
                                                     </tbody></table>
@@ -104,7 +104,7 @@
                                                 <div class="wc-proceed-to-checkout">
 
                                                     <a href="{{ route('cart.checkout') }}" class="checkout-button button alt wc-forward">
-                                                        Proceed to checkout</a>
+                                                        Thanh Toán</a>
                                                 </div>
 
 

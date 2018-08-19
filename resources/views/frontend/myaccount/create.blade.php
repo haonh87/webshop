@@ -1,73 +1,73 @@
 @extends('layouts.master')
 @section('script')
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
-    </script>
 @stop
 @section('content')
+    <div id="content">
+        @include('frontend.header_line', ['name' => 'Tạo tài khoản'])
+        @include('frontend.message')
+        <div class="cmsmasters_row_outer_parent create_user" style="padding-top: 40px; padding-bottom: 40px">
+            <div class="cmsmasters_row_outer">
+                <div class="cmsmasters_row_inner">
+                    <form action="{{ route('myaccount.store') }}" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-    <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="{{ route('index') }}"><i class="fa fa-home"></i></a></li>
-            {!!$sub_navi !!}
-        </ul>
-        <div class="row">
-            @include('frontend.sidebar')
-            <div class='col-md-9'>
-                <br><br>
-                <form action="{{ route('myaccount.store') }}" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                    <div class="col-md-6 col-md-offset-3">
-                        <div class="form-group">
-                            <label for="txtlastname">{{ trans('name') }}</label>
-                            <input type="text"  required="" class="form-control" id="txtname" name="txtname" placeholder="{{ trans('name') }}"
-                                   value="{{  Session::getOldInput('txtlastname') }}"/>
-                            <span class="has-error">{{$errors->first('txtname')}}</span>
+                        <div class="col-md-9 col-md-offset-3">
+                            <div style="margin-bottom: 20px;" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="fullname">Tên đầy đủ</label>
+                                <input required="" type="text" class="form-control" id="fullname" name="fullname"
+                                       placeholder="Tên đầy đủ">
+                                <span class="has-error">{{$errors->first('fullname')}}</span>
+                            </div>
+                            <div style="margin-bottom: 20px;" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="fullname">Địa chỉ</label>
+                                <input required="" type="text" class="form-control" id="address" name="address"
+                                       placeholder="Địa chỉ">
+                                <span class="has-error">{{$errors->first('address')}}</span>
+                            </div>
+                            <div style="margin-bottom: 20px;" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="fullname">Số điện thoại</label>
+                                <input required="" type="text" class="form-control" id="mobile" name="mobile"
+                                       placeholder="Số điện thoại">
+                                <span class="has-error">{{$errors->first('mobile')}}</span>
+                            </div>
+                            <div style="margin-bottom: 20px;" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="fullname">Giới Tính</label>
+                                <select name="gender" id="gender">
+                                    <option value="0">Nữ</option>
+                                    <option value="1">Nam</option>
+                                </select>
+                                <span class="has-error">{{$errors->first('gender')}}</span>
+                            </div>
+                            <div style="margin-bottom: 20px;" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="txtlastname">Tên tài khoản</label>
+                                <input type="text"  required="" class="form-control" id="username" name="username" placeholder="Tên tài khoản"
+                                       value="{{  Session::getOldInput('username') }}"/>
+                            </div>
+                            <div style="margin-bottom: 20px;" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="txtemail">Email</label>
+                                <input type="email" required="" class="form-control" id="email" name="email" placeholder="{{ trans('lang.email') }}"
+                                       value="{{  Session::getOldInput('email') }}"/>
+                                <span class="has-error">{{$errors->first('email')}}</span>
+                            </div>
+                            <div style="margin-bottom: 20px;" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="txtpassword">Mật khẩu</label>
+                                <input type="password" required="" class="form-control" id="password" name="password"
+                                       placeholder="Mật khẩu">
+                                <span class="has-error">{{$errors->first('password')}}</span>
+                            </div>
+                            <div style="margin-bottom: 20px;" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="txtpassword_confirmation">Nhập lại mật khẩu</label>
+                                <input type="password" required="" class="form-control" id="cf_password" name="cf_password"
+                                       placeholder="Nhập lại mật khẩu">
+                                <span class="has-error">{{$errors->first('cf_password')}}</span>
+                            </div>
+                            <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <button type="submit" class="btn btn-success">Tạo Tài Khoản</button>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="txtemail">{{ trans('lang.email') }}</label>
-                            <input type="email" required="" class="form-control" id="txtemail" name="txtemail" placeholder="{{ trans('lang.email') }}"
-                                   value="{{  Session::getOldInput('txtemail') }}"/>
-                            <span class="has-error">{{$errors->first('txtemail')}}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtpassword">{{ trans('lang.password') }}</label>
-                            <input type="password" required="" class="form-control" id="txtpassword" name="txtpassword"
-                                   placeholder="{{ trans('lang.password') }}">
-                            <span class="has-error">{{$errors->first('txtpassword')}}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtpassword_confirmation">{{ trans('lang.confirm_password') }}</label>
-                            <input type="password" required="" class="form-control" id="txtpassword_confirmation" name="txtpassword_confirmation"
-                                    placeholder="{{ trans('lang.confirm_password') }}">
-                            <span class="has-error">{{$errors->first('txtpassword_confirmation')}}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtbirthday">{{ trans('lang.birth_day') }}</label>
-                            <input required="" type="date" class="form-control" id="txtbirthday" name="txtbirthday"
-                                   placeholder="{{ trans('lang.birth_day') }}">
-                            <span class="has-error">{{$errors->first('txtbirthday')}}</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="radio-inline">
-                                <input type="radio" name="txtgender" id="inlineRadio1" value="0"> {{ trans('lang.male') }}
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="txtgender" id="inlineRadio2" checked value="1">{{ trans('lang.female') }}
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-success">{{ trans('lang.submit') }}</button>
-                        <a class="btn btn-primary" href="{{ route('index') }}">{{ trans('lang.close') }}</a>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-12">&nbsp;</div>
-    <div class="clearfix"></div>
 @stop

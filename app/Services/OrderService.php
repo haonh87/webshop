@@ -33,6 +33,12 @@ class OrderService
     	}
     }
 
+    public function createOrder($data)
+    {
+        $this->orderModel->fill($data)->save();
+        return $this->orderModel->id;
+    }
+
     public function findShowOrderById($id) 
     {
     	return $this->orderModel->with('orderItem.product.category')->with('orderItem.color')->with('orderItem.size')->with('customer')->find($id);

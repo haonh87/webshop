@@ -7,7 +7,7 @@
             <div class="cmsmasters_breadcrumbs">
                 <div class="cmsmasters_breadcrumbs_aligner"></div>
                 <div class="cmsmasters_breadcrumbs_inner">
-                    <a href="http://sports-store.cmsmasters.net/" class="cms_home">Home</a>
+                    <a href="http://sports-store.cmsmasters.net/" class="cms_home">Trang</a>
                     <span class="breadcrumbs_sep"> / </span>
                     <span>{{ $name }}</span></div>
             </div>
