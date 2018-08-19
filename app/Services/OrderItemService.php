@@ -21,4 +21,10 @@ class OrderItemService
     {
     	$this->orderItemModel->with('product')->with('color')->with('size')->find($id);
     }
+
+    public function createOrderItem($data)
+    {
+        $this->orderItemModel->fill($data)->save();
+        return $this->orderItemModel->id;
+    }
 }
