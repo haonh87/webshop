@@ -46,6 +46,6 @@ class LoginController extends Controller
         if (auth()->user()->isAdmin()) {
             return redirect()->route('products.index');
         }
-        return redirect('index');
+        return redirect()->route('index');
     }
 }
