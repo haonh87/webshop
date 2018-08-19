@@ -24,7 +24,7 @@ class CartController extends BaseController
     protected $productColorService;
     protected $customerService;
     protected $orderService;
-    protected $orderItemService
+    protected $orderItemService;
 
     /**
      * Constructor function.
@@ -183,6 +183,6 @@ class CartController extends BaseController
             //save data to order item
         }
         Cart::destroy();
-        return \Redirect()->route('index')->with('message_account', 'Mua sản phẩm thành công!');
+        return \Redirect()->route('index')->with('message_cart', 'Mua sản phẩm thành công!');
     }
 }

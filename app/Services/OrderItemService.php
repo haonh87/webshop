@@ -24,7 +24,6 @@ class OrderItemService
 
     public function createOrderItem($data)
     {
-        $this->orderItemModel->fill($data)->save();
-        return $this->orderItemModel->id;
+        $this->orderItemModel->insert($data);
     }
 }
