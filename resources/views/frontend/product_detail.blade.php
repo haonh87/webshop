@@ -22,14 +22,14 @@
                                 </div>
                             </div>
                             <div class="thumbnails slider">
-                                <div class="caroufredsel_wrapper" style="display: block; text-align: left; float: none; position: relative; top: 0px; right: 0px; bottom: 0px; left: 0px; z-index: auto; width: 495px; height: 110px; margin: 0px; overflow: hidden;">
-                                    <ul class="yith_magnifier_gallery" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 1485px; height: 110px;">
+                                <div class="caroufredsel_wrapper">
+                                    <ul class="yith_magnifier_gallery">
                                         @if (count($product->productImages) > 1)
                                             @foreach($product->productImages as $key => $productImage)
                                                 @if ($key > 0)
                                                     <li class="yith_magnifier_thumbnail first" style="width: 155px;">
                                                         <a href="{{ asset('images/'. $product->productImages[$key]->img_path) }}" class="yith_magnifier_thumbnail first" title="Men’s Sport Quick Dry T-Shirt Grey-1" data-small="{{ asset('images/'. $product->productImages[$key]->img_path) }}">
-                                                            <img width="100" height="100" src="{{ asset('images/'. $product->productImages[$key]->img_path) }}" alt="" sizes="(max-width: 100px) 100vw, 100px">
+                                                            <img src="{{ asset('images/'. $product->productImages[$key]->img_path) }}" alt="" sizes="(max-width: 100px) 100vw, 100px">
                                                         </a>
                                                     </li>
                                                 @endif
