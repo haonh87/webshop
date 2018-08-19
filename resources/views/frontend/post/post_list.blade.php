@@ -13,6 +13,7 @@
 
 </style>
 @section('content')
+    <div id="content">
     <div id="middle">
     @include('frontend.header_line', ['name' => 'Bài viết'])
     @include('frontend.message')
@@ -100,5 +101,6 @@
                 <!--  Finish Content  -->
             </div>
         </div>
+    </div>
     </div>
 @stop
