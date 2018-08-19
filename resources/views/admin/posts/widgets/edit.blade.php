@@ -17,7 +17,7 @@
                         <div class="controls">
                             <select class="form-control" id="post_categories_id" name="post_categories_id">
                                 <option value="">-- Chọn danh mục bài viết --</option>
-                                {{\App\Helpers\ListItemHelper::showCategories($cateAll, 0, '', $post, 'post_categories_id')}}
+                                {{\App\Helpers\ListItemHelper::showCategories($cateAll, 0, '', $post->post_categories_id, 'post_categories_id')}}
                             </select>
                         </div>
                         @if(isset($errors) && $errors->has('post_categories_id'))
