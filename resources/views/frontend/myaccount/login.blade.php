@@ -14,7 +14,7 @@
                                 <div class="cmsmasters_text">
                                     <div class="woocommerce woocommerce-message woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                         <h2>Đăng Nhập</h2>
-                                        <form action="{{ route('login') }}" class="woocommerce-form woocommerce-form-login login" method="post">
+                                        <form action="{{ route('customer.postLogin') }}" class="woocommerce-form woocommerce-form-login login" method="post">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                 <label for="username">Nhập email<span
@@ -40,6 +40,11 @@
                                                            value="forever"> <span>Nhớ đăng nhập</span>
                                                 </label>
                                             </p>
+                                            @if(isset($errors) && count($errors) > 0)
+                                                <p class="error_msg" style="color: red">
+                                                    {{ $errors->first() }}
+                                                </p>
+                                            @endif
                                         </form>
                                     </div>
                                 </div>

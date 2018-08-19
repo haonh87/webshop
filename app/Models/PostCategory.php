@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use LaravelLocalization;
+use App\Models\Post;
 
 class PostCategory extends Model
 {
@@ -32,6 +33,13 @@ class PostCategory extends Model
      */
     protected $dates = ['deleted_at'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function post()
+    {
+        return $this->hasMany(Post::class, 'post_categories_id');
+    }
     /**
      * Get sub category of this
      *

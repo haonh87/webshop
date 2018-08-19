@@ -172,4 +172,23 @@
     @yield('content')
 </div>
 @include('layouts.footer')
+<script type='text/javascript' src='{{ asset('frontend/js/js.cookie.min.js') }}'></script>
+<script type='text/javascript' src='{{ asset('frontend/js/yith-wccl.min.js') }}'></script>
+<script type='text/javascript' src='{{ asset('frontend/js/stellar.min.js') }}'></script>
+<script type='text/javascript' src='{{ asset('frontend/js/waypoints.min.js') }}'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var cmsmasters_script = {"theme_url":"http:\/\/sports-store.cmsmasters.net\/wp-content\/themes\/sports-store","site_url":"http:\/\/sports-store.cmsmasters.net\/","ajaxurl":"http:\/\/sports-store.cmsmasters.net\/wp-admin\/admin-ajax.php","nonce_ajax_like":"7a47e5074b","nonce_ajax_view":"600c65591c","project_puzzle_proportion":"1","gmap_api_key":"AIzaSyDtfUlgzSb3LShTSAju_3gMO00kM_iXGxs","gmap_api_key_notice":"Please add your Google Maps API key","gmap_api_key_notice_link":"read more how","primary_color":"#fa5400","ilightbox_skin":"dark","ilightbox_path":"vertical","ilightbox_infinite":"0","ilightbox_aspect_ratio":"1","ilightbox_mobile_optimizer":"1","ilightbox_max_scale":"1","ilightbox_min_scale":"0.2","ilightbox_inner_toolbar":"0","ilightbox_smart_recognition":"0","ilightbox_fullscreen_one_slide":"0","ilightbox_fullscreen_viewport":"center","ilightbox_controls_toolbar":"1","ilightbox_controls_arrows":"0","ilightbox_controls_fullscreen":"1","ilightbox_controls_thumbnail":"1","ilightbox_controls_keyboard":"1","ilightbox_controls_mousewheel":"1","ilightbox_controls_swipe":"1","ilightbox_controls_slideshow":"0","ilightbox_close_text":"Close","ilightbox_enter_fullscreen_text":"Enter Fullscreen (Shift+Enter)","ilightbox_exit_fullscreen_text":"Exit Fullscreen (Shift+Enter)","ilightbox_slideshow_text":"Slideshow","ilightbox_next_text":"Next","ilightbox_previous_text":"Previous","ilightbox_load_image_error":"An error occurred when trying to load photo.","ilightbox_load_contents_error":"An error occurred when trying to load contents.","ilightbox_missing_plugin_error":"The content your are attempting to view requires the <a href='{pluginspage}' target='_blank'>{type} plugin<\\\/a>."};
+    /* ]]> */
+</script>
+<script type='text/javascript' src='{{ asset('frontend/js/store/jquery.script.js') }}'></script>
+
+<script type='text/javascript' src='{{ asset('frontend/js/frontend.min.js?') }}'></script>
+<script type='text/javascript' src='{{ asset('frontend/js/jquery.isotope.min.js') }}'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var cmsmasters_isotope_mode = {"theme_url":"http:\/\/sports-store.cmsmasters.net\/wp-content\/themes\/sports-store","site_url":"http:\/\/sports-store.cmsmasters.net\/","ajaxurl":"http:\/\/sports-store.cmsmasters.net\/wp-admin\/admin-ajax.php","nonce_ajax_like":"7a47e5074b","nonce_ajax_view":"600c65591c","project_puzzle_proportion":"1","gmap_api_key":"AIzaSyDtfUlgzSb3LShTSAju_3gMO00kM_iXGxs","gmap_api_key_notice":"Please add your Google Maps API key","gmap_api_key_notice_link":"read more how","primary_color":"#fa5400","ilightbox_skin":"dark","ilightbox_path":"vertical","ilightbox_infinite":"0","ilightbox_aspect_ratio":"1","ilightbox_mobile_optimizer":"1","ilightbox_max_scale":"1","ilightbox_min_scale":"0.2","ilightbox_inner_toolbar":"0","ilightbox_smart_recognition":"0","ilightbox_fullscreen_one_slide":"0","ilightbox_fullscreen_viewport":"center","ilightbox_controls_toolbar":"1","ilightbox_controls_arrows":"0","ilightbox_controls_fullscreen":"1","ilightbox_controls_thumbnail":"1","ilightbox_controls_keyboard":"1","ilightbox_controls_mousewheel":"1","ilightbox_controls_swipe":"1","ilightbox_controls_slideshow":"0","ilightbox_close_text":"Close","ilightbox_enter_fullscreen_text":"Enter Fullscreen (Shift+Enter)","ilightbox_exit_fullscreen_text":"Exit Fullscreen (Shift+Enter)","ilightbox_slideshow_text":"Slideshow","ilightbox_next_text":"Next","ilightbox_previous_text":"Previous","ilightbox_load_image_error":"An error occurred when trying to load photo.","ilightbox_load_contents_error":"An error occurred when trying to load contents.","ilightbox_missing_plugin_error":"The content your are attempting to view requires the <a href='{pluginspage}' target='_blank'>{type} plugin<\\\/a>."};
+    /* ]]> */
+</script>
+<script type='text/javascript' src='{{ asset('frontend/js/jquery.isotope.mode.js') }}'></script>
 </body>

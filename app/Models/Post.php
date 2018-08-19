@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon as Carbon;
 
 /**
  * Class Post
@@ -35,6 +36,16 @@ class Post extends Model
     protected $primaryKey = 'id';
 
     public function postCategories() {
-        return $this->belongsTo(PostCategory::class, 'post_categories_id');
+        return $this->belongsTo(PostCategory::class);
+    }
+
+    public function getCreatedAtAttribute($date)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('M d,Y');
+    }
+
+    public function getUpdatedAtAttribute($date)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('M d,Y');
     }
 }

@@ -70,4 +70,6 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12">&nbsp;</div>
+    <div class="clearfix"></div>
 @stop
