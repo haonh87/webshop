@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Services\PostService;
 
 /**
@@ -11,13 +12,6 @@ use App\Services\PostService;
  */
 class InstructionsController extends Controller
 {
-    /**
-     * post_categories_id = static_post
-     *
-     * @var int
-     */
-    protected $post_categories_id = 1;
-
     /**
      * @var PostService
      */
@@ -37,8 +31,8 @@ class InstructionsController extends Controller
      */
     public function index()
     {
-        $info = $this->postService->getPostList(0, 'post_categories_id', $this->post_categories_id, '=')
-            ->where('id', 2)
+        $info = $this->postService->getPostList(0, 'post_categories_id', Post::STATIC_POST_CATEGORY_ID, '=')
+            ->where('id', Post::INSTRUCTION_POST_ID)
             ->first();
         return view('frontend.instructions')->with('info', $info);
     }

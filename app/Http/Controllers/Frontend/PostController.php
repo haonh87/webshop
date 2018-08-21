@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\PostService;
 
@@ -17,14 +16,27 @@ class PostController extends Controller
         $this->postService = $postService;
     }
 
-    public function index() {
+    /**
+     * Post List
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
 
         $postList = $this->postService->getPostList(6);
-        return view('frontend.post.post_list')->with('postList',$postList);
+        return view('frontend.post.post_list')->with('postList', $postList);
 
     }
 
-    public function show($id){
+    /**
+     * Show post details
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($id)
+    {
         $postDetail = Post::find($id);
         $postWithCategory = $this->postService->getNewestPostList($this->numberNew);
         return view('frontend.post.post_detail', ['newestPost' => $postWithCategory, 'postDetail' => $postDetail]);

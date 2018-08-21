@@ -10,25 +10,36 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Customer;
 use Auth;
+use DB;
 use App\Services\ProductColorService;
 use App\Services\ProductSizeService;
+use App\Services\CustomerService;
+use App\Services\OrderService;
+use App\Services\OrderItemService;
 
 class CartController extends BaseController
 {
 
     protected $productSizeService;
     protected $productColorService;
+    protected $customerService;
+    protected $orderService;
+    protected $orderItemService;
 
     /**
      * Constructor function.
      * Set global fro category all page
      **/
-    public function __construct(ProductSizeService $productSizeService, ProductColorService $productColorService
+    public function __construct(ProductSizeService $productSizeService, ProductColorService $productColorService,
+        CustomerService $customerService, OrderService $orderService, OrderItemService $orderItemService
     )
     {
         parent::__construct();
         $this->productSizeService = $productSizeService;
         $this->productColorService = $productColorService;
+        $this->customerService = $customerService;
+        $this->orderService = $orderService;
+        $this->orderItemService = $orderItemService;
     }
     /**
      * Display a listing of the resource.
@@ -131,14 +142,47 @@ class CartController extends BaseController
         ]);
     }
 
-    public function postCheckout(Request $request)
+    public function postCheckout()
     {
         if(!Auth::check()) {
             return view('frontend.myaccount.login')->with('message_account', 'Bạn phải đăng nhập trước khi thanh toán hóa đơn!');
         } else {
-            //save data to order
+            try {
+                //save data to order
+                $dataOrder = [];
+                $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
+                $dataOrder['customers_id'] = $customer->id;
+                $dataOrder['payment_type'] = 'off line';
+                $dataOrder['status'] = 1;
+                $dataOrder['deliver_date'] = date('Y-m-d H:i:s');
+                $dataOrder['created_at'] = date('Y-m-d H:i:s');
+                $dataOrder['updated_at'] = date('Y-m-d H:i:s');
+                $dataOrder['note'] = Request::get('order_comments');
+                $dataOrder['total'] = Request::get('total_cart');
+                $orderId = $this->orderService->createOrder($dataOrder);
+                //save data to order item
+                $cartContent = Cart::content();
+                $dataOrderItems = [];
+                foreach ($cartContent as $cart) {
+                    $dataOrderItem = [];
+                    $dataOrderItem['order_id'] = $orderId;
+                    $dataOrderItem['product_id'] = $cart->id;
+                    $dataOrderItem['product_color_id'] = $cart->options->color;
+                    $dataOrderItem['product_size_id'] = $cart->options->size;
+                    $dataOrderItem['quantity'] = $cart->qty;
+                    $dataOrderItem['created_at'] = date('Y-m-d H:i:s');
+                    $dataOrderItem['updated_at'] = date('Y-m-d H:i:s');
+                    array_push($dataOrderItems,$dataOrderItem);
+                }
+                $this->orderItemService->createOrderItem($dataOrderItems);
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollback();
+                abort('404');
+            }
+            //save data to order item
         }
         Cart::destroy();
-        return \Redirect()->route('index')->with('message', 'Mua sản phẩm thành công!');
+        return \Redirect()->route('index')->with('message_cart', 'Mua sản phẩm thành công!');
     }
 }

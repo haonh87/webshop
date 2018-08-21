@@ -1,3 +1,4 @@
+@extends('layouts.master')
 @section('script')
 @stop
 @section('content')
@@ -11,6 +12,7 @@
                         <form name="checkout" method="post" class="checkout woocommerce-checkout"
                               action="{{ route('cart.checkout') }}" enctype="multipart/form-data"
                               novalidate="novalidate">
+                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="woocommerce-additional-fields">
                                 <h3>Thêm thông tin đơn hàng</h3>
                                 <div class="woocommerce-additional-fields__field-wrapper">
@@ -73,7 +75,7 @@
                                             id="place_order" value="Place order" data-value="Place order">Đăt Hàng
                                     </button>
                                 </div>
-
+                                <input type="hidden" name="total_cart" value="{{ $total }}">
                             </div>
                         </form>
 

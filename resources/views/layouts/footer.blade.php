@@ -6,10 +6,10 @@
                     <h3 class="widgettitle">Liên Hệ</h3>
                     <div class="textwidget">
                         <ul class="styled_list">
-                            <li><a href="#"><i class="fa fa-map-marker-alt"></i>196 Cầu Giấy, Hà Nội, Việt Nam</a></li>
-                            <li><a href="#">(028) 540 12341</a></li>
-                            <li><a href="#">0914 777 332</a></li>
-                            <li><a href="#">thecity@rongphuongbac.com</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker-alt"></i>{{\App\Models\Configuration::findOrFail(2)->value}}</a></li>
+                            <li><a href="#">{{\App\Models\Configuration::findOrFail(3)->value}}</a></li>
+                            <li><a href="#">{{\App\Models\Configuration::findOrFail(4)->value}}</a></li>
+                            <li><a href="#">{{\App\Models\Configuration::findOrFail(5)->value}}</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -17,8 +17,8 @@
                     <h3 class="widgettitle">Giới Thiệu</h3>
                     <div class="textwidget">
                         <ul class="styled_list">
-                            <li><a href="/">Giới thiệu</a></li>
-                            <li><a href="/">Hướng dẫn mua hàng</a></li>
+                            <li><a href="{{route('aboutUs')}}">Giới thiệu</a></li>
+                            <li><a href="{{route('instructions')}}">Hướng dẫn mua hàng</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -44,7 +44,7 @@
     <div class="footer_inner">
         <div class="footer_in_inner footer_ctr_align">
 				<span class="footer_copyright copyright">
-			© 2018 Gymbeo Store		</span>
+			{{\App\Models\Configuration::findOrFail(1)->value}}	</span>
         </div>
     </div>
 </footer>

@@ -46,7 +46,7 @@
                         <div class="controls">
                             <select class="form-control" id="edit_parent_id" name="parent_id">
                                 <option value="">-- Chọn danh mục gốc --</option>
-                                {{\App\Helpers\ListItemHelper::showCategories($cateAll, 0, '', $category)}}
+                                {{\App\Helpers\ListItemHelper::showCategories($cateAll, 0, '', $category->id)}}
                             </select>
                         </div>
                     </div>

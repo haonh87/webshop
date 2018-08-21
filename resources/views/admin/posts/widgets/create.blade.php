@@ -21,7 +21,7 @@
                             </select>
                         </div>
                         @if(isset($errors) && $errors->has('post_categories_id'))
-                            <div class="invalid-feedback" style="font-size: 12px; color: red">
+                            <div class="invalid-feedback">
                                 {{ $errors->first('post_categories_id') }}
                             </div>
                         @endif
@@ -33,7 +33,7 @@
                             <input type="text" name="title" class="form-control" value="{{old('title')}}" required/>
                         </div>
                         @if(isset($errors) && $errors->has('title'))
-                            <div class="invalid-feedback" style="font-size: 12px; color: red">
+                            <div class="invalid-feedback">
                                 {{ $errors->first('title') }}
                             </div>
                         @endif
@@ -44,7 +44,7 @@
                             <textarea name="description" class="form-control" required>{{old('description')}}</textarea>
                         </div>
                         @if(isset($errors) && $errors->has('description'))
-                            <div class="invalid-feedback" style="font-size: 12px; color: red">
+                            <div class="invalid-feedback">
                                 {{ $errors->first('description') }}
                             </div>
                         @endif

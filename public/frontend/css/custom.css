@@ -107,3 +107,12 @@ body .headline .headline_outer {
     width: 100%;
     padding: 0 2%;
 }
+.yith_magnifier_gallery {
+    padding-left: 0px;
+}
+.yith_magnifier_gallery li {
+    display: inline-block;
+}
+.yith_magnifier_gallery li image{
+    width: 100% !important;
+}

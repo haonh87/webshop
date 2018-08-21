@@ -46,31 +46,31 @@
                                                              data-category="perfect-body">
                                                         <div class="cmsmasters_post_cont">
                                                             <figure class="cmsmasters_img_wrap">
-                                                                <a href="{{route('post.show', ['id' => $post->id])}}" title="{{$post->title}}"
+                                                                <a href="{{route('post.show', ['id' => $post->id])}}" title="{{@$post->title}}"
                                                                    class="cmsmasters_img_link">
                                                                     <img width="580" height="355"
-                                                                         src="{{ asset($post->image_url) }}"
+                                                                         src="{{ asset(@$post->image_url) }}"
                                                                          class="wp-post-image"
-                                                                         alt="{{$post->title}}"
-                                                                         title="{{$post->title}}"
+                                                                         alt="{{@$post->title}}"
+                                                                         title="{{@$post->title}}"
                                                                          sizes="(max-width: 580px) 100vw, 580px"
-                                                                         srcset="{{ asset($post->image_url) }} 580w, {{ asset($post->image_url) }} 300w, {{ asset($post->image_url) }} 768w, {{ asset($post->image_url) }} 1024w,{{ asset($post->image_url) }} 600w, {{ asset($post->image_url) }} 860w, {{ asset($post->image_url) }} 1160w">
+                                                                         srcset="{{ asset(@$post->image_url) }} 580w, {{ asset(@$post->image_url) }} 300w, {{ asset(@$post->image_url) }} 768w, {{ asset(@$post->image_url) }} 1024w,{{ asset(@$post->image_url) }} 600w, {{ asset(@$post->image_url) }} 860w, {{ asset(@$post->image_url) }} 1160w">
                                                                 </a>
                                                             </figure>
                                                             <div class="cmsmasters_post_date_wrap"><span
                                                                         class="cmsmasters_post_date"><abbr
                                                                             class="published"
-                                                                            title="{{$post->created_at}}">{{$post->created_at}}</abbr><abbr
+                                                                            title="{{@$post->created_at}}">{{@$post->created_at}}</abbr><abbr
                                                                             class="dn date updated"
-                                                                            title="{{$post->updated_at}}">{{$post->updated_at}}</abbr></span>
+                                                                            title="{{@$post->updated_at}}">{{@$post->updated_at}}</abbr></span>
                                                             </div>
                                                             <header class="cmsmasters_post_header entry-header"><h5
                                                                         class="cmsmasters_post_title entry-title"><a
-                                                                            href="{{route('post.show', ['id' => $post->id])}}" title="{{$post->title}}">"{{$post->title}}" </a></h5>
+                                                                            href="{{route('post.show', ['id' => $post->id])}}" title="{{@$post->title}}">"{{@$post->title}}" </a></h5>
                                                             </header>
                                                             <div class="cmsmasters_post_content entry-content">
                                                                 <p>
-                                                                    {!!html_entity_decode(@$post->description) !!}
+                                                                    {!!html_entity_decode(str_limit(@$post->description), 20) !!}
                                                                 </p>
                                                             </div>
                                                             <footer class="cmsmasters_post_footer"><a
@@ -100,5 +100,6 @@
                 <!--  Finish Content  -->
             </div>
         </div>
+    </div>
     </div>
 @stop

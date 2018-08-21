@@ -3,7 +3,7 @@
 @section('content')
     <div class="module-head">
         <h1>
-            <span>Kích cỡ sản phẩm</span>
+            <span>Dánh sách cấu hình</span>
             <button class="btn btn-primary btn-large pull-right" data-toggle="modal" data-target="#createPopup">
                 Tạo mới
             </button>
