@@ -125,8 +125,8 @@
                             <div class="price_slider_wrapper">
                                 <div class="price_slider" style="display:none;"></div>
                                 <div class="price_slider_amount">
-                                    <input type="text" id="min_price" name="min_price" value="{{ isset($condition['min_price']) ? $condition['min_price'] : $maxMinPrice->min_price }}" data-min="{{ $maxMinPrice->min_price }}" placeholder="Min price">
-                                    <input type="text" id="max_price" name="max_price" value="{{ isset($condition['max_price']) ? $condition['max_price'] : $maxMinPrice->max_price }}" data-max="{{ $maxMinPrice->max_price }}" placeholder="Max price">
+                                    <input type="text" id="min_price" name="min_price" value="{{ isset($condition['min_price']) ? $condition['min_price'] : $maxMinPrice->min_price }}" data-min="{{ (int)$maxMinPrice->min_price }}" placeholder="Min price">
+                                    <input type="text" id="max_price" name="max_price" value="{{ isset($condition['max_price']) ? $condition['max_price'] : $maxMinPrice->max_price }}" data-max="{{ (int)$maxMinPrice->max_price }}" placeholder="Max price">
                                     <button type="submit" class="button">Lọc</button>
                                     <div class="price_label" style="display:none;">
                                         Giá: <span class="from"></span> — <span class="to"></span>
