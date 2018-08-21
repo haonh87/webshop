@@ -63,27 +63,27 @@ class ProductService
     public function getFeatureProducts($numberProducts)
     {
         return $this->productModel->with('category')->with('productImages')
-            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
-            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
-            ->groupBy('votes.product_id')->orderBy('total_star', 'desc')
+            ->select('*', 'products.id',DB::raw('AVG(votes.star) as total_star'))
+            ->leftJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('products.id')->orderBy('total_star', 'desc')
             ->limit($numberProducts)->get();
     }
 
     public function getNewProduct($numberProducts)
     {
         return $this->productModel->with('category')->with('productImages')
-            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
-            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
-            ->groupBy('votes.product_id')->orderBy('products.created_at', 'desc')
+            ->select('*', 'products.id',DB::raw('AVG(votes.star) as total_star'))
+            ->leftJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('products.id')->orderBy('products.created_at', 'desc')
             ->limit($numberProducts)->get();
     }
 
     public function getAllProductForView($categoryId, $dataRequest)
     {
         $result = $this->productModel->with('category')->with('productImages')
-            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
-            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
-            ->groupBy('votes.product_id');
+            ->select('*', 'products.id',DB::raw('AVG(votes.star) as total_star'))
+            ->leftJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('products.id');
         if (!empty($categoryId)) {
             $result->where('products.category_id', $categoryId);
         }
@@ -114,17 +114,17 @@ class ProductService
     public function findProductByIdView($id)
     {
         return $this->productModel->with('category')->with('productImages')
-            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
-            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
-            ->groupBy('votes.product_id')->where('products.id', $id)->first();
+            ->select('*', 'products.id',DB::raw('AVG(votes.star) as total_star'))
+            ->leftJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('products.id')->where('products.id', $id)->first();
     }
 
     public function getRelateProduct($product)
     {
         return $this->productModel->with('category')->with('productImages')
-            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
-            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
-            ->groupBy('votes.product_id')->where('products.id', '!=',$product->id)
+            ->select('*', 'products.id',DB::raw('AVG(votes.star) as total_star'))
+            ->leftJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('products.id')->where('products.id', '!=',$product->id)
             ->where('products.category_id', $product->category_id)->limit(4)->get();
     }
 
@@ -136,9 +136,9 @@ class ProductService
     public function getRecentlyProduct($ids = null)
     {
         $result = $this->productModel->with('category')->with('productImages')
-            ->select('*', 'votes.product_id', DB::raw('AVG(votes.star) as total_star'))
-            ->rightJoin('votes', 'votes.product_id', '=', 'products.id')
-            ->groupBy('votes.product_id')->whereIn('products.id', $ids);
+            ->select('*', 'products.id',DB::raw('AVG(votes.star) as total_star'))
+            ->leftJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('products.id')->whereIn('products.id', $ids);
         return $result;
     }
 }
