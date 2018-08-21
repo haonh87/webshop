@@ -3,7 +3,8 @@
     <div class="header_mid" data-height="90">
         <div class="header_mid_outer">
             <div class="header_mid_inner">
-                <div class="logo_wrap"><a href="index.html" title="Sports Store" class="logo">
+                <div class="logo_wrap">
+                    <a href="{{ route('index') }}" title="Sports Store" class="logo">
                         <img src="{{ asset("frontend/images/logo.png") }}" alt="Gymbeo Sports"/>
                         <img class="logo_retina" src="images/logo_retina.png" alt="Sports Store" width="177"
                              height="28"/>
