@@ -22,6 +22,8 @@
                         <tr>
                             <th>Stt</th>
                             <th>Tên khách</th>
+                            <th>SDT</th>
+                            <th>Địa chỉ</th>
                             <th>Thanh Toán</th>
                             <th>Ghi chú</th>
                             <th>Ngày giao hàng</th>
@@ -39,6 +41,8 @@
                         <td>
                             <a href ="#">{{ $order->customer->name }}</a>
                         </td>
+                        <td>{{ $order->customer->mobile }}</td>
+                        <td>{{ $order->customer->address }}</td>
                         <td>{{ $order->payment_type }}</td>
                         <td>{{ $order->note }}</td>
                         <td>{{ $order->deliver_date }}</td>
