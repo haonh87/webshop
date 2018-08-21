@@ -355,7 +355,7 @@
                                                     <div class="cmsmasters_slider_post_outer">
                                                         <figure class="cmsmasters_img_rollover_wrap preloader">
                                                             <img width="580" height="420"
-                                                                 src="{{ asset('images/' .@$post->image_url) }}"
+                                                                 src="{{ asset($post->image_url) }}"
                                                                  class="full-width wp-post-image"
                                                                  alt="{{@$post->title}}"
                                                                  title="{{@$post->title}}">
