@@ -12,11 +12,10 @@
         }
     </style>
     <div id="content">
-        @include('frontend.header_line', ['name' => 'Instructions'])
+        @include('frontend.header_line', ['name' => 'Hướng dẫn'])
         @include('frontend.message')
         <div class="middle_inner">
             <div class="content_wrap fullwidth">
-
                 <!--  Start Content  -->
                 <div class="middle_content entry"></div>
             </div>
@@ -38,14 +37,10 @@
                     </div>
                 </div>
             </div>
-
             <div class="cl"></div>
             <div class="content_wrap fullwidth">
-
                 <div class="middle_content entry"></div>
                 <!--  Finish Content  -->
-
-
             </div>
         </div>
     </div>

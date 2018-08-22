@@ -8,7 +8,7 @@
                 <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                 <form id="loginform" class="form-horizontal" role="form" method = "post" action="{{ route('login') }}">
                 @if($errors->has('login_error'))
-                    <span style="color:red; font-size:bold;">
+                    <span style="color:red; font-weight: bold">
                         {{ $errors->first('login_error') }}
                     </span>
                 @endif
@@ -38,5 +38,4 @@
             </div>
         </div>
     </div>
-
 </div>

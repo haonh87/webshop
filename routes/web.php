@@ -32,7 +32,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('/post/{id}', ['as' => 'post.show', 'uses' => 'Frontend\PostController@show']);
 
     Route::get('/cart', ['as' => 'cart.index', 'uses' => 'Frontend\CartController@index']);
-    Route::post('/cart', ['as' => 'cart.store', 'uses' => 'Frontend\CartController@store']);
+    Route::post('/cart', ['as' => 'cart.store', 'uses' => 'Frontend\CartCotroller@store']);
     Route::get('/cart_destroy/{cart}', ['as' => 'cart.destroy', 'uses' => 'Frontend\CartController@destroy']);
     Route::post('/cart_update', ['as' => 'cart.update', 'uses' => 'Frontend\CartController@update']);
 
@@ -169,14 +169,6 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
         'uses' => 'ConfigurationController@update'
     ]);
 
-    Route::post('/configuration/add', [
-        'as' => 'admin.configuration-management.add',
-        'uses' => 'ConfigurationController@store'
-    ]);
-    Route::post('/configuration/delete/{id}', [
-        'as' => 'admin.configuration-management.delete',
-        'uses' => 'ConfigurationController@destroy'
-    ]);
     //Route::resource("categories", "CategoryController");
     Route::resource("products", "ProductController");
     Route::post('/product/excel', ['as' => 'product.import.excel', 'uses' => 'ProductController@importProductFromExcelFile']);

@@ -27,6 +27,7 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
+            'post_categories_id' => 'required',
             'title' => 'required',
             'description' => 'required',
             'content' => 'required'
@@ -43,6 +44,7 @@ class PostRequest extends FormRequest
             'title.required' => __('validation.required', ['attribute' => 'title']),
             'description.required' => __('validation.required', ['attribute' => 'description']),
             'content.required' => __('validation.required', ['attribute' => 'content']),
+            'post_categories_id.required' => __('validation.required', ['attribute' => 'post_categories_id'])
         ];
     }
 }

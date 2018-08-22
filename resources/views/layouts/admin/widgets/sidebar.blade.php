@@ -27,9 +27,11 @@
             <ul id="userManagement" class="collapse list-unstyled">
                 <li><a href="{{ route('admin.user.index') }}"><i class="icon-inbox"></i>Danh sách người dùng</a></li>
                 <li><a href="{{ route('admin.user.create') }}"><i class="icon-inbox"></i>Thêm mới người dùng</a></li>
-                <li><a href="{{ route('admin.configuration-management') }}"><i class="icon-inbox"></i>Quản lí cấu hình</a></li>
             </ul>
         </li>
+        <li>
+        <li><a href="{{ route('admin.configuration-management') }}"><i class="icon-inbox"></i>Quản lí cấu hình</a></li>
+
         {{--order manager--}}
         <li>
             <a class="collapsed" data-toggle="collapse" href="#orderManagement"><i class="menu-icon icon-bullhorn"></i>Quản lý đơn hàng</a>

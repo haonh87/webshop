@@ -35,15 +35,37 @@ class Post extends Model
      */
     protected $primaryKey = 'id';
 
-    public function postCategories() {
+    const INSTRUCTION_POST_ID = 2;
+    const ABOUT_US_POST_ID = 2;
+    const STATIC_POST_CATEGORY_ID = 1;
+
+    /**
+     * Relationship with post categories
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function postCategories()
+    {
         return $this->belongsTo(PostCategory::class);
     }
 
+    /**
+     * Format Created At
+     *
+     * @param $date
+     * @return string
+     */
     public function getCreatedAtAttribute($date)
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('M d,Y');
     }
 
+    /**
+     * Format Updated At
+     *
+     * @param $date
+     * @return string
+     */
     public function getUpdatedAtAttribute($date)
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('M d,Y');

@@ -3,11 +3,7 @@
 @section('content')
     <div class="module-head">
         <h1>
-            <span>Kích cỡ sản phẩm</span>
-            <button class="btn btn-primary btn-large pull-right" data-toggle="modal" data-target="#createPopup">
-                Tạo mới
-            </button>
-            @include('admin.configurations.widgets.create')
+            <span>Dánh sách cấu hình</span>
         </h1>
         <p>{{@$message}}</p>
     </div>
@@ -35,12 +31,6 @@
                         <button class="btn btn-warning" data-toggle="modal" data-target="#editPopup_{{$configuration->id}}">
                             Sửa
                         </button>
-                        <form action="{{ route('admin.configuration-management.delete', ['id' => $configuration->id ]) }}"
-                              method="POST" style="display: inline;"
-                              onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
-                            {{ csrf_field() }}
-                            <button class="btn btn-danger" type="submit">Xóa</button>
-                        </form>
                     </td>
                 </tr>
             @endforeach
