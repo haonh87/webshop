@@ -15,11 +15,11 @@
             <form id="login" class="form-validate login-admin" method="POST" action="{{ route('login') }}">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <input id="email" type="email" class="form-control" name="email"
-                           value="{{ old('email') }}" placeholder="Enter email" required autofocus>
-                    @if ($errors->has('email'))
+                    <input id="email" type="text" class="form-control" name="username"
+                           value="{{ old('username') }}" placeholder="Enter username" required autofocus>
+                    @if ($errors->has('username'))
                         <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                     @endif
                 </div>

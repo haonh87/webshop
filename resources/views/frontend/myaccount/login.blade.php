@@ -14,21 +14,21 @@
                                 <div class="cmsmasters_text">
                                     <div class="woocommerce woocommerce-message woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                         <h2>Đăng Nhập</h2>
-                                        <form action="{{ route('customer.postLogin') }}" class="woocommerce-form woocommerce-form-login login" method="post">
+                                        <form action="{{ route('login') }}" class="woocommerce-form woocommerce-form-login login" method="post">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                <label for="username">Nhập email<span
+                                                <label for="username">Nhập tên<span
                                                             class="required">*</span></label>
                                                 <input type="text"
                                                        class="woocommerce-Input woocommerce-Input--text input-text"
-                                                       name="email" id="email" autocomplete="email" value="">
+                                                       name="username" id="email" required autocomplete="username" value="{{ old('username') }}">
                                             </p>
                                             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                 <label for="password">Mật khẩu&nbsp;<span
                                                             class="required">*</span></label>
                                                 <input class="woocommerce-Input woocommerce-Input--text input-text"
                                                        type="password" name="password" id="password"
-                                                       autocomplete="current-password" style="width: 260px">
+                                                       autocomplete="password" style="width: 260px">
                                             </p>
                                             <p class="form-row">
                                                 <button type="submit" class="woocommerce-Button button" name="login"

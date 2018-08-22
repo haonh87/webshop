@@ -37,6 +37,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function username() {
+        return 'username';
+    }
+
     /**
      * Check user's role and redirect user based on their role
      * @return
