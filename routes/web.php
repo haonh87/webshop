@@ -169,14 +169,6 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => "auth
         'uses' => 'ConfigurationController@update'
     ]);
 
-    Route::post('/configuration/add', [
-        'as' => 'admin.configuration-management.add',
-        'uses' => 'ConfigurationController@store'
-    ]);
-    Route::post('/configuration/delete/{id}', [
-        'as' => 'admin.configuration-management.delete',
-        'uses' => 'ConfigurationController@destroy'
-    ]);
     //Route::resource("categories", "CategoryController");
     Route::resource("products", "ProductController");
     Route::post('/product/excel', ['as' => 'product.import.excel', 'uses' => 'ProductController@importProductFromExcelFile']);

@@ -34,26 +34,6 @@ class ConfigurationController extends Controller
             ->with('$configurationAll', $configurationAll);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param ConfigurationRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(ConfigurationRequest $request)
-    {
-        $data = $request->all();
-        $data['create_user_id'] = \Auth::user()->id;
-        $data['created_at'] = date('Y-m-d H:i:s');
-        $data['updated_at'] = date('Y-m-d H:i:s');
-        $createConfiguration = $this->configurationService->createNewConfiguration($data);
-        if ($createConfiguration) {
-            $message = 'Item created successfully.';
-            return redirect()->action('Admin\ConfigurationController@index')->with('message', $message);
-        }
-        return redirect()->action('Admin\ConfigurationController@index')->withInput();
-    }
-
 
     /**
      * Update old product size
@@ -74,20 +54,4 @@ class ConfigurationController extends Controller
         }
         return redirect()->action('Admin\ConfigurationController@index')->withInput();
     }
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy($id)
-    {
-        $deleteItem = $this->configurationService->deleteConfiguration($id);
-        ($deleteItem) ? $message = 'Item deleted successfully.' : $message = 'Item deleted fail.';
-        return redirect()->action('Admin\ConfigurationController@index')->with('message', $message);
-    }
-
-
 }
