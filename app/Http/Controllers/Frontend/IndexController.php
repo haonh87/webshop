@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\PostCategory;
+use App\Services\CategoryService;
+use App\Services\ProductColorService;
+use App\Services\PostService;
+use App\Services\PostCategoryService;
+use App\Services\ProductService;
+use App\Services\ProductSizeService;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\BaseController;
 use App\Models\Product;
 use Illuminate\Http\Response;
@@ -12,16 +18,37 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Vote;
 use App\Models\Category;
 use LaravelLocalization;
+use Session;
 
 class IndexController extends BaseController
 {
+
+    protected $categoryService;
+    protected $postCategoryService;
+    protected $productService;
+    protected $postService;
+    protected $productSizeService;
+    protected $productColorService;
+    protected $numberFeature = 12;
+    protected $numberNew = 8;
+    protected $numberPost = 6;
+    protected $numberProductList = 20;
      /**
      * Constructor function.
      * Set global fro category all page
      **/
-    public function __construct()
+    public function __construct(CategoryService $categoryService, ProductService $productService,
+                                ProductSizeService $productSizeService, ProductColorService $productColorService,
+                                PostCategoryService $postCategoryService, PostService $postService
+    )
     {
          parent::__construct();
+         $this->categoryService = $categoryService;
+         $this->productService = $productService;
+         $this->productSizeService = $productSizeService;
+         $this->productColorService = $productColorService;
+         $this->postCategoryService = $postCategoryService;
+         $this->postService = $postService;
     }
 
     /**
@@ -31,9 +58,46 @@ class IndexController extends BaseController
      */
     public function index(Request $request)
     {
-//        dump(session('message'));
+        $wmCategory = $this->categoryService->getWMCategory();
         $products = Product::paginate(PAGINATE);
-        return view('frontend.top')->with('products', $products);
+        $featureProducts = $this->productService->getFeatureProducts($this->numberFeature);
+        $newProducts = $this->productService->getNewProduct($this->numberNew);
+        $postWithCategory = $this->postService->getNewestPostList($this->numberNew);
+
+        return view('frontend.top',[
+            'wmCategory' => $wmCategory,
+            'products' => $products,
+            'featureProducts' => $featureProducts,
+            'newProducts' => $newProducts,
+            'newPost' => $postWithCategory
+        ]);
+    }
+
+
+    public function getProductList(Request $request, $categoryName = null)
+    {
+        $dataRequest = $request->all();
+        $category = $this->categoryService->findIdByName($categoryName);
+        $categoryId = isset($category) ? $category->id : '';
+        $products = $this->productService->getAllProductForView($categoryId, $dataRequest)->paginate($this->numberProductList);
+        $maxMinPrice = $this->productService->getMaxMinPrice();
+        $categories = $this->categoryService->getAllCategories();
+        $sizes = $this->productSizeService->getAllProductSize();
+        $colors = $this->productColorService->getAllColor();
+        $sessionIds = Session::get('productIds');
+        $recentlyProduct = '';
+        if (!empty($sessionIds)) {
+            $recentlyProduct = $this->productService->getRecentlyProduct($sessionIds)->get();
+        }
+        return view('frontend.product_list', [
+            'products' => $products,
+            'maxMinPrice' => $maxMinPrice,
+            'categories' => $categories,
+            'sizes' => $sizes,
+            'colors' => $colors,
+            'recentlyProduct' => $recentlyProduct,
+            'condition' => $dataRequest
+        ]);
     }
 
 
@@ -45,20 +109,25 @@ class IndexController extends BaseController
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id);
-        $view_count = $product->view_count;
-        $view_count=$view_count+1;
-//        dump($view_count);
-        $product->view_count=$view_count;
-        $product->save();
-        $product_colors = $product->productColor;
-        $product_sizes = $product->productSize;
-        $product_relates = $product->category->product()->where('products.id','!=',$id)->get();
-        return view('frontend.product_detail')
-                ->with('product',$product)
-                ->with('product_relates', $product_relates)
-                ->with('product_colors', $product_colors)
-                ->with('product_sizes', $product_sizes);
+        $product = $this->productService->findProductByIdView($id);
+        $sizes = $this->productSizeService->getAllProductSize();
+        $colors = $this->productColorService->getAllColor();
+        $relateProducts = $this->productService->getRelateProduct($product);
+        //push id to session
+        $sessionIds = Session::get('productIds');
+        if (empty($sessionIds)) {
+            Session::push('productIds', (int)$id);
+        } else {
+            if (!in_array($id, $sessionIds)) {
+                Session::push('productIds', array_push($sessionIds,$id));
+            }
+        }
+        return view('frontend.product_detail', [
+            'product' => $product,
+            'sizes' => $sizes,
+            'colors' => $colors,
+            'relateProducts' => $relateProducts
+        ]);
     }
 
     public function postVote(Request $request)

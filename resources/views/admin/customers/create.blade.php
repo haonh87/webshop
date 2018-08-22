@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.app')
 
 @section('content')
     <div class="page-header">
@@ -69,7 +69,7 @@
                   </table>
 
             <a class="btn btn-default" href="{{ action('Admin\CustomerController@index') }}">Back</a>
-            <button class="btn btn-primary" type="submit" >Create</a>
+                <button class="btn btn-primary" type="submit" >Create</button>
             </form>
         </div>
     </div>

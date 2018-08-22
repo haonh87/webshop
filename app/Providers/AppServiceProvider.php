@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\WishProduct;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,9 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
         $count_wishlist = 0;
         $menu = '<ul class = "menu sf-menu">';
-        $categories = Category::where('parrent_id', 0)->get();
+        $categories = Category::where('parent_id', 0)->get();
         $menu = Category::getMenu($categories, $menu);
         $menu.='</ul>';
         if(Auth::check())

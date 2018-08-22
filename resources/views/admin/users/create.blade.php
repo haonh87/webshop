@@ -1,78 +1,67 @@
-@extends('layouts.admin')
+@extends('layouts.admin.app')
 
 @section('content')
-    <div class="page-header">
-        <h1>Customer / Create </h1>
+
+    <div class="module-head">
+        <h1>
+            <span>Tạo người dùng</span>
+        </h1>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <form action="{{ action('Admin\CustomerController@store') }}" method="POST">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>
-                            <input type="text" name = "name" value="" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Address</td>
-                        <td>
-                            <input type="text" name = "address" value="" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>
-                            <input type="text" name = "email" value="" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Phone</td>
-                        <td>
-                            <input type="text" name = "phone" value="" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Mobile</td>
-                        <td>
-                            <input type="text" name = "mobile" value="" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Gender</td>
-                        <td>
-                              <select class="form-control" name="gender" style="width: 24% !important">
-                                <option value ="0">Male</option>
-                                <option value ="1">Female</option>
-                              </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Status</td>
-                        <td>
-                          <select class="form-control" name="status" style="width: 24% !important">
-                            <option value ="0">Single</option>
-                            <option value ="1">Maried</option>
-                          </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Birth day</td>
-                        <td>
-                          <input type="text" placeholder="dd/mm/yyyy" required name="DOB">
-                        </td>
-                    </tr>
-                    </tbody>
-                  </table>
-
-            <a class="btn btn-default" href="{{ action('Admin\CustomerController@index') }}">Back</a>
-            <button class="btn btn-primary" type="submit" >Create</a>
-            </form>
+    <div class="module-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{ route('admin.user.store') }}" class='form' method="POST">
+                    {{ csrf_field() }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" require>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label for="username">Tên</label>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label for="email">Mật khẩu</label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label for="fullname">Tên đầy đủ</label>
+                                <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Enter fullname" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label for="role_id">Roles</label>
+                                {{ Form::select('role_id', $roles, null, ['id' => 'role_id']) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="is_active">Trạng Thái</label>
+                                <select class="" name="is_active" id="is_active">
+                                    <option value="1">Hoạt động</option>
+                                    <option value="0">Ngừng hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-default" href="{{ route('admin.user.index') }}">Back</a>
+                    <button class="btn btn-primary" type="submit" >Thêm mới</button>
+                </form>
+            </div>
         </div>
     </div>
-
 
 @endsection

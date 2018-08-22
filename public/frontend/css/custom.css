@@ -1,0 +1,118 @@
+.header_mid .header_mid_inner .logo_wrap {
+    width: 177px;
+}
+.header_mid {
+    height: 90px;
+}
+#content {
+    padding-top: 90px;
+}
+#slider-top .cmsmasters_column{
+    margin: 0px;
+}
+#slider-top .cmsmasters_row_fullwidth{
+    padding: 0px !important;
+}
+.article-style-1 .cmsmasters_featured_block_link{
+    position: relative;
+    display: block;
+}
+.article-style-1 .featured_block_inner {
+    position: absolute;
+    left: 0px;
+    top: 30%;
+    z-index: 999;
+    text-align: center;
+    color: #FFFFFF;
+}
+.article-style-1 .featured_block_inner h2{
+    text-align: center;
+    display: block;
+    color: #FFFFFF;
+}
+.article-style-1 .featured_block_inner h3{
+    text-align: center;
+    display: block;
+    color: #FFFFFF;
+}
+.cmsmasters_featured_block.cmsmasters_featured_block_hover:hover a{
+    opacity: 0.9;
+    cursor: pointer;
+}
+.widget-style-1 {
+    padding-top: 60px;
+    padding-bottom: 0px;
+}
+.widget-style-2 {
+    padding-bottom: 0px;
+    padding-top: 30px;
+}
+.widget .cmsmasters_heading_align_center{
+    text-align: center;
+}
+.custom_widget_hasbg {
+    background-image: url(../../images/8.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    padding-top: 115px;
+    padding-bottom: 115px;
+    margin-top: 60px;
+}
+.colorFFF {
+    color: #FFFFFF;
+}
+.custom_widget_bgcolor {
+    background-color: #101010;
+    margin-top: 60px;
+}
+.wysija-submit.wysija-submit-field {
+    background-color: rgb(58, 58, 58);
+}
+.widget-style-3 .cmsmasters_clients_item {
+    line-height: 20px;
+    height: auto;
+}
+.widget-style-3 {
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
+.widget_has_bg{
+    background: #f8f8f8;
+    padding-bottom: 60px;
+    margin-top: 60px;
+}
+.widget_has_bg .first {
+    margin-bottom: 15px;
+}
+.widget_has_bg .one_third{
+    width: 45%;
+    margin: auto;
+    float: initial;
+}
+.woocommerce-message {
+    margin-bottom: 0px;
+    margin-top: 30px;
+}
+body .headline {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dbdbdb;
+}
+body .headline .headline_outer {
+    border-bottom: 0px;
+}
+.product_list_wrap {
+    width: 100%;
+    padding: 0 2%;
+}
+.yith_magnifier_gallery {
+    padding-left: 0px;
+}
+.yith_magnifier_gallery li {
+    display: inline-block;
+}
+.yith_magnifier_gallery li image{
+    width: 100% !important;
+}

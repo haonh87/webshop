@@ -36,4 +36,16 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Check user's role and redirect user based on their role
+     * @return
+     */
+    public function authenticated()
+    {
+        if (auth()->user()->isAdmin()) {
+            return redirect()->route('products.index');
+        }
+        return redirect()->route('index');
+    }
 }
