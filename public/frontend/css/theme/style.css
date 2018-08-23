@@ -2783,6 +2783,7 @@ button {
   float: right;
 }
 .header_mid .slogan_wrap .slogan_wrap_inner {
+  max-width: 100px;
   height: 100%;
   padding: 0 0 0 20px;
   text-align: right;

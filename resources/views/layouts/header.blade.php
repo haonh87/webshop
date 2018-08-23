@@ -5,9 +5,7 @@
             <div class="header_mid_inner">
                 <div class="logo_wrap">
                     <a href="{{ route('index') }}" title="Sports Store" class="logo">
-                        <img src="{{ asset("frontend/images/logo.png") }}" alt="Gymbeo Sports"/>
-                        <img class="logo_retina" src="images/logo_retina.png" alt="Sports Store" width="177"
-                             height="28"/>
+                        <img src="{{ asset("frontend/images/logo-1.png") }}" alt="Gymbeo Sports"/>
                     </a>
                 </div>
                 <div class="resp_mid_nav_wrap">
@@ -16,28 +14,29 @@
                 </div>
                 <div class="cmsmasters_account">
                     @if (!\Auth::check())
-                    <a href="javascript:void(0)" class="cmsmasters_account_button"> Tài khoản</a>
-                    <span class="cmsmasters_account_button_hide"></span>
-                    <div class="widget_account_content">
-                        <ul class="woocommerce-mini-account account_list product_list_widget ">
-                            <li id="menu-myaccount-index">
-                                <a href="{{ route('myaccount.index') }}">
+                        <a href="javascript:void(0)" class="cmsmasters_account_button"> Tài khoản</a>
+                        <span class="cmsmasters_account_button_hide"></span>
+                        <div class="widget_account_content">
+                            <ul class="woocommerce-mini-account account_list product_list_widget ">
+                                <li id="menu-myaccount-index">
+                                    <a href="{{ route('myaccount.index') }}">
                                     <span class="nav_item_wrap">
                                         <span class="nav_title">Đăng nhập</span>
                                     </span>
-                                </a>
-                            </li>
-                            <li id="menu-myaccount-create">
-                                <a href="{{ route('myaccount.create') }}">
+                                    </a>
+                                </li>
+                                <li id="menu-myaccount-create">
+                                    <a href="{{ route('myaccount.create') }}">
                                     <span class="nav_item_wrap">
                                         <span class="nav_title">Đăng ký</span>
                                     </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     @else
-                        <a href="javascript:void(0)" class="cmsmasters_account_button"> Xin chào {{ Auth::user()->username }}</a>
+                        <a href="javascript:void(0)" class="cmsmasters_account_button"> Xin
+                            chào {{ Auth::user()->username }}</a>
                         <span class="cmsmasters_account_button_hide"></span>
                         <div class="widget_account_content">
                             <ul class="woocommerce-mini-account account_list product_list_widget ">
@@ -52,12 +51,15 @@
                         </div>
                     @endif
                 </div>
-                <div class="mid_search_but_wrap"><a href="javascript:void(0)"
-                                                    class="mid_search_but cmsmasters_header_search_but cmsmasters_theme_icon_search"></a>
+                <div class="mid_search_but_wrap">
+                    <a href="javascript:void(0)"
+                                                    class="mid_search_but cmsmasters_header_search_but">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="cmsmasters_dynamic_cart">
                     <a href="http://sports-store.cmsmasters.net/cart/" class="cmsmasters_dynamic_cart_button">
-                        <span class="cmsmasters_theme_icon_basket">{{ count($cartShare) }}</span>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> {{ count($cartShare) }}
                     </a>
                     <span class="cmsmasters_dynamic_cart_button_hide"></span>
                     <div class="widget_shopping_cart_content">
@@ -73,12 +75,18 @@
                                         $total = $total + $cart->subtotal;
                                     @endphp
                                     <li class="woocommerce-mini-cart-item mini_cart_item">
-                                        <a href="{{ route('cart.destroy', ['cart' => $cart->rowId]) }}" class="remove remove_from_cart_button" aria-label="Remove this item">×</a>
+                                        <a href="{{ route('cart.destroy', ['cart' => $cart->rowId]) }}"
+                                           class="remove remove_from_cart_button" aria-label="Remove this item">×</a>
                                         <a href="{{ route('product.show', ['product' => $cart->id]) }}">
-                                            <img width="540" height="540" src="{{ asset('images/'.$cart->options->image) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" sizes="(max-width: 540px) 100vw, 540px">
+                                            <img width="540" height="540"
+                                                 src="{{ asset('images/'.$cart->options->image) }}"
+                                                 class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
+                                                 alt="" sizes="(max-width: 540px) 100vw, 540px">
                                             {{ $cart->name }}&nbsp;
                                         </a>
-                                        <span class="quantity">{{ $cart->qty }} × <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->price, 2)  }}</span></span>
+                                        <span class="quantity">{{ $cart->qty }} × <span
+                                                    class="woocommerce-Price-amount amount"><span><span
+                                                            class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->price, 2)  }}</span></span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -104,27 +112,30 @@
                     <nav>
                         <div class="menu-main-menu-container">
                             <ul id="navigation" class="mid_nav navigation">
-                                <li id="menu-item-13035"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
-                                    <a href="{{ route('index') }}"><span
-                                                class="nav_item_wrap"><span class="nav_title">Trang Chủ</span></span></a>
+                                <li>
+                                    <a href="{{ route('index') }}">
+                                        <span class="nav_item_wrap"><span class="nav_title">Trang Chủ</span></span>
+                                    </a>
                                 </li>
-                                <li id="menu-item-13035"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
-                                    <a href="{{ route('product.list') }}"><span
-                                                class="nav_item_wrap"><span class="nav_title">Sản Phẩm</span></span></a>
+                                <li>
+                                    <a href="{{ route('product.list') }}">
+                                        <span class="nav_item_wrap"><span class="nav_title">Sản Phẩm</span></span>
+                                    </a>
                                 </li>
-                                <li id="menu-item-13029"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
-                                    <a href="{{route('post.index')}}"><span class="nav_item_wrap"><span class="nav_title">Bài Viết</span></span></a>
+                                <li>
+                                    <a href="{{route('post.index')}}">
+                                        <span class="nav_item_wrap"><span class="nav_title">Bài Viết</span></span>
+                                    </a>
                                 </li>
-                                <li id="menu-item-13029"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
-                                    <a href="{{route('aboutUs')}}"><span class="nav_item_wrap"><span class="nav_title">Giới Thiệu</span></span></a>
+                                <li>
+                                    <a href="{{route('aboutUs')}}">
+                                        <span class="nav_item_wrap"><span class="nav_title">Giới Thiệu</span></span>
+                                    </a>
                                 </li>
-                                <li id="menu-item-13029"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13029 menu-item-depth-0">
-                                    <a href="{{route('instructions')}}"><span class="nav_item_wrap"><span class="nav_title">Hướng Dẫn</span></span></a>
+                                <li>
+                                    <a href="{{route('instructions')}}">
+                                        <span class="nav_item_wrap"><span class="nav_title">Hướng Dẫn</span></span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
