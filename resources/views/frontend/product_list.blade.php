@@ -17,6 +17,34 @@
             <div class="content_wrap l_sidebar product_list_wrap">
                 <!--  Start Content  -->
                 <div class="content entry fr" role="main">
+                    <aside id="yith_woocommerce_ajax_search-2"
+                           class="widget woocommerce widget_product_search yith_woocommerce_ajax_search">
+                        <div class="yith-ajaxsearchform-container cmsmasters_ajax_search_premium">
+                            <form method="get" id="yith-ajaxsearchform" action="{{ route('product.list') }}">
+                                <div class="yith-ajaxsearchform-container">
+                                    <div class="yith-ajaxsearchform-select">
+                                        <input type="hidden" name="post_type" class="yit_wcas_post_type"
+                                               id="yit_wcas_post_type" value="product">
+
+                                    </div>
+                                    <div class="search-navigation_wrap">
+                                        <div class="search-navigation">
+                                            <label class="screen-reader-text" for="yith-s">Search for:</label>
+                                            <input type="search" value="{{ isset($condition['search']) ? $condition['search'] : '' }}" name="search" id="yith-s" class="yith-s empty"
+                                                   placeholder="Tìm Kiếm Sản Phẩm" data-append-to=".search-navigation"
+                                                   data-loader-icon="http://sports-store.cmsmasters.net/wp-content/plugins/yith-woocommerce-ajax-search-premium/assets/images/preloader.gif"
+                                                   data-min-chars="3" autocomplete="off">
+
+                                            <div class="autocomplete-suggestions"
+                                                 style="position: absolute; display: none; z-index: 9999;"></div>
+                                        </div>
+                                        <button type="submit" id="yith-searchsubmit"></button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </aside>
                     <div class="cmsmasters_woo_wrap_result"><p class="woocommerce-result-count">
                             Hiển thị {{ $products->firstItem() }}–{{ $products->lastItem() }} của {{ $products->total() }} sản phẩm</p>
                         <form class="woocommerce-ordering"  method="get" action="{{ route('product.list') }}">
@@ -91,34 +119,6 @@
 
                 <!--  Start Sidebar  -->
                 <div class="sidebar fl" role="complementary">
-                    <aside id="yith_woocommerce_ajax_search-2"
-                           class="widget woocommerce widget_product_search yith_woocommerce_ajax_search">
-                        <div class="yith-ajaxsearchform-container cmsmasters_ajax_search_premium">
-                            <form method="get" id="yith-ajaxsearchform" action="{{ route('product.list') }}">
-                                <div class="yith-ajaxsearchform-container">
-                                    <div class="yith-ajaxsearchform-select">
-                                        <input type="hidden" name="post_type" class="yit_wcas_post_type"
-                                               id="yit_wcas_post_type" value="product">
-
-                                    </div>
-                                    <div class="search-navigation_wrap">
-                                        <div class="search-navigation">
-                                            <label class="screen-reader-text" for="yith-s">Search for:</label>
-                                            <input type="search" value="{{ isset($condition['search']) ? $condition['search'] : '' }}" name="search" id="yith-s" class="yith-s empty"
-                                                   placeholder="Tìm Kiếm Sản Phẩm" data-append-to=".search-navigation"
-                                                   data-loader-icon="http://sports-store.cmsmasters.net/wp-content/plugins/yith-woocommerce-ajax-search-premium/assets/images/preloader.gif"
-                                                   data-min-chars="3" autocomplete="off">
-
-                                            <div class="autocomplete-suggestions"
-                                                 style="position: absolute; display: none; z-index: 9999;"></div>
-                                        </div>
-                                        <button type="submit" id="yith-searchsubmit"></button>
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
-                    </aside>
                     <aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter"><h3
                                 class="widgettitle">Lọc theo giá</h3>
                         <form method="get" action="{{ route('product.list') }}">
@@ -159,6 +159,7 @@
                                 @foreach($colors as $key => $color)
                                     <option value="{{ $key }}" {{ (isset($condition['color']) && $condition['color'] == $key) ? 'selected' : '' }}>{{ $color }}</option>
                                 @endforeach
+                                <option value="">Màu sắc khác</option>
                             </select>
                         </form>
                     </aside>
@@ -174,6 +175,7 @@
                                 @foreach($sizes as $key => $size)
                                     <option value="{{ $key }}" {{ (isset($condition['size']) && $condition['size'] == $key) ? 'selected' : '' }}>{{ $size }}</option>
                                 @endforeach
+                                <option value="">Kích cỡ khác</option>
                             </select>
                         </form>
                     </aside>

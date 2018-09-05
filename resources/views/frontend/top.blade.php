@@ -44,98 +44,6 @@
             </div>
         </div>
 
-        {{--<div class="widget widget-style-2">--}}
-            {{--<div class="cmsmasters_row_outer_parent">--}}
-                {{--<div class="cmsmasters_row_outer">--}}
-                    {{--<div class="cmsmasters_row_inner">--}}
-                        {{--<div class="cmsmasters_row_margin cmsmasters_row_columns_behavior cmsmasters_131313">--}}
-                            {{--<div class="cmsmasters_column one_third">--}}
-                                {{--<div class="cmsmasters_column_inner">--}}
-                                    {{--<div id="cmsmasters_fb_016z4vrb3b"--}}
-                                         {{--class="cmsmasters_featured_block cmsmasters_featured_block_hover">--}}
-                                        {{--<a class="cmsmasters_featured_block_link"--}}
-                                           {{--href="http://sports-store.cmsmasters.net/shop"></a>--}}
-                                        {{--<div class="featured_block_inner">--}}
-                                            {{--<div class="featured_block_text">--}}
-                                                {{--<div id="cmsmasters_heading_89db67754d42"--}}
-                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
-                                                    {{--<h3 class="cmsmasters_heading">2017</h3>--}}
-                                                {{--</div>--}}
-                                                {{--<div id="cmsmasters_heading_ef927527455cb"--}}
-                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
-                                                    {{--<h2 class="cmsmasters_heading">BEST SELLING</h2>--}}
-                                                {{--</div>--}}
-                                                {{--<div id="cmsmasters_heading_be46b6r4d74e"--}}
-                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
-                                                    {{--<h5 class="cmsmasters_heading"><a--}}
-                                                                {{--href="http://sports-store.cmsmasters.net/new-collection/">Get--}}
-                                                            {{--the discount OF 20%</a></h5>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="cmsmasters_column one_third">--}}
-                                {{--<div class="cmsmasters_column_inner">--}}
-                                    {{--<div id="cmsmasters_fb_o5eqkmubb8"--}}
-                                         {{--class="cmsmasters_featured_block cmsmasters_featured_block_hover">--}}
-                                        {{--<a class="cmsmasters_featured_block_link"--}}
-                                           {{--href="http://sports-store.cmsmasters.net/new-collection/"></a>--}}
-                                        {{--<div class="featured_block_inner">--}}
-                                            {{--<div class="featured_block_text">--}}
-                                                {{--<div id="cmsmasters_heading_89db67754d41"--}}
-                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
-                                                    {{--<h3 class="cmsmasters_heading">Summer trends</h3>--}}
-                                                {{--</div>--}}
-                                                {{--<div id="cmsmasters_heading_ef927527454cb"--}}
-                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
-                                                    {{--<h2 class="cmsmasters_heading">NEW ARRIVALS</h2>--}}
-                                                {{--</div>--}}
-                                                {{--<div id="cmsmasters_heading_be46b6r4d73e"--}}
-                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
-                                                    {{--<h5 class="cmsmasters_heading"><a--}}
-                                                                {{--href="http://sports-store.cmsmasters.net/new-collection/">Shop--}}
-                                                            {{--Now</a></h5>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="cmsmasters_column one_third">--}}
-                                {{--<div class="cmsmasters_column_inner">--}}
-                                    {{--<div id="cmsmasters_fb_q0vgmjpmb"--}}
-                                         {{--class="cmsmasters_featured_block cmsmasters_featured_block_hover">--}}
-                                        {{--<a class="cmsmasters_featured_block_link"--}}
-                                           {{--href="http://sports-store.cmsmasters.net/shop"></a>--}}
-                                        {{--<div class="featured_block_inner">--}}
-                                            {{--<div class="featured_block_text">--}}
-                                                {{--<div id="cmsmasters_heading_892db754d41"--}}
-                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
-                                                    {{--<h3 class="cmsmasters_heading">BIG SALE</h3>--}}
-                                                {{--</div>--}}
-                                                {{--<div id="cmsmasters_heading_ef92347527cb"--}}
-                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
-                                                    {{--<h2 class="cmsmasters_heading">SUMMER TRENDS</h2>--}}
-                                                {{--</div>--}}
-                                                {{--<div id="cmsmasters_heading_be4678b6d73e"--}}
-                                                     {{--class="cmsmasters_heading_wrap cmsmasters_heading_align_center">--}}
-                                                    {{--<h5 class="cmsmasters_heading"><a--}}
-                                                                {{--href="http://sports-store.cmsmasters.net/new-collection/">top--}}
-                                                            {{--brands up to 80% off</a></h5>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
@@ -222,31 +130,6 @@
             </div>
         </div>
 
-        <div class="widget widget-style-1 custom_widget_hasbg">
-            <div class="cmsmasters_row_outer_parent">
-                <div class="cmsmasters_row_outer">
-                    <div class="cmsmasters_row_inner">
-                        <div class="cmsmasters_row_margin cmsmasters_11">
-                            <div id="cmsmasters_column_e33c9de989" class="cmsmasters_column one_first">
-                                <div class="cmsmasters_column_inner">
-                                    <div id="cmsmasters_heading_64e7aa0d48" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                        <h2 class="cmsmasters_heading colorFFF">Xu Hướng Thời Trang</h2>
-                                    </div>
-                                    <div id="cmsmasters_heading_yfuldl1f1s" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
-                                        <h6 class="cmsmasters_heading colorFFF">xem video</h6>
-                                    </div>
-                                    <div id="cmsmasters_divider_c6e561e1fd" class="cl"></div>
-                                    <div class="aligncenter">
-                                        <div class="cmsmasters_img  cmsmasters_image_c"><a href="https://vimeo.com/95380310" rel="ilightbox[img_5b613257e8f53]"><img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/play.png" alt="play"></a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="widget widget-style-1">
             <div class="cmsmasters_row_outer_parent">
                 <div class="cmsmasters_row_outer">
@@ -267,21 +150,21 @@
                                         <div class="woocommerce columns-4 ">
                                             <div class="cmsmasters_products_wrap">
                                                 <ul class="products columns-4 cmsmasters_products">
-                                                @foreach($newProducts as $newProduct)
-                                                    <li class="post-13483 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts first instock shipping-taxable purchasable product-type-variable">
-                                                        <article class="cmsmasters_product">
-                                                            <figure class="cmsmasters_product_img">
-                                                                <a href="{{ route('product.show', ['product' => $newProduct->id]) }}">
-                                                                    @foreach($newProduct->productImages as $key => $productImage)
-                                                                        @if ($key < 2)
-                                                                        <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
-                                                                        @endif
-                                                                    @endforeach
-                                                                </a>
-                                                                <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $newProduct->id]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
-                                                            </figure>
-                                                            <div class="cmsmasters_product_inner">
-                                                            </div>
+                                                    @foreach($newProducts as $newProduct)
+                                                        <li class="post-13483 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts first instock shipping-taxable purchasable product-type-variable">
+                                                            <article class="cmsmasters_product">
+                                                                <figure class="cmsmasters_product_img">
+                                                                    <a href="{{ route('product.show', ['product' => $newProduct->id]) }}">
+                                                                        @foreach($newProduct->productImages as $key => $productImage)
+                                                                            @if ($key < 2)
+                                                                                <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </a>
+                                                                    <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $newProduct->id]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
+                                                                </figure>
+                                                                <div class="cmsmasters_product_inner">
+                                                                </div>
                                                                 <header class="cmsmasters_product_header entry-header">
                                                                     <h5 class="cmsmasters_product_title entry-title">
                                                                         <a href="{{ route('product.show', ['product' => $newProduct->id]) }}">
@@ -314,12 +197,37 @@
                                                                         <span class="rating dn"><strong itemprop="ratingValue">{{ $featureProduct->total_star }}</strong> out of 5</span>
                                                                     </div>
                                                                 </div>
-                                                        </article>
-                                                    </li>
-                                                @endforeach
+                                                            </article>
+                                                        </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget widget-style-1 custom_widget_hasbg">
+            <div class="cmsmasters_row_outer_parent">
+                <div class="cmsmasters_row_outer">
+                    <div class="cmsmasters_row_inner">
+                        <div class="cmsmasters_row_margin cmsmasters_11">
+                            <div id="cmsmasters_column_e33c9de989" class="cmsmasters_column one_first">
+                                <div class="cmsmasters_column_inner">
+                                    <div id="cmsmasters_heading_64e7aa0d48" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
+                                        <h2 class="cmsmasters_heading colorFFF">Xu Hướng Thời Trang</h2>
+                                    </div>
+                                    <div id="cmsmasters_heading_yfuldl1f1s" class="cmsmasters_heading_wrap cmsmasters_heading_align_center">
+                                        <h6 class="cmsmasters_heading colorFFF">xem video</h6>
+                                    </div>
+                                    <div id="cmsmasters_divider_c6e561e1fd" class="cl"></div>
+                                    <div class="aligncenter">
+                                        <div class="cmsmasters_img  cmsmasters_image_c"><a href="https://vimeo.com/95380310" rel="ilightbox[img_5b613257e8f53]"><img src="http://sports-store.cmsmasters.net/wp-content/uploads/2015/11/play.png" alt="play"></a></div>
                                     </div>
                                 </div>
                             </div>

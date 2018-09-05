@@ -18,7 +18,6 @@
                     <div class="textwidget">
                         <ul class="styled_list">
                             <li><a href="{{route('aboutUs')}}">Giới thiệu</a></li>
-                            <li><a href="{{route('instructions')}}">Hướng dẫn mua hàng</a></li>
                         </ul>
                     </div>
                 </aside>

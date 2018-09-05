@@ -51,12 +51,6 @@
                         </div>
                     @endif
                 </div>
-                <div class="mid_search_but_wrap">
-                    <a href="javascript:void(0)"
-                                                    class="mid_search_but cmsmasters_header_search_but">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </a>
-                </div>
                 <div class="cmsmasters_dynamic_cart">
                     <a href="http://sports-store.cmsmasters.net/cart/" class="cmsmasters_dynamic_cart_button">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> {{ count($cartShare) }}
@@ -105,9 +99,6 @@
                         @endif
                     </div>
                 </div>
-                <div class="cmsmasters_wishlist_wrap"><a href="http://sports-store.cmsmasters.net/wishlist/"
-                                                         class="cmsmasters_theme_icon_like cmsmasters_wishlist_button"
-                                                         rel="nofollow"></a></div><!--  Start Navigation  -->
                 <div class="mid_nav_wrap">
                     <nav>
                         <div class="menu-main-menu-container">
@@ -130,11 +121,6 @@
                                 <li>
                                     <a href="{{route('aboutUs')}}">
                                         <span class="nav_item_wrap"><span class="nav_title">Giới Thiệu</span></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('instructions')}}">
-                                        <span class="nav_item_wrap"><span class="nav_title">Hướng Dẫn</span></span>
                                     </a>
                                 </li>
                             </ul>
