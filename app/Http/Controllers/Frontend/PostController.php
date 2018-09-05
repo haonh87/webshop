@@ -24,7 +24,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $postList = $this->postService->getPostList(6)->where('id', '!=', 1);
+        $postList = $this->postService->getPostList(6, '', '', '', true);
         return view('frontend.post.post_list')->with('postList', $postList);
 
     }
@@ -38,7 +38,7 @@ class PostController extends Controller
     public function show($id)
     {
         $postDetail = Post::find($id);
-        $postWithCategory = $this->postService->getNewestPostList($this->numberNew)->where('id', '!=', 1);
+        $postWithCategory = $this->postService->getNewestPostList($this->numberNew);
         return view('frontend.post.post_detail', ['newestPost' => $postWithCategory, 'postDetail' => $postDetail]);
     }
 }

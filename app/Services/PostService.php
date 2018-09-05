@@ -27,13 +27,17 @@ class PostService
      * @param string $value
      * @param string $operation
      * @param int $pagination
+     * @param  boolean $frontend
      * @return mixed
      */
-    public function getPostList($pagination = 0, $field = '', $value = '', $operation = '')
+    public function getPostList($pagination = 0, $field = '', $value = '', $operation = '', $frontend = false)
     {
         if ($field && $value && $operation) {
             $post = Post::where($field, $operation, $value)->get();
-        } else {
+        }elseif($frontend){
+            $post = Post::where('id', '!=', 1)->paginate($pagination);
+        }
+        else {
             $post = Post::paginate($pagination);
         }
 
@@ -136,7 +140,7 @@ class PostService
      */
     public function getNewestPostList($numberPosts)
     {
-        $post = Post::latest()->limit($numberPosts)->get();
+        $post = Post::where('id', '!=', 1)->latest()->limit($numberPosts)->get();
         return $post;
     }
 
