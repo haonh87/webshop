@@ -228,3 +228,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('activate', 'Auth\ActivateController@showActivate');
     Route::get('activate/send-token', 'Auth\ActivateController@sendToken');
 });
+
+Route::get('auth/facebook', 'Frontend\CustomerLoginController@redirectToFacebook')->name('auth.facebook');
+Route::get('auth/facebook/callback', 'Frontend\CustomerLoginController@handleFacebookCallback');

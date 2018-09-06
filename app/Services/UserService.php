@@ -50,4 +50,13 @@ class UserService
     {
     	$this->userModel->find($id)->delete();
     }
+
+    public function createUserFacebook($create) {
+        $data = $this->userModel->where('facebook_id', $create['facebook_id'])->get()->first();
+        if (isset($data->id)) {
+            return $data->id;
+        }
+        $this->userModel->fill($create)->save();
+        return $this->userModel->id;
+    }
 }

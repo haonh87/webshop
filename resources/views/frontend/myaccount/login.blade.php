@@ -40,6 +40,9 @@
                                                            value="forever"> <span>Nhớ đăng nhập</span>
                                                 </label>
                                             </p>
+                                            <p class="form-row">
+                                                <a href="{{ route('auth.facebook') }}">FACEBOOK</a>
+                                            </p>
                                             @if(isset($errors) && count($errors) > 0)
                                                 <p class="error_msg" style="color: red">
                                                     {{ $errors->first() }}

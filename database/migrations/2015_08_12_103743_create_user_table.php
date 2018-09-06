@@ -18,6 +18,8 @@ class CreateUserTable extends Migration
             $table->string('email')->unique();
             $table->string('fullname')->nullable()->default(null);
             $table->string('password', 60);
+            $table->string('facebook_id', 60)->default(null);
+            $table->string('google_id', 60)->default(null);
             $table->integer('role_id')->unsigned()->default(3);
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->integer('customer_id')->unsigned()->default(null);

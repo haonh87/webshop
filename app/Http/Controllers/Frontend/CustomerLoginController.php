@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Socialite;
+use App\Services\UserService;
+use Auth;
 
 /**
  * Class CustomerLoginController
@@ -11,11 +14,14 @@ use App\Http\Controllers\Controller;
  */
 class CustomerLoginController extends Controller
 {
+
+    protected $userService;
     /**
      * CustomerLoginController constructor.
      */
-    public function __construct()
+    public function __construct(UserService $userService)
     {
+        $this->userService = $userService;
     }
 
     /**
@@ -51,6 +57,27 @@ class CustomerLoginController extends Controller
     {
         \Auth::logout();
         return redirect()->route('index');
+    }
+
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function handleFacebookCallback()
+    {
+        try {
+            $user = Socialite::driver('facebook')->user();
+            $create['username'] = $user->name;
+            $create['fullname'] = $user->name;
+            $create['email'] = $user->email;
+            $create['facebook_id'] = $user->id;
+            $userId = $this->userService->createUserFacebook($create);
+            Auth::loginUsingId($userId);
+            return redirect()->route('index');
+        } catch (Exception $e) {
+            return redirect('/');
+        }
     }
 
 }

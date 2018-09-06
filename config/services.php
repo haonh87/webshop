@@ -34,5 +34,14 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
+    'facebook' => [
+        'client_id' => '319609398785470',
+        'client_secret' => '561a01a5516f9d65be268158c20c1887',
+        'redirect' => 'http://localhost/webshop/public/auth/facebook/callback',
+    ],
+    'g' => [
+        'client_id' => '319609398785470',
+        'client_secret' => '561a01a5516f9d65be268158c20c1887',
+        'redirect' => 'http://localhost/webshop/public/auth/facebook/callback',
+    ],
 ];

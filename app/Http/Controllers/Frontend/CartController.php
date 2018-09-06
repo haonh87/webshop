@@ -185,13 +185,25 @@ class CartController extends BaseController
                 $customerId = $this->customerService->createCustomer($dataCustomer);
             } else {
                 $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
-                $customerId = $customer->id;
-                $dataCustomer = [
-                    'address' => Request::get('address'),
-                    'phone' => Request::get('mobile'),
-                    'mobile' => Request::get('mobile'),
-                ];
-                $this->customerService->udpateCustomer($dataCustomer, $customerId);
+                if (isset($customer->id)) {
+                    $customerId = $customer->id;
+                    $dataCustomer = [
+                        'address' => Request::get('address'),
+                        'phone' => Request::get('mobile'),
+                        'mobile' => Request::get('mobile'),
+                    ];
+                    $this->customerService->udpateCustomer($dataCustomer, $customerId);
+                } else {
+                    $dataCustomer = [
+                        'name' =>is_null(Request::get('username')) ? Request::get('fullname') : Request::get('username'),
+                        'address' => Request::get('address'),
+                        'gender' => 1,
+                        'phone' => Request::get('mobile'),
+                        'mobile' => Request::get('mobile'),
+                        'user_id' => Auth::user()->id,
+                    ];
+                    $customerId = $this->customerService->createCustomer($dataCustomer);
+                }
             }
 
             $dataOrder['customers_id'] = $customerId;
