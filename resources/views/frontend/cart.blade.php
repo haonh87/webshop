@@ -58,7 +58,7 @@
                                                     </td>
 
                                                     <td class="product-price" data-title="Price">
-                                                        <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->price, 2)  }}</span>
+                                                        <span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND</span></span>{{ \App\Helpers\listItemHelper::convertNumber($cart->price * $cart->qty, 2)  }}</span>
                                                     </td>
 
                                                     <td class="product-quantity" data-title="Quantity">

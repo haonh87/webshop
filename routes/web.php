@@ -32,7 +32,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('/post/{id}', ['as' => 'post.show', 'uses' => 'Frontend\PostController@show']);
 
     Route::get('/cart', ['as' => 'cart.index', 'uses' => 'Frontend\CartController@index']);
-    Route::post('/cart', ['as' => 'cart.store', 'uses' => 'Frontend\CartCotroller@store']);
+    Route::post('/cart', ['as' => 'cart.store', 'uses' => 'Frontend\CartController@store']);
     Route::get('/cart_destroy/{cart}', ['as' => 'cart.destroy', 'uses' => 'Frontend\CartController@destroy']);
     Route::post('/cart_update', ['as' => 'cart.update', 'uses' => 'Frontend\CartController@update']);
 

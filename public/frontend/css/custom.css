@@ -116,3 +116,10 @@ body .headline .headline_outer {
 .yith_magnifier_gallery li image{
     width: 100% !important;
 }
+#header .woocommerce-mini-cart__buttons .button {
+    background: #ff4301;
+    color: #fff;
+}
+#header .woocommerce-mini-cart__buttons .button:hover {
+    color: #000;
+}

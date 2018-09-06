@@ -6,9 +6,6 @@ use Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Response;
 use Cart;
-use App\Models\Order;
-use App\Models\OrderItem;
-use App\Models\Customer;
 use Auth;
 use DB;
 use App\Services\ProductColorService;
@@ -16,6 +13,7 @@ use App\Services\ProductSizeService;
 use App\Services\CustomerService;
 use App\Services\OrderService;
 use App\Services\OrderItemService;
+use App\Services\UserService;
 
 class CartController extends BaseController
 {
@@ -25,13 +23,15 @@ class CartController extends BaseController
     protected $customerService;
     protected $orderService;
     protected $orderItemService;
+    protected $userService;
 
     /**
      * Constructor function.
      * Set global fro category all page
      **/
     public function __construct(ProductSizeService $productSizeService, ProductColorService $productColorService,
-        CustomerService $customerService, OrderService $orderService, OrderItemService $orderItemService
+        CustomerService $customerService, OrderService $orderService, OrderItemService $orderItemService,
+        UserService $userService
     )
     {
         parent::__construct();
@@ -40,6 +40,7 @@ class CartController extends BaseController
         $this->customerService = $customerService;
         $this->orderService = $orderService;
         $this->orderItemService = $orderItemService;
+        $this->userService = $userService;
     }
     /**
      * Display a listing of the resource.
@@ -130,9 +131,6 @@ class CartController extends BaseController
 
     public function getCheckout()
     {
-        if(!Auth::check()) {
-            return view('frontend.myaccount.login')->with('message_account', 'Bạn phải đăng nhập trước khi thanh toán hóa đơn!');
-        }
         if(Cart::total() == 0){
             return redirect()->back();
         }
@@ -144,43 +142,72 @@ class CartController extends BaseController
 
     public function postCheckout()
     {
-        if(!Auth::check()) {
-            return view('frontend.myaccount.login')->with('message_account', 'Bạn phải đăng nhập trước khi thanh toán hóa đơn!');
-        } else {
-            try {
-                //save data to order
-                $dataOrder = [];
-                $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
-                $dataOrder['customers_id'] = $customer->id;
-                $dataOrder['payment_type'] = 'off line';
-                $dataOrder['status'] = 1;
-                $dataOrder['deliver_date'] = date('Y-m-d H:i:s');
-                $dataOrder['created_at'] = date('Y-m-d H:i:s');
-                $dataOrder['updated_at'] = date('Y-m-d H:i:s');
-                $dataOrder['note'] = Request::get('order_comments');
-                $dataOrder['total'] = Request::get('total_cart');
-                $orderId = $this->orderService->createOrder($dataOrder);
-                //save data to order item
-                $cartContent = Cart::content();
-                $dataOrderItems = [];
-                foreach ($cartContent as $cart) {
-                    $dataOrderItem = [];
-                    $dataOrderItem['order_id'] = $orderId;
-                    $dataOrderItem['product_id'] = $cart->id;
-                    $dataOrderItem['product_color_id'] = $cart->options->color;
-                    $dataOrderItem['product_size_id'] = $cart->options->size;
-                    $dataOrderItem['quantity'] = $cart->qty;
-                    $dataOrderItem['created_at'] = date('Y-m-d H:i:s');
-                    $dataOrderItem['updated_at'] = date('Y-m-d H:i:s');
-                    array_push($dataOrderItems,$dataOrderItem);
+        try {
+            DB::beginTransaction();
+            //save data to order
+            $dataOrder = [];
+
+            if(!Auth::check()) {
+                //save customer
+                $dataUser = array();
+                $dataCustomer = array();
+                if (!is_null( Request::get('username'))) {
+                    $dataUser = [
+                        'username' => Request::get('username'),
+                        'fullname' => Request::get('fullname'),
+                        'email' => Request::get('email'),
+                        'password' => Request::get('password'),
+                        'role_id' => 3,
+                        'is_active' => 1
+                    ];
                 }
-                $this->orderItemService->createOrderItem($dataOrderItems);
-                DB::commit();
-            } catch (\Exception $e) {
-                DB::rollback();
-                abort('404');
+                $dataCustomer = [
+                    'name' =>is_null(Request::get('username')) ? Request::get('fullname') : Request::get('username'),
+                    'address' => Request::get('address'),
+                    'gender' => 1,
+                    'phone' => Request::get('mobile'),
+                    'mobile' => Request::get('mobile'),
+                ];
+                if (!empty($dataUser)) {
+                    $userId = $this->userService->createUser($dataUser);
+                }
+                if (isset($userId)) {
+                    $dataCustomer['user_id'] = $userId;
+                }
+                $customerId = $this->customerService->createCustomer($dataCustomer);
+            } else {
+                $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
+                $customerId = $customer->id;
             }
+
+            $dataOrder['customers_id'] = $customerId;
+            $dataOrder['payment_type'] = 'off line';
+            $dataOrder['status'] = 1;
+            $dataOrder['deliver_date'] = date('Y-m-d H:i:s');
+            $dataOrder['created_at'] = date('Y-m-d H:i:s');
+            $dataOrder['updated_at'] = date('Y-m-d H:i:s');
+            $dataOrder['note'] = Request::get('order_comments');
+            $dataOrder['total'] = Request::get('total_cart');
+            $orderId = $this->orderService->createOrder($dataOrder);
             //save data to order item
+            $cartContent = Cart::content();
+            $dataOrderItems = [];
+            foreach ($cartContent as $cart) {
+                $dataOrderItem = [];
+                $dataOrderItem['order_id'] = $orderId;
+                $dataOrderItem['product_id'] = $cart->id;
+                $dataOrderItem['product_color_id'] = isset($cart->options->color) ? $cart->options->color : 0;
+                $dataOrderItem['product_size_id'] = $cart->options->size;
+                $dataOrderItem['quantity'] = $cart->qty;
+                $dataOrderItem['created_at'] = date('Y-m-d H:i:s');
+                $dataOrderItem['updated_at'] = date('Y-m-d H:i:s');
+                array_push($dataOrderItems,$dataOrderItem);
+            }
+            $this->orderItemService->createOrderItem($dataOrderItems);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->with('message_cart', $e->getMessage());
         }
         Cart::destroy();
         return \Redirect()->route('index')->with('message_cart', 'Mua sản phẩm thành công!');

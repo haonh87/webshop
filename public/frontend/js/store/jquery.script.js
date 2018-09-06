@@ -1585,4 +1585,14 @@ function uniqID() {
 	
 	return Math.round(new Date().getTime() + (Math.random() * 1000000));
 }
-
+if (jQuery('#createaccount').length > 0) {
+    jQuery('#createaccount').on('click', function(event) {
+    	if (jQuery(this).is(':checked')) {
+            jQuery('#create-account-wrap').show();
+            jQuery('#create-account-wrap input').attr('required', 'true');
+		} else {
+            jQuery('#create-account-wrap').hide();
+            jQuery('#create-account-wrap input').removeAttr('required');
+		}
+	});
+}
