@@ -39,9 +39,9 @@ return [
         'client_secret' => '561a01a5516f9d65be268158c20c1887',
         'redirect' => 'http://localhost/webshop/public/auth/facebook/callback',
     ],
-    'g' => [
-        'client_id' => '319609398785470',
-        'client_secret' => '561a01a5516f9d65be268158c20c1887',
-        'redirect' => 'http://localhost/webshop/public/auth/facebook/callback',
+    'google' => [
+        'client_id'     => '40670416537-2hqse1vg82kppqc3auor6i1pd5k9r3q7.apps.googleusercontent.com',
+        'client_secret' => '6yRt20GSN74W6xSgkDx_9cJI',
+        'redirect'      => 'http://localhost/webshop/public/auth/google/callback'
     ],
 ];

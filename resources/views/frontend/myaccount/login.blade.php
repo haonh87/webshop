@@ -42,6 +42,7 @@
                                             </p>
                                             <p class="form-row">
                                                 <a href="{{ route('auth.facebook') }}">FACEBOOK</a>
+                                                <a href="{{ route('auth.google') }}" style="margin-left: 10px">GOOGLE</a>
                                             </p>
                                             @if(isset($errors) && count($errors) > 0)
                                                 <p class="error_msg" style="color: red">

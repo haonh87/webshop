@@ -231,3 +231,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('auth/facebook', 'Frontend\CustomerLoginController@redirectToFacebook')->name('auth.facebook');
 Route::get('auth/facebook/callback', 'Frontend\CustomerLoginController@handleFacebookCallback');
+
+Route::get('auth/google', 'Frontend\CustomerLoginController@redirectToGoogle')->name('auth.google');
+Route::get('auth/google/callback', 'Frontend\CustomerLoginController@handleGoogleCallback');

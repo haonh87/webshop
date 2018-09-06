@@ -80,4 +80,25 @@ class CustomerLoginController extends Controller
         }
     }
 
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+            $create['username'] = $user->name;
+            $create['fullname'] = $user->name;
+            $create['email'] = $user->email;
+            $create['google_id'] = $user->id;
+            $userId = $this->userService->createUserGoogle($create);
+            Auth::loginUsingId($userId);
+            return redirect()->route('index');
+        } catch (Exception $e) {
+            return redirect('/');
+        }
+    }
+
 }

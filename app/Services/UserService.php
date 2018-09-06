@@ -59,4 +59,13 @@ class UserService
         $this->userModel->fill($create)->save();
         return $this->userModel->id;
     }
+
+    public function createUserGoogle($create) {
+        $data = $this->userModel->where('google_id', $create['google_id'])->get()->first();
+        if (isset($data->id)) {
+            return $data->id;
+        }
+        $this->userModel->fill($create)->save();
+        return $this->userModel->id;
+    }
 }
