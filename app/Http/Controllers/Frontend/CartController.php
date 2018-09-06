@@ -131,12 +131,17 @@ class CartController extends BaseController
 
     public function getCheckout()
     {
+        $customer = '';
         if(Cart::total() == 0){
             return redirect()->back();
         }
         $carts = Cart::content();
+        if(Auth::check()) {
+            $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
+        }
         return view('frontend.content.checkout', [
             'carts' => $carts,
+            'customer' => $customer
         ]);
     }
 

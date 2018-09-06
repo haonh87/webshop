@@ -16,28 +16,28 @@
 
                                 <div style="margin-bottom: 20px; margin-left: 0px; margin-right: 0px; width: 100%" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                     <label for="fullname">Tên đầy đủ</label>
-                                    <input required type="text" class="form-control" id="fullname" name="fullname" placeholder="Tên đầy đủ">
+                                    <input value="{{ isset(Auth::user()->fullname) ? Auth::user()->fullname : '' }}" required type="text" class="form-control" id="fullname" name="fullname" placeholder="Tên đầy đủ">
                                     <span class="has-error"></span>
                                 </div>
 
                                 <div style="margin-bottom: 20px; margin-left: 0px; margin-right: 0px; width: 100%" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                     <label for="fullname">Địa chỉ</label>
-                                    <input required type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ">
+                                    <input value="{{ isset($customer->address) ? $customer->address : '' }}" required type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ">
                                     <span class="has-error"></span>
                                 </div>
 
                                 <div style="margin-bottom: 20px; margin-left: 0px; margin-right: 0px; width: 100%" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                     <label for="fullname">Số điện thoại</label>
-                                    <input required type="text" class="form-control" id="mobile" name="mobile" placeholder="Số điện thoại">
+                                    <input value="{{ isset($customer->mobile) ? $customer->mobile : '' }}" required type="text" class="form-control" id="mobile" name="mobile" placeholder="Số điện thoại">
                                     <span class="has-error"></span>
                                 </div>
 
                                 <div style="margin-bottom: 20px; margin-left: 0px; margin-right: 0px; width: 100%" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                     <label for="txtemail">Email</label>
-                                    <input type="email" required class="form-control" id="email" name="email" placeholder="Email" value="">
+                                    <input value="{{ isset(Auth::user()->email) ? Auth::user()->email : '' }}" type="email" required class="form-control" id="email" name="email" placeholder="Email" value="">
                                     <span class="has-error"></span>
                                 </div>
-
+                                @if (!Auth::check())
                                 <div class="woocommerce-account-fields">
 
                                     <p style="width: 100%; margin-left: 0px; margin-right: 0px; padding-bottom: 5px;" class="form-row form-row-wide create-account woocommerce-validated">
@@ -65,7 +65,7 @@
 
 
                                 </div>
-
+                                @endif
                                 <h3>Thêm thông tin đơn hàng</h3>
                                 <div class="woocommerce-additional-fields__field-wrapper">
                                     <p class="form-row notes" style="width: 100%; margin: 0px;" id="order_comments_field" data-priority=""><label
