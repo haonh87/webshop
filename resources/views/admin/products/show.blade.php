@@ -14,7 +14,7 @@
         <th>Tên</th>
         <th>Mô tả</th>
         <th>Lượt xem</th>
-        <th>Lượng bán</th>
+        <th>Số sản phẩm</th>
       </tr>
     </thead>
     <tbody>
@@ -36,7 +36,7 @@
         @if(!empty($product->sell_count))
             <span>{{$product->sell_count}}</span>
         @else
-            <span>0</span>
+            <span>Hết hàng</span>
         @endif
         </td>
       </tr>

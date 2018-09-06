@@ -52,6 +52,11 @@
                 </div>
 
                 <div class="form-group col-sm-4 col-md-8">
+                    <label for="sell_count">Số sản phẩm</label>
+                    <input type="number" class="form-control" value="{{ $productData->sell_count }}" id="sell_count" name="sell_count" placeholder="Số sản phẩm" required>
+                </div>
+
+                <div class="form-group col-sm-4 col-md-8">
                     <label for="description">Mô tả</label>
                     <textarea class="form-control" rows="5" id="description" name="description" required>{{ $productData->description }}</textarea>
                 </div>

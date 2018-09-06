@@ -14,7 +14,7 @@ class Product extends Model
 {
 
      protected $fillable = array('name', 'create_user_id', 'category_id', 'product_color_ids', 'price',
-            'model_ids', 'description', 'content', 'modified_user_id', 'product_size_ids'
+            'model_ids', 'description', 'content', 'modified_user_id', 'product_size_ids','sell_count'
          );
 
     /**

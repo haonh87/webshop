@@ -41,6 +41,7 @@
                 <th>Giá</th>
                 <th>Danh mục</th>
                 <th>Hình ảnh</th>
+                <th>Số sản phẩm</th>
                 <th>Hành động</th>
             </tr>
             @foreach($products as $product)
@@ -56,6 +57,7 @@
                             <img src="{{ asset('images/' . $product->productImages[0]->img_path) }}" class="img-rounded compress" style="width:7em; height:5em;"/>
                         </a>
                     </td>
+                    <td>{{ !empty($product->sell_count) ? $product->sell_count : 'hết hàng' }}</td>
                     <td>
                         <div style=" display: table">
                             <div style="display: table-cell;  vertical-align: center;">
