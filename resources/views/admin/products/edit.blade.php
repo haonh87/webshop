@@ -21,7 +21,7 @@
             </div>
         @endif
         <div class="page-header">
-            <h1>Tạo mới sản phẩm</h1>
+            <h1>Sửa sản phẩm</h1>
         </div>
         <div class="container">
             <form action="{{ route('products.update', $productData->id) }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="form-group col-sm-4 col-md-8">
-                    <label for="model">Mô hình</label>
+                    <label for="model">Mã sản phẩm</label>
                     <input type="text" class="form-control" value="{{ $productData->model_ids }}" id="model" name="model_ids" placeholder="Mô hình sản phẩm" required>
                 </div>
 

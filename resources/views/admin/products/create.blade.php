@@ -41,7 +41,7 @@
             </div>
 
             <div class="form-group col-sm-4 col-md-8">
-              <label for="model">Mô hình</label>
+              <label for="model">Mã sản phẩm</label>
               <input type="text" class="form-control" id="model" name="model_ids" placeholder="Mô hình sản phẩm" required>
             </div>
 

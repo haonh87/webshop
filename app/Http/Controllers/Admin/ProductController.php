@@ -85,7 +85,7 @@ class ProductController extends Controller
             return redirect()->route('products.show', ['poduct_id'=>$productId])->withMassage('update success!');
         } catch (\Exception $e) {
             DB::rollback();
-            abort('404');
+            return redirect()->back()->with('message_cart', $e->getMessage());
         }
     }
 
@@ -143,7 +143,7 @@ class ProductController extends Controller
             return redirect()->route('products.show', ['poduct_id'=>$id])->withMassage('update success!');
         } catch (\Exception $e) {
             DB::rollback();
-            abort('404');
+            return redirect()->back()->with('message_cart', $e->getMessage());
         }
     }
 
