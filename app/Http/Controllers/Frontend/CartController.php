@@ -186,6 +186,12 @@ class CartController extends BaseController
             } else {
                 $customer = $this->customerService->findCustomerByUser(Auth::user()->id);
                 $customerId = $customer->id;
+                $dataCustomer = [
+                    'address' => Request::get('address'),
+                    'phone' => Request::get('mobile'),
+                    'mobile' => Request::get('mobile'),
+                ];
+                $this->customerService->udpateCustomer($dataCustomer, $customerId);
             }
 
             $dataOrder['customers_id'] = $customerId;
