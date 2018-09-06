@@ -141,4 +141,13 @@ class ProductService
             ->groupBy('products.id')->whereIn('products.id', $ids);
         return $result;
     }
+
+    public function updateSellCount($id, $qty) {
+        $product = $this->productModel->find($id);
+        $dataProduct['sell_count'] = $product->sell_count - $qty;
+        if ($dataProduct['sell_count'] < 0) {
+            $dataProduct['sell_count'] = 0;
+        }
+        $product->update($dataProduct);
+    }
 }

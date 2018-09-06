@@ -14,6 +14,7 @@ use App\Services\CustomerService;
 use App\Services\OrderService;
 use App\Services\OrderItemService;
 use App\Services\UserService;
+use App\Services\ProductService;
 
 class CartController extends BaseController
 {
@@ -24,6 +25,7 @@ class CartController extends BaseController
     protected $orderService;
     protected $orderItemService;
     protected $userService;
+    protected $productService;
 
     /**
      * Constructor function.
@@ -31,7 +33,7 @@ class CartController extends BaseController
      **/
     public function __construct(ProductSizeService $productSizeService, ProductColorService $productColorService,
         CustomerService $customerService, OrderService $orderService, OrderItemService $orderItemService,
-        UserService $userService
+        UserService $userService, ProductService $productService
     )
     {
         parent::__construct();
@@ -41,6 +43,7 @@ class CartController extends BaseController
         $this->orderService = $orderService;
         $this->orderItemService = $orderItemService;
         $this->userService = $userService;
+        $this->productService = $productService;
     }
     /**
      * Display a listing of the resource.
@@ -207,6 +210,7 @@ class CartController extends BaseController
                 $dataOrderItem['created_at'] = date('Y-m-d H:i:s');
                 $dataOrderItem['updated_at'] = date('Y-m-d H:i:s');
                 array_push($dataOrderItems,$dataOrderItem);
+                $this->productService->updateSellCount($cart->id, $cart->qty);
             }
             $this->orderItemService->createOrderItem($dataOrderItems);
             DB::commit();

@@ -27,7 +27,7 @@
                             <th>Màu</th>
                             <th>Độ lớn</th>
                             <th>Giá</th>
-                            <th>Chất lượng</th>
+                            <th>Số lượng</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -46,8 +46,8 @@
                                 </a>
                             </td>
                             <td>{{ $item->product->content }}</td>
-                            <td>{{ $item->color->name }}</td>
-                            <td>{{ $item->size->name }}</td>
+                            <td>{{ isset($item->color->name) ? $item->color->name : '' }}</td>
+                            <td>{{ isset($item->size->name) ? $item->size->name : '' }}</td>
                             <td>{{ $item->product->price }}</td>
                             <td>{{ $item->quantity }}</td>
                           </tr>
