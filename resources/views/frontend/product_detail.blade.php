@@ -200,10 +200,10 @@
                         <div class="clear"></div><aside class="share_posts">
 
                             <div class="share_posts_inner">
-                                <a href="https://www.facebook.com/sharer/sharer.php?display=popup&amp;u=http%3A%2F%2Fsports-store.cmsmasters.net%2Fproduct%2Fmens-sport-quick-dry-t-shirt-grey%2F">Facebook</a>
-                                <a href="https://plus.google.com/share?url=http%3A%2F%2Fsports-store.cmsmasters.net%2Fproduct%2Fmens-sport-quick-dry-t-shirt-grey%2F">Google+</a>
-                                <a href="https://twitter.com/intent/tweet?text=Check+out+%27Men%E2%80%99s+Sport+Quick+Dry+T-Shirt+Grey%27+on+Sports+Store+website&amp;url=http%3A%2F%2Fsports-store.cmsmasters.net%2Fproduct%2Fmens-sport-quick-dry-t-shirt-grey%2F">Twitter</a>
-                                <a href="https://pinterest.com/pin/create/button/?url=http%3A%2F%2Fsports-store.cmsmasters.net%2Fproduct%2Fmens-sport-quick-dry-t-shirt-grey%2F&amp;media=http%3A%2F%2Fsports-store.cmsmasters.net%2Fwp-content%2Fuploads%2F2017%2F05%2F1-6.jpg&amp;description=Men’s Sport Quick Dry T-Shirt Grey">Pinterest</a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?display=popup&amp;u={{ route('product.show', ['product' => $product->id]) }}">Facebook</a>
+                                <a href="https://plus.google.com/share?url={{ route('product.show', ['product' => $product->id]) }}">Google+</a>
+                                <a href="https://twitter.com/intent/tweet?text=Check+out+%27Men%E2%80%99s+Sport+Quick+Dry+T-Shirt+Grey%27+on+Sports+Store+website&amp;url={{ route('product.show', ['product' => $product->id]) }}">Twitter</a>
+                                <a href="https://pinterest.com/pin/create/button/?url={{ route('product.show', ['product' => $product->id]) }}&amp;media=http%3A%2F%2Fsports-store.cmsmasters.net%2Fwp-content%2Fuploads%2F2017%2F05%2F1-6.jpg&amp;description=Men’s Sport Quick Dry T-Shirt Grey">Pinterest</a>
                             </div>
                         </aside>
                     </div>
