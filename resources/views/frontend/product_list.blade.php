@@ -159,7 +159,6 @@
                                 @foreach($colors as $key => $color)
                                     <option value="{{ $key }}" {{ (isset($condition['color']) && $condition['color'] == $key) ? 'selected' : '' }}>{{ $color }}</option>
                                 @endforeach
-                                <option value="">Màu sắc khác</option>
                             </select>
                         </form>
                     </aside>
@@ -175,7 +174,6 @@
                                 @foreach($sizes as $key => $size)
                                     <option value="{{ $key }}" {{ (isset($condition['size']) && $condition['size'] == $key) ? 'selected' : '' }}>{{ $size }}</option>
                                 @endforeach
-                                <option value="">Kích cỡ khác</option>
                             </select>
                         </form>
                     </aside>

@@ -6,10 +6,9 @@
                     <h3 class="widgettitle">Liên Hệ</h3>
                     <div class="textwidget">
                         <ul class="styled_list">
-                            <li><a href="#"><i class="fa fa-map-marker-alt"></i>{{\App\Models\Configuration::findOrFail(2)->value}}</a></li>
-                            <li><a href="#">{{\App\Models\Configuration::findOrFail(3)->value}}</a></li>
-                            <li><a href="#">{{\App\Models\Configuration::findOrFail(4)->value}}</a></li>
-                            <li><a href="#">{{\App\Models\Configuration::findOrFail(5)->value}}</a></li>
+                            @foreach($listConfig as $config)
+                                <li><a href="#">{{@$config->value}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </aside>

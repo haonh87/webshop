@@ -21,4 +21,10 @@ class Configuration extends Model
      * @var string
      */
     protected $primaryKey = 'id';
+
+    const COPYRIGHT_ID = 1;
+    const PHONE_NUMBER_ID = 3;
+    const ADDRESS_ID = 2;
+    const MOBILE_PHONE_ID = 4;
+    const EMAIL_ID = 5;
 }

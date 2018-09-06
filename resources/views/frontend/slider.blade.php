@@ -12,7 +12,8 @@
                                         <ul>    <!-- SLIDE  -->
                                             <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="http://sports-store.cmsmasters.net/wp-content/uploads/2015/04/1-2-100x50.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                                 <!-- MAIN IMAGE -->
-                                                <img src="{{ asset("images/slider/1-2.jpg") }}" alt="" title="1" width="1920" height="603" data-bgposition="10% 0%" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina="">
+                                                <a href="{{route('index')}}">
+                                                <img src="{{\App\Models\Configuration::where('id', 6)->get()[0]['value']}}" alt="" title="1" width="1920" height="603" data-bgposition="10% 0%" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina="">
                                                 <!-- LAYERS -->
 
                                                 <!-- LAYER NR. 1 -->
@@ -31,11 +32,13 @@
 
                                                 <!-- LAYER NR. 4 -->
                                                 <div class="tp-caption   tp-resizeme" id="slide-1-layer-7" data-x="['left','left','left','left']" data-hoffset="['710','370','147','12']" data-y="['top','top','top','top']" data-voffset="['107','249','170','198']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames="[{&quot;delay&quot;:0,&quot;speed&quot;:300,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]" data-textalign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 8;"><img src="images/slider/wild.png" alt="" data-ww="['528px','528px','528px','439px']" data-hh="['309px','309px','309px','257px']" width="528" height="309" data-no-retina=""></div>
+                                                </a>
                                             </li>
                                             <!-- SLIDE  -->
                                             <li data-index="rs-2" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="http://sports-store.cmsmasters.net/wp-content/uploads/2017/06/slide-2-100x50.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                                 <!-- MAIN IMAGE -->
-                                                <img src="{{ asset("images/slider/slide-2.jpg") }}" alt="" title="slide-2" width="1920" height="603" data-bgposition="40% 0%" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina="">
+                                                <a href="{{route('index')}}">
+                                                <img src="{{\App\Models\Configuration::where('id', 6)->get()[0]['value']}}" alt="" title="slide-2" width="1920" height="603" data-bgposition="40% 0%" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina="">
                                                 <!-- LAYERS -->
 
                                                 <!-- LAYER NR. 5 -->
@@ -52,11 +55,13 @@
                                                 <!-- LAYER NR. 8 -->
                                                 <h2 class="tp-caption   tp-resizeme" id="slide-2-layer-4" data-x="['left','left','left','left']" data-hoffset="['1080','578','388','57']" data-y="['top','top','top','top']" data-voffset="['530','682','551','669']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-frames="[{&quot;delay&quot;:0,&quot;speed&quot;:300,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]" data-textalign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 8; white-space: nowrap; font-size: 22px; line-height: 22px; font-weight: 700; color: #ffffff; letter-spacing: 0px;font-style:italic;">
                                                     THE REVOLUTION BEGINS WITH JOGGING </h2>
+                                                </a>
                                             </li>
                                             <!-- SLIDE  -->
                                             <li data-index="rs-3" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="images/slider/slide-3-100x50.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                                 <!-- MAIN IMAGE -->
-                                                <img src="{{ asset("images/slider/slide-3.jpg") }}" alt="" title="slide-3" width="1920" height="603" data-bgposition="65% 0%" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina="">
+                                                <a href="{{route('index')}}">
+                                                <img src="{{ \App\Models\Configuration::where('id', 6)->get()[0]['value'] }}" alt="" title="slide-3" width="1920" height="603" data-bgposition="65% 0%" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina="">
                                                 <!-- LAYERS -->
 
                                                 <!-- LAYER NR. 9 -->
@@ -70,6 +75,7 @@
 
                                                 <!-- LAYER NR. 11 -->
                                                 <div class="tp-caption   tp-resizeme" id="slide-3-layer-1" data-x="['left','left','left','left']" data-hoffset="['385','50','50','16']" data-y="['top','top','top','top']" data-voffset="['223','254','254','178']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on" data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:300,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]" data-textalign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 7;"><img src="images/slider/just-run.png" alt="" data-ww="['681px','681px','681px','437px']" data-hh="['187px','187px','187px','120px']" width="681" height="187" data-no-retina=""></div>
+                                                </a>
                                             </li>
                                         </ul>
                                         <script>var htmlDiv = document.getElementById("rs-plugin-settings-inline-css");

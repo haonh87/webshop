@@ -31,8 +31,19 @@ class AppServiceProvider extends ServiceProvider
             $count_wishlist = Auth::user()->wishList()->count();
         }
 
+        $listConfig = \App\Models\Configuration::whereIn('id', [
+            \App\Models\Configuration::ADDRESS_ID,
+            \App\Models\Configuration::PHONE_NUMBER_ID,
+            \App\Models\Configuration::MOBILE_PHONE_ID,
+            \App\Models\Configuration::EMAIL_ID])
+            ->get();
+
+        $footerCopyright = \App\Models\Configuration::where('id', \App\Models\Configuration::COPYRIGHT_ID)->first();
+
         \View::share('menu', $menu);
         \View::share('count_wishlist', $count_wishlist);
+        \View::share('listConfig', $listConfig);
+        \View::share('footerCopyright', $footerCopyright);
     }
 
     /**
