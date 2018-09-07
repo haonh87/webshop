@@ -170,7 +170,21 @@
                                         <input type="number" id="quantity_5b6f9b0e5a68e" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" aria-labelledby="">
                                     </div>
 
-                                    <button type="submit" class="single_add_to_cart_button button alt">Thêm Giỏ Hàng</button>
+                                    <button type="submit" class="single_add_to_cart_button button alt">
+                                        @php
+                                        $checkAddCart = 'Thêm Giỏ Hàng';
+                                        @endphp
+                                        @if(count($cartShare) > 0)
+                                            @foreach($cartShare as $cart)
+                                                @if($cart->id == $product->id)
+                                                    @php
+                                                    $checkAddCart = 'Đã Thêm Giỏ Hàng';
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                        {{ $checkAddCart }}
+                                    </button>
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <input type="hidden" name="product_name" value="{{ $product->name }}">
                                     <input type="hidden" name="product_price" value="{{ $product->price }}">
