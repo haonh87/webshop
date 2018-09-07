@@ -19,7 +19,8 @@ class Category extends Model
         'image_url',
         'lang_code',
         'create_user_id',
-        'modified_user_id'
+        'modified_user_id',
+        'slug'
     ];
 
     /**

@@ -34,6 +34,7 @@ class ProductService
         $dataProduct['product_color_ids'] = isset($dataColor) ? implode(',', $dataColor) : '';
         $dataProduct['product_size_ids'] = isset($dataProduct['product_size_ids']) ? implode(',', $dataProduct['product_size_ids']) : '';
         $dataProduct['create_user_id'] = Auth::user()->id;
+        $dataProduct['slug'] = str_slug($dataProduct['name'], '-');
         $this->productModel->fill($dataProduct)->save();
         return $this->productModel->id;
     }
@@ -43,6 +44,7 @@ class ProductService
         $dataProduct['product_color_ids'] = isset($dataColor) ? implode(',', $dataColor) : '';
         $dataProduct['product_size_ids'] = isset($dataProduct['product_size_ids']) ? implode(',', $dataProduct['product_size_ids']) : '';
         $dataProduct['modified_user_id'] = Auth::user()->id;
+        $dataProduct['slug'] = str_slug($dataProduct['name'], '-');
         $product = $this->productModel->find($id);
         $product->update($dataProduct);
     }
