@@ -29,9 +29,9 @@ class ProductService
         return $this->productModel->where('id', $id)->with('category')->with('productImages')->first();
     }
 
-    public function saveProduct($dataProduct, $dataColor)
+    public function saveProduct($dataProduct)
     {
-        $dataProduct['product_color_ids'] = isset($dataColor) ? implode(',', $dataColor) : '';
+        $dataProduct['product_color_ids'] = isset($dataProduct['product_color_ids']) ? implode(',', $dataProduct['product_color_ids']) : '';
         $dataProduct['product_size_ids'] = isset($dataProduct['product_size_ids']) ? implode(',', $dataProduct['product_size_ids']) : '';
         $dataProduct['create_user_id'] = Auth::user()->id;
         $dataProduct['slug'] = str_slug($dataProduct['name'], '-');
@@ -39,9 +39,9 @@ class ProductService
         return $this->productModel->id;
     }
 
-    public function updateProduct($dataProduct, $dataColor, $id)
+    public function updateProduct($dataProduct, $id)
     {
-        $dataProduct['product_color_ids'] = isset($dataColor) ? implode(',', $dataColor) : '';
+        $dataProduct['product_color_ids'] = isset($dataProduct['product_color_ids']) ? implode(',', $dataProduct['product_color_ids']) : '';
         $dataProduct['product_size_ids'] = isset($dataProduct['product_size_ids']) ? implode(',', $dataProduct['product_size_ids']) : '';
         $dataProduct['modified_user_id'] = Auth::user()->id;
         $dataProduct['slug'] = str_slug($dataProduct['name'], '-');

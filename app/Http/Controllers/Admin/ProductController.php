@@ -77,7 +77,7 @@ class ProductController extends Controller
             $dataImage = $request->file('image');
             $allColor = $this->productColorService->getAllColor();
             $dataProduct = $request->except('_token', 'color', 'image');
-            $productId = $this->productService->saveProduct($dataProduct, $dataColor);
+            $productId = $this->productService->saveProduct($dataProduct);
             if (!empty($dataImage)) {
                 $this->productImageService->upLoadImage($dataImage, $productId, $dataColor, $dataProduct['name'], $allColor);
             }
@@ -132,7 +132,7 @@ class ProductController extends Controller
             $dataImageRemove = $request->input('remove_image');
             $allColor = $this->productColorService->getAllColor();
             $dataProduct = $request->except('_token', 'color', 'image', 'remove_image', '_method');
-            $this->productService->updateProduct($dataProduct, $dataColor, $id);
+            $this->productService->updateProduct($dataProduct, $id);
             if (!empty($dataImageRemove)) {
                 $this->productImageService->removeImage($dataImageRemove, $id);
             }
