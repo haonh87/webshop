@@ -5,7 +5,7 @@
     <script type='text/javascript' src='http://sports-store.cmsmasters.net/wp-content/plugins/woocommerce/assets/js/accounting/accounting.min.js'></script>
     <script type='text/javascript'>
         /* <![CDATA[ */
-        var woocommerce_price_slider_params = {"currency_format_num_decimals":"0","currency_format_symbol":"\u00a3","currency_format_decimal_sep":".","currency_format_thousand_sep":",","currency_format":"<span>%s<\/span>%v"};
+        var woocommerce_price_slider_params = {"currency_format_num_decimals":"0","currency_format_symbol":"VND ","currency_format_decimal_sep":".","currency_format_thousand_sep":",","currency_format":"<span>%s<\/span>%v"};
         /* ]]> */
     </script>
 @stop
@@ -143,7 +143,7 @@
                                     <input type="text" id="max_price" name="max_price" value="{{ isset($condition['max_price']) ? $condition['max_price'] : $maxMinPrice->max_price }}" data-max="{{ (int)$maxMinPrice->max_price }}" placeholder="Max price">
                                     <button type="submit" class="button">Lọc</button>
                                     <div class="price_label" style="display:none;">
-                                        Giá: <span class="from"></span> — <span class="to"></span>
+                                        Giá: <span class="from"><span>VND</span></span> — <span class="to"><span>VND</span></span>
                                     </div>
 
                                     <div class="clear"></div>
@@ -180,7 +180,6 @@
                                 @foreach($colors as $key => $color)
                                     <option value="{{ $key }}" {{ (isset($condition['color']) && $condition['color'] == $key) ? 'selected' : '' }}>{{ $color }}</option>
                                 @endforeach
-                                <option value="">Màu sắc khác</option>
                             </select>
                         </form>
                     </aside>
@@ -203,7 +202,6 @@
                                 @foreach($sizes as $key => $size)
                                     <option value="{{ $key }}" {{ (isset($condition['size']) && $condition['size'] == $key) ? 'selected' : '' }}>{{ $size }}</option>
                                 @endforeach
-                                <option value="">Kích cỡ khác</option>
                             </select>
                         </form>
                     </aside>
