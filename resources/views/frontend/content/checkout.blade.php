@@ -42,7 +42,7 @@
 
                                     <p style="width: 100%; margin-left: 0px; margin-right: 0px; padding-bottom: 5px;" class="form-row form-row-wide create-account woocommerce-validated">
                                         <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                                            <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" type="checkbox" name="createaccount" value="1"> <span>Create an account?</span>
+                                            <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" type="checkbox" name="createaccount" value="1"> <span>Bạn muốn tạo tài khoản?</span>
                                         </label>
                                     </p>
 
