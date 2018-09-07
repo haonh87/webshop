@@ -79,6 +79,9 @@ class IndexController extends BaseController
         $dataRequest = $request->all();
         $category = $this->categoryService->findIdByName($categoryName);
         $categoryId = isset($category) ? $category->id : '';
+        if (isset($dataRequest['category'])) {
+            $categoryId = $dataRequest['category'];
+        }
         $products = $this->productService->getAllProductForView($categoryId, $dataRequest)->paginate($this->numberProductList);
         $maxMinPrice = $this->productService->getMaxMinPrice();
         $categories = $this->categoryService->getAllCategories();
