@@ -1,5 +1,17 @@
 @extends('layouts.master')
 @section('script')
+    <script>
+        jQuery(document).on('click', '.rating span', function () {
+            var rateNumber = jQuery(this).attr('data-value');
+            jQuery('.rating-number').val(rateNumber);
+            jQuery('.rating span').removeClass('active');
+            jQuery('.rating span').each(function (index) {
+                if (jQuery(this).attr('data-value') <= rateNumber) {
+                    jQuery(this).addClass('active');
+                }
+            })
+        });
+    </script>
 @stop
 @section('content')
     <div id="content">
@@ -304,18 +316,18 @@
                         <div class="entry-content cmsmasters_tab" id="tab-reviews">
                             <div class="cmsmasters_tab_inner">
                                 <div id="reviews">
+                                    @if (count($productVotes) > 0)
                                     <div id="comments" class="post_comments cmsmasters_woo_comments">
-                                        <h2 class="post_comments_title">1 review for <span>Men’s Sport Quick Dry T-Shirt Grey</span></h2>
-
-
+                                        <h2 class="post_comments_title">{{ count($productVotes) }} Đánh giá cho <span>{{ $product->name }}</span></h2>
                                         <ol class="commentlist">
+                                            @foreach($productVotes as $productVote)
                                             <li itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="comment byuser comment-author-cmsmasters bypostauthor even thread-even depth-1" id="li-comment-25">
                                                 <div id="comment-25" class="comment_container cmsmasters_comment_item">
                                                     <figure class="cmsmasters_comment_item_avatar">
                                                         <img alt="" src="http://0.gravatar.com/avatar/cec22fb290043e2c1b9972d9bc2f0cfb?s=70&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/cec22fb290043e2c1b9972d9bc2f0cfb?s=140&amp;d=mm&amp;r=g 2x" class="avatar avatar-70 photo" height="70" width="70">		</figure>
                                                     <div class="comment-text cmsmasters_comment_item_cont">
                                                         <div class="cmsmasters_comment_item_cont_info">
-                                                            <h5 class="cmsmasters_comment_item_title" itemprop="author">cmsmasters</h5>
+                                                            <h5 class="cmsmasters_comment_item_title" itemprop="author">{{ $productVote->user->fullname }}</h5>
 
                                                             <div class="cmsmasters_star_rating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 5 out of 5">
                                                                 <div class="cmsmasters_star_trans_wrap">
@@ -327,51 +339,54 @@
                                                                 </div>
                                                                 <div class="cmsmasters_star_color_wrap" style="width:100%">
                                                                     <div class="cmsmasters_star_color_inner">
+                                                                        @for($i=0; $i<$productVote->star; $i++)
                                                                         <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
-                                                                        <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
+                                                                        @endfor
                                                                     </div>
                                                                 </div>
-                                                                <span class="rating dn"><strong itemprop="ratingValue">5</strong> out of 5</span>
+                                                                <span class="rating dn"><strong itemprop="ratingValue">{{ $productVote->star }}</strong> trên 5</span>
                                                             </div>
-                                                            <time class="cmsmasters_comment_item_date" itemprop="datePublished" datetime="May 27, 2017">May 27, 2017</time>
+                                                            <time class="cmsmasters_comment_item_date" itemprop="datePublished" datetime="{{ $productVote->created_at }}">{{ $productVote->created_at }}</time>
                                                         </div>
                                                         <div itemprop="description" class="description cmsmasters_comment_item_content">
-                                                            <p>Excellent Quality for a Good price.</p>
-                                                            <div class="star-rating"><span style="width:100%">Rated <strong class="rating">5</strong> out of 5</span></div>			</div>
+                                                            <p>{{ $productVote->comment }}</p>
+                                                            <div class="star-rating"><span style="width:100%">Đánh giá <strong class="rating">{{ $productVote->star }}</strong> trên 5</span></div>			</div>
                                                     </div>
                                                 </div>
-                                            </li><!-- #comment-## -->
+                                            </li>
+                                            @endforeach
                                         </ol>
-
-
                                     </div>
-
-
+                                    @endif
                                     <div id="review_form_wrapper">
                                         <div id="review_form">
-                                            <div id="respond" class="comment-respond">
-                                                <h3 id="reply-title" class="comment-reply-title">Add a review <small><a rel="nofollow" id="cancel-comment-reply-link" href="/product/mens-sport-quick-dry-t-shirt-grey/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="http://sports-store.cmsmasters.net/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
-                                                    <p class="comment-form-rating"><label for="rating">Your Rating</label><p class="stars"><span><a class="star-1" href="#">1</a><a class="star-2" href="#">2</a><a class="star-3" href="#">3</a><a class="star-4" href="#">4</a><a class="star-5" href="#">5</a></span></p><select name="rating" id="rating" style="display: none;">
-                                                        <option value="">Rate…</option>
-                                                        <option value="5">Perfect</option>
-                                                        <option value="4">Good</option>
-                                                        <option value="3">Average</option>
-                                                        <option value="2">Not that bad</option>
-                                                        <option value="1">Very Poor</option>
-                                                    </select></p><p class="comment-form-comment"><textarea name="comment" id="comment" cols="67" rows="2" placeholder="Your Review"></textarea></p><p class="comment-form-author">
-                                                        <input type="text" id="author" name="author" value="" size="35" aria-required="true" placeholder="Name *">
+                                            <div id="respond" class="comment-respond" style="padding-bottom: 0px;">
+                                                <h3 id="reply-title" class="comment-reply-title">Thêm đánh giá
+                                                    <small>
+                                                        <a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Cancel reply</a>
+                                                    </small>
+                                                </h3>
+                                                <form action="{{ route('product.vote') }}" method="post" id="commentform" class="comment-form" novalidate="">
+                                                    {!! Form::token() !!}
+                                                    <p class="comment-form-rating" style="margin-bottom: 0px;padding-bottom: 0px;">
+                                                        <label for="rating">Đánh giá sản phẩm</label>
+                                                        <div class="rating" style="margin-bottom: 20px;">
+                                                            <span class="star" data-value="5">☆</span>
+                                                            <span class="star" data-value="4">☆</span>
+                                                            <span class="star" data-value="3">☆</span>
+                                                            <span class="star" data-value="2">☆</span>
+                                                            <span class="star" data-value="1">☆</span>
+                                                        </div>
+                                                        <input type="hidden" name="star" class="rating-number" value="">
+                                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
                                                     </p>
-
-                                                    <p class="comment-form-email">
-                                                        <input type="text" id="email" name="email" value="" size="35" aria-required="true" placeholder="Email *">
+                                                    <p class="comment-form-comment">
+                                                        <textarea name="comment" id="comment" cols="67" rows="2" placeholder="Chi tiết đánh giá"></textarea>
                                                     </p>
-
-                                                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit"> <input type="hidden" name="comment_post_ID" value="13483" id="comment_post_ID">
-                                                        <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-                                                    </p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="1a8fbcb0c6"></p><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1534040845788"></form>
+                                                    <p class="form-submit">
+                                                        <input name="submit" type="submit" id="submit" class="submit" value="Submit">
+                                                    </p>
+                                                </form>
                                             </div><!-- #respond -->
                                         </div>
                                     </div>
