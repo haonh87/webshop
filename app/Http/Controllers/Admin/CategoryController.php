@@ -57,6 +57,7 @@ class CategoryController extends Controller
         $data['create_user_id'] = \Auth::user()->id;
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
+        $data['slug'] = str_slug($data['name'], '-');
         $createNewCategory = $this->categoryService->createNewCategory($data);
         if ($createNewCategory) {
             $message = 'Item created successfully.';
@@ -85,6 +86,7 @@ class CategoryController extends Controller
         }
         $data['modified_user_id'] = \Auth::user()->id;
         $data['updated_at'] = date('Y-m-d H:i:s');
+        $data['slug'] = str_slug($data['name'], '-');
         $updateCategory = $this->categoryService->updateCategory($id, $data);
         if ($updateCategory) {
             $message = 'Item updated successfully.';

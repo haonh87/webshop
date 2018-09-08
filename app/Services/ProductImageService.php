@@ -24,14 +24,11 @@ class ProductImageService
             foreach($dataImage as $key => $image)
             {
                 $name = $nameProduct.'.'.$image->getClientOriginalExtension();
-                if ($key > 0) {
-                    $name = $nameProduct.'_'.$allColor[$dataColor[$key]].'.'.$image->getClientOriginalExtension();
-                }
                 $image->move(public_path().'/images/', $name);
                 $data[] = [
                     'product_id' => $productId,
                     'img_path' => $name,
-                    'color_id' => isset($dataColor[$key]) ? $dataColor[$key] : 0,
+                    'color_id' => 1,
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ];

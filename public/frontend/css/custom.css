@@ -123,3 +123,29 @@ body .headline .headline_outer {
 #header .woocommerce-mini-cart__buttons .button:hover {
     color: #000;
 }
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+}
+.rating > span {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    width: 20px;
+    font-size: 20px;
+    z-index: 10;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+    color: rgb(241, 183, 92);
+    z-index: 1;
+}
+.rating > span.active:before,
+.rating > span.active ~ span.active:before {
+    content: "\2605";
+    position: absolute;
+    color: rgb(241, 183, 92);
+    z-index: 1;
+}

@@ -237,6 +237,11 @@ class CartController extends BaseController
             return redirect()->back()->with('message_cart', $e->getMessage());
         }
         Cart::destroy();
-        return \Redirect()->route('index')->with('message_cart', 'Mua sản phẩm thành công!');
+        return \Redirect()->route('checkout.success');
+    }
+
+    public function checkoutSuccess()
+    {
+        return view('frontend.content.checkout_success');
     }
 }

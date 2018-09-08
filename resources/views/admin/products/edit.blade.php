@@ -65,8 +65,11 @@
                     <label for="content">Nội dung</label>
                     <textarea class="form-control" rows="5" id="content_product" name="content" required>{{ $productData->content }}</textarea>
                 </div>
-
-                {{ Form::select('product_color_ids[]', $productColors, null, ['class' => 'form-control hidden', 'id' => 'product_color_ids', 'multiple']) }}
+                
+                <div class="form-group col-sm-4 col-md-8">
+                    <label for="product_color_ids">Màu sắc</label>
+                    {{ Form::select('product_color_ids[]', $productColors, explode(',', $productData->product_color_ids), ['class' => 'form-control selectpicker', 'id' => 'product_color_ids', 'multiple', 'title' => 'Chọn màu sắc']) }}
+                </div>
 
                 <div class="form-group col-sm-4 col-md-8">
                     <label for="product_size_ids">Kích cỡ</label>
@@ -115,9 +118,6 @@
         var i=1;
         $("#add_image").click(function() {
             var html = '<div class="form-group col-sm-4 col-md-8 image_new"><span class="remove_image">x</span>' +
-                '<label for="color">Color:</label>' +
-                '<select type="text" class="form-control select2_addNew" name="color['+i+']" placeholder="Màu sắc" required>' +
-                +''+$('#product_color_ids').html() +''+'</select>' +
                 '<div class="file-upload">' +
                 '<div class="file-select">' +
                 '<div class="file-select-button" id="fileName">Choose File</div>' +
