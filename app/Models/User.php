@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\verifyEmail;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -23,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['id', 'username', 'email', 'password', 'fullname', 'role_id', 'facebook_id', 'google_id'];
+    protected $fillable = ['id', 'username', 'email', 'password', 'fullname', 'role_id', 'facebook_id', 'google_id', 'confirmation_code'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -56,5 +57,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function hasRole()
     {
 
+    }
+
+    public function verified(){
+        return $this->confirmation_code === null;
+    }
+
+    public function sendVerificationEmail(){
+
+        $this->notify(new verifyEmail($this));
     }
 }

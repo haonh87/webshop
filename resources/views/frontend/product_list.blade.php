@@ -128,24 +128,20 @@
                 <div class="sidebar fl" role="complementary">
                     <aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter"><h3
                                 class="widgettitle">Lọc theo giá</h3>
-                        <form method="get" action="{{ route('product.list') }}">
-                            @if(!empty(request()->query()))
-                                @foreach(request()->query() as $key => $value)
-                                    @if($key != 'min_price' && $key != 'max_price')
-                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
-                                    @endif
-                                @endforeach
-                            @endif
+                        <form method="get" action="{{ route('product.list') }}" id="reservation" >
+                            <select  name="price" id="price" >
+                                <option value="">Chọn giá</option>
+                                <option <?php if(isset($price) && $price == 100000){echo "selected";}?> value="100000"> 100.000</option>
+                                <option <?php if(isset($price) && $price == 200000){echo "selected";}?> value="200000"> 200.000</option>
+                                <option <?php if(isset($price) && $price == 300000){echo "selected";}?> value="300000"> 300.000</option>
+                                <option <?php if(isset($price) && $price == 500000){echo "selected";}?> value="500000"> 500.000</option>
+                                <option <?php if(isset($price) && $price == 700000){echo "selected";}?> value="700000"> 700.000</option>
+                                <option <?php if(isset($price) && $price == 1000000){echo "selected";}?> value="1000000"> 1.000.000</option>
+                                <option <?php if(isset($price) && $price == 'other'){echo "selected";}?> value="other"> Gía khác</option>
+                            </select>
                             <div class="price_slider_wrapper">
-                                <div class="price_slider" style="display:none;"></div>
                                 <div class="price_slider_amount">
-                                    <input type="text" id="min_price" name="min_price" value="{{ isset($condition['min_price']) ? $condition['min_price'] : $maxMinPrice->min_price }}" data-min="{{ (int)$maxMinPrice->min_price }}" placeholder="Min price">
-                                    <input type="text" id="max_price" name="max_price" value="{{ isset($condition['max_price']) ? $condition['max_price'] : $maxMinPrice->max_price }}" data-max="{{ (int)$maxMinPrice->max_price }}" placeholder="Max price">
-                                    <button type="submit" class="button">Lọc</button>
-                                    <div class="price_label" style="display:none;">
-                                        Giá: <span class="from"><span>VND</span></span> — <span class="to"><span>VND</span></span>
-                                    </div>
-
+                                     <button type="submit" class="button">Lọc</button>
                                     <div class="clear"></div>
                                 </div>
                             </div>
@@ -291,4 +287,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $( function() {
+            var select = $( "#price" );
+            var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+                min: 1,
+                max: 8,
+                range: "min",
+                value: select[ 0 ].selectedIndex + 1,
+                slide: function( event, ui ) {
+                    select[ 0 ].selectedIndex = ui.value - 1;
+                }
+            });
+            $( "#price" ).on( "change", function() {
+                slider.slider( "value", this.selectedIndex + 1 );
+            });
+        } );
+    </script>
 @stop

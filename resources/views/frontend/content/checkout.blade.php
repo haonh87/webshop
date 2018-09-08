@@ -125,11 +125,11 @@
                                     <button type="submit" class="button alt" name="woocommerce_checkout_place_order"
                                             id="place_order" value="Place order" data-value="Place order">Đăt Hàng
                                     </button>
+                                    <button type="button" onclick="location.href = '{{route('product.list')}}';" class="button checkout wc-forward">Tiếp tục mua sắm</button>
                                 </div>
                                 <input type="hidden" name="total_cart" value="{{ $total }}">
                             </div>
                         </form>
-
                     </div>
                     <div class="cl"></div>
                 </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\User;
+use Mail;
 use App\Services\CustomerService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
@@ -62,9 +64,14 @@ class MyAccountController extends BaseController
         try {
             $dataUser = $request->except('_token', 'address', 'mobile', 'gender', 'cf_password');
             $dataCustomer = $request->except('_token', 'username', 'fullname', 'email', 'password', 'cf_password');
+            $dataUser['confirmation_code'] = time().uniqid(true);
             $dataUser['role_id'] = 3;
             $dataUser['is_active'] = 1;
             $user = $this->userService->createUser($dataUser);
+
+            Mail::send('email.verify', ['confirmation_code' => $dataUser['confirmation_code']], function($message) use ($dataUser) {
+                $message->to($dataUser['email'], $dataUser['name'])->subject('Verify your email address');
+            });
             if ($user) {
                 $dataCustomer['name'] = $request->input('username');
                 $dataCustomer['user_id'] = $user;
@@ -118,5 +125,13 @@ class MyAccountController extends BaseController
             DB::rollback();
             return redirect()->back()->with('message_account', 'Cập nhật thất bại');
         }
+    }
+
+
+    public function verify($confirmatonCode){
+        User::where('confimation_code', $confirmatonCode)->firstOrFail()
+            ->update(['confirmation_code' => null]);
+        return redirect()->route('index')->with('success', 'Xác nhận tài khoản thành email công!');
+
     }
 }

@@ -1,5 +1,5 @@
 <!--  Start Header  -->
-<header id="header" class="header_fullwidth">
+<header id="header" class="header_fullwidth" style="position: fixed">
     <div class="header_mid" data-height="90">
         <div class="header_mid_outer">
             <div class="header_mid_inner">

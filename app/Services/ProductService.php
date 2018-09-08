@@ -104,11 +104,10 @@ class ProductService
         if (isset($dataRequest['search'])) {
             $result->where('products.name', 'LIKE', '%'.$dataRequest['search'].'%');
         }
-        if (isset($dataRequest['min_price'])) {
-            $result->where('products.price', '>=', $dataRequest['min_price']);
-        }
-        if (isset($dataRequest['max_price'])) {
-            $result->where('products.price', '<=', $dataRequest['max_price']);
+        if (isset($dataRequest['price']) && $dataRequest['price'] == 'other') {
+            $result->where('products.price', '>=', 100000);
+        }elseif(isset($dataRequest['price']) && $dataRequest['price'] != 'other') {
+            $result->where('products.price', '<=', $dataRequest['price']);
         }
         return $result;
     }

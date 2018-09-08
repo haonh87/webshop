@@ -88,8 +88,8 @@ class IndexController extends BaseController
         if (isset($dataRequest['category'])) {
             $categoryId = $dataRequest['category'];
         }
+        $price = isset($dataRequest['price']) ? $dataRequest['price'] : '';
         $products = $this->productService->getAllProductForView($categoryId, $dataRequest)->paginate($this->numberProductList);
-        $maxMinPrice = $this->productService->getMaxMinPrice();
         $categories = $this->categoryService->getAllCategories();
         $sizes = $this->productSizeService->getAllProductSize();
         $colors = $this->productColorService->getAllColor();
@@ -100,7 +100,7 @@ class IndexController extends BaseController
         }
         return view('frontend.product_list', [
             'products' => $products,
-            'maxMinPrice' => $maxMinPrice,
+            'price' => $price,
             'categories' => $categories,
             'sizes' => $sizes,
             'colors' => $colors,
