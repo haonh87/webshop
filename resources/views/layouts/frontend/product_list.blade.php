@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('script')
-    {{--<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>--}}
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type='text/javascript' src='http://sports-store.cmsmasters.net/wp-content/plugins/woocommerce/assets/js/frontend/price-slider.min.js'></script>
     <script type='text/javascript' src='http://sports-store.cmsmasters.net/wp-content/plugins/woocommerce/assets/js/accounting/accounting.min.js'></script>
     <script type='text/javascript'>
@@ -8,9 +8,6 @@
         var woocommerce_price_slider_params = {"currency_format_num_decimals":"0","currency_format_symbol":"VND ","currency_format_decimal_sep":".","currency_format_thousand_sep":",","currency_format":"<span>%s<\/span>%v"};
         /* ]]> */
     </script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 @stop
 @section('content')
     <div id="content">
@@ -132,18 +129,18 @@
                     <aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter"><h3
                                 class="widgettitle">Lọc theo giá</h3>
                         <form method="get" action="{{ route('product.list') }}" id="reservation" >
+                            <select  name="price" id="price" >
+                                <option value="">Chọn giá</option>
+                                <option <?php if(isset($price) && $price == 100000){echo "selected";}?> value="100000"> 100.000</option>
+                                <option <?php if(isset($price) && $price == 200000){echo "selected";}?> value="200000"> 200.000</option>
+                                <option <?php if(isset($price) && $price == 300000){echo "selected";}?> value="300000"> 300.000</option>
+                                <option <?php if(isset($price) && $price == 500000){echo "selected";}?> value="500000"> 500.000</option>
+                                <option <?php if(isset($price) && $price == 700000){echo "selected";}?> value="700000"> 700.000</option>
+                                <option <?php if(isset($price) && $price == 1000000){echo "selected";}?> value="1000000"> 1.000.000</option>
+                                <option <?php if(isset($price) && $price == 'other'){echo "selected";}?> value="other"> Gía khác</option>
+                            </select>
                             <div class="price_slider_wrapper">
-                                <select  name="price" id="price" style="margin-top: 5%; z-index: 99">
-                                    <option value="">-- Chọn giá --</option>
-                                    <option <?php if(isset($price) && $price == 100000){echo "selected";}?> value="100000"> 100.000</option>
-                                    <option <?php if(isset($price) && $price == 200000){echo "selected";}?> value="200000"> 200.000</option>
-                                    <option <?php if(isset($price) && $price == 300000){echo "selected";}?> value="300000"> 300.000</option>
-                                    <option <?php if(isset($price) && $price == 500000){echo "selected";}?> value="500000"> 500.000</option>
-                                    <option <?php if(isset($price) && $price == 700000){echo "selected";}?> value="700000"> 700.000</option>
-                                    <option <?php if(isset($price) && $price == 1000000){echo "selected";}?> value="1000000"> 1.000.000</option>
-                                    <option <?php if(isset($price) && $price == 'other'){echo "selected";}?> value="other"> Giá khác</option>
-                                </select>
-                                <div class="price_slider_amount" style="padding: 0 0 0 0; float: right;margin-top: 5%;">
+                                <div class="price_slider_amount">
                                      <button type="submit" class="button">Lọc</button>
                                     <div class="clear"></div>
                                 </div>
@@ -294,7 +291,7 @@
     <script>
         $( function() {
             var select = $( "#price" );
-            var slider = $( "<div id='slider'></div>" ).insertBefore( select ).slider({
+            var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
                 min: 1,
                 max: 8,
                 range: "min",

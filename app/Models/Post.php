@@ -36,7 +36,7 @@ class Post extends Model
     protected $primaryKey = 'id';
 
     const INSTRUCTION_POST_ID = 2;
-    const ABOUT_US_POST_ID = 2;
+    const ABOUT_US_POST_ID = 1;
     const STATIC_POST_CATEGORY_ID = 1;
 
     /**
