@@ -5,7 +5,7 @@
     <script type='text/javascript' src='http://sports-store.cmsmasters.net/wp-content/plugins/woocommerce/assets/js/accounting/accounting.min.js'></script>
     <script type='text/javascript'>
         /* <![CDATA[ */
-        var woocommerce_price_slider_params = {"currency_format_num_decimals":"0","currency_format_symbol":"\u00a3","currency_format_decimal_sep":".","currency_format_thousand_sep":",","currency_format":"<span>%s<\/span>%v"};
+        var woocommerce_price_slider_params = {"currency_format_num_decimals":"0","currency_format_symbol":"VND ","currency_format_decimal_sep":".","currency_format_thousand_sep":",","currency_format":"<span>%s<\/span>%v"};
         /* ]]> */
     </script>
 @stop
@@ -48,6 +48,13 @@
                     <div class="cmsmasters_woo_wrap_result"><p class="woocommerce-result-count">
                             Hiển thị {{ $products->firstItem() }}–{{ $products->lastItem() }} của {{ $products->total() }} sản phẩm</p>
                         <form class="woocommerce-ordering"  method="get" action="{{ route('product.list') }}">
+                            @if(!empty(request()->query()))
+                                @foreach(request()->query() as $key => $value)
+                                    @if($key != 'orderby')
+                                        <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                    @endif
+                                @endforeach
+                            @endif
                             <select name="orderby" class="orderby" onchange="this.form.submit()">
                                 <option value="default">Chọn kiểu sắp xếp</option>
                                 <option value="total_star-desc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'total_star-desc') ? 'selected' : '' }}>Đánh giá cao nhất</option>
@@ -55,7 +62,7 @@
                                 <option value="products.price-asc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'products.price-asc') ? 'selected' : '' }}>Giá tăng dần</option>
                                 <option value="products.price-desc" {{ (isset($condition['orderby']) && $condition['orderby'] == 'products.price-desc') ? 'selected' : '' }}>Giá giảm dần</option>
                             </select>
-                            <input type="hidden" name="paged" value="{{ $products->currentPage() }}">
+                            {{--<input type="hidden" name="paged" value="{{ $products->currentPage() }}">--}}
                         </form>
                     </div>
                     <div class="cmsmasters_products_wrap">
@@ -122,6 +129,13 @@
                     <aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter"><h3
                                 class="widgettitle">Lọc theo giá</h3>
                         <form method="get" action="{{ route('product.list') }}">
+                            @if(!empty(request()->query()))
+                                @foreach(request()->query() as $key => $value)
+                                    @if($key != 'min_price' && $key != 'max_price')
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                    @endif
+                                @endforeach
+                            @endif
                             <div class="price_slider_wrapper">
                                 <div class="price_slider" style="display:none;"></div>
                                 <div class="price_slider_amount">
@@ -129,7 +143,7 @@
                                     <input type="text" id="max_price" name="max_price" value="{{ isset($condition['max_price']) ? $condition['max_price'] : $maxMinPrice->max_price }}" data-max="{{ (int)$maxMinPrice->max_price }}" placeholder="Max price">
                                     <button type="submit" class="button">Lọc</button>
                                     <div class="price_label" style="display:none;">
-                                        Giá: <span class="from"></span> — <span class="to"></span>
+                                        Giá: <span class="from"><span>VND</span></span> — <span class="to"><span>VND</span></span>
                                     </div>
 
                                     <div class="clear"></div>
@@ -142,7 +156,7 @@
                         <ul class="product-categories">
                             @foreach( $categories as $category )
                             <li class="cat-item cat-item-{{ $category->id }}">
-                                <a href="{{ route('product.list', ['category' => $category->name]) }}">{{ $category->name }}</a>
+                                <a href="{{ request()->fullUrlWithQuery(['category' => $category->id]) }}">{{ $category->name }}</a>
                             </li>
                             @endforeach
                         </ul>
@@ -152,6 +166,13 @@
                                 class="widgettitle">Chọn màu sắc</h3>
                         <form method="get" action="{{ route('product.list') }}"
                               class="woocommerce-widget-layered-nav-dropdown">
+                            @if(!empty(request()->query()))
+                                @foreach(request()->query() as $key => $value)
+                                    @if($key != 'color')
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                    @endif
+                                @endforeach
+                            @endif
                             <select name="color" onchange="this.form.submit()"
                                     class="woocommerce-widget-layered-nav-dropdown dropdown_layered_nav_colors select2-hidden-accessible"
                                     tabindex="-1" aria-hidden="true">
@@ -167,6 +188,13 @@
                                 class="widgettitle">Chọn kích cỡ</h3>
                         <form method="get" action="{{ route('product.list') }}"
                               class="woocommerce-widget-layered-nav-dropdown">
+                            @if(!empty(request()->query()))
+                                @foreach(request()->query() as $key => $value)
+                                    @if($key != 'size')
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                    @endif
+                                @endforeach
+                            @endif
                             <select name="size" onchange="this.form.submit()"
                                     class="woocommerce-widget-layered-nav-dropdown dropdown_layered_nav_size select2-hidden-accessible"
                                     tabindex="-1" aria-hidden="true">

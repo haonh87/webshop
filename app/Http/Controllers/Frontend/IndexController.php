@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Configuration;
-use App\Models\PostCategory;
 use App\Services\CategoryService;
 use App\Services\ProductColorService;
 use App\Services\PostService;
@@ -17,10 +16,10 @@ use App\Models\Product;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Vote;
 use App\Models\Category;
 use LaravelLocalization;
 use Session;
+use App\Services\VoteService;
 
 class IndexController extends BaseController
 {
@@ -35,22 +34,25 @@ class IndexController extends BaseController
     protected $numberNew = 8;
     protected $numberPost = 6;
     protected $numberProductList = 20;
-    /**
+    protected $voteService;
+     /**
      * Constructor function.
      * Set global fro category all page
      **/
     public function __construct(CategoryService $categoryService, ProductService $productService,
                                 ProductSizeService $productSizeService, ProductColorService $productColorService,
-                                PostCategoryService $postCategoryService, PostService $postService
+                                PostCategoryService $postCategoryService, PostService $postService,
+                                VoteService $voteService
     )
     {
-        parent::__construct();
-        $this->categoryService = $categoryService;
-        $this->productService = $productService;
-        $this->productSizeService = $productSizeService;
-        $this->productColorService = $productColorService;
-        $this->postCategoryService = $postCategoryService;
-        $this->postService = $postService;
+         parent::__construct();
+         $this->categoryService = $categoryService;
+         $this->productService = $productService;
+         $this->productSizeService = $productSizeService;
+         $this->productColorService = $productColorService;
+         $this->postCategoryService = $postCategoryService;
+         $this->postService = $postService;
+         $this->voteService = $voteService;
     }
 
     /**
@@ -83,6 +85,9 @@ class IndexController extends BaseController
         $dataRequest = $request->all();
         $category = $this->categoryService->findIdByName($categoryName);
         $categoryId = isset($category) ? $category->id : '';
+        if (isset($dataRequest['category'])) {
+            $categoryId = $dataRequest['category'];
+        }
         $products = $this->productService->getAllProductForView($categoryId, $dataRequest)->paginate($this->numberProductList);
         $maxMinPrice = $this->productService->getMaxMinPrice();
         $categories = $this->categoryService->getAllCategories();
@@ -117,6 +122,7 @@ class IndexController extends BaseController
         $sizes = $this->productSizeService->getAllProductSize();
         $colors = $this->productColorService->getAllColor();
         $relateProducts = $this->productService->getRelateProduct($product);
+        $productVotes = $this->voteService->getVote($id);
         //push id to session
         $sessionIds = Session::get('productIds');
         if (empty($sessionIds)) {
@@ -130,47 +136,32 @@ class IndexController extends BaseController
             'product' => $product,
             'sizes' => $sizes,
             'colors' => $colors,
-            'relateProducts' => $relateProducts
+            'relateProducts' => $relateProducts,
+            'productVotes' => $productVotes
         ]);
     }
 
     public function postVote(Request $request)
     {
-
         if(!Auth::check()) {
-            return response()->json(['error'=>trans('lang.log_in_vote')]);
-        }
-        else
-        {
-            $product_id = $request->get('product_id');
-            $comment = trim($request->get('comment'));
-            $star = $request->get('star');
-            if(strlen($comment) < 5)
-            {
-                return response()->json(['error'=>trans('lang.short_comment')]);
+            return redirect()->back()->with('message_cart', 'Hãy đăng nhập để đánh giá!');
+        } else {
+            $dataRequest = $request->all();
+            $dataVote = [
+                'user_id' => Auth::user()->id,
+                'product_id' => $dataRequest['product_id'],
+                'star' => $dataRequest['star'],
+                'comment' => $dataRequest['comment'],
+                'actived' => 1,
+            ];
+            if ($this->voteService->updateVote($dataVote)) {
+                return redirect()->back()->with('message_cart', 'Đánh giá sản phẩm thành công.');
+            } else {
+                return redirect()->back()->with('message_cart', 'Đánh giá không thành công! Hãy đánh giá lại sản phẩm');
             }
-            if($star < 1)
-            {
-                return response()->json(['error'=>trans('lang.star_null')]);
-            }
-            $product = Product::findOrFail($product_id);
-
-            $vote = new Vote();
-            $vote->product_id = $product_id;
-            $vote->user_id = Auth::user()->id;
-            $vote->star = $star;
-            $vote->comment = $comment;
-            $vote->save();
-            if($vote->id){
-                return response()->json(['success'=>trans('lang.vote_success')]);
-            }
-            else{
-                return response()->json(['error'=>trans('lang.error')]);
-            }
-
         }
     }
-
+    
     public function showProductByCategory(Request $request,$category_id)
     {
         $take = !empty($request->get('take')) ? $request->get('take') : 6;
@@ -192,11 +183,11 @@ class IndexController extends BaseController
         $blade_include ="frontend.content.category_detail";
         $sub_navi = '<li><a href="#" style="display: none;">'.$category->localeName().'</a></li>';
         return view('frontend.main_content')->with('parameters', $products)
-            ->with('parameters2', $category)
-            ->with('product_top', $product_top)
-            ->with('sub_navi', $sub_navi)
-            ->with('blade_include', $blade_include);
-
+                                            ->with('parameters2', $category)
+                                            ->with('product_top', $product_top)
+                                            ->with('sub_navi', $sub_navi)
+                                            ->with('blade_include', $blade_include);
+        
     }
 
     public function getContact(){

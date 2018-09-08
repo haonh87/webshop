@@ -234,3 +234,5 @@ Route::get('auth/facebook/callback', 'Frontend\CustomerLoginController@handleFac
 
 Route::get('auth/google', 'Frontend\CustomerLoginController@redirectToGoogle')->name('auth.google');
 Route::get('auth/google/callback', 'Frontend\CustomerLoginController@handleGoogleCallback');
+
+Route::get('checkout/success', 'Frontend\CartController@checkoutSuccess')->name('checkout.success');
