@@ -69,20 +69,21 @@ class MyAccountController extends BaseController
             $dataUser['is_active'] = 1;
             $user = $this->userService->createUser($dataUser);
 
-            Mail::send('email.verify', ['confirmation_code' => $dataUser['confirmation_code']], function($message) use ($dataUser) {
-                $message->to($dataUser['email'], $dataUser['name'])->subject('Verify your email address');
+            Mail::send('emails.verify', ['confirmation_code' => $dataUser['confirmation_code']], function($message) use ($dataUser) {
+                $message->to($dataUser['email'])->subject('Verify your email address');
             });
             if ($user) {
                 $dataCustomer['name'] = $request->input('username');
                 $dataCustomer['user_id'] = $user;
                 $this->customerService->createCustomer($dataCustomer);
                 DB::commit();
-                return view('frontend.myaccount.login')->with('message_account', 'Hãy đăng nhập!');
+                return view('frontend.myaccount.login')->with('message_account', 'Vui lòng đăng nhập và xác nhận tài khoản qua email của bạn!');
             } else {
                 DB::rollback();
                 return redirect()->back()->with('message_account', 'Tạo tài khoản không thành công');
             }
         } catch (\Exception $e) {
+            dd($e);
             DB::rollback();
             return redirect()->back()->with('message_account', 'Tạo tài khoản không thành công');
         }
@@ -129,9 +130,8 @@ class MyAccountController extends BaseController
 
 
     public function verify($confirmatonCode){
-        User::where('confimation_code', $confirmatonCode)->firstOrFail()
+        User::where('confirmation_code', $confirmatonCode)->firstOrFail()
             ->update(['confirmation_code' => null]);
-        return redirect()->route('index')->with('success', 'Xác nhận tài khoản thành email công!');
-
+        return view('frontend.myaccount.login')->with('message_account', 'Xác nhận tài khoản Email thành công. Vui lòng đăng nhập!');
     }
 }

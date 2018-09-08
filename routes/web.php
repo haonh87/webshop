@@ -56,6 +56,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
         // Password reset routes...
         Route::get('password/reset/{token}', ['as' => 'myaccount.password.reset', 'uses' => 'Frontend\MyAccountController@getReset']);
         Route::post('password/reset', ['as' => 'myaccount.password.reset', 'uses' => 'Frontend\MyAccountController@postReset']);
+        // Verify Email
+        Route::get('verify/{confirmation_code}', ['as' => 'myaccount.verify', 'uses' => 'Frontend\MyAccountController@verify']);
+
     });
 });
 
