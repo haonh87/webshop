@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Configuration;
 use App\Models\PostCategory;
 use App\Services\CategoryService;
 use App\Services\ProductColorService;
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use App\Models\Product;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Vote;
 use App\Models\Category;
@@ -33,7 +35,7 @@ class IndexController extends BaseController
     protected $numberNew = 8;
     protected $numberPost = 6;
     protected $numberProductList = 20;
-     /**
+    /**
      * Constructor function.
      * Set global fro category all page
      **/
@@ -42,13 +44,13 @@ class IndexController extends BaseController
                                 PostCategoryService $postCategoryService, PostService $postService
     )
     {
-         parent::__construct();
-         $this->categoryService = $categoryService;
-         $this->productService = $productService;
-         $this->productSizeService = $productSizeService;
-         $this->productColorService = $productColorService;
-         $this->postCategoryService = $postCategoryService;
-         $this->postService = $postService;
+        parent::__construct();
+        $this->categoryService = $categoryService;
+        $this->productService = $productService;
+        $this->productSizeService = $productSizeService;
+        $this->productColorService = $productColorService;
+        $this->postCategoryService = $postCategoryService;
+        $this->postService = $postService;
     }
 
     /**
@@ -63,13 +65,15 @@ class IndexController extends BaseController
         $featureProducts = $this->productService->getFeatureProducts($this->numberFeature);
         $newProducts = $this->productService->getNewProduct($this->numberNew);
         $postWithCategory = $this->postService->getNewestPostList($this->numberNew);
+        $sliderList = Configuration::whereIn('id', [6,7,8])->get();
 
         return view('frontend.top',[
             'wmCategory' => $wmCategory,
             'products' => $products,
             'featureProducts' => $featureProducts,
             'newProducts' => $newProducts,
-            'newPost' => $postWithCategory
+            'newPost' => $postWithCategory,
+            'sliderList' => $sliderList
         ]);
     }
 
@@ -161,12 +165,12 @@ class IndexController extends BaseController
                 return response()->json(['success'=>trans('lang.vote_success')]);
             }
             else{
-               return response()->json(['error'=>trans('lang.error')]); 
+                return response()->json(['error'=>trans('lang.error')]);
             }
 
         }
     }
-    
+
     public function showProductByCategory(Request $request,$category_id)
     {
         $take = !empty($request->get('take')) ? $request->get('take') : 6;
@@ -188,11 +192,11 @@ class IndexController extends BaseController
         $blade_include ="frontend.content.category_detail";
         $sub_navi = '<li><a href="#" style="display: none;">'.$category->localeName().'</a></li>';
         return view('frontend.main_content')->with('parameters', $products)
-                                            ->with('parameters2', $category)
-                                            ->with('product_top', $product_top)
-                                            ->with('sub_navi', $sub_navi)
-                                            ->with('blade_include', $blade_include);
-        
+            ->with('parameters2', $category)
+            ->with('product_top', $product_top)
+            ->with('sub_navi', $sub_navi)
+            ->with('blade_include', $blade_include);
+
     }
 
     public function getContact(){

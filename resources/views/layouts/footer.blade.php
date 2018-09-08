@@ -42,7 +42,7 @@
     <div class="footer_inner">
         <div class="footer_in_inner footer_ctr_align">
 				<span class="footer_copyright copyright">
-			{{\App\Models\Configuration::findOrFail(1)->value}}	</span>
+			{{@$footerCopyright->value}}	</span>
         </div>
     </div>
 </footer>
