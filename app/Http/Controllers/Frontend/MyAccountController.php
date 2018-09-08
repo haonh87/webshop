@@ -83,7 +83,6 @@ class MyAccountController extends BaseController
                 return redirect()->back()->with('message_account', 'Tạo tài khoản không thành công');
             }
         } catch (\Exception $e) {
-            dd($e);
             DB::rollback();
             return redirect()->back()->with('message_account', 'Tạo tài khoản không thành công');
         }

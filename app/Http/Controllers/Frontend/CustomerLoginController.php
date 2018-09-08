@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Socialite;
 use App\Services\UserService;
 use Auth;
+use App\Models\User;
 
 /**
  * Class CustomerLoginController
@@ -16,6 +17,7 @@ class CustomerLoginController extends Controller
 {
 
     protected $userService;
+
     /**
      * CustomerLoginController constructor.
      */
@@ -41,11 +43,16 @@ class CustomerLoginController extends Controller
         $this->validate($request, [
             'email' => 'required', 'password' => 'required'
         ]);
-        $credentials = $request->only('email', 'password');
-        if (!\Auth::attempt($credentials)) {
-            $errorMsg['password'] = 'Email or password invalid!';
+        $user = User::where('email', $request->get('email'))->first();
+        if ($user && $user['confirmation_code'] == null) {
+            $credentials = $request->only('email', 'password');
+            if (!\Auth::attempt($credentials)) {
+                $errorMsg['password'] = 'Tài khoản đăng nhập chưa đúng!';
+            } else {
+                return redirect()->route('index');
+            }
         } else {
-            return redirect()->route('index');
+            $errorMsg['password'] = 'Bạn chưa đăng kí tài khoản.';
         }
         return redirect()->back()->withErrors($errorMsg)->withInput($request->old('email'));
     }

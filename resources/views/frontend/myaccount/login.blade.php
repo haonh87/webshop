@@ -14,14 +14,14 @@
                                 <div class="cmsmasters_text">
                                     <div class="woocommerce woocommerce-message woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                         <h2>Đăng Nhập</h2>
-                                        <form action="{{ route('login') }}" class="woocommerce-form woocommerce-form-login login" method="post">
+                                        <form action="{{ route('customer.postLogin') }}" class="woocommerce-form woocommerce-form-login login" method="post">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                <label for="username">Nhập tên<span
+                                                <label for="username">Nhập Email<span
                                                             class="required">*</span></label>
                                                 <input type="text"
                                                        class="woocommerce-Input woocommerce-Input--text input-text"
-                                                       name="username" id="email" required autocomplete="username" value="{{ old('username') }}">
+                                                       name="email" id="email" required autocomplete="email" value="{{ old('email') }}">
                                             </p>
                                             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                 <label for="password">Mật khẩu&nbsp;<span
