@@ -93,8 +93,8 @@
                                             </h5>
                                         </header>
                                         <div class="cmsmasters_product_cat entry-meta">
-                                            <a href="{{ route('product.list', ['category' => $product->category->name]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
-                                                                    $product->category->name }}</a></div>
+                                            <a href="{{ route('product.list', ['category' => $product->category->slug]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
+                                                                    $product->category->slug }}</a></div>
                                         <div class="cmsmasters_product_info">
 
                                             <span class="price"><span class="woocommerce-Price-amount amount"><span><span class="woocommerce-Price-currencySymbol">VND </span>{{ \App\Helpers\listItemHelper::convertNumber($product->price, 2)  }}</span> </span></span>
@@ -162,7 +162,7 @@
                         <ul class="product-categories">
                             @foreach( $categories as $category )
                             <li class="cat-item cat-item-{{ $category->id }}">
-                                <a href="{{ request()->fullUrlWithQuery(['category' => $category->id]) }}">{{ $category->name }}</a>
+                                <a href="{{ request()->fullUrlWithQuery(['category' => $category->slug]) }}">{{ $category->name }}</a>
                             </li>
                             @endforeach
                         </ul>

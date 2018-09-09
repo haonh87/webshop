@@ -154,4 +154,9 @@ class CategoryService
     {
         return $this->categoryModel->where('name', $categoryName)->first();
     }
+
+    public function findIdBySlug($categorySlug = null)
+    {
+        return $this->categoryModel->where('slug', $categorySlug)->first();
+    }
 }

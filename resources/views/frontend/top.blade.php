@@ -17,7 +17,7 @@
                                     <div class="cmsmasters_column_inner">
                                         <div class="cmsmasters_featured_block cmsmasters_featured_block_hover article-style-1">
                                             <a class="cmsmasters_featured_block_link"
-                                               href="{{ route('product.list', ['category' => $category->name]) }}">
+                                               href="{{ route('product.list', ['category' => $category->slug]) }}">
                                                 <img src="{{ asset($category->image_url) }}" alt="">
                                             @php
                                                 $categoryDescription = explode('-', $category->description);
@@ -89,7 +89,7 @@
                                                                 </h5>
                                                             </header>
                                                             <div class="cmsmasters_product_cat entry-meta">
-                                                                <a href="{{ route('product.list', ['category' => $featureProduct->category->name]) }}" class="cmsmasters_cat_color cmsmasters_cat_73" rel="category tag">{{ $featureProduct->category->name }}</a>
+                                                                <a href="{{ route('product.list', ['category' => $featureProduct->category->slug]) }}" class="cmsmasters_cat_color cmsmasters_cat_73" rel="category tag">{{ $featureProduct->category->name }}</a>
                                                             </div>
                                                             <div class="cmsmasters_product_info">
 
@@ -173,7 +173,7 @@
                                                                     </h5>
                                                                 </header>
                                                                 <div class="cmsmasters_product_cat entry-meta">
-                                                                    <a href="{{ route('product.list', ['category' => $newProduct->category->name]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
+                                                                    <a href="{{ route('product.list', ['category' => $newProduct->category->slug]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
                                                                     $newProduct->category->name }}</a></div>
                                                                 <div class="cmsmasters_product_info">
 

@@ -83,11 +83,11 @@ class IndexController extends BaseController
     public function getProductList(Request $request, $categoryName = null)
     {
         $dataRequest = $request->all();
-        $category = $this->categoryService->findIdByName($categoryName);
-        $categoryId = isset($category) ? $category->id : '';
         if (isset($dataRequest['category'])) {
-            $categoryId = $dataRequest['category'];
+            $categoryName = $dataRequest['category'];
         }
+        $category = $this->categoryService->findIdBySlug($categoryName);
+        $categoryId = isset($category) ? $category->id : '';
         $price = isset($dataRequest['price']) ? $dataRequest['price'] : '';
         $products = $this->productService->getAllProductForView($categoryId, $dataRequest)->paginate($this->numberProductList);
         $categories = $this->categoryService->getAllCategories();

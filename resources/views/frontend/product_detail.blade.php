@@ -216,7 +216,7 @@
 
                             <span class="posted_in"><span class="product_meta_title">Danh muc:</span>
                                 <span class="product_meta_info">
-                                    <a href="{{ route('product.list', ['category' => $product->category->name]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
+                                    <a href="{{ route('product.list', ['category' => $product->category->slug]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
                                     $product->category->name
                                     }}</a>
                                 </span>
@@ -430,7 +430,7 @@
                                             </h5>
                                         </header>
                                         <div class="cmsmasters_product_cat entry-meta">
-                                            <a href="{{ route('product.list', ['category' => $product->category->name]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
+                                            <a href="{{ route('product.list', ['category' => $product->category->slug]) }}" class="cmsmasters_cat_color cmsmasters_cat_81" rel="category tag">{{
                                                                     $product->category->name }}</a></div>
                                         <div class="cmsmasters_product_info">
 

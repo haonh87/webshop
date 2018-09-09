@@ -24,7 +24,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::delete('/wishlist/{wishlist}', ['as' => 'wishlist.destroy', 'uses' => 'Frontend\WishListController@destroy']);
 
     Route::get('/product', ['as' => 'product.index', 'uses' => 'Frontend\IndexController@index']);
-    Route::get('/product-list/{category?}', ['as' => 'product.list', 'uses' => 'Frontend\IndexController@getProductList']);
+    Route::get('/product-list', ['as' => 'product.list', 'uses' => 'Frontend\IndexController@getProductList']);
     Route::get('/product/{product}', ['as' => 'product.show', 'uses' => 'Frontend\IndexController@show']);
 
     Route::get('/post', ['as' => 'post.index', 'uses' => 'Frontend\PostController@index']);
