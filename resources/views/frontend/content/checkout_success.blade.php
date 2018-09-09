@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('script')
     <script>
-        var timeleft = 10;
+        var timeleft = 5;
         var downloadTimer = setInterval(function(){
             timeleft--;
             document.getElementById("countdowntimer").textContent = timeleft;
@@ -20,7 +20,7 @@
                 <div class="middle_content entry">
                     <div class="woocommerce">
                         <p style="padding-bottom: 5px; font-weight: bold">Cảm ơn quý khách đã mua sắm tại gymbeo, nhân viên cskh sẽ liên hệ với quý khách để xác nhận đơn hàng.</p>
-                        <p> Tự động chuyển hướng về trang chủ sau <span id="countdowntimer">10 </span> giây</p>
+                        <p> Tự động chuyển hướng về trang chủ sau <span id="countdowntimer">5 </span> giây</p>
                         <p class="woocommerce-mini-cart__buttons buttons">
                             <a href="{{ route('index') }}" class="button wc-forward" id="go-home">Về Trang Chủ</a>
                         </p>

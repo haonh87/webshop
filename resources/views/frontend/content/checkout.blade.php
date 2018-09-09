@@ -1,6 +1,4 @@
 @extends('layouts.master')
-@section('script')
-@stop
 @section('content')
     <div id="content">
         @include('frontend.header_line', ['name' => 'Đặt hàng'])
@@ -9,7 +7,7 @@
             <div class="content_wrap fullwidth">
                 <div class="middle_content entry">
                     <div class="woocommerce">
-                        <form name="checkout" method="post" class="checkout woocommerce-checkout"
+                        <form name="checkout" id="checkout-pro" method="post" class="checkout woocommerce-checkout"
                               action="{{ route('cart.checkout') }}" enctype="multipart/form-data">
                               <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="woocommerce-additional-fields">
@@ -136,4 +134,27 @@
             </div>
         </div>
     </div>
+@stop
+@section('scriptfooter')
+    <script>
+        jQuery('#checkout-pro').bootstrapValidator({
+            fields: {
+                mobile: {
+                    validators: {
+                        callback: {
+                            message: 'Số điện thoại không đúng.',
+                            callback: function() {
+                                var mobile = $('#mobile').val();
+                                var phoneno = /(09|01[2|6|8|9])+([0-9]{8})\b/g;
+                                if (mobile.match(phoneno)) {
+                                    return true;
+                                }
+                                return false;
+                            }
+                        }
+                    }
+                },
+            }
+        });
+    </script>
 @stop
