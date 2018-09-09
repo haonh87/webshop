@@ -126,10 +126,10 @@ class IndexController extends BaseController
         //push id to session
         $sessionIds = Session::get('productIds');
         if (empty($sessionIds)) {
-            Session::push('productIds', (int)$product->id);
+            Session::push('productIds', $product->id);
         } else {
-            if (!in_array($id, $sessionIds)) {
-                Session::push('productIds', array_push($sessionIds,$product->id));
+            if (!in_array($product->id, $sessionIds)) {
+                Session::push('productIds', $product->id);
             }
         }
         return view('frontend.product_detail', [
