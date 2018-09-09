@@ -122,6 +122,6 @@ class ProductSizeService
 
     public function getAllProductSize()
     {
-        return $this->productSizeModel->where('id', '!=', '')->pluck('name', 'id');
+        return $this->productSizeModel->where('id', '!=', '')->orderBy('id', 'asc')->pluck('name', 'id');
     }
 }

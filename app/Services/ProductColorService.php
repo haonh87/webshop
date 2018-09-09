@@ -122,6 +122,6 @@ class ProductColorService
 
     public function getAllColor()
     {
-        return $this->productColorModel->where('id', '!=', '')->pluck('name', 'id');
+        return $this->productColorModel->where('id', '!=', '')->orderBy('id', 'asc')->pluck('name', 'id');
     }
 }
