@@ -39,13 +39,13 @@
                                                         <a href="{{ route('cart.destroy', ['cart' => $cart->rowId]) }}" class="remove" aria-label="Remove this item" data-product_id="13718" data-product_sku="221-1">×</a></td>
 
                                                     <td class="product-thumbnail">
-                                                        <a href="{{ route('product.show', ['product' => $cart->id]) }}">
+                                                        <a href="{{ route('product.show', ['product' => $cart->options->slug]) }}">
                                                             <img width="540" height="540" src="{{ asset('images/'.$cart->options->image) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="">
                                                         </a>
                                                     </td>
 
                                                     <td class="product-name" data-title="Product">
-                                                        <a href="{{ route('product.show', ['product' => $cart->id]) }}">{{ $cart->name }}</a><dl class="variation">
+                                                        <a href="{{ route('product.show', ['product' => $cart->options->slug]) }}">{{ $cart->name }}</a><dl class="variation">
                                                             <dt class="variation-Colors">Color:</dt>
                                                             <dd class="variation-Colors">
                                                                 <p>{{ isset($colors[$cart->options->color]) ? $colors[$cart->options->color] : '' }}</p>

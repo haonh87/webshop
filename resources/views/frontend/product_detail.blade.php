@@ -199,6 +199,7 @@
                                     </button>
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <input type="hidden" name="product_name" value="{{ $product->name }}">
+                                    <input type="hidden" name="product_slug" value="{{ $product->slug }}">
                                     <input type="hidden" name="product_price" value="{{ $product->price }}">
                                     <input type="hidden" name="product_image" value="{{ $product->productImages[0]->img_path }}">
                                 </div>
@@ -226,9 +227,9 @@
                         <div class="clear"></div><aside class="share_posts">
 
                             <div class="share_posts_inner">
-                                <a href="https://www.facebook.com/sharer/sharer.php?display=popup&amp;u={{ route('product.show', ['product' => $product->id]) }}">Facebook</a>
-                                <a href="https://plus.google.com/share?url={{ route('product.show', ['product' => $product->id]) }}">Google+</a>
-                                <a href="https://twitter.com/intent/tweet?text=Check+out+%27Men%E2%80%99s+Sport+Quick+Dry+T-Shirt+Grey%27+on+Sports+Store+website&amp;url={{ route('product.show', ['product' => $product->id]) }}">Twitter</a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?display=popup&amp;u={{ route('product.show', ['product' => $product->slug]) }}">Facebook</a>
+                                <a href="https://plus.google.com/share?url={{ route('product.show', ['product' => $product->slug]) }}">Google+</a>
+                                <a href="https://twitter.com/intent/tweet?text=Check+out+%27Men%E2%80%99s+Sport+Quick+Dry+T-Shirt+Grey%27+on+Sports+Store+website&amp;url={{ route('product.show', ['product' => $product->slug]) }}">Twitter</a>
                             </div>
                         </aside>
                     </div>
@@ -410,20 +411,20 @@
                                 <li class="post-13483 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts first instock shipping-taxable purchasable product-type-variable">
                                     <article class="cmsmasters_product">
                                         <figure class="cmsmasters_product_img">
-                                            <a href="{{ route('product.show', ['product' => $product->id]) }}">
+                                            <a href="{{ route('product.show', ['product' => $product->slug]) }}">
                                                 @foreach($product->productImages as $key => $productImage)
                                                     @if ($key < 2)
                                                         <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
                                                     @endif
                                                 @endforeach
                                             </a>
-                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $product->id]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
+                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $product->slug]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
                                         </figure>
                                         <div class="cmsmasters_product_inner">
                                         </div>
                                         <header class="cmsmasters_product_header entry-header">
                                             <h5 class="cmsmasters_product_title entry-title">
-                                                <a href="{{ route('product.show', ['product' => $product->id]) }}">
+                                                <a href="{{ route('product.show', ['product' => $product->slug]) }}">
                                                     {{ $product->name }}
                                                 </a>
                                             </h5>

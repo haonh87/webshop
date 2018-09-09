@@ -118,11 +118,11 @@ class IndexController extends BaseController
      */
     public function show($id)
     {
-        $product = $this->productService->findProductByIdView($id);
+        $product = $this->productService->findProductBySlugView($id);
         $sizes = $this->productSizeService->getAllProductSize();
         $colors = $this->productColorService->getAllColor();
         $relateProducts = $this->productService->getRelateProduct($product);
-        $productVotes = $this->voteService->getVote($id);
+        $productVotes = $this->voteService->getVote($product->id);
         //push id to session
         $sessionIds = Session::get('productIds');
         if (empty($sessionIds)) {

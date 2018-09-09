@@ -72,20 +72,20 @@
                                                 <article class="post-13743 product type-product status-publish has-post-thumbnail product_cat-shoes product_cat-sneakers product_cat-unisex product_tag-shoes product_tag-sneakers product_tag-unisex first instock shipping-taxable purchasable product-type-variable">
                                                     <div class="cmsmasters_product">
                                                         <figure class="cmsmasters_product_img">
-                                                            <a href="{{ route('product.show', ['product' => $featureProduct->id]) }}">
+                                                            <a href="{{ route('product.show', ['product' => $featureProduct->slug]) }}">
                                                                 @foreach($featureProduct->productImages as $key => $productImage)
                                                                 @if ($key < 2)
                                                                     <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
                                                                 @endif
                                                                 @endforeach
                                                             </a>
-                                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $featureProduct->id]) }}" data-quantity="1" data-product_id="13743" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
+                                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $featureProduct->slug]) }}" data-quantity="1" data-product_id="13743" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select
                                                                     options</a></div>
                                                         </figure>
                                                         <div class="cmsmasters_product_inner">
                                                             <header class="cmsmasters_product_header entry-header">
                                                                 <h5 class="cmsmasters_product_title entry-title">
-                                                                    <a href="{{ route('product.show', ['product' => $featureProduct->id]) }}">{{ $featureProduct->name }}</a>
+                                                                    <a href="{{ route('product.show', ['product' => $featureProduct->slug]) }}">{{ $featureProduct->name }}</a>
                                                                 </h5>
                                                             </header>
                                                             <div class="cmsmasters_product_cat entry-meta">
@@ -154,20 +154,20 @@
                                                         <li class="post-13483 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts first instock shipping-taxable purchasable product-type-variable">
                                                             <article class="cmsmasters_product">
                                                                 <figure class="cmsmasters_product_img">
-                                                                    <a href="{{ route('product.show', ['product' => $newProduct->id]) }}">
+                                                                    <a href="{{ route('product.show', ['product' => $newProduct->slug]) }}">
                                                                         @foreach($newProduct->productImages as $key => $productImage)
                                                                             @if ($key < 2)
                                                                                 <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
                                                                             @endif
                                                                         @endforeach
                                                                     </a>
-                                                                    <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $newProduct->id]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
+                                                                    <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $newProduct->slug]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
                                                                 </figure>
                                                                 <div class="cmsmasters_product_inner">
                                                                 </div>
                                                                 <header class="cmsmasters_product_header entry-header">
                                                                     <h5 class="cmsmasters_product_title entry-title">
-                                                                        <a href="{{ route('product.show', ['product' => $newProduct->id]) }}">
+                                                                        <a href="{{ route('product.show', ['product' => $newProduct->slug]) }}">
                                                                             {{ $newProduct->name }}
                                                                         </a>
                                                                     </h5>

@@ -74,20 +74,20 @@
                                 <li class="post-13483 product type-product status-publish has-post-thumbnail product_cat-for-men product_cat-t-shirts product_tag-clothing product_tag-men product_tag-sports product_tag-t-shirts first instock shipping-taxable purchasable product-type-variable">
                                     <article class="cmsmasters_product">
                                         <figure class="cmsmasters_product_img">
-                                            <a href="{{ route('product.show', ['product' => $product->id]) }}">
+                                            <a href="{{ route('product.show', ['product' => $product->slug]) }}">
                                                 @foreach($product->productImages as $key => $productImage)
                                                     @if ($key < 2)
                                                     <img width="540" height="540" src="{{ asset('images/' .$productImage->img_path) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image">
                                                     @endif
                                                 @endforeach
                                             </a>
-                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $product->id]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
+                                            <div class="button_to_cart_wrap"><a rel="nofollow" href="{{ route('product.show', ['product' => $product->slug]) }}" data-quantity="1" data-product_id="13483" data-product_sku="" class="button product_type_variable add_to_cart_button cmsmasters_add_to_cart_button">Select option</a></div>
                                         </figure>
                                         <div class="cmsmasters_product_inner">
                                         </div>
                                         <header class="cmsmasters_product_header entry-header">
                                             <h5 class="cmsmasters_product_title entry-title">
-                                                <a href="{{ route('product.show', ['product' => $product->id]) }}">
+                                                <a href="{{ route('product.show', ['product' => $product->slug]) }}">
                                                     {{ $product->name }}
                                                 </a>
                                             </h5>
@@ -219,7 +219,7 @@
                             <ul class="product_list_widget">
                                 @foreach($recentlyProduct as $product)
                                 <li>
-                                    <a href="{{ route('product.show', ['product' => $product->id]) }}">
+                                    <a href="{{ route('product.show', ['product' => $product->slug]) }}">
                                         <img width="540" height="540"
                                              src="{{ asset('images/' .$product->productImages[0]->img_path) }}"
                                              class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" sizes="(max-width: 540px) 100vw, 540px">
@@ -267,7 +267,7 @@
                                         @endphp
                                         <li class="woocommerce-mini-cart-item mini_cart_item">
                                             <a href="{{ route('cart.destroy', ['cart' => $cart->rowId]) }}" class="remove remove_from_cart_button" aria-label="Remove this item">×</a>
-                                            <a href="{{ route('product.show', ['product' => $cart->id]) }}">
+                                            <a href="{{ route('product.show', ['product' => $cart->options->slug]) }}">
                                                 <img width="540" height="540" src="{{ asset('images/'.$cart->options->image) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" sizes="(max-width: 540px) 100vw, 540px">
                                                 {{ $cart->name }}&nbsp;
                                             </a>

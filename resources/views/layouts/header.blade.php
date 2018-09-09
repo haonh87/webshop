@@ -71,7 +71,7 @@
                                     <li class="woocommerce-mini-cart-item mini_cart_item">
                                         <a href="{{ route('cart.destroy', ['cart' => $cart->rowId]) }}"
                                            class="remove remove_from_cart_button" aria-label="Remove this item">×</a>
-                                        <a href="{{ route('product.show', ['product' => $cart->id]) }}">
+                                        <a href="{{ route('product.show', ['product' => $cart->options->slug]) }}">
                                             <img width="540" height="540"
                                                  src="{{ asset('images/'.$cart->options->image) }}"
                                                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"

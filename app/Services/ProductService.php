@@ -120,6 +120,14 @@ class ProductService
             ->groupBy('products.id')->where('products.id', $id)->first();
     }
 
+    public function findProductBySlugView($slug)
+    {
+        return $this->productModel->with('category')->with('productImages')
+            ->select('*', 'products.id',DB::raw('AVG(votes.star) as total_star'))
+            ->leftJoin('votes', 'votes.product_id', '=', 'products.id')
+            ->groupBy('products.id')->where('products.slug', $slug)->first();
+    }
+
     public function getRelateProduct($product)
     {
         return $this->productModel->with('category')->with('productImages')

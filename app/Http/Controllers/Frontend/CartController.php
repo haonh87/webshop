@@ -88,6 +88,7 @@ class CartController extends BaseController
                     'size' => Request::get('attribute_pa_size'),
                     'color' => Request::get('attribute_pa_color'),
                     'image' => Request::get('product_image'),
+                    'slug' => Request::get('product_slug'),
                 ]
             ));
         }
