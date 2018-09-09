@@ -26,7 +26,7 @@
 
                                 <div style="margin-bottom: 20px; margin-left: 0px; margin-right: 0px; width: 100%" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                     <label for="fullname">Số điện thoại</label>
-                                    <input value="{{ isset($customer->mobile) ? $customer->mobile : '' }}" required type="text" class="form-control" id="mobile" name="mobile" placeholder="Số điện thoại">
+                                    <input value="{{ isset($customer->mobile) ? $customer->mobile : '' }}" required type="tel" pattern="^0(1\d{9}|9\d{8})$" class="form-control mobile" title="Số điện thoại không đúng." id="mobile" name="mobile" placeholder="Số điện thoại">
                                     <span class="has-error"></span>
                                 </div>
 
@@ -134,27 +134,4 @@
             </div>
         </div>
     </div>
-@stop
-@section('scriptfooter')
-    <script>
-        jQuery('#checkout-pro').bootstrapValidator({
-            fields: {
-                mobile: {
-                    validators: {
-                        callback: {
-                            message: 'Số điện thoại không đúng.',
-                            callback: function() {
-                                var mobile = $('#mobile').val();
-                                var phoneno = /(09|01[2|6|8|9])+([0-9]{8})\b/g;
-                                if (mobile.match(phoneno)) {
-                                    return true;
-                                }
-                                return false;
-                            }
-                        }
-                    }
-                },
-            }
-        });
-    </script>
 @stop
