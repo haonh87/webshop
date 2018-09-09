@@ -117,7 +117,7 @@
                                     <span class="cmsmasters_theme_icon_star_empty cmsmasters_star"></span>
                                 </div>
                                 <div class="cmsmasters_star_color_wrap" style="width:100%">
-                                    <div class="cmsmasters_star_color_inner">
+                                    <div class="cmsmasters_star_color_inner" style="width:100%">
                                         @for($i = 0; $i< (int)$product->total_star; $i++)
                                             <span class="cmsmasters_theme_icon_star_full cmsmasters_star"></span>
                                         @endfor
