@@ -132,6 +132,13 @@
                     <aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter"><h3
                                 class="widgettitle">Lọc theo giá</h3>
                         <form method="get" action="{{ route('product.list') }}" id="reservation" >
+                            @if(!empty(request()->query()))
+                                @foreach(request()->query() as $key => $value)
+                                    @if($key != 'price')
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                    @endif
+                                @endforeach
+                            @endif
                             <div class="price_slider_wrapper">
                                 <select  name="price" id="price" style="margin-top: 5%; z-index: 99">
                                     <option value="">-- Chọn giá --</option>
